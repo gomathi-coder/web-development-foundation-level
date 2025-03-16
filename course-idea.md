@@ -6,7 +6,7 @@
 2. Students will be able to create simple web applications.
 
 ### Example of a Website
-A website with a hero section, header, menu, footer, images, text content, grids, positioning, etc.
+A website with a hero section, header, navigation menu, footer, images, text content, grids, and positioning, along with buttons, forms, animations, hover effects, modals, cards, carousels, responsiveness, typography, background effects, and interactive elements to enhance user experience and functionality.
 
 ### Example of an Application
 Take inputs, perform simple processing, and show the output. Examples:
