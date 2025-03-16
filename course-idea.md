@@ -8,6 +8,8 @@
 ### Example of a Website
 A website with a hero section, header, navigation menu, footer, images, text content, grids, and positioning, along with buttons, forms, animations, hover effects, modals, cards, carousels, responsiveness, typography, background effects, and interactive elements to enhance user experience and functionality.
 
+Basic Sample : [School Website](website-sample-01.html)
+
 ### Example of an Application
 Take inputs, perform simple processing, and show the output. Examples:
 - Converter
