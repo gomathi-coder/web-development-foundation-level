@@ -3,101 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
+    <title>Digital Clock</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background: #f4f4f4; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh;
-        }
-        .container { 
-            max-width: 400px; 
-            background: white; 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .question { 
-            font-size: 1.2em; 
-            margin-bottom: 15px; 
-            text-align: left; /* Left-aligning the question */
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Left-aligning the choices */
-        }
-        .option {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            background: #f4f4f4;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .option:hover {
-            background: #ddd;
-        }
-        input[type="radio"] {
-            margin-right: 10px;
-        }
-        button { 
-            padding: 10px; 
-            margin-top: 15px; 
-            cursor: pointer; 
-            background: blue; 
-            color: white; 
-            border: none; 
-            border-radius: 5px;
-            width: 100%;
-        }
-        #result {
-            font-size: 1.2em;
-            margin-top: 10px;
-            text-align: left; /* Left-aligning the result text */
-        }
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; }
+        .clock { font-size: 3em; padding: 20px; background: black; color: white; display: inline-block; border-radius: 10px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Simple Quiz</h2>
-        <p class="question">What is the capital of France?</p>
-        <div class="options">
-            <label class="option"><input type="radio" name="quiz" value="London"> London</label>
-            <label class="option"><input type="radio" name="quiz" value="Paris"> Paris</label>
-            <label class="option"><input type="radio" name="quiz" value="Rome"> Rome</label>
-            <label class="option"><input type="radio" name="quiz" value="Berlin"> Berlin</label>
-        </div>
-        <button onclick="checkAnswer()">Submit</button>
-        <p id="result"></p>
-    </div>
+    <h2>Digital Clock</h2>
+    <div class="clock" id="clock"></div>
 
     <script>
-        function checkAnswer() {
-            let options = document.getElementsByName("quiz");
-            let result = document.getElementById("result");
-            
-            for (let option of options) {
-                if (option.checked) {
-                    if (option.value === "Paris") {
-                        result.innerText = "Correct! 🎉";
-                        result.style.color = "green";
-                    } else {
-                        result.innerText = "Wrong! ❌ Try again.";
-                        result.style.color = "red";
-                    }
-                    return;
-                }
-            }
-            result.innerText = "Please select an answer!";
-            result.style.color = "black";
+        function updateClock() {
+            let now = new Date();
+            let timeString = now.toLocaleTimeString();
+            document.getElementById("clock").innerText = timeString;
         }
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
 </body>
 </html>
