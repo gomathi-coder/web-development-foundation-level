@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; }
+        .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .question { font-size: 1.2em; }
+        .option { display: block; margin: 10px; }
+        button { padding: 10px; margin-top: 10px; cursor: pointer; background: blue; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Simple Quiz</h2>
+        <p class="question">What is the capital of France?</p>
+        <label class="option"><input type="radio" name="quiz" value="London"> London</label>
+        <label class="option"><input type="radio" name="quiz" value="Paris"> Paris</label>
+        <label class="option"><input type="radio" name="quiz" value="Rome"> Rome</label>
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            let options = document.getElementsByName("quiz");
+            let result = document.getElementById("result");
+            for (let option of options) {
+                if (option.checked) {
+                    if (option.value === "Paris") {
+                        result.innerText = "Correct! 🎉";
+                        result.style.color = "green";
+                    } else {
+                        result.innerText = "Wrong! Try again. ❌";
+                        result.style.color = "red";
+                    }
+                    return;
+                }
+            }
+            result.innerText = "Please select an answer!";
+        }
+    </script>
+</body>
+</html>

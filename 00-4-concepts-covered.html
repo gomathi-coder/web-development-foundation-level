@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Foundation Level - Concepts and Projects</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tab-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .tab-button:hover {
+            background-color: #2980b9;
+        }
+        .tab-button.active {
+            background-color: #2c3e50;
+        }
+        .tab-content {
+            display: none;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f4f6f9;
+        }
+        tr:hover {
+            background-color: #e8f4fd;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .footer {
+            text-align: center;
+            margin: 20px 0;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Development Foundation Level - Concepts and Projects</h1>
+    <div class="tabs">
+        <button class="tab-button active" data-tab="html">HTML Concepts</button>
+        <button class="tab-button" data-tab="css">CSS Concepts</button>
+        <button class="tab-button" data-tab="javascript">JavaScript Concepts</button>
+    </div>
+
+    <div id="html" class="tab-content active">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepts</th>
+                    <th>Projects Covering the Concept</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic Structure of an HTML Page</td>
+                    <td>Portfolio Website, Blog Page</td>
+                </tr>
+                <tr>
+                    <td>Common HTML Tags (Headings, Paragraphs, Lists, etc.)</td>
+                    <td>Blog Page, Digital Birthday Card</td>
+                </tr>
+                <tr>
+                    <td>Links and Navigation</td>
+                    <td>Portfolio Website, E-Commerce Project</td>
+                </tr>
+                <tr>
+                    <td>Images and Media Embedding</td>
+                    <td>Portfolio Website, Digital Birthday Card</td>
+                </tr>
+                <tr>
+                    <td>Forms and Input Fields</td>
+                    <td>To-Do List, Simple Quiz App, E-Commerce Project</td>
+                </tr>
+                <tr>
+                    <td>Tables and Layouts</td>
+                    <td>E-Commerce Project, Blog Page</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="css" class="tab-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepts</th>
+                    <th>Projects Covering the Concept</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Introduction to CSS (Inline, Internal, External)</td>
+                    <td>Portfolio Website, Blog Page</td>
+                </tr>
+                <tr>
+                    <td>CSS Selectors and Properties</td>
+                    <td>Portfolio Website, Blog Page, Digital Birthday Card</td>
+                </tr>
+                <tr>
+                    <td>Box Model (Margin, Border, Padding)</td>
+                    <td>Portfolio Website, To-Do List, Image Slider</td>
+                </tr>
+                <tr>
+                    <td>Colors, Backgrounds, and Borders</td>
+                    <td>Portfolio Website, Digital Birthday Card</td>
+                </tr>
+                <tr>
+                    <td>Fonts and Text Styling</td>
+                    <td>Portfolio Website, Blog Page, Digital Birthday Card</td>
+                </tr>
+                <tr>
+                    <td>Positioning and Flexbox</td>
+                    <td>To-Do List, E-Commerce Project, Image Slider</td>
+                </tr>
+                <tr>
+                    <td>Basic Grid Layout</td>
+                    <td>E-Commerce Project, Portfolio Website</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="javascript" class="tab-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepts</th>
+                    <th>Projects Covering the Concept</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Variables and Data Types</td>
+                    <td>Calculator, Temperature Converter, Digital Clock</td>
+                </tr>
+                <tr>
+                    <td>Operators and Expressions</td>
+                    <td>Calculator, Temperature Converter</td>
+                </tr>
+                <tr>
+                    <td>Functions and Events</td>
+                    <td>Digital Clock, Calculator, Simple Quiz App</td>
+                </tr>
+                <tr>
+                    <td>Conditional Statements (if-else, switch)</td>
+                    <td>Simple Quiz App, Calculator, Temperature Converter</td>
+                </tr>
+                <tr>
+                    <td>Loops (for, while)</td>
+                    <td>Simple Quiz App, Digital Clock</td>
+                </tr>
+                <tr>
+                    <td>DOM Manipulation (getElementById, querySelector)</td>
+                    <td>Image Slider, Digital Clock, E-Commerce Project</td>
+                </tr>
+                <tr>
+                    <td>Basic Form Validation</td>
+                    <td>To-Do List, E-Commerce Project</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Web Development Foundation Level. All rights reserved.
+    </div>
+
+    <script>
+        // JavaScript to handle tab switching
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach((btn) => btn.classList.remove("active"));
+                tabContents.forEach((content) => content.classList.remove("active"));
+
+                // Add active class to the clicked button and corresponding content
+                button.classList.add("active");
+                const tabId = button.getAttribute("data-tab");
+                document.getElementById(tabId).classList.add("active");
+            });
+        });
+    </script>
+</body>
+</html>
