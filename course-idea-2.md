@@ -1,12 +1,44 @@
-Theme for Web Development Course : A Student will be able to develop a static website on his own after completing the course. A static website can be for a restuarant, a boutique, a school, etc.
+# Theme for Web Development Course  
 
-A static website has somewhere between 20 to 50 patterns. We will teach the concepts such that he should be able to create such patterns.
+A student will be able to develop a **static website** on their own after completing the course. A static website can be for:  
+- A restaurant  
+- A boutique  
+- A school  
+- etc.  
 
-We will be teaching HTML - Basic and Intermediate; CSS - Basic and Intermediate and JS - Basic.
+A static website has **20 to 50 patterns**. We will teach the concepts such that the student can create such patterns.  
 
-Totally 4 Projects.
+## Technologies Covered  
+- **HTML** – Basic & Intermediate  
+- **CSS** – Basic & Intermediate  
+- **JS** – Basic  
 
-1. Project 1 : A school website or Turf website | Concepts : HTML - Basic, CSS - Basic | Teaching Time : 3 classes. 4th class for website Development
-2. Project 2 : Webite for Restuarant or Ecommerce website | Concepts : Mobile Responsiveness, Image gallery, Background Image, Fixed header, better hero section, better footer section, more patterns on sections like about us, our services, etc | Teaching Time : 3 classes. 4th class for website Development
-3. Project 3 : Event website or Any landing page website | Concepts : Bootstrap, Animations, Transitions. | Teaching Time : 3 classes. 4th class for website Development
-4. Project 4 : Registration Forms | Concepts : Javascripts, Forms. | Teaching Time : 3 classes. 4th class for website Development
+## Course Structure: 4 Projects  
+
+### **Project 1**: School Website or Turf Website  
+- **Concepts**: HTML (Basic), CSS (Basic)  
+- **Teaching Time**: 3 classes (4th class for website development)  
+
+### **Project 2**: Restaurant Website or E-commerce Website  
+- **Concepts**:  
+  - Mobile Responsiveness  
+  - Image Gallery  
+  - Background Image  
+  - Fixed Header  
+  - Better Hero Section  
+  - Better Footer Section  
+  - More patterns (About Us, Our Services, etc.)  
+- **Teaching Time**: 3 classes (4th class for website development)  
+
+### **Project 3**: Event Website or Landing Page  
+- **Concepts**:  
+  - Bootstrap  
+  - Animations  
+  - Transitions  
+- **Teaching Time**: 3 classes (4th class for website development)  
+
+### **Project 4**: Registration Forms  
+- **Concepts**:  
+  - JavaScript  
+  - Forms  
+- **Teaching Time**: 3 classes (4th class for website development)  
