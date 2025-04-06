@@ -6,6 +6,7 @@
 
 **<span style="color:red">Read the thought process before going through the below content</span>**
 
+[16 week course curriculum](16-week-course-curriculum.html)
 [School Website Requirement](projects/school-website/requirement.html) | [School Website](projects/school-website/home.html)
 
 For a comprehensive list of our projects, click [here](00-2-projects-list.html)
