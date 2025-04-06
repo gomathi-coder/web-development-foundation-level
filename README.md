@@ -6,6 +6,11 @@
 
 **<span style="color:red">Read the thought process before going through the below content</span>**
 
+# Projects
+
+[School Website](projects/school-website/home.html)
+
+
 For a comprehensive list of our projects, click [here](00-2-projects-list.html)
 
 For a comprehensive list of our concepts covered , click [here](00-4-concepts-covered.html)
