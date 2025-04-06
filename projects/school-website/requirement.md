@@ -92,20 +92,6 @@ Here are the sections we need:
 
 ---
 
-### ✅ **Evaluation Criteria**
-| Criteria                        | Marks |
-|--------------------------------|-------|
-| Creative Design                | 20    |
-| Use of Images & Video          | 10    |
-| Different Layouts per Section  | 15    |
-| Use of HTML Elements Properly  | 15    |
-| CSS Styling                    | 20    |
-| Code Cleanliness & Folder Setup| 10    |
-| Functionality of Navigation    | 10    |
-| **Total**                      | **100**|
-
----
-
 ### 📅 Submission Deadline: [Enter Date]
 
 Let your creativity shine and build a website that makes “Bright Future Public School” proud!
