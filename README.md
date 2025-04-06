@@ -6,6 +6,8 @@
 
 **<span style="color:red">Read the thought process before going through the below content</span>**
 
+[course idea 2](course-idea-2.html)
+
 [16 week course curriculum](16-week-course-curriculum.html)
 
 [School Website Requirement](projects/school-website/requirement.html) | [School Website](projects/school-website/home.html)
