@@ -8,4 +8,5 @@ Totally 4 Projects.
 
 1. Project 1 : A school website or Turf website | Concepts : HTML - Basic, CSS - Basic | Teaching Time : 3 classes. 4th class for website Development
 2. Project 2 : Webite for Restuarant or Ecommerce website | Concepts : Mobile Responsiveness, Image gallery, Background Image, Fixed header, better hero section, better footer section, more patterns on sections like about us, our services, etc | Teaching Time : 3 classes. 4th class for website Development
-3. 
+3. Project 3 : Event website or Any landing page website | Concepts : Bootstrap, Animations, Transitions. | Teaching Time : 3 classes. 4th class for website Development
+4. Project 4 : Registration Forms | Concepts : Javascripts, Forms. | Teaching Time : 3 classes. 4th class for website Development
