@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSS Selectors Examples</title>
+  <style>
+    /* 1. Element Selector */
+    p {
+      color: blue;
+    }
+
+    /* 2. Class Selector */
+    .highlight {
+      background-color: yellow;
+      padding: 2px;
+    }
+
+    /* 3. ID Selector */
+    #main-title {
+      font-size: 24px;
+      color: darkgreen;
+    }
+
+    /* 4. Descendant Selector */
+    div span {
+      font-weight: bold;
+    }
+
+    /* 5. Pseudo-class Selector */
+    button:hover {
+      background-color: lightblue;
+    }
+
+    /* 6. Grouping Selector */
+    h1, h2, h3 {
+      font-family: Arial, sans-serif;
+    }
+
+    /* 7. Universal Selector */
+    * {
+      margin: 0;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">CSS Selectors Examples</h1>
+
+  <!-- 1. Element Selector Example -->
+  <p>This paragraph is styled with element selector (blue).</p>
+  <p>All paragraphs are affected.</p>
+
+  <!-- 2. Class Selector Example -->
+  <div class="highlight">This div has the highlight class.</div>
+  <p class="highlight">This paragraph also has the highlight class.</p>
+
+  <!-- 3. ID Selector Example -->
+  <div id="special-box">This div has a special ID (but no styling).</div>
+
+  <!-- 4. Descendant Selector Example -->
+  <div>
+    <span>This span inside a div is bold.</span>
+  </div>
+  <span>This span outside div is normal.</span>
+
+  <!-- 5. Pseudo-class Selector Example -->
+  <button>Hover over me!</button>
+
+  <!-- 6. Grouping Selector Example -->
+  <h2>Heading 2 with grouped style</h2>
+  <h3>Heading 3 with same grouped style</h3>
+
+  <!-- 7. Universal Selector affects everything -->
+</body>
+</html>

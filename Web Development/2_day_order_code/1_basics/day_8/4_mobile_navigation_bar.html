@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #333;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  display: block;
+  padding: 14px 16px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+a:hover {
+  background: #111;
+}
+
+.menu-toggle {
+  display: none;
+  background: #333;
+  color: white;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  li {
+    display: block;
+  }
+  ul {
+    display: none;
+  }
+  ul.show {
+    display: block;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰ Mobile Menu</div>
+
+<ul id="nav">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<script>
+function toggleMenu() {
+  document.getElementById('nav').classList.toggle('show');
+}
+</script>
+
+</body>
+</html>
