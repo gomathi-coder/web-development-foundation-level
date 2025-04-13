@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scale() Method Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        div {
+            margin: 50px auto;  
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            border: 1px solid black;
+            transform: scale(0.5, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.3s ease;  
+        }
+    
+        div:hover {
+            transform: scale(1, 1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>The scale() Method</h1>
+
+<p>The scale() method increases or decreases the size of an element.</p>
+
+<div>
+    This div element is scaled to half of its original width and height.
+</div>
+
+</body>
+</html>
