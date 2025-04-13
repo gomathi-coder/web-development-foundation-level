@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern E-commerce</title>
+  <style>
+
+:root {
+      --primary-color: #FF6F61;
+      --dark-color: #2d2d2d;
+      --light-color: #f4f4f4;
+      --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: var(--light-color);
+      color: var(--dark-color);
+    }
+
+
+/* header  */
+header {
+      background-color: white;
+      padding: 15px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+        top: 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .search input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      width: 300px;
+    }
+    .nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+    }
+
+    
+
+    
+  </style>
+</head>
+<body>
+<!-- header  -->
+<header>
+  <div class="logo">ShopMax</div>
+  <div class="search">
+    <input type="text" placeholder="Search for products">
+  </div>
+  <div class="nav">
+    <a href="#">Login</a>
+    <a href="#">Orders</a>
+    <a href="#">Cart</a>
+  </div>
+</header>
+
+
+<!-- hero  -->
+
+<section class="hero">
+  <h1>Welcome to ShopMax</h1>
+</section>
+</body>
+</html>

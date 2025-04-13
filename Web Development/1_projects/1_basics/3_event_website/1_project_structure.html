@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tamil Nadu Cultural Festival</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <i class="fas fa-landmark me-2"></i>Tamil Fest
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-2"><a class="btn btn-warning fw-bold px-4" href="#register">Register</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="vh-100 d-flex align-items-center text-white" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1586530067926-1f33f9f3b61a') center/cover no-repeat fixed;">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="display-3 fw-bold mb-4" data-aos="fade-up">Tamil Nadu Cultural Festival</h1>
+        <p class="lead fs-3 mb-4" data-aos="fade-up" data-aos-delay="100">Celebrating 5000 Years of Glorious Tamil Heritage</p>
+        
+        <div class="d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-dark bg-opacity-25 rounded p-3 mx-2 text-center">
+            <div class="fs-1 fw-bold text-warning" id="days">00</div>
+            <div>Days</div>
+          </div>
+          <div class="bg-dark bg-opacity-25 rounded p-3 mx-2 text-center">
+            <div class="fs-1 fw-bold text-warning" id="hours">00</div>
+            <div>Hours</div>
+          </div>
+          <div class="bg-dark bg-opacity-25 rounded p-3 mx-2 text-center">
+            <div class="fs-1 fw-bold text-warning" id="minutes">00</div>
+            <div>Minutes</div>
+          </div>
+          <div class="bg-dark bg-opacity-25 rounded p-3 mx-2 text-center">
+            <div class="fs-1 fw-bold text-warning" id="seconds">00</div>
+            <div>Seconds</div>
+          </div>
+        </div>
+        
+        <p class="mb-4 fs-5" data-aos="fade-up" data-aos-delay="300">December 15–17, 2024 | Chennai Trade Center</p>
+        <div data-aos="fade-up" data-aos-delay="400">
+          <a href="#register" class="btn btn-warning btn-lg fw-bold me-3 px-4 py-2">Register Now</a>
+          <a href="#events" class="btn btn-outline-light btn-lg px-4 py-2">Explore Events</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Events -->
+<section id="events" class="py-5 bg-light">
+  <div class="container py-5">
+    <h2 class="text-center mb-5 position-relative" data-aos="fade-up">
+      Featured Events
+      <span class="position-absolute bottom-0 start-50 translate-middle-x bg-danger" style="width: 100px; height: 3px;"></span>
+    </h2>
+    
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in">
+        <div class="card h-100 shadow border-0 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1547153760-18fc86324498" class="card-img-top" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Bharatanatyam</h5>
+            <p class="card-text">Experience the divine classical dance performances by renowned artists from across Tamil Nadu.</p>
+            <div class="d-flex align-items-center text-muted">
+              <i class="far fa-calendar-alt me-2"></i>
+              <span>Dec 15, 6:00 PM</span>
+            </div>
+            <div class="d-flex align-items-center text-muted mt-2">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              <span>Main Stage</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="#" class="btn btn-sm btn-outline-danger">Learn More</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card h-100 shadow border-0 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a5d4" class="card-img-top" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Folk Arts</h5>
+            <p class="card-text">Vibrant traditional folk performances including Karagattam, Oyilattam and more.</p>
+            <div class="d-flex align-items-center text-muted">
+              <i class="far fa-calendar-alt me-2"></i>
+              <span>Dec 16, 4:00 PM</span>
+            </div>
+            <div class="d-flex align-items-center text-muted mt-2">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              <span>Cultural Pavilion</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="#" class="btn btn-sm btn-outline-danger">Learn More</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card h-100 shadow border-0 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3" class="card-img-top" style="height: 250px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Carnatic Music</h5>
+            <p class="card-text">An enchanting evening of classical music featuring top artists from Tamil Nadu.</p>
+            <div class="d-flex align-items-center text-muted">
+              <i class="far fa-calendar-alt me-2"></i>
+              <span>Dec 17, 7:00 PM</span>
+            </div>
+            <div class="d-flex align-items-center text-muted mt-2">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              <span>Music Hall</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="#" class="btn btn-sm btn-outline-danger">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5" data-aos="fade-up">
+      <a href="#" class="btn btn-danger px-4">View All Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- Speakers -->
+<section id="speakers" class="py-5 bg-light">
+  <div class="container py-5">
+    <h2 class="text-center mb-5 position-relative" data-aos="fade-up">
+      Featured Artists
+      <span class="position-absolute bottom-0 start-50 translate-middle-x bg-danger" style="width: 100px; height: 3px;"></span>
+    </h2>
+    <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">Meet our renowned performers and cultural ambassadors</p>
+    
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up">
+        <div class="card border-0 text-center bg-transparent">
+          <div class="mx-auto mt-3 overflow-hidden rounded-circle" style="width: 150px; height: 150px;">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-100 h-100 object-fit-cover border border-5 border-white shadow">
+          </div>
+          <div class="card-body">
+            <h5 class="mb-1">Dr. Priya Raman</h5>
+            <p class="text-danger mb-2">Bharatanatyam Expert</p>
+            <p class="small text-muted">Director, Natya Kala Academy</p>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card border-0 text-center bg-transparent">
+          <div class="mx-auto mt-3 overflow-hidden rounded-circle" style="width: 150px; height: 150px;">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-100 h-100 object-fit-cover border border-5 border-white shadow">
+          </div>
+          <div class="card-body">
+            <h5 class="mb-1">Rajesh Kumar</h5>
+            <p class="text-danger mb-2">Carnatic Vocalist</p>
+            <p class="small text-muted">Disciple of Dr. M. Balamuralikrishna</p>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card border-0 text-center bg-transparent">
+          <div class="mx-auto mt-3 overflow-hidden rounded-circle" style="width: 150px; height: 150px;">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-100 h-100 object-fit-cover border border-5 border-white shadow">
+          </div>
+          <div class="card-body">
+            <h5 class="mb-1">Meena Devi</h5>
+            <p class="text-danger mb-2">Folk Artist</p>
+            <p class="small text-muted">Karagattam Performer</p>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="card border-0 text-center bg-transparent">
+          <div class="mx-auto mt-3 overflow-hidden rounded-circle" style="width: 150px; height: 150px;">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="w-100 h-100 object-fit-cover border border-5 border-white shadow">
+          </div>
+          <div class="card-body">
+            <h5 class="mb-1">Dr. Arvind Sundar</h5>
+            <p class="text-danger mb-2">Tamil Scholar</p>
+            <p class="small text-muted">Professor, University of Madras</p>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5" data-aos="fade-up">
+      <a href="#" class="btn btn-outline-danger px-4">View All Artists</a>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section id="schedule" class="py-5 bg-white">
+  <div class="container py-5">
+    <h2 class="text-center mb-5 position-relative" data-aos="fade-up">
+      Event Schedule
+      <span class="position-absolute bottom-0 start-50 translate-middle-x bg-danger" style="width: 100px; height: 3px;"></span>
+    </h2>
+    <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">Plan your festival experience</p>
+    
+    <ul class="nav nav-tabs justify-content-center mb-4" id="scheduleTabs" role="tablist" data-aos="fade-up">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="day1-tab" data-bs-toggle="tab" data-bs-target="#day1" type="button">Day 1</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="day2-tab" data-bs-toggle="tab" data-bs-target="#day2" type="button">Day 2</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="day3-tab" data-bs-toggle="tab" data-bs-target="#day3" type="button">Day 3</button>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="scheduleTabsContent" data-aos="fade-up" data-aos-delay="100">
+      <div class="tab-pane fade show active" id="day1" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="bg-danger text-white">
+              <tr>
+                <th>Time</th>
+                <th>Event</th>
+                <th>Venue</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10:00 AM</td>
+                <td>Festival Inauguration</td>
+                <td>Main Stage</td>
+                <td><span class="badge bg-primary">Opening</span></td>
+              </tr>
+              <tr>
+                <td>11:30 AM</td>
+                <td>Tamil Literature Exhibition</td>
+                <td>Hall A</td>
+                <td><span class="badge bg-success">Exhibition</span></td>
+              </tr>
+              <tr>
+                <td>2:00 PM</td>
+                <td>Tamil Literature Seminar</td>
+                <td>Conference Hall</td>
+                <td><span class="badge bg-info">Seminar</span></td>
+              </tr>
+              <tr>
+                <td>4:00 PM</td>
+                <td>Traditional Crafts Workshop</td>
+                <td>Art Pavilion</td>
+                <td><span class="badge bg-warning text-dark">Workshop</span></td>
+              </tr>
+              <tr>
+                <td>6:00 PM</td>
+                <td>Bharatanatyam Performance</td>
+                <td>Main Stage</td>
+                <td><span class="badge bg-danger">Performance</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="tab-pane fade" id="day2" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="bg-danger text-white">
+              <tr>
+                <th>Time</th>
+                <th>Event</th>
+                <th>Venue</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>9:30 AM</td>
+                <td>Traditional Cooking Demo</td>
+                <td>Food Pavilion</td>
+                <td><span class="badge bg-warning text-dark">Workshop</span></td>
+              </tr>
+              <tr>
+                <td>11:00 AM</td>
+                <td>Tamil Cinema History Talk</td>
+                <td>Conference Hall</td>
+                <td><span class="badge bg-info">Seminar</span></td>
+              </tr>
+              <tr>
+                <td>2:00 PM</td>
+                <td>Classical Instrumental Music</td>
+                <td>Music Hall</td>
+                <td><span class="badge bg-danger">Performance</span></td>
+              </tr>
+              <tr>
+                <td>4:00 PM</td>
+                <td>Folk Arts Showcase</td>
+                <td>Cultural Pavilion</td>
+                <td><span class="badge bg-danger">Performance</span></td>
+              </tr>
+              <tr>
+                <td>7:00 PM</td>
+                <td>Dance Drama: Silappadikaram</td>
+                <td>Main Stage</td>
+                <td><span class="badge bg-danger">Performance</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="tab-pane fade" id="day3" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="bg-danger text-white">
+              <tr>
+                <th>Time</th>
+                <th>Event</th>
+                <th>Venue</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10:00 AM</td>
+                <td>Tamil Architecture Exhibition</td>
+                <td>Hall B</td>
+                <td><span class="badge bg-success">Exhibition</span></td>
+              </tr>
+              <tr>
+                <td>12:00 PM</td>
+                <td>Traditional Games Competition</td>
+                <td>Outdoor Arena</td>
+                <td><span class="badge bg-primary">Activity</span></td>
+              </tr>
+              <tr>
+                <td>3:00 PM</td>
+                <td>Poetry Recitation</td>
+                <td>Literature Corner</td>
+                <td><span class="badge bg-info">Seminar</span></td>
+              </tr>
+              <tr>
+                <td>5:00 PM</td>
+                <td>Folk Music Performance</td>
+                <td>Cultural Pavilion</td>
+                <td><span class="badge bg-danger">Performance</span></td>
+              </tr>
+              <tr>
+                <td>7:00 PM</td>
+                <td>Carnatic Music Night</td>
+                <td>Music Hall</td>
+                <td><span class="badge bg-danger">Performance</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4" data-aos="fade-up">
+      <a href="#" class="btn btn-danger px-4">Download Full Schedule</a>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Preview -->
+<section id="gallery" class="py-5 bg-light">
+  <div class="container py-5">
+    <h2 class="text-center mb-5 position-relative" data-aos="fade-up">
+      Gallery
+      <span class="position-absolute bottom-0 start-50 translate-middle-x bg-danger" style="width: 100px; height: 3px;"></span>
+    </h2>
+    <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">Moments from previous festivals</p>
+    
+    <div class="row g-3">
+      <div class="col-md-4 col-6" data-aos="zoom-in">
+        <a href="#">
+          <img src="https://images.unsplash.com/photo-1547153760-18fc86324498" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
+        <a href="#">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a5d4" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200">
+        <a href="#">
+          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in">
+        <a href="#">
+          <img src="https://images.unsplash.com/photo-1468164016595-6108e4c60c8b" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
+        <a href="#">
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200">
+        <a href="#">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad" class="img-fluid rounded shadow-sm" alt="Gallery Image">
+        </a>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5" data-aos="fade-up">
+      <a href="#" class="btn btn-outline-danger px-4">View Full Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- Registration CTA -->
+<section id="register" class="py-5 text-white" style="background: linear-gradient(rgba(211, 47, 47, 0.9), rgba(211, 47, 47, 0.9)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a5d4') center/cover no-repeat fixed;">
+  <div class="container py-5 text-center">
+    <h2 class="mb-4" data-aos="fade-up">Don't Miss This Cultural Extravaganza!</h2>
+    <p class="lead mb-5" data-aos="fade-up" data-aos-delay="100">Join us for three days of unforgettable Tamil cultural experiences</p>
+    <div data-aos="fade-up" data-aos-delay="200">
+      <a href="#" class="btn btn-warning btn-lg px-5 py-3 fw-bold me-3">Register Now</a>
+      <a href="#" class="btn btn-outline-light btn-lg px-5 py-3">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-5 bg-white">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+        <h2 class="mb-4 position-relative">
+          Contact Us
+          <span class="position-absolute bottom-0 start-0 bg-danger" style="width: 100px; height: 3px;"></span>
+        </h2>
+        <p class="mb-4">Have questions about the festival? Want to participate or sponsor? Reach out to us!</p>
+        
+        <div class="d-flex align-items-start mb-4">
+          <div class="me-4 text-danger">
+            <i class="fas fa-map-marker-alt fa-2x"></i>
+          </div>
+          <div>
+            <h5>Location</h5>
+            <p class="mb-0">Chennai Trade Center, Nandambakkam, Chennai - 600089</p>
+          </div>
+        </div>
+        
+        <div class="d-flex align-items-start mb-4">
+          <div class="me-4 text-danger">
+            <i class="fas fa-phone-alt fa-2x"></i>
+          </div>
+          <div>
+            <h5>Phone</h5>
+            <p class="mb-0">+91 44 1234 5678</p>
+          </div>
+        </div>
+        
+        <div class="d-flex align-items-start mb-4">
+          <div class="me-4 text-danger">
+            <i class="fas fa-envelope fa-2x"></i>
+          </div>
+          <div>
+            <h5>Email</h5>
+            <p class="mb-0">info@tamilnadufest.com</p>
+          </div>
+        </div>
+        
+        <div class="mt-5">
+          <h5 class="mb-3">Follow Us</h5>
+          <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="btn btn-sm btn-outline-danger rounded-circle me-2"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-5">
+            <h4 class="mb-4">Send Us a Message</h4>
+            <form>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Your Name">
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Your Email">
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-danger w-100 py-2">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<div class="map-container">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0088888050016!2d80.1488563153445!3d13.09873971549798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5263f5f75f5f3d%3A0x2f2a5a3b1a1a1a1a!2sChennai%20Trade%20Center!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<!-- Footer -->
+<footer class="py-4 text-white bg-dark">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-landmark fa-2x me-3 text-warning"></i>
+          <div>
+            <h5 class="mb-0">Tamil Nadu Cultural Festival</h5>
+            <small class="text-muted">Celebrating Tamil Heritage Since 2010</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="mb-0">© 2024 Tamil Nadu Cultural Festival. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: true,
+    easing: 'ease-in-out'
+  });
+  
+  // Countdown timer
+  const countdown = () => {
+    const countDate = new Date('December 15, 2024 00:00:00').getTime();
+    const now = new Date().getTime();
+    const gap = countDate - now;
+    
+    // Time calculations
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    
+    // Calculate
+    const textDay = Math.floor(gap / day);
+    const textHour = Math.floor((gap % day) / hour);
+    const textMinute = Math.floor((gap % hour) / minute);
+    const textSecond = Math.floor((gap % minute) / second);
+    
+    // Update HTML
+    document.getElementById('days').innerText = textDay < 10 ? '0' + textDay : textDay;
+    document.getElementById('hours').innerText = textHour < 10 ? '0' + textHour : textHour;
+    document.getElementById('minutes').innerText = textMinute < 10 ? '0' + textMinute : textMinute;
+    document.getElementById('seconds').innerText = textSecond < 10 ? '0' + textSecond : textSecond;
+  };
+  
+  // Run countdown every second
+  setInterval(countdown, 1000);
+  
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
