@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding: 40px 15px;
+      background: #f9f9f9;
+    }
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .gallery-item {
+      height: 220px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    p.subtitle {
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      body {
+        padding: 30px 10px;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 12px;
+      }
+      .gallery-item {
+        height: 200px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p.subtitle {
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 25px 10px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .gallery-item {
+        height: 180px;
+      }
+      h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      p.subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="gallery">
+    <h2>Our Work Gallery</h2>
+    <p class="subtitle">Explore some of our recent projects and success stories</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/business-concept-with-team-close-up_23-2149151159.jpg" alt="Project 1">
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/business-people-shaking-hands-office_23-2149168337.jpg" alt="Project 2">
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg" alt="Project 3">
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/colleagues-working-cozy-office-medium-shot_23-2149337541.jpg" alt="Project 4">
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/business-team-meeting-boardroom_23-2149168333.jpg" alt="Project 5">
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/medium-shot-smiley-woman-with-laptop_23-2149331321.jpg" alt="Project 6">
+      </div>
+    </div>
+  </section>
+</body>
+</html>

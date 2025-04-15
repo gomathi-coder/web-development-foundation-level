@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Footer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      padding: 50px 20px 30px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #04AA6D;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+    .footer-column a {
+      color: #ddd;
+      text-decoration: none;
+    }
+    .footer-column a:hover {
+      color: white;
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+    .contact-info p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+    iframe {
+      width: 100%;
+      border: 0;
+      height: 180px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Page content goes here -->
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <img src="https://img.freepik.com/premium-photo/free-vector-colorful-bird-illustration-gradient-bird-colorful-logo-gradient-vector_971166-59253.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Company Logo" class="logo">
+        <div class="contact-info">
+        
+          <p><strong>Phone:</strong> +91 98765 43210</p>
+          <p><strong>Email:</strong> support@yourcompany.in</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Integrations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Address & Map</h3>
+        <p>Chennai Central Railway Station, Chennai, Tamil Nadu</p>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.896909935046!2d80.24022107465478!3d13.059141812264474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52661a6ce82f33%3A0x6e560b7a3d7c0c5e!2sChennai%20Central%20Railway%20Station!5e0!3m2!1sen!2sin!4v1713183272150!5m2!1sen!2sin" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Your Company. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
