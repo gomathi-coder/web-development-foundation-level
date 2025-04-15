@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Features</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding: 40px 15px;
+    }
+    .features {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .feature {
+      padding: 25px 15px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .feature-icon {
+      font-size: 50px;
+      color: #04AA6D;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .features p.subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    p {
+      color: #666;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      .feature {
+        padding: 20px 15px;
+      }
+      .feature-icon {
+        font-size: 40px;
+      }
+      h3 {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 10px;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      h2 {
+        font-size: 26px;
+      }
+      .features p.subtitle {
+        font-size: 16px;
+      }
+      .feature {
+        padding: 20px;
+      }
+      .feature-icon {
+        font-size: 36px;
+        margin-bottom: 15px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="features">
+    <h2>Our Key Features</h2>
+    <p class="subtitle">Discover what makes our product stand out from the competition</p>
+    
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>Optimized for speed with cutting-edge technology to deliver instant results.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>Secure</h3>
+        <p>Enterprise-grade security to protect your data and privacy.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔄</div>
+        <h3>Easy Integration</h3>
+        <p>Seamlessly connects with your existing tools and workflows.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

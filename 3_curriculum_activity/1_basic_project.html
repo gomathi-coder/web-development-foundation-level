@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Development Projects</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #3498db;
+        color: white;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .project-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        min-width: 100px;
+      }
+      .project-button:hover {
+        background-color: #2980b9;
+      }
+      .focus-area {
+        font-style: italic;
+        color: #16a085;
+      }
+      .condition-box {
+        background-color: #fffde7;
+        padding: 10px;
+        margin: 15px 0;
+        border-radius: 5px;
+        border: 1px dashed #ffc107;
+        text-align: center;
+      }
+      .selected {
+        background-color: #e8f5e9;
+        border: 2px solid #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Web Development Basics Projects</h1>
+
+      <div class="condition-box">
+        <strong>Condition:</strong> Choose only one project per level
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Focus Area</th>
+            <th>Project Option 1</th>
+            <th>Project Option 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Level 1 -->
+          <tr>
+            <td>Basic</td>
+            <td class="focus-area">HTML Basics, CSS Basics</td>
+            <td>
+              <a
+                href="../1_projects/1_basics/1_school-website/index.html"
+                target="_blank"
+                class="project-button"
+                onclick="selectProject(this, 'basic')"
+              >
+                School Website
+              </a>
+            </td>
+            <td>
+              <a
+                href="../1_projects/1_basics/1_personal_portfolio/index.html"
+                target="_blank"
+                class="project-button"
+                onclick="selectProject(this, 'basic')"
+              >
+                Personal Portfolio
+              </a>
+            </td>
+          </tr>
+
+          <!-- Level 2 -->
+          <tr>
+            <td>Intermediate</td>
+            <td class="focus-area">Intermediate CSS, Responsiveness</td>
+            <td>
+              <a
+                href="../1_projects/1_basics/2_restaurant/index.html"
+                target="_blank" class="project-button"
+                onclick="selectProject(this, 'intermediate')"
+              >
+                Restaurant Site
+              </a>
+            </td>
+            <td>
+              <a
+                href="../1_projects/1_basics/2_ecommerce/index.html"
+               target="_blank" class="project-button"
+                onclick="selectProject(this, 'intermediate')"
+              >
+                E-commerce Site
+              </a>
+            </td>
+          </tr>
+
+          <!-- Level 3 -->
+          <tr>
+            <td>Advanced</td>
+            <td class="focus-area">Bootstrap, Animations</td>
+            <td>
+              <a
+                href="../1_projects/1_basics/3_landing_page/index.html"
+               target="_blank" class="project-button"
+                onclick="selectProject(this, 'advanced')"
+              >
+                Landing Page
+              </a>
+            </td>
+           
+            <td>
+              <a
+                href="../1_projects/1_basics/3_event_website/index.html"
+               target="_blank" class="project-button"
+                onclick="selectProject(this, 'advanced')"
+              >
+                Event Website
+              </a>
+            </td>
+            
+          </tr>
+
+          <!-- Level 4 -->
+          <tr>
+            <td>JavaScript Basics</td>
+            <td class="focus-area">JavaScript Basics</td>
+           
+            <td>
+              <a
+                href="../1_projects/1_basics/4_registration_form/index.html"
+                class="project-button"
+                onclick="selectProject(this, 'javascript')"
+              >
+                Registration Form
+              </a>
+            </td>
+            <td>
+              <a
+              href="../1_projects/1_basics/4_registration_form/index.html"
+                class="project-button"
+                onclick="selectProject(this, 'javascript')"
+              >
+                Registration Form
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function selectProject(button, level) {
+        // Remove selection from all buttons in this level
+        document.querySelectorAll(`[onclick*="${level}"]`).forEach((btn) => {
+          btn.parentElement.parentElement.classList.remove("selected");
+        });
+
+        // Add selection to clicked button's row
+        button.parentElement.parentElement.classList.add("selected");
+      }
+    </script>
+  </body>
+</html>

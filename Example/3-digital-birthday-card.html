@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: pink; }
+        .card { background: white; padding: 30px; border-radius: 10px; display: inline-block; }
+        h1 { color: red; }
+        .message { font-size: 18px; }
+        .hidden { display: none; }
+        button { background: red; color: white; padding: 10px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎉 Happy Birthday! 🎂</h1>
+        <p class="message">Click the button for a surprise!</p>
+        <p class="hidden">🎁 Hope you have a fantastic year ahead! 🎊</p>
+        <button onclick="showMessage()">Reveal</button>
+    </div>
+    <script>
+        function showMessage() {
+            document.querySelector('.hidden').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
