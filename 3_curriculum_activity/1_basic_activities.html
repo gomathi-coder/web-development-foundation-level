@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day Order Web Development Curriculum</title>
+    <title>Web Development Practical Curriculum</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin: 0;
             padding: 20px;
             background-color: #f9f9f9;
         }
@@ -18,40 +17,39 @@
         h1 {
             text-align: center;
             color: #2c3e50;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 2px solid #3498db;
+            font-size: 1.8rem;
         }
         
         .subtitle {
             text-align: center;
             font-style: italic;
             color: #7f8c8d;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            font-size: 1rem;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
             background-color: white;
-            table-layout: fixed;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         th, td {
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-            vertical-align: middle;
+            vertical-align: top;
         }
         
         th {
             background-color: #3498db;
             color: white;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
         tr:nth-child(even) {
@@ -64,93 +62,59 @@
         
         .day-number {
             font-weight: bold;
-            text-align: center;
             color: #e74c3c;
+            width: 60px;
         }
         
         .topic {
             font-weight: 500;
+            width: 200px;
         }
         
-        .details {
-            font-size: 0.9em;
-        }
-        
-        .project-row {
-            border-top: 2px solid #3498db;
-        }
-        
-        .project-row td {
-            padding-top: 20px;
-        }
-        
-        .project-row:last-child td {
-            padding-bottom: 20px;
-        }
-        
-        .intro-day {
+        .assessment {
             background-color: #fffde7;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
         }
         
-        .deployment {
+        .activity {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        
+        .assessment-title, .activity-title {
             font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .assessment-title {
             color: #8e44ad;
         }
         
-        .html-badge {
-            display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-right: 5px;
+        .activity-title {
+            color: #27ae60;
         }
         
-        .css-badge {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-right: 5px;
-        }
-        
-        .js-badge {
-            display: inline-block;
-            background-color: #f1c40f;
-            color: #333;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-right: 5px;
-        }
-        
-        .bs-badge {
-            display: inline-block;
-            background-color: #563d7c;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-right: 5px;
-        }
-        
-        .git-badge {
-            display: inline-block;
-            background-color: #f05033;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-right: 5px;
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Day Order Web Development Curriculum</h1>
-    <p class="subtitle">16-day intensive course (1.5 hours/day - 24 Hrs) with 4 projects</p>
+    <h1>Web Development Practical Curriculum</h1>
+    <p class="subtitle">16-day intensive hands-on course with daily practical assessments</p>
     
     <table>
         <thead>
@@ -158,229 +122,392 @@
                 <th>Day</th>
                 <th>Topic</th>
                 <th>Details</th>
-                <th>Class Activity</th>
+                
+                <th>Class Activity (Quiz)</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Introduction Day -->
-            <tr class="intro-day">
+            <!-- Day 1 -->
+            <tr>
                 <td class="day-number">1</td>
-                <td class="topic">Introduction to Web Development</td>
-                <td class="details">
-                    • What is Web Development? (Frontend, Backend, Full-stack)<br>
-                    • Web Page vs Website explained<br>
-                    • How browsers render pages<br>
-                    • URL structure and components<br>
-                    • Development setup (VS Code, extensions)
+                <td class="topic">Web Fundamentals</td>
+                <td>
+                    • How websites work<br>
+                    • Browser developer tools<br>
+                    • Basic HTML document structure
                 </td>
-                <td class="details">
-                    • Setup development environment<br>
-                    • Create first HTML file
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What does HTML stand for?</li>
+                            <li>Which tag is used to create a paragraph in HTML?</li>
+                            <li>What is the purpose of the alt attribute in an image tag?</li>
+                            <li>Which tool can you use to inspect webpage elements?</li>
+                            <li>What is the correct DOCTYPE declaration for HTML5?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
             
-            <!-- Project 1 -->
-            <tr class="project-row">
+            <!-- Day 2 -->
+            <tr>
                 <td class="day-number">2</td>
-                <td class="topic">HTML</td>
-                <td class="details">
-                    • HTML Document Structure<br>
-                    • Basic Structure & Introduction <br>
-                    • Core Elements<br>
-                    • Design & Styling <br>
-                    • Content Structuring<br>
-                    • Advanced Embeds & Media
+                <td class="topic">HTML Basics</td>
+                <td>
+                    • HTML tags and attributes<br>
+                    • Headings, paragraphs, lists<br>
+                    • Links and images
                 </td>
-                <td class="details">
-                    • Create basic page structure<br>
-                    • Add headings and paragraphs
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What is the difference between ordered and unordered lists?</li>
+                            <li>How do you create a hyperlink in HTML?</li>
+                            <li>Which tag is used for the most important heading?</li>
+                            <li>What attribute is used to specify the link destination?</li>
+                            <li>How many levels of headings does HTML support?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 3 -->
             <tr>
                 <td class="day-number">3</td>
                 <td class="topic">HTML & CSS</td>
-                <td class="details">
-                    • Multimedia <br>
-                    • Design & Styling <br>
-                    • Basics & Introduction <br>
-                    • Color, Background & Borders <br>
+                <td>
+                    • CSS introduction<br>
+                    • Color and background<br>
+                    • Basic text styling
                 </td>
-                <td class="details">
-                    • Add images and links<br>
-                    • Apply basic styling
+               
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What does CSS stand for?</li>
+                            <li>What are the three ways to include CSS in HTML?</li>
+                            <li>Which property is used to change text color?</li>
+                            <li>How do you set a background color in CSS?</li>
+                            <li>What is the correct syntax for a CSS rule?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 4 -->
             <tr>
                 <td class="day-number">4</td>
-                <td class="topic">CSS</td>
-                <td class="details">
-                    • Box Model & Spacing<br>
-                    • Text & Fonts<br>
-                    • CSS Layout Systems
+                <td class="topic">CSS Layout</td>
+                <td>
+                    • Box model<br>
+                    • Margins and padding<br>
+                    • Display properties
                 </td>
-                <td class="details">
-                    • Style navigation menu<br>
-                    • Create page layout
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What are the components of the CSS box model?</li>
+                            <li>What is the difference between margin and padding?</li>
+                            <li>How do you center a block-level element horizontally?</li>
+                            <li>What does display: none; do?</li>
+                            <li>Which property controls the space between element borders?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 5 -->
             <tr>
                 <td class="day-number">5</td>
                 <td class="topic">Project Development</td>
-                <td class="details">
-                    • Project Guidance
+                <td>
+                    • Portfolio website structure<br>
+                    • Content organization<br>
+                    • Navigation
                 </td>
-                <td class="details">
-                    • Work on portfolio project<br>
-                    • Instructor feedback
+               
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What are the key sections of a portfolio website?</li>
+                            <li>Why is navigation important in a website?</li>
+                            <li>What is the purpose of a footer in a webpage?</li>
+                            <li>How can you organize content effectively?</li>
+                            <li>What makes a good homepage design?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
             
-            <!-- GitHub Day -->
-            <tr class="project-row">
+            <!-- Day 6 -->
+            <tr>
                 <td class="day-number">6</td>
-                <td class="topic">GitHub Fundamentals</td>
-                <td class="details">
-                    • GitHub account creation and setup<br>
-                    • Basic Git commands (add, commit, push, pull)<br>
-                    • GitHub Pages deployment<br>
-                    • Deploy Project 1 (School/Portfolio site)<br>
-                    • Share live URLs and collaborate
+                <td class="topic">Git & GitHub</td>
+                <td>
+                    • Version control basics<br>
+                    • GitHub setup<br>
+                    • Deployment
                 </td>
-                <td class="details">
-                    • Create GitHub account<br>
-                    • Deploy first project
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What is version control?</li>
+                            <li>What command initializes a Git repository?</li>
+                            <li>How do you commit changes in Git?</li>
+                            <li>What is GitHub Pages used for?</li>
+                            <li>What is the purpose of .gitignore file?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
             
-            <!-- Project 2 -->
-            <tr class="project-row">
+            <!-- Day 7 -->
+            <tr>
                 <td class="day-number">7</td>
-                <td class="topic">CSS (Media queries)</td>
-                <td class="details">
-                    • Media queries basics<br>
-                    • Responsive images (object-fit)<br>
-                    • Viewport units (vw, vh)
+                <td class="topic">Responsive Design</td>
+                <td>
+                    • Media queries<br>
+                    • Responsive images<br>
+                    • Viewport units
                 </td>
-                <td class="details">
-                    • Create responsive menu<br>
-                    • Adjust layout for mobile
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What is responsive web design?</li>
+                            <li>What is the viewport meta tag?</li>
+                            <li>What CSS feature is used for responsive layouts?</li>
+                            <li>Why is mobile-first design important?</li>
+                            <li>How do you make images responsive?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 8 -->
             <tr>
                 <td class="day-number">8</td>
-                <td class="topic">CSS (Media queries)</td>
-                <td class="details">
-                    • Mobile Menu<br>
-                    • CSS Layout Systems<br>
-                    • Layout gap and alignment
+                <td class="topic">CSS Layout Systems</td>
+                <td>
+                    • Flexbox fundamentals<br>
+                    • Navigation bars<br>
+                    • Positioning
                 </td>
-                <td class="details">
-                    • Implement hamburger menu<br>
-                    • Practice flexbox/grid
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What is Flexbox used for?</li>
+                            <li>What property defines a flex container?</li>
+                            <li>How do you center items vertically in Flexbox?</li>
+                            <li>What's the difference between justify-content and align-items?</li>
+                            <li>How do you make flex items wrap to new lines?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 9 -->
             <tr>
                 <td class="day-number">9</td>
-                <td class="topic">HTML & CSS</td>
-                <td class="details">
-                    • Layout & Positioning<br>
-                    • Advanced Selectors & Elements<br>
-                    • Animation & Effects
+                <td class="topic">CSS Effects</td>
+                <td>
+                    • Transitions<br>
+                    • Transformations<br>
+                    • Animations
                 </td>
-                <td class="details">
-                    • Create image gallery<br>
-                    • Add hover effects
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What CSS property creates smooth transitions?</li>
+                            <li>How do you rotate an element with CSS?</li>
+                            <li>What's the difference between transition and animation?</li>
+                            <li>How do you define keyframe animations?</li>
+                            <li>What property controls animation duration?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 10 -->
             <tr>
                 <td class="day-number">10</td>
-                <td class="topic">Project Development & Deployment</td>
-                <td class="details">
-                    • Project Guidance<br>
-                    • GitHub Pages: Deploy project<br>
-                    • Share live URL
+                <td class="topic">Project Development</td>
+                <td>
+                    • Restaurant page structure<br>
+                    • Menu layout<br>
+                    • Contact section
                 </td>
-                <td class="details">
-                    • Finalize restaurant site<br>
-                    • Deploy to GitHub
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What are key components of a restaurant website?</li>
+                            <li>How would you organize a menu section?</li>
+                            <li>What information should a contact section include?</li>
+                            <li>Why is visual hierarchy important in landing pages?</li>
+                            <li>How can you make a call-to-action stand out?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
             
-            <!-- Project 3 -->
-            <tr class="project-row">
+            <!-- Day 11 -->
+            <tr>
                 <td class="day-number">11</td>
-                <td class="topic">Bootstrap</td>
-                <td class="details">
-                    • Basics<br>
-                    • UI Components
+                <td class="topic">Bootstrap Basics</td>
+                <td>
+                    • Bootstrap grid<br>
+                    • Components<br>
+                    • Utilities
                 </td>
-                <td class="details">
-                    • Setup Bootstrap<br>
-                    • Create navbar with Bootstrap
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What is Bootstrap?</li>
+                            <li>How does Bootstrap's grid system work?</li>
+                            <li>What are Bootstrap breakpoints?</li>
+                            <li>How do you include Bootstrap in a project?</li>
+                            <li>What is the container class used for?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 12 -->
             <tr>
                 <td class="day-number">12</td>
-                <td class="topic">Bootstrap & CSS</td>
-                <td class="details">
-                    • Responsive Design<br>
-                    • Animation & Effects
+                <td class="topic">Bootstrap UI</td>
+                <td>
+                    • Navbars<br>
+                    • Cards<br>
+                    • Forms
                 </td>
-                <td class="details">
-                    • Create responsive cards<br>
-                    • Add Bootstrap animations
-                </td>
-            </tr>
-            <tr>
-                <td class="day-number">13</td>
-                <td class="topic">Project Development & Deployment</td>
-                <td class="details">
-                    • Project Guidance<br>
-                    • GitHub Pages: Deploy project<br>
-                    • Share live URL
-                </td>
-                <td class="details">
-                    • Complete landing page<br>
-                    • Deploy to GitHub
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What class creates a Bootstrap navbar?</li>
+                            <li>How do you make a dropdown menu in Bootstrap?</li>
+                            <li>What are Bootstrap cards used for?</li>
+                            <li>How do you create a responsive form?</li>
+                            <li>What utility classes does Bootstrap provide?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
             
-            <!-- Project 4 -->
-            <tr class="project-row">
-                <td class="day-number">14</td>
-                <td class="topic">HTML & Javascript</td>
-                <td class="details">
-                    • Forms & Inputs<br>
-                    • JS Core Concepts
+            <!-- Day 13 -->
+            <tr>
+                <td class="day-number">13</td>
+                <td class="topic">Project Development</td>
+                <td>
+                    • E-commerce page structure<br>
+                    • Product listings<br>
+                    • Checkout section
                 </td>
-                <td class="details">
-                    • Create contact form<br>
-                    • Basic form validation
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What are essential features of an e-commerce site?</li>
+                            <li>How should product listings be organized?</li>
+                            <li>What information is needed in a checkout process?</li>
+                            <li>Why are product filters important?</li>
+                            <li>How can you build trust in an e-commerce site?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 14 -->
+            <tr>
+                <td class="day-number">14</td>
+                <td class="topic">JavaScript Basics</td>
+                <td>
+                    • Variables and data types<br>
+                    • Operators<br>
+                    • DOM manipulation
+                </td>
+               
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What are JavaScript's basic data types?</li>
+                            <li>How do you declare a variable in JavaScript?</li>
+                            <li>What is DOM in web development?</li>
+                            <li>How do you select an element by ID in JavaScript?</li>
+                            <li>What method changes an element's text content?</li>
+                        </ol>
+                    </div>
+                </td>
+            </tr>
+            
+            <!-- Day 15 -->
             <tr>
                 <td class="day-number">15</td>
-                <td class="topic">JavaScript</td>
-                <td class="details">
-                    • Functions<br>
-                    • DOM
+                <td class="topic">JavaScript Functions</td>
+                <td>
+                    • Function declaration<br>
+                    • Event listeners<br>
+                    • Form validation
                 </td>
-                <td class="details">
-                    • Create interactive elements<br>
-                    • DOM manipulation exercises
+               
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>How do you declare a function in JavaScript?</li>
+                            <li>What is an event listener?</li>
+                            <li>How do you prevent a form from submitting?</li>
+                            <li>What's the purpose of form validation?</li>
+                            <li>How can you check if a field is empty?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
+            
+            <!-- Day 16 -->
             <tr>
                 <td class="day-number">16</td>
-                <td class="topic">Project Development & Deployment</td>
-                <td class="details">
-                    • Project Guidance<br>
-                    • GitHub Pages: Deploy project<br>
-                    • Share live URL
+                <td class="topic">Final Project</td>
+                <td>
+                    • Project review<br>
+                    • Debugging<br>
+                    • Deployment
                 </td>
-                <td class="details">
-                    • Finalize registration form<br>
-                    • Deploy final project
+                
+                <td>
+                    <div class="activity">
+                        <span class="activity-title">Quiz:</span>
+                        <ol>
+                            <li>What are common debugging techniques?</li>
+                            <li>How do you test a website on different browsers?</li>
+                            <li>What should a registration form include?</li>
+                            <li>Why is user feedback important in forms?</li>
+                            <li>How can you improve form usability?</li>
+                        </ol>
+                    </div>
                 </td>
             </tr>
         </tbody>
