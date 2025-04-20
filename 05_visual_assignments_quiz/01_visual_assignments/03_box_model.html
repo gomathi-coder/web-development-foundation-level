@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Box Model Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    .assessment-box {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-family: monospace;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background: #219150;
+    }
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Assessment: Apply CSS Box Model Properties</h2>
+
+<div class="assessment-box">
+
+  <!-- Example Output -->
+  <div class="column">
+    <h3>Example Code (No Box Model Styling)</h3>
+    <div style="background:#f9f9f9; padding:10px; font-size:14px; border:1px solid #ddd;">
+      <strong>HTML:</strong><br>
+      &lt;div class="box"&gt;Box&lt;/div&gt;<br><br>
+      <strong>CSS:</strong><br>
+      .box {<br>
+      &nbsp;&nbsp;background: #ccc;<br>
+      }
+    </div>
+    <h3>Example Output</h3>
+    <iframe id="example-output"></iframe>
+  </div>
+
+  <!-- User Editable Code -->
+  <div class="column">
+    <h3>Your HTML</h3>
+    <textarea id="html-input">
+<div class="box">Box</div>
+    </textarea>
+
+    <h3>Your CSS</h3>
+    <textarea id="css-input">
+.box {
+  background: #ccc;
+}
+    </textarea>
+
+    <button onclick="renderOutput()">Show My Output</button>
+    <iframe id="user-output"></iframe>
+  </div>
+
+  <!-- Target Output -->
+  <div class="column">
+    <h3>Target Output</h3>
+    <iframe id="target-output"></iframe>
+  </div>
+
+</div>
+
+<script>
+  function renderOutput() {
+    const html = document.getElementById('html-input').value;
+    const css = document.getElementById('css-input').value;
+    const iframe = document.getElementById('user-output');
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(`<style>${css}</style>${html}`);
+    doc.close();
+  }
+
+  // Example Output (No Box Model Styling)
+  const exampleHTML = `<div class="box">Box</div>`;
+  const exampleCSS = `.box {
+    background: #ccc;
+  }`;
+  const exFrame = document.getElementById('example-output');
+  const exDoc = exFrame.contentDocument || exFrame.contentWindow.document;
+  exDoc.open();
+  exDoc.write(`<style>${exampleCSS}</style>${exampleHTML}`);
+  exDoc.close();
+
+  // Target Output with Box Model Styling
+  const targetHTML = `<div class="box-model">Box</div>`;
+  const targetCSS = `.box-model {
+    background: #ccc;
+    padding: 20px;
+    margin: 20px;
+    border: 5px solid #333;
+    width: 150px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+  }`;
+  const targetFrame = document.getElementById('target-output');
+  const tarDoc = targetFrame.contentDocument || targetFrame.contentWindow.document;
+  tarDoc.open();
+  tarDoc.write(`<style>${targetCSS}</style>${targetHTML}`);
+  tarDoc.close();
+</script>
+
+</body>
+</html>
