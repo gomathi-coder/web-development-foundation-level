@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assessment 1 - Basic HTML Tags</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .assessment-box {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .column {
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      font-family: monospace;
+      margin-bottom: 10px;
+    }
+    .output-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      background: #fcfcfc;
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <h2>Assessment 1: Basic HTML Tags - Headings and Paragraphs</h2>
+  <div class="assessment-box">
+    
+    <!-- Example Column -->
+    <div class="column">
+      <h3>Example Code</h3>
+      <div class="output-box">
+        <strong>HTML:</strong><br>
+        &lt;h1&gt;Welcome to Web Development&lt;/h1&gt;<br>
+        &lt;p&gt;This is a paragraph.&lt;/p&gt;<br><br>
+        <strong>CSS:</strong><br>
+        h1 { color: #2c3e50; }<br>
+        p { color: #555; font-size: 16px; }
+      </div>
+      <h3>Example Output</h3>
+      <iframe id="example1"></iframe>
+    </div>
+
+    <!-- Your Code Column -->
+    <div class="column">
+      <h3>Your HTML</h3>
+      <textarea id="html1">&lt;h1&gt;My Title&lt;/h1&gt;
+&lt;p&gt;My first paragraph&lt;/p&gt;</textarea>
+
+      <h3>Your CSS</h3>
+      <textarea id="css1">h1 { color: green; }
+p { font-size: 18px; }</textarea>
+
+      <button onclick="renderOutput('html1','css1','frame1')">Show Output</button>
+      <iframe id="frame1"></iframe>
+    </div>
+
+    <!-- Target Output Column -->
+    <div class="column">
+      <h3>Target Output</h3>
+      <iframe id="target1"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function renderOutput(htmlId, cssId, frameId) {
+      const html = document.getElementById(htmlId).value;
+      const css = document.getElementById(cssId).value;
+      const iframe = document.getElementById(frameId);
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      doc.open();
+      doc.write(`<style>${css}</style>${html}`);
+      doc.close();
+    }
+
+    // Render Example Output
+    const exampleHtml = "<h1>Welcome to Web Development</h1><p>This is a paragraph.</p>";
+    const exampleCss = "h1 { color: #2c3e50; } p { color: #555; font-size: 16px; }";
+    const exampleFrame = document.getElementById('example1');
+    const exDoc = exampleFrame.contentDocument || exampleFrame.contentWindow.document;
+    exDoc.open();
+    exDoc.write(`<style>${exampleCss}</style>${exampleHtml}`);
+    exDoc.close();
+
+    // Render Target Output (with different styling)
+    const targetHtml = "<h1>Welcome to Web Development</h1><p>This is a paragraph, styled differently.</p>";
+    const targetCss = "h1 { color: #e74c3c; font-size: 30px; text-transform: uppercase; } p { color: #8e44ad; font-size: 18px; font-style: italic; }";
+    const targetFrame = document.getElementById('target1');
+    const tarDoc = targetFrame.contentDocument || targetFrame.contentWindow.document;
+    tarDoc.open();
+    tarDoc.write(`<style>${targetCss}</style>${targetHtml}`);
+    tarDoc.close();
+  </script>
+</body>
+</html>
