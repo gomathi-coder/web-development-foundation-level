@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Styling Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #eef2f3;
+    }
+    .assessment-box {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-family: monospace;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background: #219150;
+    }
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Assessment: Style an Image with CSS</h2>
+
+<div class="assessment-box">
+
+  <!-- Example Output -->
+  <div class="column">
+    <h3>Example Code (Plain Image)</h3>
+    <div style="background:#f9f9f9; padding:10px; font-size:14px; border:1px solid #ddd;">
+      <strong>HTML:</strong><br>
+      &lt;img src="image.jpg" class="photo"&gt;<br><br>
+      <strong>CSS:</strong><br>
+      .photo {<br>
+      &nbsp;&nbsp;width: 100%;<br>
+      }
+    </div>
+    <h3>Example Output</h3>
+    <iframe id="example-output"></iframe>
+  </div>
+
+  <!-- User Editable Code -->
+  <div class="column">
+    <h3>Your HTML</h3>
+    <textarea id="html-input">
+<img src="https://img.freepik.com/free-photo/remote-office-3d-rendering-concept-illustration_23-2151876117.jpg" class="photo">
+    </textarea>
+
+    <h3>Your CSS</h3>
+    <textarea id="css-input">
+.photo {
+  width: 100%;
+}
+    </textarea>
+
+    <button onclick="renderOutput()">Show My Output</button>
+    <iframe id="user-output"></iframe>
+  </div>
+
+  <!-- Target Output -->
+  <div class="column">
+    <h3>Target Output</h3>
+    <iframe id="target-output"></iframe>
+  </div>
+
+</div>
+
+<script>
+  function renderOutput() {
+    const html = document.getElementById('html-input').value;
+    const css = document.getElementById('css-input').value;
+    const iframe = document.getElementById('user-output');
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(`<style>${css}</style>${html}`);
+    doc.close();
+  }
+
+  // Example Output
+  const exampleHTML = `<img src="https://img.freepik.com/free-photo/remote-office-3d-rendering-concept-illustration_23-2151876117.jpg" class="photo">`;
+  const exampleCSS = `.photo {
+    width: 100%;
+  }`;
+  const exFrame = document.getElementById('example-output');
+  const exDoc = exFrame.contentDocument || exFrame.contentWindow.document;
+  exDoc.open();
+  exDoc.write(`<style>${exampleCSS}</style>${exampleHTML}`);
+  exDoc.close();
+
+  // Target Output
+  const targetHTML = `<img src="https://img.freepik.com/free-photo/remote-office-3d-rendering-concept-illustration_23-2151876117.jpg" class="photo-style">`;
+  const targetCSS = `.photo-style {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 4px solid #fff;
+  }`;
+  const targetFrame = document.getElementById('target-output');
+  const tarDoc = targetFrame.contentDocument || targetFrame.contentWindow.document;
+  tarDoc.open();
+  tarDoc.write(`<style>${targetCSS}</style>${targetHTML}`);
+  tarDoc.close();
+</script>
+
+</body>
+</html>

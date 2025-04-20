@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table Layout Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    .assessment-box {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-family: monospace;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background: #219150;
+    }
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Assessment: Table Layout</h2>
+
+<div class="assessment-box">
+
+  <!-- Example Output -->
+  <div class="column">
+    <h3>Example Code</h3>
+    <div style="background:#f9f9f9; padding:10px; font-size:14px; border:1px solid #ddd;">
+      <strong>HTML:</strong><br>
+      &lt;table&gt;<br>
+      &nbsp;&nbsp;&lt;tr&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;<br>
+      &nbsp;&nbsp;&lt;/tr&gt;<br>
+      &nbsp;&nbsp;&lt;tr&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;John&lt;/td&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;25&lt;/td&gt;<br>
+      &nbsp;&nbsp;&lt;/tr&gt;<br>
+      &nbsp;&nbsp;&lt;/table&gt;<br><br>
+      <strong>CSS:</strong><br>
+      table {<br>
+      &nbsp;&nbsp;width: 100%;<br>
+      &nbsp;&nbsp;border-collapse: collapse;<br>
+      }<br>
+      td, th {<br>
+      &nbsp;&nbsp;padding: 10px;<br>
+      &nbsp;&nbsp;text-align: center;<br>
+      &nbsp;&nbsp;border: 1px solid #ddd;<br>
+      }<br>
+      th {<br>
+      &nbsp;&nbsp;background-color: #f2f2f2;<br>
+      }
+    </div>
+    <h3>Example Output</h3>
+    <iframe id="example-output"></iframe>
+  </div>
+
+  <!-- User Editable Code -->
+  <div class="column">
+    <h3>Your HTML</h3>
+    <textarea id="html-input">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>30</td>
+  </tr>
+</table>
+    </textarea>
+
+    <h3>Your CSS</h3>
+    <textarea id="css-input">
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+    </textarea>
+
+    <button onclick="renderOutput()">Show My Output</button>
+    <iframe id="user-output"></iframe>
+  </div>
+
+  <!-- Target Output -->
+  <div class="column">
+    <h3>Target Output</h3>
+    <iframe id="target-output-1"></iframe>
+    <iframe id="target-output-2"></iframe>
+    <iframe id="target-output-3"></iframe>
+    <iframe id="target-output-4"></iframe>
+    <iframe id="target-output-5"></iframe>
+  </div>
+
+</div>
+
+<script>
+  function renderOutput() {
+    const html = document.getElementById('html-input').value;
+    const css = document.getElementById('css-input').value;
+    const iframe = document.getElementById('user-output');
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(`<style>${css}</style>${html}`);
+    doc.close();
+  }
+
+  // Example Output
+  const exampleHTML = `
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>Jane</td>
+        <td>30</td>
+      </tr>
+    </table>`;
+  const exampleCSS = `
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }`;
+  const exFrame = document.getElementById('example-output');
+  const exDoc = exFrame.contentDocument || exFrame.contentWindow.document;
+  exDoc.open();
+  exDoc.write(`<style>${exampleCSS}</style>${exampleHTML}`);
+  exDoc.close();
+
+  // Target Output 1: Table with Alternating Row Colors
+  const targetHTML1 = `
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>Jane</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Max</td>
+        <td>35</td>
+      </tr>
+    </table>`;
+  const targetCSS1 = `
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }`;
+  const targetFrame1 = document.getElementById('target-output-1');
+  const targetDoc1 = targetFrame1.contentDocument || targetFrame1.contentWindow.document;
+  targetDoc1.open();
+  targetDoc1.write(`<style>${targetCSS1}</style>${targetHTML1}`);
+  targetDoc1.close();
+
+  // Target Output 2: Table with Hover Effect
+  const targetHTML2 = targetHTML1;
+  const targetCSS2 = `
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f1c40f;
+    }`;
+  const targetFrame2 = document.getElementById('target-output-2');
+  const targetDoc2 = targetFrame2.contentDocument || targetFrame2.contentWindow.document;
+  targetDoc2.open();
+  targetDoc2.write(`<style>${targetCSS2}</style>${targetHTML2}`);
+  targetDoc2.close();
+
+  // Target Output 3: Table with Centered and Bold Text
+  const targetHTML3 = targetHTML1;
+  const targetCSS3 = `
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+      font-weight: bold;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #ecf0f1;
+    }`;
+  const targetFrame3 = document.getElementById('target-output-3');
+  const targetDoc3 = targetFrame3.contentDocument || targetFrame3.contentWindow.document;
+  targetDoc3.open();
+  targetDoc3.write(`<style>${targetCSS3}</style>${targetHTML3}`);
+  targetDoc3.close();
+
+  // Target Output 4: Table with Striped Rows
+  const targetHTML4 = targetHTML1;
+  const targetCSS4 = `
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #2ecc71;
+      color: white;
+    }
+    tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }`;
+  const targetFrame4 = document.getElementById('target-output-4');
+  const targetDoc4 = targetFrame4.contentDocument || targetFrame4.contentWindow.document;
+  targetDoc4.open();
+  targetDoc4.write(`<style>${targetCSS4}</style>${targetHTML4}`);
+  targetDoc4.close();
+
+  // Target Output 5: Table with Borders and Padding
+  const targetHTML5 = targetHTML1;
+  const targetCSS5 = `
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    td, th {
+      padding: 20px;
+      text-align: center;
+      border: 2px solid #1abc9c;
+    }
+    th {
+      background-color: #8e44ad;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f5f5f5;
+    }`;
+  const targetFrame5 = document.getElementById('target-output-5');
+  const targetDoc5 = targetFrame5.contentDocument || targetFrame5.contentWindow.document;
+  targetDoc5.open();
+  targetDoc5.write(`<style>${targetCSS5}</style>${targetHTML5}`);
+  targetDoc5.close();
+</script>
+
+</body>
+</html>

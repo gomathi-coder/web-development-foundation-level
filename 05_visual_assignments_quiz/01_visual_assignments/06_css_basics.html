@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Basics Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    .assessment-box {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-family: monospace;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background: #219150;
+    }
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Assessment: CSS Basics</h2>
+
+<div class="assessment-box">
+
+  <!-- Example Output -->
+  <div class="column">
+    <h3>Example Code</h3>
+    <div style="background:#f9f9f9; padding:10px; font-size:14px; border:1px solid #ddd;">
+      <strong>HTML:</strong><br>
+      &lt;div class="box"&gt;Sample Text&lt;/div&gt;<br><br>
+      <strong>CSS:</strong><br>
+      .box {<br>
+      &nbsp;&nbsp;padding: 20px;<br>
+      &nbsp;&nbsp;background-color: #3498db;<br>
+      &nbsp;&nbsp;border-radius: 10px;<br>
+      &nbsp;&nbsp;text-align: center;<br>
+      &nbsp;&nbsp;color: white;<br>
+      }
+    </div>
+    <h3>Example Output</h3>
+    <iframe id="example-output"></iframe>
+  </div>
+
+  <!-- User Editable Code -->
+  <div class="column">
+    <h3>Your HTML</h3>
+    <textarea id="html-input">
+<div class="box">Sample Text</div>
+    </textarea>
+
+    <h3>Your CSS</h3>
+    <textarea id="css-input">
+.box {
+  padding: 20px;
+  background-color: #3498db;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+    </textarea>
+
+    <button onclick="renderOutput()">Show My Output</button>
+    <iframe id="user-output"></iframe>
+  </div>
+
+  <!-- Target Output -->
+  <div class="column">
+    <h3>Target Output</h3>
+    <iframe id="target-output-1"></iframe>
+    <iframe id="target-output-2"></iframe>
+    <iframe id="target-output-3"></iframe>
+    <iframe id="target-output-4"></iframe>
+    <iframe id="target-output-5"></iframe>
+  </div>
+
+</div>
+
+<script>
+  function renderOutput() {
+    const html = document.getElementById('html-input').value;
+    const css = document.getElementById('css-input').value;
+    const iframe = document.getElementById('user-output');
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(`<style>${css}</style>${html}`);
+    doc.close();
+  }
+
+  // Example Output
+  const exampleHTML = `<div class="box">Sample Text</div>`;
+  const exampleCSS = `
+    .box {
+      padding: 20px;
+      background-color: #3498db;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+    }`;
+  const exFrame = document.getElementById('example-output');
+  const exDoc = exFrame.contentDocument || exFrame.contentWindow.document;
+  exDoc.open();
+  exDoc.write(`<style>${exampleCSS}</style>${exampleHTML}`);
+  exDoc.close();
+
+  // Target Output 1: Rounded Corners and Shadow Effect
+  const targetHTML1 = `<div class="box">Sample Text</div>`;
+  const targetCSS1 = `
+    .box {
+      padding: 20px;
+      background-color: #ffeb3b; /* Yellow background */
+      border-radius: 15px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }`;
+  const targetFrame1 = document.getElementById('target-output-1');
+  const targetDoc1 = targetFrame1.contentDocument || targetFrame1.contentWindow.document;
+  targetDoc1.open();
+  targetDoc1.write(`<style>${targetCSS1}</style>${targetHTML1}`);
+  targetDoc1.close();
+
+  // Target Output 2: Gradient Background and Border Radius
+  const targetHTML2 = `<div class="box">Sample Text</div>`;
+  const targetCSS2 = `
+    .box {
+      padding: 25px;
+      background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+      border-radius: 20px;
+      text-align: center;
+      font-size: 16px;
+      color: #fff;
+    }`;
+  const targetFrame2 = document.getElementById('target-output-2');
+  const targetDoc2 = targetFrame2.contentDocument || targetFrame2.contentWindow.document;
+  targetDoc2.open();
+  targetDoc2.write(`<style>${targetCSS2}</style>${targetHTML2}`);
+  targetDoc2.close();
+
+  // Target Output 3: Transparent Box with Border
+  const targetHTML3 = `<div class="box">Sample Text</div>`;
+  const targetCSS3 = `
+    .box {
+      padding: 40px;
+      background-color: transparent;
+      border: 3px solid #3498db; /* Blue border */
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+      color: #34495e;
+    }`;
+  const targetFrame3 = document.getElementById('target-output-3');
+  const targetDoc3 = targetFrame3.contentDocument || targetFrame3.contentWindow.document;
+  targetDoc3.open();
+  targetDoc3.write(`<style>${targetCSS3}</style>${targetHTML3}`);
+  targetDoc3.close();
+
+  // Target Output 4: Box with Border and Font Styles
+  const targetHTML4 = `<div class="box">Sample Text</div>`;
+  const targetCSS4 = `
+    .box {
+      padding: 30px;
+      background-color: #2ecc71; /* Green background */
+      border: 2px solid #1abc9c;
+      border-radius: 10px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+      color: white;
+    }`;
+  const targetFrame4 = document.getElementById('target-output-4');
+  const targetDoc4 = targetFrame4.contentDocument || targetFrame4.contentWindow.document;
+  targetDoc4.open();
+  targetDoc4.write(`<style>${targetCSS4}</style>${targetHTML4}`);
+  targetDoc4.close();
+
+  // Target Output 5: Box with Shadow and Hover Effect
+  const targetHTML5 = `<div class="box">Sample Text</div>`;
+  const targetCSS5 = `
+    .box {
+      padding: 15px;
+      background-color: #8e44ad; /* Purple background */
+      border-radius: 12px;
+      text-align: center;
+      font-size: 18px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .box:hover {
+      background-color: #9b59b6; /* Darker purple on hover */
+    }`;
+  const targetFrame5 = document.getElementById('target-output-5');
+  const targetDoc5 = targetFrame5.contentDocument || targetFrame5.contentWindow.document;
+  targetDoc5.open();
+  targetDoc5.write(`<style>${targetCSS5}</style>${targetHTML5}`);
+  targetDoc5.close();
+</script>
+
+</body>
+</html>
