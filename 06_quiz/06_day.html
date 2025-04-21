@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git & GitHub Practical Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+    .example-output {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background: #ff9800;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .html-output {
+      margin-top: 20px;
+      padding: 20px;
+      background: #eeeeee;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Git & GitHub Practical Quiz</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. Which Git command is used to create a new repository?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">git init</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">git start</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">git create</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">git clone</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="example1">
+        <div class="example-output" id="output1">Example: Initialize a new Git repository</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git init</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. What is the purpose of `git clone`?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'b')">Create a new repository</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">Copy an existing repository</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">Push local changes to the remote</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">Create a new branch</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="example2">
+        <div class="example-output" id="output2">Example: Clone a repository from GitHub</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git clone https://github.com/username/repository.git</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. How do you stage changes for commit in Git?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">git add .</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">git commit .</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">git stage</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">git push</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="example3">
+        <div class="example-output" id="output3">Example: Stage all changes for commit</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git add .</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. Which Git command is used to commit staged changes?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'c')">git push</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">git commit</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">git merge</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">git add</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="example4">
+        <div class="example-output" id="output4">Example: Commit changes to the local repository</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git commit -m "Your commit message"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. How do you push changes to a remote repository in Git?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">git pull</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">git push</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">git push origin master</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">git commit</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="example5">
+        <div class="example-output" id="output5">Example: Push changes to GitHub</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git push origin master</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question">
+      <h3>6. What is a GitHub pull request?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">A request to merge changes from one branch to another</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">A request to clone a repository</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">A request to delete a repository</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">A request to commit changes</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="example6">
+        <div class="example-output" id="output6">Example: Creating a pull request on GitHub</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">Go to GitHub &gt; Pull Requests &gt; New Pull Request</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question">
+      <h3>7. What is the purpose of `git fetch`?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'b')">Download new data from a remote repository</div>
+        <div class="option" onclick="checkAnswer(7, 'a')">Push changes to the remote repository</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">Merge branches</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">Commit changes locally</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="example7">
+        <div class="example-output" id="output7">Example: Fetch updates from the remote repository</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git fetch origin</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question">
+      <h3>8. How do you deploy a website using GitHub Pages?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">Create a repository and enable GitHub Pages in settings</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">Use `git deploy` command</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">Push to a branch called `gh-pages`</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">None of the above</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="example8">
+        <div class="example-output" id="output8">Example: Deploy your site using GitHub Pages</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">Go to GitHub repository &gt; Settings &gt; GitHub Pages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question">
+      <h3>9. How do you check the status of your Git repository?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">git status</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">git check</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">git log</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">git info</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="example9">
+        <div class="example-output" id="output9">Example: Check repository status</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git status</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question">
+      <h3>10. How do you view the Git commit history?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">git log</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">git history</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">git view</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">git show</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="example10">
+        <div class="example-output" id="output10">Example: View commit history</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">git log</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function checkAnswer(questionNumber, answer) {
+        const correctAnswers = {
+          1: 'a',
+          2: 'a',
+          3: 'a',
+          4: 'b',
+          5: 'b',
+          6: 'a',
+          7: 'b',
+          8: 'a',
+          9: 'a',
+          10: 'a'
+        };
+
+        const resultElement = document.getElementById('result' + questionNumber);
+        const visualExample = document.getElementById('example' + questionNumber);
+        const correctOutput = document.getElementById('output' + questionNumber);
+
+        if (answer === correctAnswers[questionNumber]) {
+          resultElement.textContent = "Correct!";
+          resultElement.className = "result correct";
+          visualExample.style.display = 'block'; // Show visual example
+        } else {
+          resultElement.textContent = "Incorrect! Try again.";
+          resultElement.className = "result incorrect";
+          visualExample.style.display = 'none'; // Hide visual example
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>

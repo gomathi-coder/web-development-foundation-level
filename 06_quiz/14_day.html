@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Basics Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #007BFF;
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 30px;
+    }
+    .options {
+      margin-top: 10px;
+    }
+    .option {
+      background: #e2e6ea;
+      margin: 5px 0;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .option:hover {
+      background: #d0d4d8;
+    }
+    .result {
+      margin-top: 10px;
+      padding: 10px;
+      display: none;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #d4edda;
+      color: #155724;
+      display: block !important;
+    }
+    .incorrect {
+      background: #f8d7da;
+      color: #721c24;
+      display: block !important;
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>JavaScript Basics Quiz</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. What is the correct way to declare a variable in JavaScript?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">int x = 10;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">let x = 10;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">variable x = 10;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">declare x = 10;</div>
+      </div>
+      <div id="result1" class="result"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. What is the result of <code>5 + "5"</code> in JavaScript?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">10</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">"10"</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">"55"</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">Error</div>
+      </div>
+      <div id="result2" class="result"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. Which of these is a correct comparison operator in JavaScript?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">==</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">=</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">!=</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">All of the above</div>
+      </div>
+      <div id="result3" class="result"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. What does the DOM stand for?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">Data Object Model</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Document Oriented Method</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Document Object Model</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Dynamic Output Model</div>
+      </div>
+      <div id="result4" class="result"></div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. What does this line do: <code>document.getElementById("demo").innerText = "Hello"</code>?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">Creates a new HTML element</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">Changes the text inside an element with id "demo"</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">Deletes the element</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">Saves data to a file</div>
+      </div>
+      <div id="result5" class="result"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function checkAnswer(question, answer) {
+      const correctAnswers = {
+        1: 'b',
+        2: 'c',
+        3: 'd',
+        4: 'c',
+        5: 'b'
+      };
+
+      const resultDiv = document.getElementById(`result${question}`);
+      if (answer === correctAnswers[question]) {
+        resultDiv.innerText = '✅ Correct!';
+        resultDiv.className = 'result correct';
+      } else {
+        resultDiv.innerText = '❌ Incorrect. Try again!';
+        resultDiv.className = 'result incorrect';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Practical Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>CSS Basics</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. What CSS property is used to change the background color of an element?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">color</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">background-color</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">bg-color</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">bg</div>
+      </div>
+      <div id="result1" class="result"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. What CSS property is used to change the font size of text?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">font-size</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">text-size</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">font-family</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">text-style</div>
+      </div>
+      <div id="result2" class="result"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. How do you set a text color to red in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">color: red;</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">text-color: red;</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">color: #ff0000;</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">text-color: #ff0000;</div>
+      </div>
+      <div id="result3" class="result"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. Which CSS property is used to add padding inside an element?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">padding</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">margin</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">space</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">border</div>
+      </div>
+      <div id="result4" class="result"></div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. Which CSS property controls the space between text lines?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">line-height</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">letter-spacing</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">word-spacing</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">text-spacing</div>
+      </div>
+      <div id="result5" class="result"></div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question">
+      <h3>6. How do you apply a background image to an element in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">background: url('image.jpg');</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">background-image: url('image.jpg');</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">image: background('image.jpg');</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">background-img: url('image.jpg');</div>
+      </div>
+      <div id="result6" class="result"></div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question">
+      <h3>7. What property do you use to change the font family of text in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">font-family</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">font-style</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">text-family</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">text-font</div>
+      </div>
+      <div id="result7" class="result"></div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question">
+      <h3>8. How do you make text bold in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">font-weight: bold;</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">font-style: bold;</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">text-weight: bold;</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">bold-text: true;</div>
+      </div>
+      <div id="result8" class="result"></div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question">
+      <h3>9. How do you make text italic in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">font-style: italic;</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">text-style: italic;</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">font-italic: true;</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">italic-text: true;</div>
+      </div>
+      <div id="result9" class="result"></div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question">
+      <h3>10. What property is used to set the spacing between letters in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">letter-spacing</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">word-spacing</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">line-spacing</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">text-spacing</div>
+      </div>
+      <div id="result10" class="result"></div>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(questionNumber, answer) {
+      const correctAnswers = {
+        1: 'b',
+        2: 'a',
+        3: 'a',
+        4: 'a',
+        5: 'a',
+        6: 'b',
+        7: 'a',
+        8: 'a',
+        9: 'a',
+        10: 'a'
+      };
+      
+      const resultElement = document.getElementById('result' + questionNumber);
+      
+      if (answer === correctAnswers[questionNumber]) {
+        resultElement.textContent = "Correct!";
+        resultElement.className = "result correct";
+      } else {
+        resultElement.textContent = "Incorrect! Try again.";
+        resultElement.className = "result incorrect";
+      }
+    }
+  </script>
+</body>
+</html>

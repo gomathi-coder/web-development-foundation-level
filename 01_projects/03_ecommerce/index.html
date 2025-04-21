@@ -34,34 +34,6 @@
         .testimonial-card:hover {
             transform: translateY(-5px);
         }
-        
-        /* Hero Section Styles - FIXED THIS */
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://img.freepik.com/free-photo/cyber-monday-shopping-sales_23-2148688502.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 70vh;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 100px 0;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-        }
-        
-        /* Product Card Styles */
-        .product-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
     </style>
 </head>
 <body>
@@ -75,7 +47,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-3 text-success" href="index.html">
+            <a class="navbar-brand fw-bold fs-3 text-success" href="#">
                 <i class="bi bi-shop me-2"></i>DesiDukaan
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -84,13 +56,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-2">
-                        <a class="nav-link active fw-medium text-dark" href="index.html">Home</a>
+                        <a class="nav-link active fw-medium text-dark" href="#">Home</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link fw-medium text-dark" href="about.html">About</a>
+                        <a class="nav-link fw-medium text-dark" href="#">Shop</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link fw-medium text-dark" href="contact.html">Contact</a>
+                        <a class="nav-link fw-medium text-dark" href="#">Categories</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link fw-medium text-dark" href="#">About</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link fw-medium text-dark" href="#">Contact</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
@@ -114,13 +92,19 @@
         </div>
     </nav>
 
-    <!-- Hero Section - NOW WORKING PROPERLY -->
-    <section class="hero-section">
+    <!-- Hero Section -->
+    <section class="py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="display-4 fw-bold mb-3">Celebrate India's Rich Heritage</h1>
-                <p class="lead mb-4">Discover authentic Indian handcrafted products from artisans across the country</p>
-                <button class="btn btn-primary btn-lg px-4 py-2 fw-medium">Explore Collections</button>
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <h1 class="display-4 fw-bold mb-3 text-dark">Festive Collection 2025</h1>
+                    <p class="lead mb-4 text-muted">Discover traditional Indian wear for the upcoming festival season</p>
+                    <button class="btn btn-primary btn-lg px-4 py-2 fw-medium">Shop Now</button>
+                </div>
+                <div class="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0 text-center">
+                    <img src="https://img.freepik.com/free-vector/social-media-marketing-mobile-phone-concept_23-2148431747.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" 
+                         alt="Indian Festival Wear" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: cover;">
+                </div>
             </div>
         </div>
     </section>
@@ -222,7 +206,7 @@
             <div class="row g-4">
                 <!-- Product 1 -->
                 <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden product-card" onclick="window.location.href='product-details.html'">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
                         <div class="position-relative">
                             <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
                                  class="card-img-top" alt="Kurta" style="height: 200px; object-fit: cover;">
@@ -250,7 +234,7 @@
                 </div>
                 <!-- Product 2 -->
                 <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden product-card" onclick="window.location.href='product-details.html'">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
                         <div class="position-relative">
                             <img src="https://img.freepik.com/free-photo/carpets-market-marrakech_23-2148129810.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" 
                                  class="card-img-top" alt="Saree" style="height: 200px; object-fit: cover;">
@@ -278,9 +262,9 @@
                 </div>
                 <!-- Product 3 -->
                 <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden product-card" onclick="window.location.href='product-details.html'">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
                         <div class="position-relative">
-                            <img src="https://img.freepik.com/premium-photo/high-angle-view-christmas-decorations-white-background-mock-up_1048944-30602884.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" 
+                            <img src="https://img.freepik.com/premium-photo/high-angle-view-christmas-decorations-white-background_1048944-30602884.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" 
                                  class="card-img-top" alt="Jewelry" style="height: 200px; object-fit: cover;">
                             <div class="position-absolute top-0 end-0 p-2">
                                 <button class="btn btn-sm btn-light rounded-circle shadow">
@@ -306,7 +290,7 @@
                 </div>
                 <!-- Product 4 -->
                 <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden product-card" onclick="window.location.href='product-details.html'">
+                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
                         <div class="position-relative">
                             <img src="https://img.freepik.com/premium-photo/beautiful-brides-portrait-red-lehenga_1108565-6.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" 
                                  class="card-img-top" alt="Lehenga" style="height: 200px; object-fit: cover;">
@@ -441,7 +425,27 @@
         </div>
     </section>
 
-    <!-- Footer - FIXED TEXT-WHITE CLASSES -->
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-3">Subscribe to Our Newsletter</h2>
+                    <p class="mb-4">Get updates on new arrivals, exclusive offers, and festival discounts</p>
+                    <form class="row g-2 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg rounded-pill" placeholder="Your email address">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-light btn-lg rounded-pill w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="py-5 text-white">
         <div class="container">
             <div class="row g-4">
@@ -458,24 +462,24 @@
                 <div class="col-lg-2 col-md-4">
                     <h5 class="fw-bold mb-3">Shop</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Men's Wear</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Women's Wear</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Jewelry</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Accessories</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Men's Wear</a></li>
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">Women's Wear</a></li>
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">Jewelry</a></li>
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">Accessories</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h5 class="fw-bold mb-3">Help</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Shipping Info</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Returns</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQs</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+                    <ul class="list-unstyled text-white">
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">Shipping Info</a></li>
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">Returns</a></li>
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">FAQs</a></li>
+                        <li class="mb-2"><a href="#" class=" text-decoration-none">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
                     <h5 class="fw-bold mb-3">Contact</h5>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled text-white">
                         <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 MG Road, Bangalore, India</li>
                         <li class="mb-2"><i class="bi bi-telephone me-2"></i> +91 9876543210</li>
                         <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@desidukaan.com</li>
@@ -487,6 +491,7 @@
                 <div class="col-md-6 text-center text-md-start">
                     <p class="small text-white mb-0">&copy; 2025 DesiDukaan. All rights reserved.</p>
                 </div>
+                
             </div>
         </div>
     </footer>

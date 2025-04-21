@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Basics Quiz (1-10)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>HTML Basics</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. Which HTML tag is used to define the largest heading?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">&lt;h1&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;h2&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">&lt;h3&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">&lt;h4&gt;</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <div class="code">
+          &lt;h1&gt;This is the largest heading&lt;/h1&gt;
+        </div>
+        <h1>This is the largest heading</h1>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. Which tag is used to create a line break in HTML?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">&lt;br&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">&lt;break&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">&lt;lb&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">&lt;line&gt;</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <div class="code">
+          &lt;p&gt;Hello&lt;br&gt;World&lt;/p&gt;
+        </div>
+        <p>Hello<br>World</p>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. Which tag is used to display an image in HTML?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">&lt;image&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">&lt;img&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">&lt;imgsrc&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">&lt;pic&gt;</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="code">
+          &lt;img src="cat.jpg" alt="A cute cat"&gt;
+        </div>
+        <img src="https://placekitten.com/100/100" alt="Cat" style="border-radius:5px;">
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. What is the correct syntax for creating a link in HTML?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">&lt;link href="https://example.com"&gt;Visit&lt;/link&gt;</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">&lt;a href="https://example.com"&gt;Visit&lt;/a&gt;</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">&lt;url&gt;https://example.com&lt;/url&gt;</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">&lt;href&gt;https://example.com&lt;/href&gt;</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <div class="code">
+          &lt;a href="https://www.google.com"&gt;Go to Google&lt;/a&gt;
+        </div>
+        <a href="https://www.google.com" target="_blank">Go to Google</a>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. Which tag is used to create a list item in HTML?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">&lt;list&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">&lt;li&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">&lt;item&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">&lt;ul&gt;</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="code">
+          &lt;ul&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;Apple&lt;/li&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;Banana&lt;/li&gt;<br>
+          &lt;/ul&gt;
+        </div>
+        <ul>
+          <li>Apple</li>
+          <li>Banana</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question">
+      <h3>6. Which tag is used to create a paragraph in HTML?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">&lt;para&gt;</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">&lt;p&gt;</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">&lt;text&gt;</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">&lt;paragraph&gt;</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          &lt;p&gt;This is a paragraph.&lt;/p&gt;
+        </div>
+        <p>This is a paragraph.</p>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question">
+      <h3>7. Which tag creates a list with bullet points?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">&lt;ol&gt;</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">&lt;ul&gt;</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">&lt;list&gt;</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">&lt;li&gt;</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="code">
+          &lt;ul&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;Apple&lt;/li&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;Banana&lt;/li&gt;<br>
+          &lt;/ul&gt;
+        </div>
+        <ul>
+          <li>Apple</li>
+          <li>Banana</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question">
+      <h3>8. Which attribute is used in the &lt;img&gt; tag to display the image?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">href</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">src</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">link</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">file</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="code">
+          &lt;img src="cat.jpg" alt="A cute cat"&gt;
+        </div>
+        <img src="https://placekitten.com/100/100" alt="Cat" style="border-radius:5px;">
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question">
+      <h3>9. What is the purpose of the <code>alt</code> attribute in an image tag?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">It changes image color</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">It resizes the image</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">It shows text if image doesn’t load</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">It adds animation to image</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <div class="code">
+          &lt;img src="dog.jpg" alt="A happy dog"&gt;
+        </div>
+        <p>If image fails to load, user sees: “A happy dog”</p>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question">
+      <h3>10. Which tag is used to create a clickable link?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">&lt;link&gt;</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">&lt;href&gt;</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">&lt;a&gt;</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">&lt;url&gt;</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <div class="code">
+          &lt;a href="https://www.google.com"&gt;Go to Google&lt;/a&gt;
+        </div>
+        <a href="https://www.google.com" target="_blank">Go to Google</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      1: 'a',
+      2: 'a',
+      3: 'b',
+      4: 'b',
+      5: 'b',
+      6: 'b',
+      7: 'b',
+      8: 'b',
+      9: 'c',
+      10: 'c'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
+</body>
+</html>

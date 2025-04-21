@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS + HTML Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .option.correct {
+      background: #c8e6c9 !important;
+      color: #2e7d32;
+    }
+    .option.incorrect {
+      background: #ffcdd2 !important;
+      color: #c62828;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct-msg {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block;
+    }
+    .incorrect-msg {
+      background: #ffebee;
+      color: #c62828;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>JavaScript & HTML Quiz</h1>
+
+    <!-- Question Template -->
+    <div class="question" id="q1">
+      <h3>1. What is the correct syntax for declaring a function in JavaScript?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(this, 'q1', 'a')">function: myFunc() {}</div>
+        <div class="option" onclick="checkAnswer(this, 'q1', 'b')">function myFunc() {}</div>
+        <div class="option" onclick="checkAnswer(this, 'q1', 'c')">create function myFunc() {}</div>
+        <div class="option" onclick="checkAnswer(this, 'q1', 'd')">function = myFunc() {}</div>
+      </div>
+      <div class="result" id="result-q1"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <h3>2. What event is used to run code when a button is clicked?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(this, 'q2', 'a')">onhover</div>
+        <div class="option" onclick="checkAnswer(this, 'q2', 'b')">onpress</div>
+        <div class="option" onclick="checkAnswer(this, 'q2', 'c')">onclick</div>
+        <div class="option" onclick="checkAnswer(this, 'q2', 'd')">onload</div>
+      </div>
+      <div class="result" id="result-q2"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <h3>3. Which of the following gets the value from an input field with ID 'email'?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(this, 'q3', 'a')">getElement('email').value</div>
+        <div class="option" onclick="checkAnswer(this, 'q3', 'b')">document.query('email').value</div>
+        <div class="option" onclick="checkAnswer(this, 'q3', 'c')">document.getElementById('email').value</div>
+        <div class="option" onclick="checkAnswer(this, 'q3', 'd')">document.value('email')</div>
+      </div>
+      <div class="result" id="result-q3"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <h3>4. What does the following code output?<br><code>alert(typeof 10);</code></h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(this, 'q4', 'a')">"object"</div>
+        <div class="option" onclick="checkAnswer(this, 'q4', 'b')">"string"</div>
+        <div class="option" onclick="checkAnswer(this, 'q4', 'c')">"number"</div>
+        <div class="option" onclick="checkAnswer(this, 'q4', 'd')">"integer"</div>
+      </div>
+      <div class="result" id="result-q4"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <h3>5. What is the correct way to add a submit event to a form?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(this, 'q5', 'a')">form.onSubmit = runFunction()</div>
+        <div class="option" onclick="checkAnswer(this, 'q5', 'b')">form.submit(runFunction)</div>
+        <div class="option" onclick="checkAnswer(this, 'q5', 'c')">form.addEventListener("submit", runFunction)</div>
+        <div class="option" onclick="checkAnswer(this, 'q5', 'd')">submit.runFunction(form)</div>
+      </div>
+      <div class="result" id="result-q5"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const correctAnswers = {
+      q1: 'b',
+      q2: 'c',
+      q3: 'c',
+      q4: 'c',
+      q5: 'c'
+    };
+
+    function checkAnswer(selectedOption, questionId, answerId) {
+      const allOptions = document.querySelectorAll(`#${questionId} .option`);
+      allOptions.forEach(option => option.classList.remove('correct', 'incorrect'));
+
+      const resultDiv = document.getElementById(`result-${questionId}`);
+
+      if (correctAnswers[questionId] === answerId) {
+        selectedOption.classList.add('correct');
+        resultDiv.textContent = "✅ Correct!";
+        resultDiv.className = "result correct-msg";
+      } else {
+        selectedOption.classList.add('incorrect');
+        resultDiv.textContent = "❌ Incorrect. Try again!";
+        resultDiv.className = "result incorrect-msg";
+      }
+    }
+  </script>
+
+</body>
+</html>
