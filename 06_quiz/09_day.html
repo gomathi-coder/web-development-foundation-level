@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Effects Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+    .example-output {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background: #ff9800;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .html-output {
+      margin-top: 20px;
+      padding: 20px;
+      background: #eeeeee;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>CSS Effects Quiz</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. How can you create a smooth transition when changing the background color of an element?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">Use `transition: background-color 0.3s;`</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">Use `background-color: smooth;`</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">Use `background-color: transition;`</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">Use `transition: all 0.3s;`</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="example1">
+        <div class="example-output" id="output1">Example: Smooth background color transition</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .element { transition: background-color 0.3s; }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. What property is used to apply a 2D transformation to an element?</h3>
+      <div class="options">
+       
+        <div class="option" onclick="checkAnswer(2, 'b')">transition</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">animation</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">scale</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">transform</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="example2">
+        <div class="example-output" id="output2">Example: Applying a 2D transformation</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .element { transform: rotate(45deg); }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. Which value of the `transform` property will scale an element by 1.5 times its original size?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a')">scale(1.5)</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">scaleX(1.5)</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">scaleY(1.5)</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">scale(150%)</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="example3">
+        <div class="example-output" id="output3">Example: Scaling an element by 1.5 times</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .element { transform: scale(1.5); }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. How do you create a transition effect when hovering over a button that changes the font size?</h3>
+      <div class="options">
+      
+        <div class="option" onclick="checkAnswer(4, 'b')">Use `transition: all 0.3s;`</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Use `font-size: transition;`</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">Use `transition: font-size 0.3s ease;`</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Use `transform: font-size 0.3s;`</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="example4">
+        <div class="example-output" id="output4">Example: Hover transition on font size</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .button:hover { font-size: 20px; transition: font-size 0.3s ease; }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. What is the correct syntax to apply a rotation transformation of 90 degrees to an element?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">transform: rotate(90deg);</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">transform: rotate(45deg);</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">rotate: 90deg;</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">transform: rotate(90);</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="example5">
+        <div class="example-output" id="output5">Example: Applying a 90-degree rotation</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .element { transform: rotate(90deg); }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function checkAnswer(questionNumber, answer) {
+        const correctAnswers = {
+          1: 'a',
+          2: 'a',
+          3: 'a',
+          4: 'a',
+          5: 'a'
+        };
+
+        const resultElement = document.getElementById('result' + questionNumber);
+        const visualExample = document.getElementById('example' + questionNumber);
+        const correctOutput = document.getElementById('output' + questionNumber);
+
+        if (answer === correctAnswers[questionNumber]) {
+          resultElement.textContent = "Correct!";
+          resultElement.className = "result correct";
+          visualExample.style.display = 'block'; // Show visual example
+        } else {
+          resultElement.textContent = "Incorrect! Try again.";
+          resultElement.className = "result incorrect";
+          visualExample.style.display = 'none'; // Hide visual example
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>

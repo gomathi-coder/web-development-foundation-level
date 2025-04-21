@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visual Assessment - HTML Basics</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      padding: 30px;
+      margin: 0;
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    .assessment-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    h3 {
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+    .output-box {
+      font-family: monospace;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      background: #fafafa;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+    }
+    button {
+      background-color: #3D52A0;
+      color: white;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2a3a72;
+    }
+    .image-output {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Visual Assessment: HTML Tags, Lists, Links, and Images</h2>
+  <div class="assessment-box">
+
+    <!-- Initial Output Column (Before applying CSS) -->
+    <div class="column">
+      <h3>Before Concept Application (Raw HTML)</h3>
+      <div class="output-box">
+        <strong>HTML:</strong><br>
+        &lt;h2&gt;HTML Elements&lt;/h2&gt;<br>
+        &lt;p&gt;Learn about lists and links.&lt;/p&gt;<br>
+        &lt;ul&gt;<br>
+        &nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;<br>
+        &nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;<br>
+        &lt;/ul&gt;<br>
+        &lt;a href="#"&gt;Click here&lt;/a&gt;<br><br>
+        &lt;img src="https://img.freepik.com/premium-vector/laptop-desk-house_67590-605.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Example Image" /&gt;
+      </div>
+      <h3>Example Output</h3>
+      <iframe id="exampleFrame"></iframe>
+    </div>
+
+    <!-- User Input Column -->
+    <div class="column">
+      <h3>Your HTML</h3>
+      <textarea id="htmlInput"></textarea>
+
+      <h3>Your CSS</h3>
+      <textarea id="cssInput"></textarea>
+
+      <button onclick="renderOutput('htmlInput','cssInput','userFrame')">Show Output</button>
+      <iframe id="userFrame"></iframe>
+    </div>
+
+    <!-- Final Target Output Column (After Concept Application) -->
+    <div class="column">
+      <h3>Target Output (Styled)</h3>
+      <iframe id="targetFrame"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function renderOutput(htmlId, cssId, frameId) {
+      const html = document.getElementById(htmlId).value;
+      const css = document.getElementById(cssId).value;
+      const frame = document.getElementById(frameId);
+      const doc = frame.contentDocument || frame.contentWindow.document;
+      doc.open();
+      doc.write(`<style>${css}</style>${html}`);
+      doc.close();
+    }
+
+    // Load example (Before concept application)
+    const exampleHTML = `
+<h2>HTML Elements</h2>
+<p>Learn about lists and links.</p>
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+<a href="#">Click here</a>
+<img src="https://img.freepik.com/premium-vector/laptop-desk-house_67590-605.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Example Image" />
+`;
+    const exampleCSS = ``;
+    const exampleDoc = document.getElementById('exampleFrame').contentDocument;
+    exampleDoc.open();
+    exampleDoc.write(`<style>${exampleCSS}</style>${exampleHTML}`);
+    exampleDoc.close();
+
+    // Load target output (After concept application)
+    const targetHTML = `
+<h2>HTML Elements</h2>
+<p>Learn about lists and links.</p>
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+<a href="#">Click here</a>
+<img src="https://img.freepik.com/premium-vector/laptop-desk-house_67590-605.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Target Image" />
+`;
+    const targetCSS = `
+h2 { color: #8e44ad; font-size: 24px; }
+p { font-size: 18px; color: #555; }
+ul { padding-left: 25px; }
+li { color: #2c3e50; }
+a { color: #d35400; font-weight: bold; }
+img { border-radius: 12px; margin-top: 10px; border: 2px solid #ccc; }
+`;
+    const targetDoc = document.getElementById('targetFrame').contentDocument;
+    targetDoc.open();
+    targetDoc.write(`<style>${targetCSS}</style>${targetHTML}`);
+    targetDoc.close();
+  </script>
+</body>
+</html>

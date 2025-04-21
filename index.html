@@ -3,185 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Outline</title>
+    <title>Otomatiks Web Development Course</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset and base styles */
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .course-container {
-            max-width: 1000px;
-            margin: 0 auto;
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
-        h1 {
+        
+        /* Course title section */
+        .course-header {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
             text-align: center;
+        }
+        
+        .course-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             color: #2c3e50;
-            margin-bottom: 30px;
+            font-weight: 700;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+        
+        .course-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #ddd;
+        
+        /* Button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        th {
-            background-color: #3498db;
-            color: white;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 4px;
+        
+        /* Base button styles */
+        .course-button {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
             cursor: pointer;
-            transition: background-color 0.3s;
-            min-width: 100px;
         }
-        .button:hover {
+        
+        /* Foundation button */
+        .foundation-btn {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .foundation-btn:hover {
             background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
         }
-        .basic {
-            background-color: #e3f2fd;
+        
+        /* Advanced button */
+        .advanced-btn {
+            background-color: transparent;
+            color: #3498db;
+            border-color: #3498db;
         }
-        .advanced {
-            background-color: #e8f5e9;
+        
+        .advanced-btn:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .course-title {
+                font-size: 2rem;
+            }
+            
+            .course-subtitle {
+                font-size: 1rem;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .course-button {
+                width: 100%;
+                max-width: 250px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="course-container">
-        <h1>Otoamtiks Web Development Course Resources</h1>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Resource Type</th>
-                    <th>Basic Course</th>
-                    <th>Advanced Course</th>
-                </tr>
-            </thead>
-
-
-
-            <tbody>
-
-                <tr>
-                    <td>Overview</td>
-                    <td class="basic">
-                        <a href="./03_curriculum_activity/01_overview.html" target="_blank" class="button">View</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                </tr>
-
-
-
-
-                <tr>
-                    <td>Curriculum</td>
-                    <td class="basic">
-                        <a href="./03_curriculum_activity/01_basic_curriculum.html" target="_blank" class="button">View</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="./03_curriculum_activity/02_advanced_curriculum.html" target="_blank" class="button">View</a>
-                    </td>
-                </tr>
-
-
-
-
-                <tr>
-                    <td>Day Order</td>
-                    <td class="basic">
-                        <a href="./03_curriculum_activity/01_basic_day_order.html" target="_blank" class="button">View</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td>Visual Assessments</td>
-                    <td class="basic">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                </tr>
-
-
-
-                <tr>
-                    <td>Home Activities</td>
-                    <td class="basic">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                </tr>
-
-
-
-                <tr>
-                    <td>Project</td>
-                    <td class="basic">
-                        <a href="./03_curriculum_activity/01_basic_project.html" target="_blank" class="button">View</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" target="_blank" class="button">View</a>
-                    </td>
-                </tr>
-                
-                
-
-
-               
-
-
-
-               
-
-                <tr>
-                    <td>Sample Code</td>
-                    <td class="basic">
-                        <a href="files/basic_sample_code.zip" download class="button">Download</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" download class="button">Download</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PPT Slides</td>
-                    <td class="basic">
-                        <a href="" target="_blank" class="button">Download</a>
-                    </td>
-                    <td class="advanced">
-                        <a href="" target="_blank" class="button">Download</a>
-                    </td>
-                </tr>
-               
-            </tbody>
-        </table>
-    </div>
+    <section class="course-header">
+        <h1 class="course-title">Otomatiks Web Development Course</h1>
+        <p class="course-subtitle">Master modern web development from the ground up with our comprehensive course designed for all skill levels.</p>
+        <div class="button-container">
+            <a href="./03_curriculum_activity/01_web_development_foundation.html" class="course-button foundation-btn">Foundation</a>
+            <a href="#" class="course-button advanced-btn">Advanced</a>
+        </div>
+    </section>
 </body>
 </html>
