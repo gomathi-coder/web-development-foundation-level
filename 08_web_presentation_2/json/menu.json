@@ -195,6 +195,26 @@
         "extended-section": "false"
       },
       {
+        "page-name": "Colors Advanced",
+        "page-url": "?page-id=colors-advanced",
+        "mark-down": "03-css-intro/05-a.md",
+        "page-id": "colors-advanced",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "true"
+      },
+      {
+        "page-name": "Fonts",
+        "page-url": "?page-id=css-fonts",
+        "mark-down": "03-css-intro/06-a.md",
+        "page-id": "css-fonts",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
         "page-name": "Text Formatting Basics",
         "page-url": "?page-id=text-formatting-basics",
         "mark-down": "03-css-intro/06-a.md",
