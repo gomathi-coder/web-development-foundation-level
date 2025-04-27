@@ -1,5 +1,5 @@
 need to create a content such that it is easy for the kids(grade 6 to grade 10) to understand. 
-The topics is ordered list and unordered list. 
+The topics is Images in HTML Page. 
 Create the content in the mark down format. Standard mark down content is allowed. apart from that these markdown format also supported
 Code Snippet	eg: `<Code Content>`
 Code Block	eg: ``` <Code Content> ```
@@ -29,7 +29,7 @@ Quiz for each individual question. wrap the question with [q][/q] and choices wi
 [c]text-indent[/c]
 :::
 
-create the content where you try to include as much as the formats.
+create the content as a single markdown file where you try to include as much as the formats.
 
 Here is the code sample that we teach. but include as many topics to teach about image to the students
 

@@ -8,7 +8,7 @@
     "child-pages": [
       {
         "page-name": "Introduction",
-        "page-url": "01-introduction.html",
+        "page-url": "?page-id=introduction-page",
         "mark-down": "01-introduction/01-a.md",
         "page-id": "introduction-page",
         "page-version": "aaa",
@@ -18,7 +18,7 @@
       },
       {
         "page-name": "Visual Studio Code Setup",
-        "page-url": "02-vs-code-setup.html",
+        "page-url": "?page-id=vs-code-setup",
         "mark-down": "01-introduction/02-a.md",
         "page-id": "vs-code-setup",
         "page-version": "aaa",
@@ -28,7 +28,7 @@
       },
       {
         "page-name": "HTML Structure",
-        "page-url": "03-html-structure.html",
+        "page-url": "?page-id=html-structure",
         "mark-down": "01-introduction/03-a.md",
         "page-id": "html-structure",
         "page-version": "aaa",
@@ -47,7 +47,7 @@
     "child-pages": [
       {
         "page-name": "Header Tags",
-        "page-url": "01-header-tags.html",
+        "page-url": "?page-id=header-tags",
         "mark-down": "02-basic-tags/01-a.md",
         "page-id": "header-tags",
         "page-version": "aaa",
@@ -57,7 +57,7 @@
       },
       {
         "page-name": "List of Items",
-        "page-url": "02-list-of-items.html",
+        "page-url": "?page-id=list-of-items",
         "mark-down": "02-basic-tags/02-a.md",
         "page-id": "list-of-items",
         "page-version": "aaa",
@@ -67,7 +67,7 @@
       },
       {
         "page-name": "Images in HTML Page",
-        "page-url": "03-img-tag.html",
+        "page-url": "?page-id=img-tag",
         "mark-down": "02-basic-tags/03-a.md",
         "page-id": "img-tag",
         "page-version": "aaa",
@@ -77,7 +77,7 @@
       },
       {
         "page-name": "Links in HTML Page",
-        "page-url": "04-link-tag.html",
+        "page-url": "?page-id=link-tag",
         "mark-down": "02-basic-tags/04-a.md",
         "page-id": "link-tag",
         "page-version": "aaa",
@@ -87,7 +87,7 @@
       },
       {
         "page-name": "Comments in HTML Page",
-        "page-url": "05-comments-tag.html",
+        "page-url": "?page-id=comments-tag",
         "mark-down": "02-basic-tags/05-a.md",
         "page-id": "comments-tag",
         "page-version": "aaa",
@@ -97,7 +97,7 @@
       },
       {
         "page-name": "Content Structure",
-        "page-url": "06-content-structure.html",
+        "page-url": "?page-id=content-structure",
         "mark-down": "02-basic-tags/06-a.md",
         "page-id": "content-structure",
         "page-version": "aaa",
@@ -107,7 +107,7 @@
       },
       {
         "page-name": "Video Tag",
-        "page-url": "07-video-tag.html",
+        "page-url": "?page-id=video-tag",
         "mark-down": "02-basic-tags/07-a.md",
         "page-id": "video-tag",
         "page-version": "aaa",
@@ -117,7 +117,7 @@
       },
       {
         "page-name": "Audio Tag",
-        "page-url": "08-audio-tag.html",
+        "page-url": "?page-id=audio-tag",
         "mark-down": "02-basic-tags/08-a.md",
         "page-id": "audio-tag",
         "page-version": "aaa",
@@ -127,7 +127,7 @@
       },
       {
         "page-name": "Iframe",
-        "page-url": "09-iframe-tag.html",
+        "page-url": "?page-id=iframe-tag",
         "mark-down": "02-basic-tags/09-a.md",
         "page-id": "iframe-tag",
         "page-version": "aaa",
@@ -146,7 +146,7 @@
     "child-pages": [
       {
         "page-name": "CSS Introduction",
-        "page-url": "01-css-intro.html",
+        "page-url": "?page-id=css-intro",
         "mark-down": "03-css-intro/01-a.md",
         "page-id": "css-intro",
         "page-version": "aaa",
@@ -156,7 +156,7 @@
       },
       {
         "page-name": "Inline CSS vs CSS File",
-        "page-url": "02-inline-vs-file.html",
+        "page-url": "?page-id=inline-vs-file",
         "mark-down": "03-css-intro/02-a.md",
         "page-id": "inline-vs-file",
         "page-version": "aaa",
@@ -166,7 +166,7 @@
       },
       {
         "page-name": "Selectors Basics",
-        "page-url": "03-selectors-basics.html",
+        "page-url": "?page-id=selectors-basics",
         "mark-down": "03-css-intro/03-a.md",
         "page-id": "selectors-basics",
         "page-version": "aaa",
@@ -176,7 +176,7 @@
       },
       {
         "page-name": "Selectors Advanced",
-        "page-url": "04-selectors-advanced.html",
+        "page-url": "?page-id=selectors-advanced",
         "mark-down": "03-css-intro/04-a.md",
         "page-id": "selectors-advanced",
         "page-version": "aaa",
@@ -186,7 +186,7 @@
       },
       {
         "page-name": "Colors",
-        "page-url": "05-colors.html",
+        "page-url": "?page-id=colors",
         "mark-down": "03-css-intro/05-a.md",
         "page-id": "colors",
         "page-version": "aaa",
@@ -196,7 +196,7 @@
       },
       {
         "page-name": "Text Formatting Basics",
-        "page-url": "06-text-formatting-basics.html",
+        "page-url": "?page-id=text-formatting-basics",
         "mark-down": "03-css-intro/06-a.md",
         "page-id": "text-formatting-basics",
         "page-version": "aaa",
@@ -206,7 +206,7 @@
       },
       {
         "page-name": "Text Formatting Advanced",
-        "page-url": "07-text-formatting-advanced.html",
+        "page-url": "?page-id=text-formatting-advanced",
         "mark-down": "03-css-intro/07-a.md",
         "page-id": "text-formatting-advanced",
         "page-version": "aaa",
@@ -225,7 +225,7 @@
     "child-pages": [
       {
         "page-name": "Box Model Basics",
-        "page-url": "01-box-model-basics.html",
+        "page-url": "?page-id=box-model-basics",
         "mark-down": "04-box-model/01-a.md",
         "page-id": "box-model-basics",
         "page-version": "aaa",
@@ -235,7 +235,7 @@
       },
       {
         "page-name": "Box Model Advanced",
-        "page-url": "02-box-model-advanced.html",
+        "page-url": "?page-id=box-model-advanced",
         "mark-down": "04-box-model/02-a.md",
         "page-id": "box-model-advanced",
         "page-version": "aaa",
@@ -245,7 +245,7 @@
       },
       {
         "page-name": "Block vs Inline",
-        "page-url": "03-block-vs-inline.html",
+        "page-url": "?page-id=block-vs-inline",
         "mark-down": "04-box-model/03-a.md",
         "page-id": "block-vs-inline",
         "page-version": "aaa",
@@ -255,7 +255,7 @@
       },
       {
         "page-name": "Flex Basics",
-        "page-url": "04-flex-basics.html",
+        "page-url": "?page-id=flex-basics",
         "mark-down": "04-box-model/04-a.md",
         "page-id": "flex-basics",
         "page-version": "aaa",
@@ -265,7 +265,7 @@
       },
       {
         "page-name": "Flex Advanced",
-        "page-url": "05-flex-advanced.html",
+        "page-url": "?page-id=flex-advanced",
         "mark-down": "04-box-model/05-a.md",
         "page-id": "flex-advanced",
         "page-version": "aaa",
@@ -284,7 +284,7 @@
     "child-pages": [
       {
         "page-name": "Build your first Website",
-        "page-url": "01-build-first-website.html",
+        "page-url": "?page-id=build-first-website",
         "mark-down": "05-project/01-a.md",
         "page-id": "build-first-website",
         "page-version": "aaa",
@@ -303,7 +303,7 @@
     "child-pages": [
       {
         "page-name": "Github Fundamentals",
-        "page-url": "01-github-fundamentals.html",
+        "page-url": "?page-id=github-fundamentals",
         "mark-down": "06-github/01-a.md",
         "page-id": "github-fundamentals",
         "page-version": "aaa",
@@ -313,7 +313,7 @@
       },
       {
         "page-name": "Github Advanced",
-        "page-url": "02-github-advanced.html",
+        "page-url": "?page-id=github-advanced",
         "mark-down": "06-github/02-a.md",
         "page-id": "github-advanced",
         "page-version": "aaa",

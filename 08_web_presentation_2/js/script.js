@@ -24,6 +24,34 @@ function getCookie(name) {
     return "";
 }
 
+function getPageIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('page-id');
+}
+
+function loadPageById(pageId) {
+    if (!pageId) return false;
+
+    // Find the link element with matching page-id
+    const childLink = Array.from(document.querySelectorAll('.child-page-link'))
+        .find(link => link.dataset.pageid === pageId);
+
+    if (childLink) {
+        // Simulate the click behavior without actually flipping the page (to avoid re-render twice)
+        let mdfilepath = constructNewFilename(childLink);
+        loadMarkdown(mdfilepath);
+        history.replaceState({}, '', childLink.getAttribute('href'));
+        currentPage = childLink.getAttribute('href');
+        
+        // Update the active classes in menu items
+        renderMenu();
+        return true;
+    }
+
+    return false;
+}
+
+
 function loadPreferences() {
     const teacherPref = getCookie('showTeacherSection');
     const extendedPref = getCookie('showExtendedSection');
@@ -39,6 +67,26 @@ async function loadMenu() {
     const res = await fetch('json/menu.json');
     menuData = await res.json();
     renderMenu();
+
+    // After menu is rendered, check for page-id
+    const queryPageId = getPageIdFromUrl();
+    /*
+    if (queryPageId) {
+        const pageLoaded = loadPageById(queryPageId);
+        if (!pageLoaded) {
+            console.warn(`Page ID "${queryPageId}" not found in menu.`);
+        }
+    }*/
+
+        const pageLoaded = queryPageId ? loadPageById(queryPageId) : false;
+
+        if (!pageLoaded) {
+            // just load index.md and show index.html in URL
+            loadMarkdown('index.md');
+            history.replaceState({}, '', 'index.html');
+            currentPage = 'index.html';
+            renderMenu();
+        }
 }
 
 function renderMenu() {
