@@ -3,7 +3,7 @@ let currentPage = location.pathname.split("/").pop() || "index.html";
 let showTeacherSection = true;
 let showExtendedSection = true;
 
-// Utility functions for cookies
+// Utility: Cookies
 function setCookie(name, value, days) {
     const d = new Date();
     d.setTime(d.getTime() + (days*24*60*60*1000));
@@ -28,25 +28,19 @@ function getPageIdFromUrl() {
 
 function loadPageById(pageId) {
     if (!pageId) return false;
-    // Find the link element with matching page-id
     const childLink = Array.from(document.querySelectorAll('.child-page-link'))
         .find(link => link.dataset.pageid === pageId);
 
     if (childLink) {
-        // Simulate the click behavior without actually flipping the page (to avoid re-render twice)
         let mdfilepath = constructNewFilename(childLink);
         loadMarkdown(mdfilepath);
         history.replaceState({}, '', childLink.getAttribute('href'));
         currentPage = childLink.getAttribute('href');
-        
-        // Update the active classes in menu items
         renderMenu();
         return true;
     }
-
     return false;
 }
-
 
 function loadPreferences() {
     const teacherPref = getCookie('showTeacherSection');
@@ -59,26 +53,14 @@ async function loadMenu() {
     const res = await fetch('json/menu.json');
     menuData = await res.json();
     renderMenu();
-
-    // After menu is rendered, check for page-id
     const queryPageId = getPageIdFromUrl();
-    /*
-    if (queryPageId) {
-        const pageLoaded = loadPageById(queryPageId);
-        if (!pageLoaded) {
-            console.warn(`Page ID "${queryPageId}" not found in menu.`);
-        }
-    }*/
-
-        const pageLoaded = queryPageId ? loadPageById(queryPageId) : false;
-
-        if (!pageLoaded) {
-            // just load index.md and show index.html in URL
-            loadMarkdown('index.md');
-            history.replaceState({}, '', 'index.html');
-            currentPage = 'index.html';
-            renderMenu();
-        }
+    const pageLoaded = queryPageId ? loadPageById(queryPageId) : false;
+    if (!pageLoaded) {
+        loadMarkdown('index.md');
+        history.replaceState({}, '', 'index.html');
+        currentPage = 'index.html';
+        renderMenu();
+    }
 }
 
 function getSectionIcon(section) {
@@ -93,7 +75,6 @@ function getChildIcon(child) {
     return `<i class="bi bi-file-earmark child-icon" title="Page"></i>`;
 }
 
-// Main render: searchQuery is optional for filtering
 function renderMenu(searchQuery="") {
     const menuDiv = document.getElementById('menu');
     menuDiv.innerHTML = '';
@@ -102,7 +83,6 @@ function renderMenu(searchQuery="") {
         if (section["teacher-section"] === "true" && !showTeacherSection) return;
         if (section["extended-section"] === "true" && !showExtendedSection) return;
 
-        // Filter child pages
         let filteredChildren = section['child-pages'].filter(child => {
             if (child.visible !== "true") return false;
             if (child["teacher-section"] === "true" && !showTeacherSection) return false;
@@ -130,7 +110,7 @@ function renderMenu(searchQuery="") {
         let hasActiveChild = false;
 
         filteredChildren.forEach((child, cidx) => {
-           const childLink = document.createElement('a');
+            const childLink = document.createElement('a');
             childLink.href = child['page-url'];
             childLink.className = "child-page-link";
             childLink.innerHTML = getChildIcon(child) + `<span>${child['page-name']}</span>`;
@@ -149,17 +129,13 @@ function renderMenu(searchQuery="") {
             childDiv.appendChild(childLink);
         });
 
-        // Highlight parent section if needed
-        if (hasActiveChild) {
-            parentSectionLink.classList.add('active-section');
-        }
+        if (hasActiveChild) parentSectionLink.classList.add('active-section');
 
         parent.appendChild(parentSectionLink);
         parent.appendChild(childDiv);
         menuDiv.appendChild(parent);
     });
 
-    // Section toggle (expand/collapse) - you might implement it if you want real folding
     document.querySelectorAll('.parent-section-link').forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth < 600) return;
@@ -180,7 +156,6 @@ function renderMenu(searchQuery="") {
         });
     });
 
-    // Child click
     document.querySelectorAll('.child-page-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -200,9 +175,7 @@ function renderMenu(searchQuery="") {
     applySectionVisibility();
 }
 
-// Show/hide teacher/extended UI (for any remaining static icons)
 function applySectionVisibility() {
-    // Show/hide all elements with these classes
     document.querySelectorAll('.teacher-section').forEach(el => {
         el.style.display = showTeacherSection ? '' : 'none';
     });
@@ -212,27 +185,21 @@ function applySectionVisibility() {
 }
 
 function constructNewFilename(link) {
-    const markdownPath = link.getAttribute('data-markdown'); // e.g. "some/deeply/nested/path/filename.md"
-    const pageId = link.getAttribute('data-pageid');         // e.g. "intro-page"
-    const pageVersion = link.getAttribute('data-pageversion'); // e.g. "aab"
-  
-    // Separate the directory path and the filename
+    const markdownPath = link.getAttribute('data-markdown');
+    const pageId = link.getAttribute('data-pageid');
+    const pageVersion = link.getAttribute('data-pageversion');
     const lastSlashIndex = markdownPath.lastIndexOf('/');
     let dir = '';
     let filename = markdownPath;
     if (lastSlashIndex !== -1) {
-      dir = markdownPath.substring(0, lastSlashIndex + 1);  // keep trailing slash
-      filename = markdownPath.substring(lastSlashIndex + 1);
+        dir = markdownPath.substring(0, lastSlashIndex + 1);
+        filename = markdownPath.substring(lastSlashIndex + 1);
     }
-  
-    // Remove .md extension from filename
     const baseName = filename.replace(/\.md$/, '');
-  
-    // Construct new file name with the pageId and pageVersion appended
     return `${dir}${baseName}-${pageId}-${pageVersion}.md`;
-  }
+}
 
-  async function loadMarkdown(mdFile) {
+async function loadMarkdown(mdFile) {
     const res = await fetch(`content/${mdFile}`);
     let mdText = await res.text();
     // Markdown block custom replacements
@@ -274,13 +241,9 @@ function escapeHtml(text) {
 
 // Improved quiz block: [q]What?[/q][c]wrong[/c][c]right[a][/c]
 function parseQuizBlock2(content) {
-    // Extract question
     const qMatch = /\[q\](.*?)\[\/q\]/s.exec(content);
     if (!qMatch) return '';
-
     const question = qMatch[1].trim();
-
-    // Extract choices
     const choiceRegex = /\[c\](.*?)\[\/c\]/gs;
     const choices = [];
     let m;
@@ -329,13 +292,11 @@ function injectQuizHandlers() {
     });
 }
 
-// MENU SEARCH: debounce not needed, menu is likely small
 document.getElementById('menuSearch').addEventListener('input', function() {
     const query = this.value.trim().toLowerCase();
     renderMenu(query);
 });
 
-// Teacher/Extended toggles
 document.getElementById('toggleTeacher').addEventListener('click', () => {
     showTeacherSection = !showTeacherSection;
     setCookie('showTeacherSection', showTeacherSection, 30);
@@ -350,7 +311,6 @@ document.getElementById('toggleExtended').addEventListener('click', () => {
 loadPreferences();
 loadMenu();
 
-// --- MOBILE SIDEBAR LOGIC ---
 const leftPane = document.getElementById('left-pane');
 let sidebarBackdrop = document.createElement('div');
 sidebarBackdrop.className = "left-pane-backdrop";

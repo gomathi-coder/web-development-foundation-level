@@ -11,56 +11,56 @@ header {
 #left-pane {
     height: calc(100vh - 70px);
     overflow-y: auto;
-min-width: 220px;
-max-width: 340px;
-transition: transform 0.2s;
-background: #f5f9fc;
-z-index: 1040;
+    min-width: 220px;
+    max-width: 340px;
+    transition: transform 0.2s;
+    background: #f5f9fc;
+    z-index: 1040;
 }
 
 .sidebar-header {
-background: #e8e8e8;
+    background: #e8e8e8;
 }
 
 @media (max-width: 991px) {
-#left-pane {
-    position: fixed;
-    top: 56px;
-    left: 0;
-    height: calc(100vh - 56px);
-    width: 85vw;
-    max-width: 340px;
-    background: #f5f9fc;
-    transform: translateX(-100%);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.18);
-    border-right: 1px solid #dee2e6;
-}
-#left-pane.open {
-    transform: translateX(0);
-}
-.left-pane-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.08);
-    z-index: 1030;
-    display: none;
-}
-.left-pane-backdrop.open {
-    display: block;
-}
-#right-pane {
-    padding: 2vw;
-}
+    #left-pane {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        height: calc(100vh - 56px);
+        width: 85vw;
+        max-width: 340px;
+        background: #f5f9fc;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 8px rgba(0,0,0,0.18);
+        border-right: 1px solid #dee2e6;
+    }
+    #left-pane.open {
+        transform: translateX(0);
+    }
+    .left-pane-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.08);
+        z-index: 1030;
+        display: none;
+    }
+    .left-pane-backdrop.open {
+        display: block;
+    }
+    #right-pane {
+        padding: 2vw;
+    }
 }
 
 .left-pane-backdrop {
-/* Hidden by default, shown on mobile when sidebar open */
-display: none;
+    /* Hidden by default, shown on mobile when sidebar open */
+    display: none;
 }
 
 #menuSearch {
-font-size: 16px;
-border-radius: 7px;
+    font-size: 16px;
+    border-radius: 7px;
 }
 
 /* Menu Tree Styling */
@@ -94,8 +94,6 @@ border-radius: 7px;
 }
 
 .child-page-link {
-    /*padding-left: 20px;
-    display: block;*/
     padding: 4px 0 4px 35px;
     display: flex;
     align-items: center;
