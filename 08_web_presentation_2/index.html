@@ -12,6 +12,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+    <!--
     <header class="d-flex justify-content-between align-items-center p-3 bg-light sticky-top" style="z-index:1050;">
         <h2 class="mb-0 fs-4">Web Development Foundation</h2>
         <div>
@@ -21,14 +22,30 @@
             <button id="toggleExtended" class="btn btn-outline-secondary btn-sm">
                 Show/Hide <span title="Extended Section"><i class="bi bi-star"></i></span>
             </button>
-            </div>
+        </div>
+    </header>
+    -->
+
+    <header class="d-flex justify-content-between align-items-center p-3 bg-light sticky-top" style="z-index:1050;">
+        <div class="d-flex align-items-center">
+            <button id="toggleSidebarBtn" class="btn btn-sm btn-outline-secondary me-2 d-lg-none" style="font-size:2rem; line-height:1.2;">☰</button>
+            <h2 class="mb-0 fs-4">Web Development Foundation</h2>
+        </div>
+        <div>
+            <button id="toggleTeacher" class="btn btn-outline-secondary btn-sm">
+                Show/Hide <span title="Teacher Section"><i class="bi bi-person-badge"></i></span>
+            </button>
+            <button id="toggleExtended" class="btn btn-outline-secondary btn-sm">
+                Show/Hide <span title="Extended Section"><i class="bi bi-star"></i></span>
+            </button>
+        </div>
     </header>
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-3 border-end d-flex flex-column p-0" id="left-pane">
             <div class="sidebar-header d-flex align-items-center p-2 border-bottom">
-                <button id="toggleSidebarBtn" class="btn btn-sm btn-outline-secondary me-2 d-lg-none" style="font-size:2rem; line-height:1.2;">☰</button>
+                <!-- <button id="toggleSidebarBtn" class="btn btn-sm btn-outline-secondary me-2 d-lg-none" style="font-size:2rem; line-height:1.2;">☰</button> -->
                 <span class="fw-bold d-lg-none">Menu</span>
             </div>
             <input type="text" id="menuSearch" class="form-control mb-3 mt-2" placeholder="Search topics...">
