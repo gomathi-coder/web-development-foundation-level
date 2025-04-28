@@ -1,0 +1,104 @@
+This is a sample csv 
+
+Type,section-name/page-name,section-id/page-id,page-url,mark-down,page-version,teacher-section,extended-section,visible,Parent,active-version
+Section,HTML Introduction,html-introduction,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Introduction,intro-page,01-introduction.html,basics/01-intro.md,aab,FALSE,FALSE,TRUE,html-introduction,TRUE
+Page,Teachers Note for First Class,tn-first-class,31-teachers-note-first-class.html,additional/teachers-note/31-teachers-note-first-class.md,aaa,TRUE,FALSE,TRUE,html-introduction,TRUE
+
+
+this need to be converted into a json like this
+
+
+[
+    {
+      "section-name": "HTML Introduction",
+      "section-id" : "html-introduction",
+      "teacher-section": "false",
+      "visible": "true",
+      "extended-section": "false",
+      
+      "child-pages": [
+        {
+          "page-name": "Introduction",
+          "page-url": "01-introduction.html",
+          "mark-down":"basics/01-intro.md",
+          "page-id":"intro-page",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Software Setup",
+          "page-url": "02-sw-setup.html",
+          "mark-down":"basics/02-ss.md",
+          "page-id":"sw-setup",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Teachers Notes",
+          "page-url": "teachers-notes.html",
+          "mark-down":"basics/32-tn.md",
+          "page-id":"tn",
+          "page-version" : "aab",
+          "teacher-section": "true",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Additional Classes",
+          "page-url": "add-classes.html",
+          "mark-down":"basics/42-ac.md",
+          "page-id":"ac",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "true"
+        },
+        {
+          "page-name": "Old Intro",
+          "page-url": "add-classes.html",
+          "mark-down":"basics/42-ac.md",
+          "page-id":"ac",
+          "page-version" : "aab",
+          "teacher-section": "true",
+          "visible": "false",
+          "extended-section": "false"
+        }
+      ]
+    }
+    
+  ]
+  
+
+Create a java code to do csv to json conversion and create boiler plate md file.
+Here are the rules
+active-version field is not included in the json.
+it is used to identify the active version and only that record will be converted into json.
+do the validation of the fields
+
+for Sections applicable fields are Type,section-name/page-name,section-id/page-id,teacher-section,extended-section,visible
+for Pages applicable fields are Type,section-name/page-name,section-id/page-id,page-url,mark-down,page-version,teacher-section,extended-section,visible,Parent,active-version
+There can be only one active version for a page. page is identified using the page-id.
+section-id/page-id isd unique across all the rows
+
+for creating the boiler plate code create the folders and then create a md file with the content like this
+file name should follow this format 
+eg: mark-down : basics/01-intro.md; section-id/page-id : intro-page ; page-version : aab
+then file name is 01-intro-intro-page-aab.md
+
+file conent will be 
+# <page-name>
+
+folders should be created like this.
+ex: basics/01-intro.md -> inside content folder -> create basics folder and then create the file
+
+
+java code should take the input csv file name, output json file name
+first do the validation, if there are validation error then dont create the json
+then create the json
+then create boiler plate folders, file and content
+use inbuilt java libraries avoid external dependencies as much as possible

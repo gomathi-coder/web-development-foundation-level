@@ -1,0 +1,47 @@
+need to create a content such that it is easy for the kids(grade 6 to grade 10) to understand. 
+The topics is Images in HTML Page. 
+Create the content in the mark down format. Standard mark down content is allowed. apart from that these markdown format also supported
+Code Snippet	eg: `<Code Content>`
+Code Block	eg: ``` <Code Content> ```
+Image		eg: ![Alt Text](../images/your-image.png)
+Quick Note	eg: :::note <Content> :::
+Warning		eg: :::warning <Content> :::
+Tip		eg: :::tip <Content> :::
+Comment		eg: :::comment <Content> :::
+Teachers note	eg: :::teachersnote <Content> :::
+Practice Assessment	eg: :::practice <Content> :::
+Code Output	eg: :::codeoutput <Content> ::: // The exact code output will be shown in the web page
+
+Quiz for each individual question. wrap the question with [q][/q] and choices with [c][/c] and mark the correct answer with [a]. eg is given below
+
+:::quiz
+[q]What does HTML stand for?[/q]
+[c]HighText Machine Language[/c]
+[c]HighText Machine Language[a][/c]
+[c]HighText Machine Language[/c]
+:::
+
+:::quiz
+[q]Which CSS property controls text spacing between lines?[/q]
+[c]letter-spacing[/c]
+[c]word-spacing[/c]
+[c]line-height[a][/c]
+[c]text-indent[/c]
+:::
+
+create the content as a single markdown file where you try to include as much as the formats.
+
+Here is the code sample that we teach. but include as many topics to teach about image to the students
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Tag Example</title>
+</head>
+<body>
+
+  <img src="./5_test.jpeg" alt="Sample Image" width="300" height="200">
+
+</body>
+</html>
+

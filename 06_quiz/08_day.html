@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Layout Systems Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+    .example-output {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background: #ff9800;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .html-output {
+      margin-top: 20px;
+      padding: 20px;
+      background: #eeeeee;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>CSS Layout Systems Quiz</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. Which property is used in Flexbox to align items horizontally?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a')">justify-content</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">align-items</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">align-self</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">flex-direction</div>
+      </div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="example1">
+        <div class="example-output" id="output1">Example: Flexbox align items horizontally</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .container { display: flex; justify-content: space-between; }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. How can you create a horizontal navigation bar using Flexbox?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">Set the display of the container to `block`.</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">Set the display of the container to `flex` and `flex-direction: row;`.</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">Use `position: absolute;` for the navigation items.</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">Use `display: inline-block;` for each item.</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="example2">
+        <div class="example-output" id="output2">Example: Horizontal Navigation Bar using Flexbox</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .nav { display: flex; justify-content: space-around; }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. Which of the following is the correct value for the `position` property to make an element fixed at the top of the page?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'd')">fixed</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">absolute</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">relative</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">static</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="example3">
+        <div class="example-output" id="output3">Example: Fixed Position at the Top</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .header { position: fixed; top: 0; left: 0; width: 100%; }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. How can you use media queries to make a Flexbox container responsive?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">Use media queries to change `flex-direction` based on screen width.</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Use media queries to change `display: flex` to `display: block`.</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Use media queries to remove padding in Flexbox.</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">None of the above.</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="example4">
+        <div class="example-output" id="output4">Example: Flexbox Responsive Design</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            @media (max-width: 600px) { .container { flex-direction: column; } }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. What does `flex-wrap: wrap` do in a Flexbox container?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">It makes the items align in a row.</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">It ensures that items stay in a single row.</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">It allows items to move to the next line if needed.</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">It centers the items vertically.</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="example5">
+        <div class="example-output" id="output5">Example: Flex-wrap in action</div>
+        <div class="html-output">
+          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
+            .container { display: flex; flex-wrap: wrap; }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function checkAnswer(questionNumber, answer) {
+        const correctAnswers = {
+          1: 'a',
+          2: 'b',
+          3: 'd',
+          4: 'a',
+          5: 'c'
+        };
+
+        const resultElement = document.getElementById('result' + questionNumber);
+        const visualExample = document.getElementById('example' + questionNumber);
+        const correctOutput = document.getElementById('output' + questionNumber);
+
+        if (answer === correctAnswers[questionNumber]) {
+          resultElement.textContent = "Correct!";
+          resultElement.className = "result correct";
+          visualExample.style.display = 'block'; // Show visual example
+        } else {
+          resultElement.textContent = "Incorrect! Try again.";
+          resultElement.className = "result incorrect";
+          visualExample.style.display = 'none'; // Hide visual example
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>

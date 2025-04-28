@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Fundamentals Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .quiz-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #3D52A0;
+            text-align: center;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            background: #e1f5fe;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #b3e5fc;
+        }
+        
+        .visual-example {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3D52A0;
+            display: none;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: block !important;
+        }
+        
+        .incorrect {
+            background: #ffebee;
+            color: #c62828;
+            display: block !important;
+        }
+        
+        .code {
+            font-family: 'Courier New', monospace;
+            background: #263238;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Web Fundamentals Quiz</h1>
+        
+        <div class="question">
+            <h3>1. Which HTML tag is used for the main heading of a page?</h3>
+            <div class="visual-example" id="visual1">
+                <p>This is how headings look:</p>
+                <div class="code">
+                    &lt;h1&gt;Main Title&lt;/h1&gt;<br>
+                    &lt;h2&gt;Subheading&lt;/h2&gt;
+                </div>
+                <p>Result:</p>
+                <h1 style="margin:0;">Main Title</h1>
+                <h2 style="margin:0;">Subheading</h2>
+            </div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(1, 'a', 'visual1')">&lt;head&gt;</div>
+                <div class="option" onclick="checkAnswer(1, 'b', 'visual1')">&lt;h1&gt;</div>
+                <div class="option" onclick="checkAnswer(1, 'c', 'visual1')">&lt;header&gt;</div>
+                <div class="option" onclick="checkAnswer(1, 'd', 'visual1')">&lt;title&gt;</div>
+            </div>
+            <div id="result1" class="result"></div>
+        </div>
+        
+        <div class="question">
+            <h3>2. What CSS property changes text color?</h3>
+            <div class="visual-example" id="visual2">
+                <p>Example CSS:</p>
+                <div class="code">
+                    p {<br>
+                    &nbsp;&nbsp;color: <span style="color:#e91e63;">red</span>;<br>
+                    }
+                </div>
+                <p>Result:</p>
+                <p style="color:red;">This text is red</p>
+            </div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(2, 'a', 'visual2')">text-color</div>
+                <div class="option" onclick="checkAnswer(2, 'b', 'visual2')">font-color</div>
+                <div class="option" onclick="checkAnswer(2, 'c', 'visual2')">color</div>
+                <div class="option" onclick="checkAnswer(2, 'd', 'visual2')">text-style</div>
+            </div>
+            <div id="result2" class="result"></div>
+        </div>
+        
+        <div class="question">
+            <h3>3. How do you link a CSS file to HTML?</h3>
+            <div class="visual-example" id="visual3">
+                <p>Correct linking in HTML head:</p>
+                <div class="code">
+                    &lt;link rel="stylesheet" href="styles.css"&gt;
+                </div>
+                <p>Structure:</p>
+                <pre>
+project-folder/
+├── index.html
+└── styles.css</pre>
+            </div>
+            <div class="options">
+                <div class="option" onclick="checkAnswer(3, 'a', 'visual3')">&lt;css&gt;styles.css&lt;/css&gt;</div>
+                <div class="option" onclick="checkAnswer(3, 'b', 'visual3')">&lt;link rel="stylesheet" href="styles.css"&gt;</div>
+                <div class="option" onclick="checkAnswer(3, 'c', 'visual3')">&lt;style src="styles.css"&gt;</div>
+                <div class="option" onclick="checkAnswer(3, 'd', 'visual3')">&lt;stylesheet&gt;styles.css&lt;/stylesheet&gt;</div>
+            </div>
+            <div id="result3" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(questionNum, selectedOption, visualId) {
+            const correctAnswers = {
+                1: 'b', // h1 is correct for Q1
+                2: 'c', // color is correct for Q2
+                3: 'b'  // link rel=stylesheet is correct for Q3
+            };
+            
+            const resultDiv = document.getElementById(`result${questionNum}`);
+            const visualDiv = document.getElementById(visualId);
+            
+            // Hide all visual examples first
+            document.querySelectorAll('.visual-example').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            if(selectedOption === correctAnswers[questionNum]) {
+                resultDiv.textContent = '✅ Correct!';
+                resultDiv.className = 'result correct';
+                visualDiv.style.display = 'block';
+            } else {
+                resultDiv.textContent = '❌ Incorrect. Try again!';
+                resultDiv.className = 'result incorrect';
+            }
+        }
+    </script>
+</body>
+</html>

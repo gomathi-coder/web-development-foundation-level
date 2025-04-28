@@ -1,0 +1,25 @@
+[
+    {
+      "section-name": "HTML Introduction",
+      "teacher-section": "false",
+      "visible": "true",
+      "extended-section": "false",
+      "child-pages": [
+        {
+          "page-name": "Introduction",
+          "page-url": "01-introduction.html",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Software Setup",
+          "page-url": "01-sw-setup.html",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        }
+      ]
+    }
+  ]
+  

@@ -1,0 +1,33 @@
+HTML Introduction
+ - Introduction
+ - Visual Studio Code Setup
+ - HTML Structure
+HTML Basic Tags
+ - Header Tags
+ - List of Items
+ - Images in HTML Page
+ - Links in HTML Page
+ - Comments in HTML Page
+ - Content Structure
+ - Video Tag
+ - Audio Tag
+ - Iframe
+CSS Introduction
+ - CSS Introduction
+ - Inline CSS vs CSS File
+ - Selectors Basics
+ - Selectors Advanced
+ - Colors
+ - Text Formatting Basics
+ - Text Formatting Advanced
+Box Model
+ - Box Model Basics
+ - Box Model Advanced
+ - Block vs Inline
+ - Flex Basics
+ - Flex Advanced
+Project
+ - Build your first Website
+Source Control and Hosting
+ - Github Fundamentals
+ - Github Advanced

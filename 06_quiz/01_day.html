@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web Fundamentals Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .quiz-container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #3D52A0;
+    }
+    .question {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .option {
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option:hover {
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .result {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
+    }
+    .incorrect {
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Web Fundamentals Quiz</h1>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h3>1. What is the role of a browser in how websites work?</h3>
+      <div class="visual-example" id="visual1">
+        <p>The browser requests content from a server and renders it on screen.</p>
+        <div class="code">
+          Browser &rarr; Sends request to Server<br>
+          Server &rarr; Responds with HTML, CSS, JS<br>
+          Browser &rarr; Displays the webpage
+        </div>
+      </div>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(1, 'a', 'visual1')">Stores websites permanently</div>
+        <div class="option" onclick="checkAnswer(1, 'b', 'visual1')">Creates websites</div>
+        <div class="option" onclick="checkAnswer(1, 'c', 'visual1')">Displays websites by reading code</div>
+        <div class="option" onclick="checkAnswer(1, 'd', 'visual1')">Compiles Java programs</div>
+      </div>
+      <div id="result1" class="result"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. Which tool helps inspect and edit HTML/CSS live in the browser?</h3>
+      <div class="visual-example" id="visual2">
+        <p>Browser developer tools let you explore HTML, CSS, and JavaScript used on a page.</p>
+        <div class="code">
+          Right click → Inspect<br>
+          Use "Elements" and "Console" tabs
+        </div>
+      </div>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a', 'visual2')">Text Editor</div>
+        <div class="option" onclick="checkAnswer(2, 'b', 'visual2')">Browser Developer Tools</div>
+        <div class="option" onclick="checkAnswer(2, 'c', 'visual2')">Paint</div>
+        <div class="option" onclick="checkAnswer(2, 'd', 'visual2')">Camera app</div>
+      </div>
+      <div id="result2" class="result"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. Which is the correct basic structure of an HTML document?</h3>
+      <div class="visual-example" id="visual3">
+        <div class="code">
+          &lt;!DOCTYPE html&gt;<br>
+          &lt;html&gt;<br>
+          &nbsp;&nbsp;&lt;head&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;My Page&lt;/title&gt;<br>
+          &nbsp;&nbsp;&lt;/head&gt;<br>
+          &nbsp;&nbsp;&lt;body&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Hello, world!<br>
+          &nbsp;&nbsp;&lt;/body&gt;<br>
+          &lt;/html&gt;
+        </div>
+      </div>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(3, 'a', 'visual3')">&lt;html&gt;&lt;head&gt;&lt;body&gt;&lt;/body&gt;&lt;/head&gt;&lt;/html&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'b', 'visual3')">&lt;html&gt;&lt;title&gt;&lt;/title&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</div>
+        <div class="option" onclick="checkAnswer(3, 'c', 'visual3')">&lt;!DOCTYPE html&gt; + head + body inside html</div>
+        <div class="option" onclick="checkAnswer(3, 'd', 'visual3')">&lt;body&gt;&lt;html&gt;&lt;/html&gt;&lt;/body&gt;</div>
+      </div>
+      <div id="result3" class="result"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>4. What does the &lt;title&gt; tag define in an HTML page?</h3>
+      <div class="visual-example" id="visual4">
+        <p>The title tag content appears in the browser tab:</p>
+        <div class="code">
+          &lt;head&gt;<br>
+          &nbsp;&nbsp;&lt;title&gt;My Website&lt;/title&gt;<br>
+          &lt;/head&gt;
+        </div>
+      </div>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a', 'visual4')">The heading of the page</div>
+        <div class="option" onclick="checkAnswer(4, 'b', 'visual4')">A comment in code</div>
+        <div class="option" onclick="checkAnswer(4, 'c', 'visual4')">The page's tab title</div>
+        <div class="option" onclick="checkAnswer(4, 'd', 'visual4')">Name of the body tag</div>
+      </div>
+      <div id="result4" class="result"></div>
+    </div>
+
+    <!-- Question 5 -->
+   <!-- Question 5 - Simplified for School Students -->
+<div class="question">
+    <h3>5. If something goes wrong on a website, where can you see the error in the browser?</h3>
+    <div class="visual-example" id="visual5">
+      <p>The Console tab in the Developer Tools shows errors or messages when something isn’t working.</p>
+      <div class="code">
+        console.log("Hello!");<br>
+        // Uncaught Error: Something went wrong
+      </div>
+    </div>
+    <div class="options">
+      <div class="option" onclick="checkAnswer(5, 'a', 'visual5')">In the settings menu</div>
+      <div class="option" onclick="checkAnswer(5, 'b', 'visual5')">In the address bar</div>
+      <div class="option" onclick="checkAnswer(5, 'c', 'visual5')">In the Console tab</div>
+      <div class="option" onclick="checkAnswer(5, 'd', 'visual5')">On the search engine</div>
+    </div>
+    <div id="result5" class="result"></div>
+  </div>
+  
+  </div>
+
+  <script>
+    function checkAnswer(questionNum, selectedOption, visualId) {
+      const correctAnswers = {
+        1: 'c',
+        2: 'b',
+        3: 'c',
+        4: 'c',
+        5: 'c'
+      };
+
+      const resultDiv = document.getElementById(`result${questionNum}`);
+      const visualDiv = document.getElementById(visualId);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        resultDiv.textContent = '✅ Correct!';
+        resultDiv.className = 'result correct';
+        visualDiv.style.display = 'block';
+      } else {
+        resultDiv.textContent = '❌ Incorrect. Try again!';
+        resultDiv.className = 'result incorrect';
+      }
+    }
+  </script>
+</body>
+</html>

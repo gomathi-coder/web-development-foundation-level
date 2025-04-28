@@ -1,0 +1,123 @@
+[
+    {
+      "section-name": "HTML Introduction",
+      "section-id" : "html-introduction",
+      "teacher-section": "false",
+      "visible": "true",
+      "extended-section": "false",
+      
+      "child-pages": [
+        {
+          "page-name": "Introduction",
+          "page-url": "01-introduction.html",
+          "mark-down":"basics/01-intro.md",
+          "page-id":"intro-page",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Software Setup",
+          "page-url": "02-sw-setup.html",
+          "mark-down":"basics/02-ss.md",
+          "page-id":"sw-setup",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Teachers Notes",
+          "page-url": "teachers-notes.html",
+          "mark-down":"basics/32-tn.md",
+          "page-id":"tn",
+          "page-version" : "aab",
+          "teacher-section": "true",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Additional Classes",
+          "page-url": "add-classes.html",
+          "mark-down":"basics/42-ac.md",
+          "page-id":"ac",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "true"
+        },
+        {
+          "page-name": "Old Intro",
+          "page-url": "add-classes.html",
+          "mark-down":"basics/42-ac.md",
+          "page-id":"ac",
+          "page-version" : "aab",
+          "teacher-section": "true",
+          "visible": "false",
+          "extended-section": "false"
+        }
+      ]
+    },
+    {
+      "section-name": "HTML Introduction",
+      "section-id" : "html-introduction",
+      "teacher-section": "false",
+      "visible": "true",
+      "extended-section": "false",
+      
+      "child-pages": [
+        {
+          "page-name": "Introduction",
+          "page-url": "01-introduction.html",
+          "mark-down":"basics/01-intro.md",
+          "page-id":"intro-page",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Software Setup",
+          "page-url": "02-sw-setup.html",
+          "mark-down":"basics/02-ss.md",
+          "page-id":"sw-setup",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Teachers Notes",
+          "page-url": "teachers-notes.html",
+          "mark-down":"basics/32-tn.md",
+          "page-id":"tn",
+          "page-version" : "aab",
+          "teacher-section": "true",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Additional Classes",
+          "page-url": "add-classes.html",
+          "mark-down":"basics/42-ac.md",
+          "page-id":"ac",
+          "page-version" : "aab",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "true"
+        },
+        {
+          "page-name": "Old Intro",
+          "page-url": "add-classes.html",
+          "mark-down":"basics/42-ac.md",
+          "page-id":"ac",
+          "page-version" : "aab",
+          "teacher-section": "true",
+          "visible": "false",
+          "extended-section": "false"
+        }
+      ]
+    }
+  ]
+  

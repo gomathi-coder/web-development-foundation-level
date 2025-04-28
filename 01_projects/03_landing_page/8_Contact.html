@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVision - Innovative Solutions</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+   <style>
+     .fixed-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        
+        .scrolled {
+            background-color: rgba(13, 110, 253, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+ /* Custom CSS for enhanced UI */
+ .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+    
+
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+   </style>
+</head>
+<body>
+    
+
+   <!-- Fixed Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-header" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="#">TechVision</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<!-- Hero Section with Background Image -->
+<section id="home" class="hero-section">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1 class="display-3 fw-bold mb-4">Transform Your Business With Digital Innovation</h1>
+                <p class="lead mb-4">We deliver cutting-edge technology solutions tailored to your unique business needs, helping you stay ahead in the digital landscape.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="#services" class="btn btn-primary btn-lg px-4 py-2">Explore Services</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg px-4 py-2">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+   <!-- Services Section -->
+   <section id="services" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-5 mb-3">Our Services</h2>
+            <div class="mx-auto" style="max-width: 700px;">
+                <p class="lead text-muted">We offer comprehensive digital solutions to help your business thrive in the modern marketplace.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="bi bi-code-slash text-primary fs-2"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Custom Development</h4>
+                        <p class="card-text text-muted">Tailored software solutions designed specifically for your business requirements and workflow.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="bi bi-phone text-primary fs-2"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Mobile Solutions</h4>
+                        <p class="card-text text-muted">Engaging mobile applications that connect you with your customers anytime, anywhere.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="bi bi-cloud-arrow-up text-primary fs-2"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Cloud Services</h4>
+                        <p class="card-text text-muted">Scalable cloud infrastructure that grows with your business and reduces IT overhead.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Our Team" 
+                     class="img-fluid rounded shadow-lg">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="fw-bold display-5 mb-4">About TechVision</h2>
+                <p class="lead mb-4">We're a team of passionate technologists dedicated to helping businesses succeed through digital transformation.</p>
+                <p class="mb-4">Founded in 2012, TechVision has grown from a small startup to a leading provider of digital solutions. Our approach combines technical expertise with deep industry knowledge to deliver results that matter.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 rounded p-2 me-3">
+                                <i class="bi bi-award text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Award Winning</h6>
+                                <small class="text-muted">Recognized excellence</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 rounded p-2 me-3">
+                                <i class="bi bi-people text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Expert Team</h6>
+                                <small class="text-muted">Certified professionals</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 rounded p-2 me-3">
+                                <i class="bi bi-graph-up-arrow text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Proven Results</h6>
+                                <small class="text-muted">Client success stories</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 rounded p-2 me-3">
+                                <i class="bi bi-headset text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">24/7 Support</h6>
+                                <small class="text-muted">Always available</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+ <!-- Gallery Section -->
+ <section id="gallery" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-5 mb-3">Our Work</h2>
+            <p class="lead text-muted">Explore some of our recent projects and success stories</p>
+        </div>
+        
+        <div class="row g-3">
+            <div class="col-md-4 col-6">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" 
+                     alt="Project 1" 
+                     class="gallery-img rounded shadow-sm">
+            </div>
+            <div class="col-md-4 col-6">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Project 2" 
+                     class="gallery-img rounded shadow-sm">
+            </div>
+            <div class="col-md-4 col-6">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                     alt="Project 3" 
+                     class="gallery-img rounded shadow-sm">
+            </div>
+            <div class="col-md-4 col-6">
+                <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Project 4" 
+                     class="gallery-img rounded shadow-sm">
+            </div>
+            <div class="col-md-4 col-6">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Project 5" 
+                     class="gallery-img rounded shadow-sm">
+            </div>
+            <div class="col-md-4 col-6">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Project 6" 
+                     class="gallery-img rounded shadow-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-5 mb-3">Client Testimonials</h2>
+            <p class="lead text-muted">Hear what our clients say about working with us</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card testimonial-card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="card-text mb-4">"TechVision transformed our e-commerce platform, resulting in a 150% increase in online sales within just three months."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">CEO, RetailPro</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card testimonial-card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="card-text mb-4">"The mobile app developed by TechVision has revolutionized our customer engagement and increased our retention rate by 40%."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h6 class="mb-0">Michael Chen</h6>
+                                <small class="text-muted">CTO, FinTech Solutions</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card testimonial-card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="card-text mb-4">"Their cloud migration strategy saved us $250,000 annually in infrastructure costs while improving system reliability."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h6 class="mb-0">David Wilson</h6>
+                                <small class="text-muted">IT Director, Manufacturing Inc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+ <!-- Contact Section -->
+ <section id="contact" class="py-5 bg-primary text-white">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold display-5 mb-4">Ready to Start Your Project?</h2>
+                <p class="lead mb-5">Get in touch with our team to discuss how we can help you achieve your business goals through technology.</p>
+                
+                <div class="row g-4 text-start">
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3">
+                                <i class="bi bi-geo-alt fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>Location</h5>
+                                <p class="mb-0">123 Tech Avenue<br>San Francisco, CA 94107</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3">
+                                <i class="bi bi-envelope fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>Email Us</h5>
+                                <p class="mb-0">info@techvision.com<br>support@techvision.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3">
+                                <i class="bi bi-telephone fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>Call Us</h5>
+                                <p class="mb-0">+1 (555) 123-4567<br>Mon-Fri, 9am-6pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

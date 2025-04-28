@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web Development Practical Curriculum</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+    }
+  
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #3498db;
+      font-size: 1.8rem;
+      padding-bottom: 10px;
+    }
+  
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+      font-style: italic;
+      padding: 0 10px;
+    }
+  
+    .button-group {
+      text-align: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 10px;
+    }
+  
+    .view-button {
+      background-color: #3498db;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      text-decoration: none;
+      display: inline-block;
+      margin: 5px;
+      white-space: nowrap;
+    }
+  
+    .view-button:hover {
+      background-color: #2980b9;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  
+    tr:hover {
+      background-color: #e3f2fd;
+    }
+  
+    .day-number {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+  
+    .topic {
+      font-weight: 600;
+    }
+  
+    .details {
+      text-align: left;
+    }
+  
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+  
+      h1 {
+        font-size: 1.4rem;
+      }
+  
+      .view-button {
+        font-size: 0.85em;
+        padding: 6px 10px;
+      }
+  
+      th, td {
+        padding: 10px 12px;
+      }
+  
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Otomatiks Web Development Foundation Course</h1>
+
+<div class="button-group">
+  <a href="01_overview.html" target="_blank" class="view-button">Overview</a>
+  <a href="01_basic_curriculum.html" target="_blank" class="view-button">Curriculum</a>
+  <a href="01_basic_project.html" target="_blank" class="view-button">Project</a>
+</div>
+
+<p class="subtitle">
+  16-day intensive hands-on course with daily practical assessments
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Topic</th>
+      <th>Details</th>
+      <th>Sample Code</th>
+      <th>PPT Slides</th>
+      <th>Visual Assessment</th>
+      <th>Quiz</th>
+      <th>Home Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Project 1: Days 1–5 -->
+    <tr>
+      <td class="day-number">1</td>
+      <td class="topic">Web Fundamentals</td>
+      <td class="details">• How websites work<br>• Browser developer tools<br>• Basic HTML document structure<br>• VS Setup</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td>____</td>
+      <td><a href="../06_quiz/01_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">2</td>
+      <td class="topic">HTML Basics</td>
+      <td class="details">• HTML Basic tags<br>• Headings, paragraphs, lists<br>• Links and images<br>• HTML Comments</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/02_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/02_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">3</td>
+      <td class="topic">HTML & CSS</td>
+      <td class="details">• Multimedia (video, audio)<br>• Iframe<br>• CSS introduction<br>• CSS Structure<br>• Color and background<br>• Selectors<br>• CSS comments<br>• External CSS</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/03_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/03_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">4</td>
+      <td class="topic">CSS Layout</td>
+      <td class="details">• Text property<br>• Box model<br>• Flex<br>• Grid</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/04_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/04_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">5</td>
+      <td class="topic">Project Development</td>
+      <td class="details"> • School/Portfolio Website<br>• Project review<br>• Debugging & Deployment</td>
+     <td><a href="#" class="view-button">Download</a></td>
+      <td colspan="4"><a href="../04_project_document/05_day_projectproject.pdf" target="_blank" class="view-button">Project 1 Guide</a></td>
+    </tr>
+
+    <!-- Day 6: No project -->
+    <tr>
+      <td class="day-number">6</td>
+      <td class="topic">Git & GitHub</td>
+      <td class="details">• Version control basics<br>• GitHub setup<br>• Deployment</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td>____</td>
+      <td><a href="../06_quiz/06_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+
+    <!-- Project 2: Days 7–10 -->
+    <tr>
+      <td class="day-number">7</td>
+      <td class="topic">Responsive Design</td>
+      <td class="details">• Media queries<br>• Resize browser<br>• Viewport units<br>• Hide elements</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/07_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/07_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">8</td>
+      <td class="topic">CSS Layout Systems</td>
+      <td class="details">• Navigation<br>• Mobile Navigation<br>• Pattern</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/08_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/08_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">9</td>
+      <td class="topic">HTML & CSS</td>
+      <td class="details">• Pattern</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/09_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../09_quiz/01_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">10</td>
+      <td class="topic">Project Development</td>
+      <td class="details"> • Restaurant/Landing Page Website<br>• Project review<br>• Debugging & Deployment</td>
+ 
+       <td><a href="#" class="view-button">Download</a></td>
+      <td colspan="4"><a href="../04_project_document/10_day_projectproject.pdf" target="_blank" class="view-button">Project 2 Guide</a></td>
+    </tr>
+
+    <!-- Project 3: Days 11–13 -->
+    <tr>
+      <td class="day-number">11</td>
+      <td class="topic">Bootstrap Basics</td>
+      <td class="details">• Bootstrap Introduction<br>• Container<br>• Color<br>• Grid<br>• Image<br>• Button<br>• Navbar</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/11_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/11_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">12</td>
+      <td class="topic">Bootstrap UI</td>
+      <td class="details">• Slider<br>• Accordion<br>• Icons</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td><a href="../05_visual_assignments/12_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="../06_quiz/12_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">13</td>
+      <td class="topic">Project Development</td>
+      <td class="details"> • E-commerce/Event Website<br>• Project review<br>• Debugging & Deployment</td>
+    <td><a href="#" class="view-button">Download</a></td>
+      <td colspan="4"><a href="../04_project_document/13_day_projectproject.pdf" target="_blank" class="view-button">Project 3 Guide</a></td>
+    </tr>
+
+    <!-- Project 4: Days 14–16 -->
+    <tr>
+      <td class="day-number">14</td>
+      <td class="topic">JavaScript Basics</td>
+      <td class="details">• JS Introduction<br>• Variables and data types<br>• Function<br>• Alert</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td>____</td>
+      <td><a href="../06_quiz/14_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">15</td>
+      <td class="topic">JavaScript & HTML</td>
+      <td class="details">• HTML Form<br>• Dropdown<br>• Form styling<br>• DOM<br>• getElementById</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+      <td>____</td>
+      <td><a href="../06_quiz/15_day.html" target="_blank" class="view-button">View</a></td>
+      <td><a href="#" class="view-button">View</a></td>
+    </tr>
+    <tr>
+      <td class="day-number">16</td>
+      <td class="topic">Final Project</td>
+      <td class="details"> • Registration Form <br>• Project review<br>• Debugging & Deployment</td>
+      <td><a href="#" class="view-button">Download</a></td>
+      <td colspan="4"><a href="../04_project_document/16_day_projectproject.pdf" target="_blank" class="view-button">Project 4 Guide</a></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

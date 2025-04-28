@@ -1,0 +1,102 @@
+/* Layout styles */
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #343a40;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .course-title {
+    color:#212529
+  }
+  
+  .header-buttons button {
+    margin-left: 10px;
+  }
+  
+  .body-section {
+    display: flex;
+    height: calc(100% - 72px); /* Adjust based on header height */
+  }
+  
+  .left-pane {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    overflow-y: auto;
+    border-right: 1px solid #dee2e6;
+  }
+  
+  .right-pane {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  /* Menu styles */
+  #menu .parent-button {
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    position: relative;
+  }
+  
+  #menu .parent-button::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    font-size: 1.2rem;
+  }
+  
+  #menu .parent-button.collapsed::after {
+    content: '+';
+  }
+  
+  #menu .parent-button.expanded::after {
+    content: '-';
+  }
+  
+  #menu .child-link {
+    display: block;
+    padding: 0.25rem 1.5rem;
+    color: #212529;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background-color 0.3s;
+  }
+  
+  #menu .child-link:hover {
+    background-color: #e2e6ea;
+  }
+  
+  #menu .child-link.active {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  #menu .parent-button.active {
+    color: #0d6efd;
+  }
+  
+  /* Teacher and extended sections */
+  .teacher-section {
+    color: #6c757d; /* muted gray */
+  }
+  
+  .extended-section {
+    color: #198754; /* green */
+  }
+  

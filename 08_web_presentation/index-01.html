@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Development Foundation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .body-section {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .left-pane {
+      width: 250px;
+      overflow-y: auto;
+      border-right: 1px solid #ddd;
+      padding: 1rem;
+    }
+    .right-pane {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    .nav-link.active {
+      font-weight: bold;
+      color: #0d6efd;
+    }
+    .teacher-section {
+      color: #6f42c1;
+    }
+    .extended-section {
+      color: #20c997;
+    }
+  </style>
+</head>
+<body>
+
+<header class="bg-light p-3 d-flex justify-content-between align-items-center border-bottom">
+  <h1 class="h4 mb-0">Web Development Foundation</h1>
+  <div>
+    <button class="btn btn-outline-primary btn-sm me-2" id="toggleTeacher">Show/Hide Teacher Section</button>
+    <button class="btn btn-outline-success btn-sm" id="toggleExtended">Show/Hide Extended Section</button>
+  </div>
+</header>
+
+<div class="body-section">
+  <div class="left-pane" id="menu"></div>
+  <div class="right-pane">
+    <!-- Content for the right pane goes here -->
+    <h2>Welcome to Web Development Foundation</h2>
+    <p>Select a topic from the left menu to get started.</p>
+  </div>
+</div>
+
+<script>
+  const menuData = [
+    {
+      "section-name": "HTML Introduction",
+      "teacher-section": "false",
+      "visible": "true",
+      "extended-section": "false",
+      "child-pages": [
+        {
+          "page-name": "Introduction",
+          "page-url": "01-introduction.html",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        },
+        {
+          "page-name": "Software Setup",
+          "page-url": "01-sw-setup.html",
+          "teacher-section": "false",
+          "visible": "true",
+          "extended-section": "false"
+        }
+      ]
+    }
+  ];
+
+  const currentPage = window.location.pathname.split("/").pop();
+  let showTeacherSection = true;
+  let showExtendedSection = true;
+
+  function renderMenu() {
+    const menu = document.getElementById('menu');
+    menu.innerHTML = '';
+
+    menuData.forEach(section => {
+      if (section.visible !== "true") return;
+      if (section.teacher-section === "true" && !showTeacherSection) return;
+      if (section.extended-section === "true" && !showExtendedSection) return;
+
+      const parentDiv = document.createElement('div');
+      parentDiv.className = 'mb-3';
+
+      const parentButton = document.createElement('button');
+      parentButton.className = 'btn btn-link text-start w-100';
+      if (section.teacher-section === "true") parentButton.classList.add('teacher-section');
+      if (section.extended-section === "true") parentButton.classList.add('extended-section');
+      parentButton.innerText = section['section-name'];
+      parentButton.setAttribute('data-bs-toggle', 'collapse');
+      parentButton.setAttribute('data-bs-target', `#section-${section['section-name'].replace(/\s+/g, '-')}`);
+
+      const childDiv = document.createElement('div');
+      childDiv.className = 'collapse';
+      childDiv.id = `section-${section['section-name'].replace(/\s+/g, '-')}`;
+
+      section['child-pages'].forEach(page => {
+        if (page.visible !== "true") return;
+        if (page.teacher-section === "true" && !showTeacherSection) return;
+        if (page.extended-section === "true" && !showExtendedSection) return;
+
+        const childLink = document.createElement('a');
+        childLink.href = page['page-url'];
+        childLink.className = 'nav-link';
+        if (page.teacher-section === "true") childLink.classList.add('teacher-section');
+        if (page.extended-section === "true") childLink.classList.add('extended-section');
+        if (currentPage === page['page-url']) {
+          childLink.classList.add('active');
+          childDiv.classList.add('show');
+        }
+        childLink.innerText = page['page-name'];
+        childDiv.appendChild(childLink);
+      });
+
+      parentDiv.appendChild(parentButton);
+      parentDiv.appendChild(childDiv);
+      menu.appendChild(parentDiv);
+    });
+  }
+
+  document.getElementById('toggleTeacher').addEventListener('click', () => {
+    showTeacherSection = !showTeacherSection;
+    renderMenu();
+  });
+
+  document.getElementById('toggleExtended').addEventListener('click', () => {
+    showExtendedSection = !showExtendedSection;
+    renderMenu();
+  });
+
+  renderMenu();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
