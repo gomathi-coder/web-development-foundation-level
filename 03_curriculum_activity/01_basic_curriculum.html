@@ -1,362 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Web Development Curriculum</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Tools Curriculum</title>
   <style>
-    :root {
-      --html-color: #e3f2fd;
-      --css-color: #e8f5e9;
-      --bootstrap-color: #f3e5f5;
-      --js-color: #fff8e1;
-      --header-color: #2c3e50;
-      --text-color: #333;
-      --light-text: #7f8c8d;
-      --border-color: #e0e0e0;
-      --hover-color: #f5f7fa;
-      --even-row: #f8f9fa;
-    }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      padding: 20px;
-      color: var(--text-color);
       line-height: 1.6;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      color: var(--header-color);
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--light-text);
-      margin-bottom: 30px;
-    }
-
-    .container {
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
+      padding: 20px;
+      color: #333;
     }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 40px;
-    }
-
-    th, td {
-      padding: 16px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-color);
-      vertical-align: top;
-    }
-
-    th {
-      background-color: var(--header-color);
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      font-weight: 600;
-      position: sticky;
-      top: 0;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    td {
-      background-color: #fff;
-      transition: background-color 0.2s;
-    }
-
-    tr:hover td {
-      background-color: var(--hover-color);
-    }
-
-    tr:nth-child(even) td {
-      background-color: var(--even-row);
-    }
-
-    /* Style for rowspan cells */
-    td[rowspan] {
-      background-color: #e9ecef;
-      font-weight: 600;
-      color: var(--header-color);
-      vertical-align: middle;
+    h1 {
+      color: #2c3e50;
       text-align: center;
-      font-size: 1.1rem;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
     }
-
-    /* Different background for each curriculum section */
-    .html-row td[rowspan] {
-      background-color: var(--html-color);
+    h2 {
+      color: #3498db;
+      margin-top: 30px;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
     }
-
-    .css-row td[rowspan] {
-      background-color: var(--css-color);
+    .tech-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 10px;
+      margin: 20px 0;
     }
-
-    .bootstrap-row td[rowspan] {
-      background-color: var(--bootstrap-color);
+    .tech-item {
+      background: #f8f9fa;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border-left: 3px solid #3498db;
     }
-
-    .js-row td[rowspan] {
-      background-color: var(--js-color);
-    }
-
-    /* Responsive styles - Tablet */
-    @media (max-width: 992px) {
-      th, td {
-        padding: 14px 16px;
-        font-size: 0.95rem;
-      }
-
-      td[rowspan] {
-        font-size: 1rem;
-      }
-    }
-
-    /* Responsive styles - Mobile */
-    @media (max-width: 768px) {
-      body {
-        padding: 15px 10px;
-      }
-
-      table {
-        border-radius: 8px;
-      }
-
-      th {
-        display: none;
-      }
-
-      tr {
-        display: block;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: #fff;
-      }
-
-      td {
-        display: flex;
-        padding: 12px 15px;
-        border: none;
-        border-bottom: 1px solid var(--border-color);
-        text-align: right;
-        position: relative;
-        min-height: 48px;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      td::before {
-        content: attr(data-label);
-        font-weight: 600;
-        position: absolute;
-        left: 15px;
-        width: 45%;
-        text-align: left;
-        color: var(--header-color);
-      }
-
-      td:last-child {
-        border-bottom: none;
-      }
-
-      td[rowspan] {
-        display: block;
-        text-align: center;
-        padding: 15px;
-        font-size: 1.1rem;
-        border-bottom: 1px solid var(--border-color);
-        background-color: #e9ecef;
-      }
-
-      td[rowspan]::before {
-        display: none;
-      }
-
-      .html-row td[rowspan] {
-        background-color: var(--html-color);
-      }
-
-      .css-row td[rowspan] {
-        background-color: var(--css-color);
-      }
-
-      .bootstrap-row td[rowspan] {
-        background-color: var(--bootstrap-color);
-      }
-
-      .js-row td[rowspan] {
-        background-color: var(--js-color);
-      }
-    }
-
-    /* Small mobile devices */
-    @media (max-width: 480px) {
-      td {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        padding: 10px 15px;
-        min-height: auto;
-      }
-
-      td::before {
-        position: static;
-        width: 100%;
-        margin-bottom: 5px;
-        text-align: left;
-      }
-
-      td[rowspan] {
-        text-align: center;
+    @media (max-width: 600px) {
+      .tech-list {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Web Development Curriculum</h1>
-    <p class="subtitle">Comprehensive guide to modern web development technologies</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Concepts</th>
-          <th>Topics Covered</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
+  <h1>Web Development Foundation Curriculum</h1>
 
 
+  <h2>HTML</h2>
+  <div class="tech-list">
+    <div class="tech-item">HTML Basic tags</div>
+    <div class="tech-item">lists, Table</div>
+    <div class="tech-item">Links and images</div>
+    <div class="tech-item">HTML Comments</div>
+    <div class="tech-item">Multimedia (video, audio)</div>
+    <div class="tech-item">Iframe</div>
+    <div class="tech-item">HTML Form</div>
+    <div class="tech-item">Form Dropdown</div>
+  </div>
 
+  <h2>CSS</h2>
+  <div class="tech-list">
+    <div class="tech-item">CSS introduction</div>
+    <div class="tech-item">CSS Structure</div>
+    <div class="tech-item">Color and background</div>
+    <div class="tech-item">Selectors</div>
+    <div class="tech-item">CSS comments</div>
+    <div class="tech-item">External CSS</div>
+    <div class="tech-item">Text property</div>
+    <div class="tech-item">Box model</div>
+    <div class="tech-item">Flex</div>
+    <div class="tech-item">Grid</div>
+  </div>
 
-        <tr class="html-row">
-          <td rowspan="7">HTML</td>
-          <td data-label="Subtopics Covered">Basic Structure & Introduction</td>
-          <td data-label="Description">Introduction, Structure, Comments</td>
-        </tr>
+  <h2>Media queries</h2>
+  <div class="tech-list">
+    <div class="tech-item">Responsive Design</div>
+    <div class="tech-item">Resize browser</div>
+    <div class="tech-item">Viewport units</div>
+    <div class="tech-item">Hide elements</div>
+    <div class="tech-item">Navbar</div>
+    <div class="tech-item">Mobile Navbar</div>
 
-        <tr class="html-row">
-          <td data-label="Subtopics Covered">Basic Tags</td>
-          <td data-label="Description">Headings, Paragraphs, Strong, ul, ol, li, Img, a, Tables</td>
-        </tr>
+  </div>
 
-        <tr class="html-row">
-          <td data-label="Subtopics Covered">Core Elements</td>
-          <td data-label="Description">Styles, Header, Section, Footer, Nav, Aside </td>
-        </tr>
+ 
 
-        <tr class="html-row">
-          <td data-label="Subtopics Covered">Content Structuring</td>
-          <td data-label="Description">Div Element, class Attribute, id Attribute</td>
-        </tr>
-        <tr class="html-row">
-          <td data-label="Subtopics Covered">Multimedia</td>
-          <td data-label="Description">Media, Video, Audio, YouTube, Iframe</td>
-        </tr>
-        <tr class="html-row">
-          <td data-label="Subtopics Covered">Forms & Inputs</td>
-          <td data-label="Description">Forms, Form Attributes, Input Types</td>
-        </tr>
-        <tr class="html-row">
-          <td data-label="Subtopics Covered">Advanced Embeds & Media</td>
-          <td data-label="Description">Iframes, File Paths</td>
-        </tr>
+  <h2>Bootstrap</h2>
+  <div class="tech-list">
+    <div class="tech-item">Bootstrap Introduction</div>
+    <div class="tech-item">Container</div>
+    <div class="tech-item">Color</div>
+    <div class="tech-item">Grid</div>
+    <div class="tech-item">Image</div>
+    <div class="tech-item">Button</div>
+    <div class="tech-item">Navbar</div>
+    <div class="tech-item">Slider</div>
+    <div class="tech-item">Accordion</div>
+    <div class="tech-item">Icons</div>
+  </div>
 
+  <h2>JavaScript</h2>
+  <div class="tech-list">
+    <div class="tech-item">JS Introduction</div>
+    <div class="tech-item">Variables and data types</div>
+    <div class="tech-item">Function</div>
+    <div class="tech-item">Alert</div>
+   
+    <div class="tech-item">Form styling</div>
+    <div class="tech-item">DOM</div>
+    <div class="tech-item">getElementById</div>
+  </div>
 
-
-
-
-
-        <tr class="css-row">
-          <td rowspan="8">CSS</td>
-          <td data-label="Subtopics Covered">Basics & Introduction</td>
-          <td data-label="Description">Introduction, Structure, Syntax, Selectors, Comments</td>
-        </tr>
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Color, Background Image</td>
-          <td data-label="Description">Colors, Backgrounds color</td>
-        </tr>
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Text & Fonts</td>
-          <td data-label="Description">Text, Fonts, Icons, Links, Lists</td>
-        </tr>
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Box Model & Spacing</td>
-          <td data-label="Description">Borders, Margins, Padding, Height/Width</td>
-        </tr>
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Layout Systems</td>
-          <td data-label="Description">Flexbox, Grid, Navbar</td>
-        </tr>
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Positioning</td>
-          <td data-label="Description">Fixed, Overflow, Z-index, Float</td>
-        </tr>
-
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Transitions</td>
-          <td data-label="Description">2D Transforms, Transitions</td>
-        </tr>
-        <tr class="css-row">
-          <td data-label="Subtopics Covered">Responsive Design</td>
-          <td data-label="Description">Media Queries, Responsive Web Design</td>
-        </tr>
-
-
-
-
-
-
-        <tr class="bootstrap-row">
-          <td rowspan="4">Bootstrap</td>
-          <td data-label="Subtopics Covered">Basics</td>
-          <td data-label="Description">Containers, Typography, Colors</td>
-        </tr>
-        <tr class="bootstrap-row">
-          <td data-label="Subtopics Covered">UI Components</td>
-          <td data-label="Description">Buttons, Navbar, Forms</td>
-        </tr>
-        <tr class="bootstrap-row">
-          <td data-label="Subtopics Covered">Flexbox & Grid</td>
-          <td data-label="Description">Flexbox, Grid System</td>
-        </tr>
-        <tr class="bootstrap-row">
-          <td data-label="Subtopics Covered">Responsive Design</td>
-          <td data-label="Description">Responsive sizes: XSmall, Small, Medium, Large, XLarge, XXL</td>
-        </tr>
-
-
-
-
-
-
-        <tr class="js-row">
-          <td rowspan="2">Javascript</td>
-          <td data-label="Subtopics Covered">Core Concepts</td>
-          <td data-label="Description">Variables, data types, operators, conditionals (let, const, var)</td>
-        </tr>
-        <tr class="js-row">
-          <td data-label="Subtopics Covered">Functions & DOM</td>
-          <td data-label="Description">Functions, events (onclick, onchange), DOM access (getElementById)</td>
-        </tr>
-      </tbody>
+ 
+</body>
+</html>
