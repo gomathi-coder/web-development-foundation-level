@@ -1,0 +1,4 @@
+Type,section-name/page-name,section-id/page-id,page-url,mark-down,page-version,teacher-section,extended-section,visible,Parent,active-version
+Section,HTML Introduction,html-introduction,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Introduction,intro-page,01-introduction.html,basics/01-intro.md,aab,FALSE,FALSE,TRUE,html-introduction,TRUE
+Page,Teachers Note for First Class,tn-first-class,31-teachers-note-first-class.html,additional/teachers-note/31-teachers-note-first-class.md,aaa,TRUE,FALSE,TRUE,html-introduction,TRUE

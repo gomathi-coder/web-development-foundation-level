@@ -1,0 +1,10 @@
+Type,section-name/page-name,section-id/page-id,page-url,mark-down,page-version,teacher-section,extended-section,visible,Parent,active-version
+Section,HTML Introduction,html-introduction,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Introduction,introduction-page,01-introduction.html,01-introduction/01-a.md,aaa,FALSE,FALSE,TRUE,html-introduction,TRUE
+Page,Visual Studio Code Setup,vs-code-setup,02-vs-code-setup.html,01-introduction/02-a.md,aaa,FALSE,FALSE,TRUE,html-introduction,TRUE
+Page,HTML Structure,html-structure,02-html-structure.html,01-introduction/03-a.md,aaa,FALSE,FALSE,TRUE,html-introduction,TRUE
+Section,HTML Basic Tags,html-basic-tags,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Header Tags,header-tags,01-header-tags.html,02-basic-tags/01-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,List of Items,list-of-items,01-list-of-items.html,02-basic-tags/02-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Images in HTML Page,img-tag,01-img-tag.html,02-basic-tags/03-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Links in HTML Page,link-tag,01-link-tag.html,02-basic-tags/04-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE

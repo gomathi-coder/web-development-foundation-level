@@ -1,0 +1,326 @@
+[
+  {
+    "section-name": "HTML Introduction",
+    "section-id": "html-introduction",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "Introduction",
+        "page-url": "01-introduction.html",
+        "mark-down": "01-introduction/01-a.md",
+        "page-id": "introduction-page",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Visual Studio Code Setup",
+        "page-url": "02-vs-code-setup.html",
+        "mark-down": "01-introduction/02-a.md",
+        "page-id": "vs-code-setup",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "HTML Structure",
+        "page-url": "03-html-structure.html",
+        "mark-down": "01-introduction/03-a.md",
+        "page-id": "html-structure",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      }
+    ]
+  },
+  {
+    "section-name": "HTML Basic Tags",
+    "section-id": "html-basic-tags",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "Header Tags",
+        "page-url": "01-header-tags.html",
+        "mark-down": "02-basic-tags/01-a.md",
+        "page-id": "header-tags",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "List of Items",
+        "page-url": "02-list-of-items.html",
+        "mark-down": "02-basic-tags/02-a.md",
+        "page-id": "list-of-items",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Images in HTML Page",
+        "page-url": "03-img-tag.html",
+        "mark-down": "02-basic-tags/03-a.md",
+        "page-id": "img-tag",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Links in HTML Page",
+        "page-url": "04-link-tag.html",
+        "mark-down": "02-basic-tags/04-a.md",
+        "page-id": "link-tag",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Comments in HTML Page",
+        "page-url": "05-comments-tag.html",
+        "mark-down": "02-basic-tags/05-a.md",
+        "page-id": "comments-tag",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Content Structure",
+        "page-url": "06-content-structure.html",
+        "mark-down": "02-basic-tags/06-a.md",
+        "page-id": "content-structure",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Video Tag",
+        "page-url": "07-video-tag.html",
+        "mark-down": "02-basic-tags/07-a.md",
+        "page-id": "video-tag",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Audio Tag",
+        "page-url": "08-audio-tag.html",
+        "mark-down": "02-basic-tags/08-a.md",
+        "page-id": "audio-tag",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Iframe",
+        "page-url": "09-iframe-tag.html",
+        "mark-down": "02-basic-tags/09-a.md",
+        "page-id": "iframe-tag",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      }
+    ]
+  },
+  {
+    "section-name": "CSS Introduction",
+    "section-id": "css-introduction",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "CSS Introduction",
+        "page-url": "01-css-intro.html",
+        "mark-down": "03-css-intro/01-a.md",
+        "page-id": "css-intro",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Inline CSS vs CSS File",
+        "page-url": "02-inline-vs-file.html",
+        "mark-down": "03-css-intro/02-a.md",
+        "page-id": "inline-vs-file",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Selectors Basics",
+        "page-url": "03-selectors-basics.html",
+        "mark-down": "03-css-intro/03-a.md",
+        "page-id": "selectors-basics",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Selectors Advanced",
+        "page-url": "04-selectors-advanced.html",
+        "mark-down": "03-css-intro/04-a.md",
+        "page-id": "selectors-advanced",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Colors",
+        "page-url": "05-colors.html",
+        "mark-down": "03-css-intro/05-a.md",
+        "page-id": "colors",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Text Formatting Basics",
+        "page-url": "06-text-formatting-basics.html",
+        "mark-down": "03-css-intro/06-a.md",
+        "page-id": "text-formatting-basics",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Text Formatting Advanced",
+        "page-url": "07-text-formatting-advanced.html",
+        "mark-down": "03-css-intro/07-a.md",
+        "page-id": "text-formatting-advanced",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      }
+    ]
+  },
+  {
+    "section-name": "Box Model",
+    "section-id": "box-model",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "Box Model Basics",
+        "page-url": "01-box-model-basics.html",
+        "mark-down": "04-box-model/01-a.md",
+        "page-id": "box-model-basics",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Box Model Advanced",
+        "page-url": "02-box-model-advanced.html",
+        "mark-down": "04-box-model/02-a.md",
+        "page-id": "box-model-advanced",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Block vs Inline",
+        "page-url": "03-block-vs-inline.html",
+        "mark-down": "04-box-model/03-a.md",
+        "page-id": "block-vs-inline",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Flex Basics",
+        "page-url": "04-flex-basics.html",
+        "mark-down": "04-box-model/04-a.md",
+        "page-id": "flex-basics",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Flex Advanced",
+        "page-url": "05-flex-advanced.html",
+        "mark-down": "04-box-model/05-a.md",
+        "page-id": "flex-advanced",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      }
+    ]
+  },
+  {
+    "section-name": "Project",
+    "section-id": "project",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "Build your first Website",
+        "page-url": "01-build-first-website.html",
+        "mark-down": "05-project/01-a.md",
+        "page-id": "build-first-website",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      }
+    ]
+  },
+  {
+    "section-name": "Source Control and Hosting",
+    "section-id": "source-control-hosting",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "Github Fundamentals",
+        "page-url": "01-github-fundamentals.html",
+        "mark-down": "06-github/01-a.md",
+        "page-id": "github-fundamentals",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      },
+      {
+        "page-name": "Github Advanced",
+        "page-url": "02-github-advanced.html",
+        "mark-down": "06-github/02-a.md",
+        "page-id": "github-advanced",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
+      }
+    ]
+  }
+]

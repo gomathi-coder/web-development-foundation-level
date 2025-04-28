@@ -1,0 +1,34 @@
+Type,section-name/page-name,section-id/page-id,page-url,mark-down,page-version,teacher-section,extended-section,visible,Parent,active-version
+Section,HTML Introduction,html-introduction,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Introduction,introduction-page,01-introduction.html,01-introduction/01-a.md,aaa,FALSE,FALSE,TRUE,html-introduction,TRUE
+Page,Visual Studio Code Setup,vs-code-setup,02-vs-code-setup.html,01-introduction/02-a.md,aaa,FALSE,FALSE,TRUE,html-introduction,TRUE
+Page,HTML Structure,html-structure,03-html-structure.html,01-introduction/03-a.md,aaa,FALSE,FALSE,TRUE,html-introduction,TRUE
+Section,HTML Basic Tags,html-basic-tags,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Header Tags,header-tags,01-header-tags.html,02-basic-tags/01-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,List of Items,list-of-items,02-list-of-items.html,02-basic-tags/02-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Images in HTML Page,img-tag,03-img-tag.html,02-basic-tags/03-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Links in HTML Page,link-tag,04-link-tag.html,02-basic-tags/04-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Comments in HTML Page,comments-tag,05-comments-tag.html,02-basic-tags/05-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Content Structure,content-structure,06-content-structure.html,02-basic-tags/06-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Video Tag,video-tag,07-video-tag.html,02-basic-tags/07-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Audio Tag,audio-tag,08-audio-tag.html,02-basic-tags/08-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Page,Iframe,iframe-tag,09-iframe-tag.html,02-basic-tags/09-a.md,aaa,FALSE,FALSE,TRUE,html-basic-tags,TRUE
+Section,CSS Introduction,css-introduction,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,CSS Introduction,css-intro,01-css-intro.html,03-css-intro/01-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Page,Inline CSS vs CSS File,inline-vs-file,02-inline-vs-file.html,03-css-intro/02-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Page,Selectors Basics,selectors-basics,03-selectors-basics.html,03-css-intro/03-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Page,Selectors Advanced,selectors-advanced,04-selectors-advanced.html,03-css-intro/04-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Page,Colors,colors,05-colors.html,03-css-intro/05-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Page,Text Formatting Basics,text-formatting-basics,06-text-formatting-basics.html,03-css-intro/06-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Page,Text Formatting Advanced,text-formatting-advanced,07-text-formatting-advanced.html,03-css-intro/07-a.md,aaa,FALSE,FALSE,TRUE,css-introduction,TRUE
+Section,Box Model,box-model,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Box Model Basics,box-model-basics,01-box-model-basics.html,04-box-model/01-a.md,aaa,FALSE,FALSE,TRUE,box-model,TRUE
+Page,Box Model Advanced,box-model-advanced,02-box-model-advanced.html,04-box-model/02-a.md,aaa,FALSE,FALSE,TRUE,box-model,TRUE
+Page,Block vs Inline,block-vs-inline,03-block-vs-inline.html,04-box-model/03-a.md,aaa,FALSE,FALSE,TRUE,box-model,TRUE
+Page,Flex Basics,flex-basics,04-flex-basics.html,04-box-model/04-a.md,aaa,FALSE,FALSE,TRUE,box-model,TRUE
+Page,Flex Advanced,flex-advanced,05-flex-advanced.html,04-box-model/05-a.md,aaa,FALSE,FALSE,TRUE,box-model,TRUE
+Section,Project,project,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Build your first Website,build-first-website,01-build-first-website.html,05-project/01-a.md,aaa,FALSE,FALSE,TRUE,project,TRUE
+Section,Source Control and Hosting,source-control-hosting,-,-,-,FALSE,FALSE,TRUE,-,TRUE
+Page,Github Fundamentals,github-fundamentals,01-github-fundamentals.html,06-github/01-a.md,aaa,FALSE,FALSE,TRUE,source-control-hosting,TRUE
+Page,Github Advanced,github-advanced,02-github-advanced.html,06-github/02-a.md,aaa,FALSE,FALSE,TRUE,source-control-hosting,TRUE
