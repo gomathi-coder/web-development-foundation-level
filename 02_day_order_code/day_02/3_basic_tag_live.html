@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Basic Tags Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .playground {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .controls {
+      width: 300px;
+    }
+    .control-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    select, input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .visual-output {
+      flex-grow: 1;
+      background: #f5f5f5;
+      padding: 20px;
+      min-height: 200px;
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .code-output {
+      margin-top: 30px;
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre;
+    }
+    .preview {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML Basic Tags Playground</h1>
+  <p style="text-align: center;">Choose a tag and type your text to see the magic!</p>
+
+  <div class="playground">
+    <div class="controls">
+      <div class="control-group">
+        <label for="tag">Select Tag:</label>
+        <select id="tag">
+          <option value="h1" selected>&lt;h1&gt; - Main Heading</option>
+          <option value="h2">&lt;h2&gt; - Sub Heading</option>
+          <option value="p">&lt;p&gt; - Paragraph</option>
+          <option value="b">&lt;b&gt; - Bold</option>
+          <option value="i">&lt;i&gt; - Italic</option>
+          <option value="u">&lt;u&gt; - Underline</option>
+          <option value="small">&lt;small&gt; - Small Text</option>
+          <option value="mark">&lt;mark&gt; - Highlight</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="text">Enter Text:</label>
+        <input type="text" id="text" placeholder="Type your text here..." value="Hello World!">
+      </div>
+    </div>
+
+    <div class="visual-output" id="visual-output">
+      <h1 class="preview">Hello World!</h1>
+    </div>
+  </div>
+
+  <div class="code-output" id="code-output">
+&lt;h1&gt;Hello World!&lt;/h1&gt;
+  </div>
+
+  <script>
+    const tagSelect = document.getElementById('tag');
+    const textInput = document.getElementById('text');
+    const visualOutput = document.getElementById('visual-output');
+    const codeOutput = document.getElementById('code-output');
+
+    function updateOutput() {
+      const tag = tagSelect.value;
+      const text = textInput.value;
+      
+      visualOutput.innerHTML = `<${tag} class="preview">${text}</${tag}>`;
+      codeOutput.textContent = `<${tag}>${text}</${tag}>`;
+    }
+
+    tagSelect.addEventListener('change', updateOutput);
+    textInput.addEventListener('input', updateOutput);
+
+    updateOutput(); // Initialize
+  </script>
+
+</body>
+</html>
