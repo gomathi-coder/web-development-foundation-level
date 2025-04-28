@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+ 
+  /* Pixel example - fixed size */
+  h1 {
+    font-size: 24px; /* Absolute size in pixels */
+  }
+
+  /* Percentage example - relative to parent width */
+  p {
+    width: 80%; /* Takes 80% of parent element's width */
+    line-height: 150%; /* 150% of the element's font size */
+    margin-left: 10%; /* Left margin as percentage of parent width */
+  }
+
+  /* REM example - relative to root font size */
+  h2 {
+    font-size: 1.5rem; /* 1.5 × root font size (16px × 1.5 = 24px) */
+    padding: 0.5rem; /* Padding relative to root font size */
+    margin-top: 1rem; /* Margin relative to root font size */
+  }
+
+  /* Viewport units example (bonus) */
+  footer {
+    font-size: 1vw; /* 1% of viewport width */
+    height: 5vh; /* 5% of viewport height */
+  }
+</style>
+</head>
+<body>
+
+<h1>This heading uses px units (absolute sizing)</h1>
+<p>This paragraph uses % units (relative to parent element)</p>
+<h2>This heading uses rem units (relative to root font size)</h2>
+<footer>This footer uses viewport units (vw/vh)</footer>
+
+</body>
+</html>

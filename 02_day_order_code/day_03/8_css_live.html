@@ -46,6 +46,7 @@
       background: #f5f5f5;
       padding: 20px;
       min-height: 200px;
+      border: 2px dashed #ccc;
       text-align: center;
       font-size: 1.5em;
       display: flex;
@@ -91,14 +92,16 @@
       </div>
 
       <div class="control-group">
-        <label for="font-family">Font Family:</label>
-        <select id="font-family">
-          <option value="Arial" selected>Arial</option>
-          <option value="Verdana">Verdana</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Courier New">Courier New</option>
-        </select>
+        <label for="border-color">Border Color:</label>
+        <div class="color-picker">
+          <input type="color" id="border-color" value="#2c3e50">
+          <span class="color-label">Choose a color</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="border-width">Border Width:</label>
+        <input type="number" id="border-width" min="0" max="10" value="2">
       </div>
     </div>
 
@@ -112,7 +115,7 @@
       color: #3498db;
       background-color: #f5f5f5;
       font-size: 24px;
-      font-family: Arial, sans-serif;
+      border: 2px solid #2c3e50;
     }
   </div>
 
@@ -120,7 +123,8 @@
     const colorInput = document.getElementById('color');
     const backgroundColorInput = document.getElementById('background-color');
     const fontSizeInput = document.getElementById('font-size');
-    const fontFamilyInput = document.getElementById('font-family');
+    const borderColorInput = document.getElementById('border-color');
+    const borderWidthInput = document.getElementById('border-width');
     const outputElement = document.getElementById('output-element');
     const codeOutput = document.getElementById('code-output');
 
@@ -128,13 +132,14 @@
       const color = colorInput.value;
       const backgroundColor = backgroundColorInput.value;
       const fontSize = fontSizeInput.value;
-      const fontFamily = fontFamilyInput.value;
-
+      const borderColor = borderColorInput.value;
+      const borderWidth = borderWidthInput.value;
+      
       // Apply styles to the visual output element
       outputElement.style.color = color;
       outputElement.style.backgroundColor = backgroundColor;
       outputElement.style.fontSize = fontSize + 'px';
-      outputElement.style.fontFamily = fontFamily;
+      outputElement.style.border = `${borderWidth}px solid ${borderColor}`;
       
       // Update code output
       codeOutput.textContent = `
@@ -142,7 +147,7 @@
   color: ${color};
   background-color: ${backgroundColor};
   font-size: ${fontSize}px;
-  font-family: ${fontFamily};
+  border: ${borderWidth}px solid ${borderColor};
 }
       `;
     }
@@ -150,7 +155,8 @@
     colorInput.addEventListener('input', updateStyles);
     backgroundColorInput.addEventListener('input', updateStyles);
     fontSizeInput.addEventListener('input', updateStyles);
-    fontFamilyInput.addEventListener('change', updateStyles);
+    borderColorInput.addEventListener('input', updateStyles);
+    borderWidthInput.addEventListener('input', updateStyles);
 
     updateStyles(); // Initialize
   </script>

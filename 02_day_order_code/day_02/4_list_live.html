@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML List Tags Playground</title>
+  <style>
+    ul, ol {
+      font-size: 1.2em;
+      padding-left: 20px;
+    }
+    li {
+      margin-top: 8px;
+    }
+    .playground {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .controls {
+      width: 300px;
+    }
+    .control-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    select, input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .visual-output {
+      flex-grow: 1;
+      background: #f5f5f5;
+      padding: 20px;
+      min-height: 200px;
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    }
+    .code-output {
+      margin-top: 30px;
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML List Tags Playground</h1>
+  <p style="text-align: center;">Choose a list type and add list items to see the magic!</p>
+
+  <div class="playground">
+    <div class="controls">
+      <div class="control-group">
+        <label for="list-type">Select List Type:</label>
+        <select id="list-type">
+          <option value="ul" selected>&lt;ul&gt; - Unordered List</option>
+          <option value="ol">&lt;ol&gt; - Ordered List</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="list-items">Enter List Items (comma separated):</label>
+        <input type="text" id="list-items" placeholder="e.g. Apple, Banana, Orange" value="Apple, Banana, Orange">
+      </div>
+    </div>
+
+    <div class="visual-output" id="visual-output">
+      <ul id="list"></ul>
+    </div>
+  </div>
+
+  <div class="code-output" id="code-output">
+&lt;ul&gt;
+  &lt;li&gt;Apple&lt;/li&gt;
+  &lt;li&gt;Banana&lt;/li&gt;
+  &lt;li&gt;Orange&lt;/li&gt;
+&lt;/ul&gt;
+  </div>
+
+  <script>
+    const listTypeSelect = document.getElementById('list-type');
+    const listItemsInput = document.getElementById('list-items');
+    const visualOutput = document.getElementById('visual-output');
+    const codeOutput = document.getElementById('code-output');
+
+    function updateList() {
+      const listType = listTypeSelect.value;
+      const listItems = listItemsInput.value.split(',').map(item => item.trim());
+      
+      // Create list based on selected type
+      const list = document.createElement(listType);
+      
+      listItems.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        list.appendChild(listItem);
+      });
+      
+      // Update the visual output
+      visualOutput.innerHTML = '';
+      visualOutput.appendChild(list);
+      
+      // Update the code output
+      const listHTML = listItems.map(item => `<li>${item}</li>`).join('');
+      codeOutput.textContent = `<${listType}>\n  ${listHTML}\n</${listType}>`;
+    }
+
+    listTypeSelect.addEventListener('change', updateList);
+    listItemsInput.addEventListener('input', updateList);
+
+    updateList(); // Initialize
+  </script>
+
+</body>
+</html>
