@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+body {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Arial Rounded MT Bold', Arial, sans-serif;
+    background: linear-gradient(135deg, #fbeee6 0%, #cbf6ff 100%);
+}
+
+/* Sticky, playful header */
+header {
+    box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+    background: #f9fbfe !important;
+    min-height: 56px;
+    border-bottom: 4px solid #ffe37b;
+}
+
+/* Colorful, bold, fun headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Luckiest Guy', 'Comic Sans MS', Arial, sans-serif;
+    color: #ff8c1e;
+    text-shadow: 1px 1px 0 #fff, 0px 1px 8px #ffc;
+}
+
+/* Make ui elements soft and rounded everywhere! */
+input, button, .form-control, .custom-note, .custom-warning, .custom-tip, .custom-quiz, .custom-practice, .custom-teachersnote, .custom-comment, .custom-codeoutput, .parent-section-link, .child-page-link, pre {
+    border-radius: 1em !important;
+}
+
+#left-pane {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    min-width: 220px;
+    max-width: 340px;
+    transition: transform 0.2s;
+    background: #f5f9fc;
+    z-index: 1040;
+}
+
+.sidebar-header {
+    background: #e8e8e8;
+}
+
+@media (max-width: 991px) {
+    #left-pane {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        height: calc(100vh - 56px);
+        width: 85vw;
+        max-width: 340px;
+        background: #f5f9fc;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 8px rgba(0,0,0,0.18);
+        border-right: 1px solid #dee2e6;
+    }
+    #left-pane.open {
+        transform: translateX(0);
+    }
+    .left-pane-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.08);
+        z-index: 1030;
+        display: none;
+    }
+    .left-pane-backdrop.open {
+        display: block;
+    }
+    #right-pane {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding: 2vw;
+    }
+}
+
+/* Hide the overlay by default */
+.left-pane-backdrop {
+    display: none;
+}
+
+#menuSearch {
+    font-size: 16px;
+    border-radius: 0.8em;
+    border: 2px solid #ffe37b;
+    box-shadow: 0 2px 8px #f3f9e940;
+    margin-top: 1em;
+}
+
+.parent-section-link {
+    background: linear-gradient(90deg,#d4f2ff 0%,#fff 80%);
+    color: #2566af;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px #d4f2ff30;
+    border-left: 8px solid #e6a7fe;
+    transition: background 0.15s, color 0.15s;
+}
+.parent-section-link.active-section {
+    background: linear-gradient(90deg, #fae87c 0%, #fff 100%);
+    color: #ff4d7c;
+    border-left: 8px solid #fdbf28;
+}
+.parent-section-link:hover {
+    background: #f0f8ff;
+}
+
+/* Tree chevrons, animated */
+.parent-section-link .bi.chevron {
+    font-size: 1rem;
+    margin-right: 7px;
+    transition: transform 0.2s;
+}
+.parent-section-link.collapsed .bi.chevron {
+    transform: rotate(-90deg);
+}
+.parent-section-link.expanded .bi.chevron {
+    transform: rotate(0deg);
+}
+
+.child-page-link {
+    background: #e5fff2;
+    color: #23717b;
+    transition: 0.2s;
+    margin-bottom: 5px;
+    padding: 10px 0 10px 35px;
+}
+.child-page-link.active-child {
+    background: #ffe2e1;
+    color: #fc4d1d !important;
+}
+.child-page-link:hover {
+    background: #fde9ff !important;
+    color: #a1671d !important;
+    box-shadow: 0 2px 8px #fed3ff40;
+}
+
+.section-icon, .child-icon {
+    filter: drop-shadow(0 2px 4px #fff2);
+    font-size: 1.25em;
+    transition: transform 0.2s;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.parent-section-link:hover .section-icon,
+.child-page-link:hover .child-icon {
+    transform: rotate(-10deg) scale(1.3);
+}
+
+.btn-outline-secondary {
+    border: 2px solid #ffe37b;
+    color: #ff8c1e;
+    background: #fffbe9;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 0.7em;
+    box-shadow: 0 2px 8px #ffe2e1b7;
+}
+.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+    background: #fff7cc;
+    border-color: #fdbf28;
+    color: #ff4d6d;
+}
+
+#right-pane > div {
+    background: #fffdfa;
+    border-radius: 24px;
+    box-shadow: 0 8px 48px #fdceff30, 0 1.5px 0 #fff;
+    padding: 1.7em 1em 2em 1em;
+    margin: 1.4em 0;
+}
+pre {
+    background-color: #e0e0e0;
+    border-radius: 1em;
+    color: rgba(0, 0, 0, .9);
+    font-family: Consolas, monospace;
+    border-left: 3px solid #4285f4;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-color:#4285f4;
+    padding: 16px;
+    margin: 1em 0;
+    overflow-x: auto;
+    box-shadow: 0 1px 6px #64ceff2d;
+}
+/* Alert Blocks, lively colors and gentle shadows! */
+.custom-note { border-color: #31d2f2; background: #e5f5fa; box-shadow: 0 2px 8px #aef0ff30; }
+.custom-warning { border-color: #ff3131; background: #ffe4e6; box-shadow: 0 2px 8px #fd868630; }
+.custom-quiz   { border-color: #ffc107; background: #fffbe7; box-shadow: 0 2px 8px #ffe28545;}
+.custom-tip    { border-color: #3bd46a; background: #e4fcec; box-shadow: 0 2px 8px #60fa8340;}
+.custom-comment{ border-color: #fd7cfa; background: #ffe4fe; }
+.custom-practice { border-color: #ffa80f; background: #fff3e1; }
+.custom-teachersnote { border-color: #a96afc; background: #f7e7ff; }
+.custom-codeoutput { border-color: #0c0c0b; background: #f9fafb; border-right:5px solid; border-top:1px solid;border-bottom:1px solid; }
+
+.custom-quiz {
+    border: 1px solid #aaa;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #f9f9f9;
+    border-radius: 1.25em;
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+}
+.custom-quiz .quiz-question {
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    color: #ee5e33;
+}
+.custom-quiz .quiz-choices {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0.75rem;
+}
+.custom-quiz .quiz-choice {
+    margin-bottom: 0.5rem;
+}
+.custom-quiz label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25em 0.6em;
+    background: #e5ecff9c;
+    border-radius: 0.6em;
+    transition: background 0.15s, box-shadow 0.2s;
+}
+.custom-quiz label:hover {
+    background: #fbe7ff !important;
+    box-shadow: 0 2px 8px #ffe2e1c2;
+}
+.custom-quiz input[type=radio] {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+.custom-quiz .quiz-result {
+    font-weight: 600;
+    font-size: 1rem;
+    min-height: 1.2rem;
+    margin-top: 0.5em;
+    color: #277e15;
+}
