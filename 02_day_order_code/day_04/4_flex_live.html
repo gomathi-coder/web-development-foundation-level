@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flexbox Playground with Columns</title>
+  <title>Flexbox Playground with Patterns</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -56,6 +56,7 @@
       border-radius: 8px;
       height: 80px;
       transition: all 0.3s ease;
+      width: 22%;
     }
     .code-output {
       margin-top: 30px;
@@ -69,10 +70,21 @@
 </head>
 <body>
   <h1>Flexbox Playground</h1>
-  <p style="text-align: center;">Change the flex settings and number of columns!</p>
+  <p style="text-align: center;">Change the flex settings or try a standard pattern!</p>
 
   <div class="playground">
     <div class="controls">
+
+      <div class="control-group">
+        <label for="pattern-select">Standard Flex Patterns:</label>
+        <select id="pattern-select">
+          <option disabled selected>Select a Pattern</option>
+          <option value="pattern1">Pattern 1: Horizontal Navbar</option>
+          <option value="pattern2">Pattern 2: Centered Box</option>
+          <option value="pattern3">Pattern 3: Space Between Items</option>
+        </select>
+      </div>
+
       <div class="control-group">
         <label for="flex-direction">Flex Direction:</label>
         <select id="flex-direction">
@@ -105,17 +117,6 @@
           <option value="baseline">baseline</option>
         </select>
       </div>
-
-      <div class="control-group">
-        <label for="columns">Number of Columns:</label>
-        <select id="columns">
-          <option value="1">1 Column</option>
-          <option value="2" selected>2 Columns</option>
-          <option value="3">3 Columns</option>
-          <option value="4">4 Columns</option>
-        </select>
-      </div>
-
     </div>
 
     <div class="visual-output" id="flex-container">
@@ -123,8 +124,6 @@
       <div class="flex-item">2</div>
       <div class="flex-item">3</div>
       <div class="flex-item">4</div>
-      <div class="flex-item">5</div>
-      <div class="flex-item">6</div>
     </div>
   </div>
 
@@ -136,7 +135,7 @@
     align-items: stretch;
 }
 .flex-item {
-    width: 100%;
+    width: 22%;
 }
   </div>
 
@@ -145,61 +144,60 @@
     const flexDirection = document.getElementById('flex-direction');
     const justifyContent = document.getElementById('justify-content');
     const alignItems = document.getElementById('align-items');
-    const columns = document.getElementById('columns');
+    const patternSelect = document.getElementById('pattern-select');
     const codeOutput = document.getElementById('code-output');
-
     const items = document.querySelectorAll('.flex-item');
 
     function updateFlexbox() {
-      const columnCount = columns.value;
+      const direction = flexDirection.value || 'row';
+      const justify = justifyContent.value || 'flex-start';
+      const align = alignItems.value || 'stretch';
 
-      if (columnCount === "1") {
-        // For 1 Column, set flex direction to column and width to 100%
-        flexContainer.style.display = 'flex';
-        flexContainer.style.flexDirection = 'column'; // Make items stack in a single column
-        items.forEach(item => {
-          item.style.width = '100%'; // Each item takes the full width
-        });
-      } else {
-        // Apply flex properties for multiple columns
-        flexContainer.style.display = 'flex';
-        flexContainer.style.flexDirection = flexDirection.value;
-        flexContainer.style.justifyContent = justifyContent.value;
-        flexContainer.style.alignItems = alignItems.value;
+      flexContainer.style.display = 'flex';
+      flexContainer.style.flexDirection = direction;
+      flexContainer.style.justifyContent = justify;
+      flexContainer.style.alignItems = align;
 
-        let columnWidth;
-        switch (columnCount) {
-          case '2':
-            columnWidth = '48%';
-            break;
-          case '3':
-            columnWidth = '30%';
-            break;
-          case '4':
-            columnWidth = '22%';
-            break;
-        }
-
-        items.forEach(item => {
-          item.style.width = columnWidth; // Adjust the width based on the selected number of columns
-        });
-      }
+      items.forEach(item => {
+        item.style.width = '22%';
+      });
 
       codeOutput.textContent = `.flex-container {
     display: flex;
-    flex-direction: ${columnCount === '1' ? 'column' : flexDirection.value};
-    justify-content: ${justifyContent.value};
-    align-items: ${alignItems.value};
+    flex-direction: ${direction};
+    justify-content: ${justify};
+    align-items: ${align};
 }
 .flex-item {
-    width: ${columnCount === '1' ? '100%' : 'auto'};
+    width: 22%;
 }`;
     }
+
+    // When pattern is selected, override values
+    patternSelect.addEventListener('change', () => {
+      switch (patternSelect.value) {
+        case 'pattern1': // Horizontal Navbar
+          flexDirection.value = 'row';
+          justifyContent.value = 'space-between';
+          alignItems.value = 'center';
+          break;
+        case 'pattern2': // Centered Box
+          flexDirection.value = 'row';
+          justifyContent.value = 'center';
+          alignItems.value = 'center';
+          break;
+        case 'pattern3': // Space Between Items
+          flexDirection.value = 'row';
+          justifyContent.value = 'space-between';
+          alignItems.value = 'stretch';
+          break;
+      }
+      updateFlexbox();
+    });
 
     flexDirection.addEventListener('change', updateFlexbox);
     justifyContent.addEventListener('change', updateFlexbox);
     alignItems.addEventListener('change', updateFlexbox);
-    columns.addEventListener('change', updateFlexbox);
 
     updateFlexbox(); // Initialize
   </script>
