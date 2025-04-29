@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Otomatiks Web Development Course</title>
     <style>
-      /* Reset and base styles */
       * {
         margin: 0;
         padding: 0;
@@ -19,7 +18,6 @@
         line-height: 1.6;
       }
 
-      /* Course title section */
       .course-header {
         max-width: 1200px;
         margin: 50px auto;
@@ -43,7 +41,6 @@
         margin-right: auto;
       }
 
-      /* Button container */
       .button-container {
         display: flex;
         justify-content: center;
@@ -51,7 +48,6 @@
         flex-wrap: wrap;
       }
 
-      /* Base button styles */
       .course-button {
         padding: 12px 30px;
         border-radius: 30px;
@@ -75,7 +71,6 @@
         box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
       }
 
-      /* Advanced button */
       .advanced-btn {
         background-color: transparent;
         color: #3498db;
@@ -89,7 +84,6 @@
         box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
       }
 
-      /* Responsive adjustments */
       @media (max-width: 600px) {
         .course-title {
           font-size: 2rem;
@@ -119,13 +113,23 @@
         course designed for all skill levels
       </p>
       <div class="button-container">
-        <a
-          href="./03_curriculum_activity/01_web_development_foundation.html"
-          class="course-button foundation-btn"
-          >Foundation</a
-        >
-        <a href="#" class="course-button advanced-btn"> Advanced </a>
+        <a href="#" class="course-button foundation-btn" onclick="checkPassword()">Foundation</a>
+        <a href="#" class="course-button advanced-btn">Advanced</a>
       </div>
     </section>
+
+    <script>
+      function checkPassword() {
+        const encoded = ["YXJ1bg==", "YXNob2s=", "aGFyaQ=="]; 
+        const input = prompt("Enter password:");
+        const encodedInput = btoa(input); 
+        if (encoded.includes(encodedInput)) {
+          window.location.href = "./03_curriculum_activity/01_web_development_foundation.html";
+        } else {
+          alert("Access Denied");
+        }
+      }
+    </script>
+    
   </body>
 </html>
