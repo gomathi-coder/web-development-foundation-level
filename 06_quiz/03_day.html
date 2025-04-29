@@ -2,230 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Practical Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Fundamentals Quiz</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
       max-width: 800px;
-      margin: 0 auto;
+      margin: auto;
       padding: 20px;
-      background-color: #f5f5f5;
-      line-height: 1.6;
     }
     .quiz-container {
-      background: white;
-      padding: 25px;
+      background: #fff;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     h1 {
       text-align: center;
-      color: #3D52A0;
+      color: #2c3e50;
     }
     .question {
       margin-bottom: 25px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 20px;
     }
     .options {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 15px;
+      gap: 10px;
+      margin-top: 10px;
     }
     .option {
-      background: #e1f5fe;
-      padding: 12px;
-      border-radius: 8px;
+      background: #e3f2fd;
+      padding: 10px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: background 0.3s;
     }
     .option:hover {
-      background: #b3e5fc;
-    }
-    .visual-example {
-      display: none;
-      background: #f9f9f9;
-      padding: 15px;
-      border-left: 4px solid #3D52A0;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-    .code {
-      font-family: 'Courier New', monospace;
-      background: #263238;
-      color: #f8f8f2;
-      padding: 15px;
-      border-radius: 5px;
-      overflow-x: auto;
+      background: #bbdefb;
     }
     .result {
-      display: none;
       margin-top: 10px;
       padding: 10px;
-      border-radius: 5px;
+      display: none;
     }
     .correct {
-      background: #e8f5e9;
-      color: #2e7d32;
-      display: block !important;
+      color: green;
+      display: block;
     }
     .incorrect {
-      background: #ffebee;
-      color: #c62828;
-      display: block !important;
+      color: red;
+      display: block;
     }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>CSS Basics</h1>
+    <h1>CSS Fundamentals Quiz</h1>
 
-    <!-- Question 1 -->
+    <!-- Q1: Multimedia -->
     <div class="question">
-      <h3>1. What CSS property is used to change the background color of an element?</h3>
+      <h3>1. Which HTML tag is used to embed audio files?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'a')">color</div>
-        <div class="option" onclick="checkAnswer(1, 'b')">background-color</div>
-        <div class="option" onclick="checkAnswer(1, 'c')">bg-color</div>
-        <div class="option" onclick="checkAnswer(1, 'd')">bg</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">&lt;video&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;audio&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">&lt;media&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">&lt;sound&gt;</div>
       </div>
       <div id="result1" class="result"></div>
     </div>
 
-    <!-- Question 2 -->
+    <!-- Q2: Iframe -->
     <div class="question">
-      <h3>2. What CSS property is used to change the font size of text?</h3>
+      <h3>2. What does an &lt;iframe&gt; element do?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a')">font-size</div>
-        <div class="option" onclick="checkAnswer(2, 'b')">text-size</div>
-        <div class="option" onclick="checkAnswer(2, 'c')">font-family</div>
-        <div class="option" onclick="checkAnswer(2, 'd')">text-style</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">Inserts an image</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">Embeds another webpage</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">Displays a video player</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">Adds animation</div>
       </div>
       <div id="result2" class="result"></div>
     </div>
 
-    <!-- Question 3 -->
+    <!-- Q3: CSS Introduction -->
     <div class="question">
-      <h3>3. How do you set a text color to red in CSS?</h3>
+      <h3>3. What does CSS stand for?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'a')">color: red;</div>
-        <div class="option" onclick="checkAnswer(3, 'b')">text-color: red;</div>
-        <div class="option" onclick="checkAnswer(3, 'c')">color: #ff0000;</div>
-        <div class="option" onclick="checkAnswer(3, 'd')">text-color: #ff0000;</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">Computer Style Sheets</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">Creative Style Sheets</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">Cascading Style Sheets</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">Colorful Style Sheets</div>
       </div>
       <div id="result3" class="result"></div>
     </div>
 
-    <!-- Question 4 -->
+    <!-- Q4: CSS Structure -->
     <div class="question">
-      <h3>4. Which CSS property is used to add padding inside an element?</h3>
+      <h3>4. In CSS, what comes between the curly braces {}?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'a')">padding</div>
-        <div class="option" onclick="checkAnswer(4, 'b')">margin</div>
-        <div class="option" onclick="checkAnswer(4, 'c')">space</div>
-        <div class="option" onclick="checkAnswer(4, 'd')">border</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">HTML tags</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Properties and values</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Class names</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">JavaScript code</div>
       </div>
       <div id="result4" class="result"></div>
     </div>
 
-    <!-- Question 5 -->
+    <!-- Q5: CSS Comments -->
     <div class="question">
-      <h3>5. Which CSS property controls the space between text lines?</h3>
+      <h3>5. How do you write a comment in CSS?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a')">line-height</div>
-        <div class="option" onclick="checkAnswer(5, 'b')">letter-spacing</div>
-        <div class="option" onclick="checkAnswer(5, 'c')">word-spacing</div>
-        <div class="option" onclick="checkAnswer(5, 'd')">text-spacing</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">// this is a comment</div>
+        <div class="option" onclick="checkAnswer(5, 'b')"># this is a comment</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">/* this is a comment */</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">&lt;!-- this is a comment --&gt;</div>
       </div>
       <div id="result5" class="result"></div>
     </div>
 
-    <!-- Question 6 -->
+    <!-- Q6: Color and background -->
     <div class="question">
-      <h3>6. How do you apply a background image to an element in CSS?</h3>
+      <h3>6. Which property changes the background color of an element?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(6, 'a')">background: url('image.jpg');</div>
-        <div class="option" onclick="checkAnswer(6, 'b')">background-image: url('image.jpg');</div>
-        <div class="option" onclick="checkAnswer(6, 'c')">image: background('image.jpg');</div>
-        <div class="option" onclick="checkAnswer(6, 'd')">background-img: url('image.jpg');</div>
+        <div class="option" onclick="checkAnswer(6, 'a')">color</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">background-color</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">bg-color</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">background</div>
       </div>
       <div id="result6" class="result"></div>
     </div>
 
-    <!-- Question 7 -->
+    <!-- Q7: Selectors -->
     <div class="question">
-      <h3>7. What property do you use to change the font family of text in CSS?</h3>
+      <h3>7. Which symbol is used for a class selector in CSS?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(7, 'a')">font-family</div>
-        <div class="option" onclick="checkAnswer(7, 'b')">font-style</div>
-        <div class="option" onclick="checkAnswer(7, 'c')">text-family</div>
-        <div class="option" onclick="checkAnswer(7, 'd')">text-font</div>
+        <div class="option" onclick="checkAnswer(7, 'a')">#</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">.</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">@</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">%</div>
       </div>
       <div id="result7" class="result"></div>
     </div>
 
-    <!-- Question 8 -->
+    <!-- Q8: External CSS -->
     <div class="question">
-      <h3>8. How do you make text bold in CSS?</h3>
+      <h3>8. How do you link an external CSS file?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(8, 'a')">font-weight: bold;</div>
-        <div class="option" onclick="checkAnswer(8, 'b')">font-style: bold;</div>
-        <div class="option" onclick="checkAnswer(8, 'c')">text-weight: bold;</div>
-        <div class="option" onclick="checkAnswer(8, 'd')">bold-text: true;</div>
+        <div class="option" onclick="checkAnswer(8, 'a')">&lt;style src="style.css"&gt;</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">&lt;css link="style.css"&gt;</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">&lt;link rel="stylesheet" href="style.css"&gt;</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">&lt;script src="style.css"&gt;</div>
       </div>
       <div id="result8" class="result"></div>
     </div>
 
-    <!-- Question 9 -->
+    <!-- Q9: CSS Selectors -->
     <div class="question">
-      <h3>9. How do you make text italic in CSS?</h3>
+      <h3>9. What does the “*” (asterisk) selector target in CSS?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(9, 'a')">font-style: italic;</div>
-        <div class="option" onclick="checkAnswer(9, 'b')">text-style: italic;</div>
-        <div class="option" onclick="checkAnswer(9, 'c')">font-italic: true;</div>
-        <div class="option" onclick="checkAnswer(9, 'd')">italic-text: true;</div>
+        <div class="option" onclick="checkAnswer(9, 'a')">Only paragraphs</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">All elements</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">Header only</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">Images only</div>
       </div>
       <div id="result9" class="result"></div>
     </div>
 
-    <!-- Question 10 -->
+    <!-- Q10: CSS Structure -->
     <div class="question">
-      <h3>10. What property is used to set the spacing between letters in CSS?</h3>
+      <h3>10. What is the correct CSS syntax?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(10, 'a')">letter-spacing</div>
-        <div class="option" onclick="checkAnswer(10, 'b')">word-spacing</div>
-        <div class="option" onclick="checkAnswer(10, 'c')">line-spacing</div>
-        <div class="option" onclick="checkAnswer(10, 'd')">text-spacing</div>
+        <div class="option" onclick="checkAnswer(10, 'a')">body:color=black;</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">{body;color:black;}</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">body { color: black; }</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">body = {color: black;}</div>
       </div>
       <div id="result10" class="result"></div>
     </div>
   </div>
 
   <script>
-    function checkAnswer(questionNumber, answer) {
-      const correctAnswers = {
+    function checkAnswer(q, answer) {
+      const correct = {
         1: 'b',
-        2: 'a',
-        3: 'a',
-        4: 'a',
-        5: 'a',
+        2: 'b',
+        3: 'c',
+        4: 'b',
+        5: 'c',
         6: 'b',
-        7: 'a',
-        8: 'a',
-        9: 'a',
-        10: 'a'
+        7: 'b',
+        8: 'c',
+        9: 'b',
+        10: 'c'
       };
-      
-      const resultElement = document.getElementById('result' + questionNumber);
-      
-      if (answer === correctAnswers[questionNumber]) {
-        resultElement.textContent = "Correct!";
-        resultElement.className = "result correct";
+      const result = document.getElementById('result' + q);
+      if (answer === correct[q]) {
+        result.textContent = 'Correct!';
+        result.className = 'result correct';
       } else {
-        resultElement.textContent = "Incorrect! Try again.";
-        resultElement.className = "result incorrect";
+        result.textContent = 'Incorrect. Try again!';
+        result.className = 'result incorrect';
       }
     }
   </script>

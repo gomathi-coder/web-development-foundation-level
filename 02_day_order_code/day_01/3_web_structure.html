@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Basics for Beginners</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .concept-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .example-box {
+            background-color: #f0f7fd;
+            border-left: 4px solid #3498db;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .analogy {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        .key-term {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .activity {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .layout-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .box {
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .header {
+            background-color: #3498db;
+        }
+
+        .nav {
+            background-color: #2ecc71;
+        }
+
+        .main {
+            background-color: #9b59b6;
+            padding-bottom: 10px;
+        }
+
+        .section {
+            background-color: #f1c40f;
+            margin-top: 8px;
+            color: #333;
+        }
+
+        .footer {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Development Basics</h1>
+        <div class="subtitle">Let's learn how websites work!</div>
+    </header>
+
+    <div class="concept-box">
+        <h2>Website Structure</h2>
+        <p>Just like a house has rooms and walls, a website has a structure made using <span class="key-term">HTML elements</span>. These elements are like building blocks that create the layout of a page.</p>
+
+        <div class="example-box">
+            <strong>Main Parts of a Website:</strong>
+            <ul>
+                <li><span class="key-term">&lt;header&gt;</span> – Top section, usually has the logo and navigation</li>
+                <li><span class="key-term">&lt;nav&gt;</span> – Navigation links (menu)</li>
+                <li><span class="key-term">&lt;main&gt;</span> – Main content area (articles, info, images)</li>
+                <li><span class="key-term">&lt;section&gt;</span> – Divides the page into parts (like chapters)</li>
+                <li><span class="key-term">&lt;footer&gt;</span> – Bottom part (contact info, copyright)</li>
+            </ul>
+        </div>
+
+        <div class="analogy">
+            Think of a website like a newspaper:<br>
+            Header = Title of the paper<br>
+            Nav = Table of contents<br>
+            Main = Articles<br>
+            Footer = Publisher and contact info
+        </div>
+
+        <div class="example-box">
+            <strong>Example Structure:</strong><br>
+            <pre>
+&lt;header&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;a href="#home"&gt;Home&lt;/a&gt;
+    &lt;a href="#about"&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Welcome!&lt;/h2&gt;
+        &lt;p&gt;Thanks for visiting my page.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;© 2025 My Website&lt;/p&gt;
+&lt;/footer&gt;
+            </pre>
+        </div>
+
+        <div class="activity">
+            <strong>Try This:</strong> Draw a simple website layout on paper and label each part: header, nav, main, section, and footer.
+        </div>
+    </div>
+
+    <div class="concept-box">
+        <h2>Website Layout in Real-Time</h2>
+        <p>Here’s a simple layout showing how the main parts of a website appear on the screen:</p>
+
+        <div class="layout-visual">
+            <div class="box header">Header</div>
+            <div class="box nav">Navigation</div>
+            <div class="box main">
+                Main
+                <div class="box section">Section</div>
+            </div>
+            <div class="box footer">Footer</div>
+        </div>
+
+        <div class="activity">
+            <strong>Try This:</strong> Imagine your favorite website. Can you find each of these parts in it?
+        </div>
+    </div>
+</body>
+</html>

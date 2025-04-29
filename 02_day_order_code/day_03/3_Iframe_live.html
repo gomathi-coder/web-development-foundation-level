@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML &lt;iframe&gt; Tag Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .playground {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .controls {
+      width: 300px;
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .visual-output {
+      flex-grow: 1;
+      background: #f5f5f5;
+      padding: 20px;
+      min-height: 200px;
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    iframe {
+      border: none;
+    }
+
+    .code-output {
+      margin-top: 30px;
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML &lt;iframe&gt; Tag Playground</h1>
+  <p style="text-align: center;">Enter details to generate a live iframe and its HTML code.</p>
+
+  <div class="playground">
+    <div class="controls">
+      <div class="control-group">
+        <label for="iframe-url">Iframe URL:</label>
+        <input type="text" id="iframe-url" value="https://www.example.com">
+      </div>
+
+      <div class="control-group">
+        <label for="iframe-title">Title:</label>
+        <input type="text" id="iframe-title" value="Example Site">
+      </div>
+
+      <div class="control-group">
+        <label for="iframe-width">Width (px):</label>
+        <input type="number" id="iframe-width" value="600">
+      </div>
+
+      <div class="control-group">
+        <label for="iframe-height">Height (px):</label>
+        <input type="number" id="iframe-height" value="300">
+      </div>
+    </div>
+
+    <div class="visual-output" id="visual-output">
+      <iframe src="https://www.example.com" title="Example Site" width="600" height="300"></iframe>
+    </div>
+  </div>
+
+  <div class="code-output" id="code-output">
+&lt;iframe src="https://www.example.com" title="Example Site" width="600" height="300"&gt;&lt;/iframe&gt;
+  </div>
+
+  <script>
+    const iframeUrlInput = document.getElementById('iframe-url');
+    const iframeTitleInput = document.getElementById('iframe-title');
+    const iframeWidthInput = document.getElementById('iframe-width');
+    const iframeHeightInput = document.getElementById('iframe-height');
+    const visualOutput = document.getElementById('visual-output');
+    const codeOutput = document.getElementById('code-output');
+
+    function updateIframe() {
+      const src = iframeUrlInput.value.trim();
+      const title = iframeTitleInput.value.trim();
+      const width = iframeWidthInput.value;
+      const height = iframeHeightInput.value;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = title;
+      iframe.width = width;
+      iframe.height = height;
+
+      // Update visual output
+      visualOutput.innerHTML = '';
+      visualOutput.appendChild(iframe);
+
+      // Update code output
+      codeOutput.textContent = `<iframe src="${src}" title="${title}" width="${width}" height="${height}"></iframe>`;
+    }
+
+    iframeUrlInput.addEventListener('input', updateIframe);
+    iframeTitleInput.addEventListener('input', updateIframe);
+    iframeWidthInput.addEventListener('input', updateIframe);
+    iframeHeightInput.addEventListener('input', updateIframe);
+
+    updateIframe(); // Initial call
+  </script>
+
+</body>
+</html>
