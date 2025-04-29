@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text Property Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .playground {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .controls {
+      width: 300px;
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .visual-output {
+      flex-grow: 1;
+      background: #f5f5f5;
+      padding: 20px;
+      min-height: 150px;
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+    }
+
+    .code-output {
+      margin-top: 30px;
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre;
+    }
+
+    .text-property {
+      font-weight: bold;
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Text Property Playground</h1>
+  <p style="text-align: center;">Enter text and apply styles to see how they change the output!</p>
+
+  <div class="playground">
+    <div class="controls">
+      <div class="control-group">
+        <label for="text-input">Text:</label>
+        <input type="text" id="text-input" value="Hello, world!">
+      </div>
+
+      <div class="control-group">
+        <label for="font-size">Font Size:</label>
+        <select id="font-size">
+          <option value="12px">12px</option>
+          <option value="16px" selected>16px</option>
+          <option value="20px">20px</option>
+          <option value="24px">24px</option>
+          <option value="1rem">1rem</option>
+          <option value="1.5rem">1.5rem</option>
+          <option value="2rem">2rem</option>
+          <option value="100%">100%</option>
+          <option value="150%">150%</option>
+          <option value="200%">200%</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="font-color">Font Color:</label>
+        <input type="color" id="font-color" value="#2980b9">
+      </div>
+
+      <div class="control-group">
+        <label for="font-weight">Font Weight:</label>
+        <select id="font-weight">
+          <option value="normal">Normal</option>
+          <option value="bold" selected>Bold</option>
+          <option value="lighter">Lighter</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="visual-output" id="visual-output">
+      <span class="text-property" id="text-property">Hello, world!</span>
+    </div>
+  </div>
+
+  <div class="code-output" id="code-output">
+&lt;span class="text-property"&gt;Hello, world!&lt;/span&gt;
+  </div>
+
+  <script>
+    const textInput = document.getElementById('text-input');
+    const fontSizeSelect = document.getElementById('font-size');
+    const fontColorInput = document.getElementById('font-color');
+    const fontWeightSelect = document.getElementById('font-weight');
+    const visualOutput = document.getElementById('visual-output');
+    const codeOutput = document.getElementById('code-output');
+    const textPropertyElement = document.getElementById('text-property');
+
+    function updateTextProperty() {
+      const text = textInput.value.trim();
+      const fontSize = fontSizeSelect.value;
+      const fontColor = fontColorInput.value;
+      const fontWeight = fontWeightSelect.value;
+
+      // Update visual output
+      textPropertyElement.textContent = text;
+      textPropertyElement.style.fontSize = fontSize;
+      textPropertyElement.style.color = fontColor;
+      textPropertyElement.style.fontWeight = fontWeight;
+
+      // Update code output
+      codeOutput.textContent =
+        `<span class="text-property" style="font-size: ${fontSize}; color: ${fontColor}; font-weight: ${fontWeight};">${text}</span>`;
+    }
+
+    textInput.addEventListener('input', updateTextProperty);
+    fontSizeSelect.addEventListener('change', updateTextProperty);
+    fontColorInput.addEventListener('input', updateTextProperty);
+    fontWeightSelect.addEventListener('change', updateTextProperty);
+
+    updateTextProperty(); // Initialize
+  </script>
+
+</body>
+</html>

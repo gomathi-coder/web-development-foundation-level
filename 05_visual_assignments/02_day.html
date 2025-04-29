@@ -7,7 +7,7 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f6f8;
-      padding: 30px;
+      padding: 20px;
       margin: 0;
     }
     h2 {
@@ -16,17 +16,17 @@
       margin-bottom: 30px;
     }
     .assessment-box {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 20px;
     }
     .column {
-      flex: 1;
-      min-width: 300px;
       background: white;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
     }
     h3 {
       color: #34495e;
@@ -35,31 +35,34 @@
     .output-box {
       font-family: monospace;
       background: #f0f0f0;
-      padding: 10px;
+      padding: 12px;
       border-radius: 6px;
       overflow-x: auto;
       font-size: 14px;
       line-height: 1.5;
+      margin-bottom: 20px;
+      max-height: 250px;
     }
     textarea {
       width: 100%;
-      height: 100px;
-      padding: 10px;
+      height: 140px;
+      padding: 12px;
       font-family: monospace;
       font-size: 14px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       background: #fafafa;
+      resize: vertical;
     }
     iframe {
       width: 100%;
-      height: 300px;
+      height: 400px;
       border: 2px solid #ddd;
       background: white;
       border-radius: 6px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 10px;
+      margin-top: auto;
     }
     button {
       background-color: #3D52A0;
@@ -69,55 +72,64 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 10px;
       transition: background-color 0.3s;
+      margin-bottom: 20px;
+      align-self: flex-start;
     }
     button:hover {
       background-color: #2a3a72;
     }
-    .image-output {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
+
+    @media (max-width: 1024px) {
+      .assessment-box {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .assessment-box {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Visual Assessment: HTML Tags, Lists, Links, and Images</h2>
+  <h2>Visual Assessment: HTML Basics (Comments, Tags, Lists, Images, Links)</h2>
   <div class="assessment-box">
 
-    <!-- Initial Output Column (Before applying CSS) -->
+    <!-- Column 1: Raw HTML -->
     <div class="column">
       <h3>Before Concept Application (Raw HTML)</h3>
       <div class="output-box">
         <strong>HTML:</strong><br>
-        &lt;h2&gt;HTML Elements&lt;/h2&gt;<br>
-        &lt;p&gt;Learn about lists and links.&lt;/p&gt;<br>
+        &lt;!-- This is a comment --&gt;<br>
+        &lt;h1&gt;Welcome to HTML&lt;/h1&gt;<br>
+        &lt;p&gt;This is a paragraph about HTML basics.&lt;/p&gt;<br>
         &lt;ul&gt;<br>
-        &nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;<br>
-        &nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;<br>
+        &nbsp;&nbsp;&lt;li&gt;HTML Tags&lt;/li&gt;<br>
+        &nbsp;&nbsp;&lt;li&gt;Lists&lt;/li&gt;<br>
+        &nbsp;&nbsp;&lt;li&gt;Links&lt;/li&gt;<br>
         &lt;/ul&gt;<br>
-        &lt;a href="#"&gt;Click here&lt;/a&gt;<br><br>
-        &lt;img src="https://img.freepik.com/premium-vector/laptop-desk-house_67590-605.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Example Image" /&gt;
+        &lt;a href="#"&gt;Visit Now&lt;/a&gt;<br>
+        &lt;img src="https://via.placeholder.com/300x150" alt="Example Image" /&gt;
       </div>
       <h3>Example Output</h3>
       <iframe id="exampleFrame"></iframe>
     </div>
 
-    <!-- User Input Column -->
+    <!-- Column 2: User Input -->
     <div class="column">
       <h3>Your HTML</h3>
-      <textarea id="htmlInput"></textarea>
+      <textarea id="htmlInput" placeholder="Write your HTML here..."></textarea>
 
       <h3>Your CSS</h3>
-      <textarea id="cssInput"></textarea>
+      <textarea id="cssInput" placeholder="Write your CSS here..."></textarea>
 
       <button onclick="renderOutput('htmlInput','cssInput','userFrame')">Show Output</button>
       <iframe id="userFrame"></iframe>
     </div>
 
-    <!-- Final Target Output Column (After Concept Application) -->
+    <!-- Column 3: Final Target Output -->
     <div class="column">
       <h3>Target Output (Styled)</h3>
       <iframe id="targetFrame"></iframe>
@@ -135,16 +147,18 @@
       doc.close();
     }
 
-    // Load example (Before concept application)
+    // Raw Example Output
     const exampleHTML = `
-<h2>HTML Elements</h2>
-<p>Learn about lists and links.</p>
+<!-- This is a comment -->
+<h1>Welcome to HTML</h1>
+<p>This is a paragraph about HTML basics.</p>
 <ul>
-  <li>Item 1</li>
-  <li>Item 2</li>
+  <li>HTML Tags</li>
+  <li>Lists</li>
+  <li>Links</li>
 </ul>
-<a href="#">Click here</a>
-<img src="https://img.freepik.com/premium-vector/laptop-desk-house_67590-605.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Example Image" />
+<a href="#">Visit Now</a>
+<img src="https://img.freepik.com/premium-photo/trees-growing-forest_1048944-30368869.jpg" alt="Example Image" />
 `;
     const exampleCSS = ``;
     const exampleDoc = document.getElementById('exampleFrame').contentDocument;
@@ -152,25 +166,83 @@
     exampleDoc.write(`<style>${exampleCSS}</style>${exampleHTML}`);
     exampleDoc.close();
 
-    // Load target output (After concept application)
     const targetHTML = `
-<h2>HTML Elements</h2>
-<p>Learn about lists and links.</p>
-<ul>
-  <li>Item 1</li>
-  <li>Item 2</li>
-</ul>
-<a href="#">Click here</a>
-<img src="https://img.freepik.com/premium-vector/laptop-desk-house_67590-605.jpg?ga=GA1.1.2071195669.1721226201&semt=ais_hybrid&w=740" alt="Target Image" />
+<div class="content-wrapper">
+  <h1>🌐 Welcome to HTML</h1>
+  <p>Learn the building blocks of the web using <strong>HTML</strong>. Below are some key topics:</p>
+  <ul>
+    <li>✅ Understanding Tags</li>
+    <li>📋 Working with Lists</li>
+    <li>🔗 Creating Links</li>
+  </ul>
+  <a href="#">Visit Now</a>
+  <img src="https://img.freepik.com/premium-photo/trees-growing-forest_1048944-30368869.jpg" alt="Styled Image" />
+</div>
 `;
-    const targetCSS = `
-h2 { color: #8e44ad; font-size: 24px; }
-p { font-size: 18px; color: #555; }
-ul { padding-left: 25px; }
-li { color: #2c3e50; }
-a { color: #d35400; font-weight: bold; }
-img { border-radius: 12px; margin-top: 10px; border: 2px solid #ccc; }
+
+const targetCSS = `
+body {
+  background: #f0f4f8;
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+.content-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+h1 {
+  color: #2c3e50;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 15px;
+}
+ul {
+  padding-left: 25px;
+  margin-bottom: 15px;
+}
+li {
+  color: #34495e;
+  margin-bottom: 8px;
+  list-style-type: none;
+  position: relative;
+}
+li::before {
+  content: "🔸";
+  position: absolute;
+  left: -20px;
+}
+a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #3D52A0;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+a:hover {
+  background-color: #2a3a72;
+}
+img {
+  display: block;
+  max-width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 3px solid #e0e0e0;
+}
 `;
+
     const targetDoc = document.getElementById('targetFrame').contentDocument;
     targetDoc.open();
     targetDoc.write(`<style>${targetCSS}</style>${targetHTML}`);
