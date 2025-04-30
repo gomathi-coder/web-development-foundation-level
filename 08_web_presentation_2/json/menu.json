@@ -340,6 +340,25 @@
         "teacher-section": "false",
         "visible": "true",
         "extended-section": "false"
+      }
+    ]
+  },
+  {
+    "section-name": "Responsive Design",
+    "section-id": "responsive-design",
+    "teacher-section": "false",
+    "visible": "true",
+    "extended-section": "false",
+    "child-pages": [
+      {
+        "page-name": "Responsive Design Considerations",
+        "page-url": "?page-id=responsive-design-considerations",
+        "mark-down": "07-mobile-views/00-a.md",
+        "page-id": "responsive-design-considerations",
+        "page-version": "aaa",
+        "teacher-section": "true",
+        "visible": "true",
+        "extended-section": "false"
       },
       {
         "page-name": "Mobile View",

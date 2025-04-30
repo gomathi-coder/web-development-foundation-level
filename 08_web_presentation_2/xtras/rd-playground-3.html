@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Flexbox Live Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8fafc; }
+    .device-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+    }
+    .laptop-shell, .mobile-shell {
+      background: #333;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px #3332;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .laptop-shell {
+      padding: 28px 10px 10px 10px;
+      overflow: visible;
+    }
+    .laptop-bottom {
+      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+      width: 92%; height: 20px; background: #777;
+      border-radius: 0 0 12px 12px;
+      z-index: -1;
+    }
+    .laptop-screen,
+    .mobile-screen {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 1px 12px #2222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      transition: width 0.3s;
+      margin: 0 auto;
+    }
+    .mobile-shell {
+      border-radius: 40px;
+      border: 6px solid #222;
+      background: #222;
+      box-shadow: 0 8px 40px #2225;
+      padding: 10px;
+    }
+    .mobile-screen {
+      border-radius: 34px;
+      box-shadow: 0 1px 12px #2223;
+    }
+    .collapse-btn {
+      position: absolute;
+      top: 10px;
+      right: -18px;
+      z-index: 10;
+      border-radius: 0 4px 4px 0;
+      box-shadow: 2px 0 6px #0002;
+    }
+    @media (max-width: 900px) {
+      .laptop-shell { width: 90vw; min-width: 280px; min-height: 200px;}
+      .device-frame { height: auto !important;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid py-3">
+    <div class="row flex-nowrap">
+      <!-- Left Pane -->
+      <div class="col-md-4 col-12 position-relative" id="leftPane">
+        <button class="btn btn-outline-secondary collapse-btn" id="collapseBtn" type="button" title="Collapse/Expand">⮜</button>
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="btn-group mb-3 w-100" role="group">
+              <button type="button" id="desktopBtn" class="btn btn-primary"><span class="me-1">💻</span>Desktop</button>
+              <button type="button" id="mobileBtn" class="btn btn-outline-primary"><span class="me-1">📱</span>Mobile</button>
+            </div>
+            <h6>Style code (CSS):</h6>
+            <textarea id="styleCode" class="form-control mb-3" style="font-family: monospace; min-height:280px; background:#222; color:#f8f8f2; font-size:16px; border-radius:8px; border:none; padding:1rem; white-space:pre;">
+.flex-container {
+  display: flex;
+  gap: 32px;
+}
+.flex-item {
+  background: #2196f3;
+  color: #fff;
+  padding: 32px;
+  border-radius: 8px;
+  flex: 1 1 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.flex-item:last-child {
+  background: #ff9800;
+}
+/* Responsive: stack items vertically on small screens */
+@media (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .flex-item {
+    font-size: 1rem;
+    padding: 20px;
+  }
+}
+            </textarea>
+            <h6>HTML code:</h6>
+            <textarea id="htmlCode" class="form-control" style="font-family: monospace; min-height:170px; background:#222; color:#f8f8f2; font-size:16px; border-radius:8px; border:none; padding:1rem; white-space:pre;">&lt;div class="flex-container"&gt;
+  &lt;div class="flex-item"&gt;Item 1&lt;/div&gt;
+  &lt;div class="flex-item"&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;</textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Right Pane (Preview) -->
+      <div class="col-md-8 col-12">
+        <div class="device-frame d-flex align-items-center justify-content-center min-vh-50" id="deviceFrame">
+          <!-- Device mockup and Live preview inserted by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const leftPane = document.getElementById('leftPane');
+    const collapseBtn = document.getElementById('collapseBtn');
+    const deviceFrame = document.getElementById('deviceFrame');
+    const styleCode = document.getElementById('styleCode');
+    const htmlCode = document.getElementById('htmlCode');
+    const desktopBtn = document.getElementById('desktopBtn');
+    const mobileBtn = document.getElementById('mobileBtn');
+
+    // Remove whitespace from start/end for copy-paste
+    styleCode.value = styleCode.value.trim();
+    htmlCode.value = htmlCode.value.trim();
+
+    let currentDevice = 'desktop';
+
+    function renderPreview() {
+      let userHTML = htmlCode.value.replace(/<script.*?>.*?<\/script>/gi, "");
+      let userCSS = styleCode.value;
+
+      // Remove previously injected style if any
+      let oldStyle = document.getElementById('liveStyle');
+      if (oldStyle) oldStyle.remove();
+
+      // Add user's CSS
+      const styleTag = document.createElement('style');
+      styleTag.id = 'liveStyle';
+      styleTag.innerHTML = userCSS;
+      document.head.appendChild(styleTag);
+
+      // Set shell + screen for the device
+      let shellHTML = '';
+      if (currentDevice === 'mobile') {
+        shellHTML = `
+          <div class="mobile-shell" style="width: 395px; height: 555px;">
+            <div class="mobile-screen" id="livePreview" style="width: 375px; height: 480px; min-width:0; margin:0 auto;">
+              ${userHTML}
+            </div>
+          </div>
+        `;
+      } else {
+        // Responsive desktop: let the preview area be wider and resizable
+        // To allow resizing by user, make the shell width 90% up to a max
+        let screenWidth = Math.min(deviceFrame.clientWidth * 0.95, 800);
+        screenWidth = Math.max(screenWidth, 360);
+        shellHTML = `
+          <div class="laptop-shell" style="width: ${screenWidth+40}px; height: 420px;">
+            <div class="laptop-screen" id="livePreview" style="width: ${screenWidth}px; height: 360px;">
+              ${userHTML}
+            </div>
+            <div class="laptop-bottom"></div>
+          </div>
+        `;
+      }
+      deviceFrame.innerHTML = shellHTML;
+    }
+
+    // Device switch
+    desktopBtn.addEventListener('click', function() {
+      currentDevice = 'desktop';
+      desktopBtn.classList.add('btn-primary');
+      desktopBtn.classList.remove('btn-outline-primary');
+      mobileBtn.classList.remove('btn-primary');
+      mobileBtn.classList.add('btn-outline-primary');
+      renderPreview();
+    });
+    mobileBtn.addEventListener('click', function() {
+      currentDevice = 'mobile';
+      mobileBtn.classList.add('btn-primary');
+      mobileBtn.classList.remove('btn-outline-primary');
+      desktopBtn.classList.remove('btn-primary');
+      desktopBtn.classList.add('btn-outline-primary');
+      renderPreview();
+    });
+
+    styleCode.addEventListener('input', renderPreview);
+    htmlCode.addEventListener('input', renderPreview);
+
+    // Collapsible Left Pane
+    let collapsed = false;
+    collapseBtn.addEventListener('click', function() {
+      collapsed = !collapsed;
+      if (collapsed) {
+        leftPane.style.width = '36px';
+        leftPane.style.minWidth = '36px';
+        leftPane.style.maxWidth = '36px';
+        leftPane.querySelector('.card').style.display = 'none';
+        collapseBtn.innerHTML = '⮞';
+      } else {
+        leftPane.style.width = '';
+        leftPane.style.minWidth = '';
+        leftPane.style.maxWidth = '';
+        leftPane.querySelector('.card').style.display = '';
+        collapseBtn.innerHTML = '⮜';
+      }
+    });
+
+    // Responsive resizing simulation
+    window.addEventListener('resize', function() {
+      if (currentDevice === 'desktop') {
+        renderPreview();
+      }
+    });
+
+    // Initial render
+    renderPreview();
+  </script>
+</body>
+</html>
