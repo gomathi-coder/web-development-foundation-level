@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Web Development Practical Curriculum</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
       padding: 20px;
       margin: 0;
     }
-  
+
     h1 {
       text-align: center;
       color: #2c3e50;
@@ -20,7 +21,7 @@
       font-size: 1.8rem;
       padding-bottom: 10px;
     }
-  
+
     .subtitle {
       text-align: center;
       color: #7f8c8d;
@@ -28,7 +29,7 @@
       font-style: italic;
       padding: 0 10px;
     }
-  
+
     .button-group {
       text-align: center;
       margin-bottom: 30px;
@@ -38,7 +39,7 @@
       gap: 10px;
       padding: 0 10px;
     }
-  
+
     .view-button {
       background-color: #3498db;
       color: white;
@@ -52,59 +53,60 @@
       margin: 5px;
       white-space: nowrap;
     }
-  
+
     .view-button:hover {
       background-color: #2980b9;
     }
-  
+
     table {
       width: 100%;
       border-collapse: collapse;
       background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-  
-    th, td {
+
+    th,
+    td {
       padding: 12px 15px;
       text-align: center;
       border-bottom: 1px solid #ddd;
     }
-  
+
     th {
       background-color: #3498db;
       color: white;
     }
-  
+
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-  
+
     tr:hover {
       background-color: #e3f2fd;
     }
-  
+
     .day-number {
       color: #e74c3c;
       font-weight: bold;
     }
-  
+
     .topic {
       font-weight: 600;
     }
-  
+
     .details {
       text-align: left;
     }
-    
+
     a {
       text-decoration: none;
       color: #3498db;
     }
-    
+
     a:hover {
       text-decoration: underline;
     }
-  
+
     /* Mobile responsiveness */
     @media (max-width: 768px) {
       table {
@@ -113,20 +115,21 @@
         overflow-x: auto;
         white-space: nowrap;
       }
-  
+
       h1 {
         font-size: 1.4rem;
       }
-  
+
       .view-button {
         font-size: 0.85em;
         padding: 6px 10px;
       }
-  
-      th, td {
+
+      th,
+      td {
         padding: 10px 12px;
       }
-  
+
       .button-group {
         flex-direction: column;
         align-items: center;
@@ -134,297 +137,428 @@
     }
   </style>
 </head>
+
 <body>
+  <h1>Otomatiks Web Development Foundation Course</h1>
 
-<h1>Otomatiks Web Development Foundation Course</h1>
+  <div class="button-group">
+    <a href="01_overview.html" target="_blank" class="view-button">Overview</a>
+    <a href="01_basic_curriculum.html" target="_blank" class="view-button">Curriculum</a>
+    <a href="01_basic_project.html" target="_blank" class="view-button">Project</a>
+    <a href="../08_web_presentation_2/index.html" target="_blank" class="view-button">Reference Material</a>
+  </div>
 
-<div class="button-group">
-  <a href="01_overview.html" target="_blank" class="view-button">Overview</a>
-  <a href="01_basic_curriculum.html" target="_blank" class="view-button">Curriculum</a>
-  <a href="01_basic_project.html" target="_blank" class="view-button">Project</a>
-  <a href="../08_web_presentation_2/index.html" target="_blank" class="view-button">Reference Material</a>
-</div>
+  <p class="subtitle">
+    Day Order <br>
+    16-day intensive hands-on course with daily practical assessments.
+  </p>
 
-<p class="subtitle">
-  <!-- 16-day intensive hands-on course with daily practical assessments. -->
-  Reference Canva Presentation <br>
-  <a href="https://www.canva.com/design/DAGl6wUOK0s/xmHe8GwkgFKY10Q1pfCn3Q/edit?utm_content=DAGl6wUOK0s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Template 01</a> <br>
-  <a href="https://www.canva.com/design/DAGl6wUOK0s/xmHe8GwkgFKY10Q1pfCn3Q/edit?utm_content=DAGl6wUOK0s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Template 02 (with story)</a> <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Topic</th>
+        <th>Details</th>
+        <th>PPT Slides</th>
+        <th>Interactive Assessment</th>
+        <th>Quiz</th>
+        <th>Home Activity</th>
+        <th>Sample Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Project 1: Days 1–5 -->
+      <tr>
+        <td class="day-number">1</td>
+        <td class="topic">Web Fundamentals</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_01/1_introduction.html" target="_blank">• How websites work</a>
+          <br />
+          <a href="../02_day_order_code/day_01/2_developer_tool.html" target="_blank">• Browser developer tools</a>
+          <br />
+          <a href="../02_day_order_code/day_01/3_web_structure.html" target="_blank">• Basic HTML & Website
+            structure</a>
+          <br />
+          <a href="../02_day_order_code/day_01/4_vs_code_setup.html" target="_blank">• VS Setup</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmADxENzk/ijj9wsG1hayonOkUuXJGCA/edit?utm_content=DAGmADxENzk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>____</td>
+        <td>
+          <a href="../06_quiz/01_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/01_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/01_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
-</p>
+      <tr>
+        <td class="day-number">2</td>
+        <td class="topic">HTML Basics</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_02/2_comments.html" target="_blank">• HTML Comments</a><br />
+          <a href="../02_day_order_code/day_02/3_basic_tags.html" target="_blank">• HTML Basic tags</a><br />
+          <a href="../02_day_order_code/day_02/4_list_live.html" target="_blank">• lists</a><br />
+          <a href="../02_day_order_code/day_02/5_img_live.html" target="_blank">• images</a><br />
+          <a href="../02_day_order_code/day_02/6_a_tag_live.html" target="_blank">• Anchor</a><br />
+          <a href="../02_day_order_code/day_02/7_button.html" target="_blank">• Button</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmALim-K0/aTgKW51_96mg3cR4-vvJ-Q/edit?utm_content=DAGmALim-K0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/02_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/02_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/02_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/02_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Day</th>
-      <th>Topic</th>
-      <th>Details</th>
-      <th>Sample Code</th>
-      <th>PPT Slides</th>
-      <th>Interactive Assessment</th>
-      <th>Quiz</th>
-      <th>Home Activity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Project 1: Days 1–5 -->
-    <tr>
-      <td class="day-number">1</td>
-      <td class="topic">Web Fundamentals</td>
-      <td class="details">
-      <a href="../02_day_order_code/day_01/1_introduction.html" target="_blank">• How websites work</a> <br>
-      <a href="../02_day_order_code/day_01/2_developer_tool.html" target="_blank">• Browser developer tools</a> <br>
-      <a href="../02_day_order_code/day_01/3_web_structure.html" target="_blank">• Basic HTML & Website structure</a> <br>
-      <a href="../02_day_order_code/day_01/4_vs_code_setup.html" target="_blank">• VS Setup</a>
-      </td>
-      <td><a href="../02_sample_code/01_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmADxENzk/ijj9wsG1hayonOkUuXJGCA/edit?utm_content=DAGmADxENzk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td>____</td>
-      <td><a href="../06_quiz/01_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/01_day.html" target="_blank" class="view-button">View</a></td>
-    </tr>
+      <tr>
+        <td class="day-number">3</td>
+        <td class="topic">HTML & CSS</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_03/1_video.html" target="_blank">• Multimedia (video, audio)</a><br />
+          <a href="../02_day_order_code/day_03/3_Iframe_live.html" target="_blank">• Iframe</a><br />
+          <a href="../02_day_order_code/day_03/4_css_structure.html" target="_blank">• CSS introduction &
+            Structure</a><br />
 
+          <a href="../02_day_order_code/day_03/6_comments_units.html" target="_blank">• CSS Comments</a><br />
+          <a href="../02_day_order_code/day_03/8_css_live.html" target="_blank">• Color and background</a><br />
+          <a href="../02_day_order_code/day_03/7_selectors.html" target="_blank">• Selectors</a><br />
+          <a href="../02_day_order_code/day_04/1_font_text_live.html" target="_blank">• Text property</a><br />
+          <a href="../02_day_order_code/day_03/10_external_css.html" target="_blank">• External CSS</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmADK9vYM/G5SnMqjY5zFOW0-YZAnnqw/edit?utm_content=DAGmADK9vYM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/03_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/03_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/03_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/03_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
+      <tr>
+        <td class="day-number">4</td>
+        <td class="topic">CSS Layout</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_04/2_box_model_live.html" target="_blank">• Box model</a><br />
+          <a href="../02_day_order_code/day_04/4_flex_live.html" target="_blank">• Flex</a><br />
+          <a href="../02_day_order_code/day_04/6_grid_live.html" target="_blank">• Grid</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmAEAsDxI/RgE6fa-X2Phr_Iv-tQbjUA/edit?utm_content=DAGmAEAsDxI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/04_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/04_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/04_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/04_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
+      <tr>
+        <td class="day-number">5</td>
+        <td class="topic">Project Development</td>
+        <td class="details">
+          <a href="https://gomathi-coder.github.io/web-development-foundation-level/08_web_presentation_2/interactive-projects/build-first-website-2.html"
+            target="_blank">• School/Portfolio Website</a><br />
+          • Project review<br />
+        </td>
+        <td colspan="4">
+          <a href="../04_project_document/05_day_projectproject.pdf" target="_blank" class="view-button">Project 1
+            Guide</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/05_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
+      <!-- Day 6: No project -->
+      <tr>
+        <td class="day-number">6</td>
+        <td class="topic">Git & GitHub</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_06/1_gitHub_fundamentals.html" target="_blank">• Version control basics</a><br />
+          <a href="../02_day_order_code/day_06/1_gitHub_fundamentals.html" target="_blank">• GitHub setup</a><br />
+          • Debugging & Deployment First Project
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmAIh8sRg/AGqFomtr1czOxoiP_uBRCw/edit?utm_content=DAGmAIh8sRg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>____</td>
+        <td>
+          <a href="../06_quiz/06_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/06_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/06_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
-    <tr>
-      <td class="day-number">2</td>
-      <td class="topic">HTML Basics</td>
-      <td class="details">
-        <a href="../02_day_order_code/day_02/2_comments.html" target="_blank">• HTML Comments</a><br>
-        <a href="../02_day_order_code/day_02/3_basic_tags.html" target="_blank">• HTML Basic tags</a><br>
-        <a href="../02_day_order_code/day_02/4_list_live.html" target="_blank">• lists</a><br>
-        <a href="../02_day_order_code/day_02/5_img_live.html" target="_blank">• images</a><br>
-        <a href="../02_day_order_code/day_02/6_a_tag_live.html" target="_blank">• Anchor</a><br>
-        <a href="../02_day_order_code/day_02/7_button.html" target="_blank">• Button</a>
-      </td>
-      <td><a href="../02_sample_code/02_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmALim-K0/aTgKW51_96mg3cR4-vvJ-Q/edit?utm_content=DAGmALim-K0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/02_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/02_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/02_day.html" target="_blank" class="view-button">View</a></td>
-    </tr>
+      <!-- Project 2: Days 7–10 -->
+      <tr>
+        <td class="day-number">7</td>
+        <td class="topic">Responsive Design</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_07/1_resize_browser.html" target="_blank">• Media queries</a><br />
+          <a href="../02_day_order_code/day_07/4_viewport_units.html" target="_blank">• Viewport units</a><br />
+          <a href="../02_day_order_code/day_07/3_hide_elements.html" target="_blank">• Hide elements</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmC_YMCeU/BMQ_ZgdR5g1MJqJPeJyB1Q/edit?utm_content=DAGmC_YMCeU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/07_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/07_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/07_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/07_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">8</td>
+        <td class="topic">CSS Layout Systems</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_08/3_horizontal_navigation_bar.html" target="_blank">• Navigation</a><br />
+          <a href="../02_day_order_code/day_08/4_mobile_navigation_bar.html" target="_blank">• Mobile Navigation</a><br />
+          <a href="../02_day_order_code/day_08/5_Pattern_1.html" target="_blank">• Pattern 01</a> <br>
+          <a href="../02_day_order_code/day_08/6_Pattern_2.html" target="_blank">• Pattern 02</a> <br>
+          <a href="../02_day_order_code/day_08/7_Pattern_3.html" target="_blank">• Pattern 03</a> <br>
+          <a href="../02_day_order_code/day_08/8_Pattern-4.html" target="_blank">• Pattern 04</a> 
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmC01yI9Y/d7-PFp3VG97ThVnoSNMT0A/edit?utm_content=DAGmC01yI9Y&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/08_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/08_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/08_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/08_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">9</td>
+        <td class="topic">HTML & CSS</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_09/1_Pattern_5.html" target="_blank">• Pattern 05</a> <br>
+          <a href="../02_day_order_code/day_09/2_Pattern_6.html" target="_blank">• Pattern 06</a> <br>
+          <a href="../02_day_order_code/day_09/3_Pattern_7.html" target="_blank">• Pattern 07</a> <br>
+          <a href="../02_day_order_code/day_09/4_Pattern_8.html" target="_blank">• Pattern 08</a> <br>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmC6IJmFc/6buj9o0Uyut19Lfct9uvog/edit?utm_content=DAGmC6IJmFc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/09_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../09_quiz/01_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/09_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/09_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">10</td>
+        <td class="topic">Project Development</td>
+        <td class="details">
+          <a href="../01_projects/02_restaurant/index.html"
+            target="_blank">• Restaurant/Landing Page Website</a><br />
+          • Project review<br />
+        </td>
+        <td colspan="4">
+          <a href="../04_project_document/10_day_projectproject.pdf" target="_blank" class="view-button">Project 2
+            Guide</a>
+        </td>
+        <td>
+          <a href="" class="view-button">Download</a>
+        </td>
+      </tr>
 
+      <!-- Project 3: Days 11–13 -->
+      <tr>
+        <td class="day-number">11</td>
+        <td class="topic">Bootstrap Basics</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_11/1_bootsrap_intro.html" target="_blank">• Bootstrap Introduction</a><br />
+          <a href="../02_day_order_code/day_11/2_container.html" target="_blank">• Container</a><br />
+          <a href="../02_day_order_code/day_11/3_colors.html" target="_blank">• Color</a><br />
+          <a href="../02_day_order_code/day_11/4_grid.html" target="_blank">• Grid</a><br />
+          <a href="../02_day_order_code/day_11/5_image.html" target="_blank">• Image</a><br />
+          <a href="../02_day_order_code/day_11/6_button.html" target="_blank">• Button</a><br />
+          <a href="../02_day_order_code/day_11/7_navbar.html" target="_blank">• Navbar</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmGRWv1EQ/8cPIqBhp0H8aPxujUoCQ4Q/edit?utm_content=DAGmGRWv1EQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/11_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/11_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/11_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/11_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">12</td>
+        <td class="topic">Bootstrap UI</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_12/1_slider.html" target="_blank">• Slider</a><br />
+          <a href="../02_day_order_code/day_12/2_accordion.html" target="_blank">• Accordion</a><br />
+          <a href="../02_day_order_code/day_12/3_bootstrap_icons.html" target="_blank">• Icons</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmGUTPlBw/00krkMM4webkT6JSXnA6Fg/edit?utm_content=DAGmGUTPlBw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../05_visual_assignments/12_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../06_quiz/12_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/12_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/12_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">13</td>
+        <td class="topic">Project Development</td>
+        <td class="details">
+          <a href="../01_projects/03_ecommerce/index.html"
+            target="_blank">• E-commerce/Event Website</a><br />
+          • Project review<br />
+        </td>
+        <td colspan="4">
+          <a href="../04_project_document/13_day_projectproject.pdf" target="_blank" class="view-button">Project 3
+            Guide</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/13_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
 
-
-
-    <tr>
-      <td class="day-number">3</td>
-      <td class="topic">HTML & CSS</td>
-      <td class="details">
-        <a href="../02_day_order_code/day_03/1_video.html" target="_blank">• Multimedia (video, audio)</a><br>
-        <a href="../02_day_order_code/day_03/3_Iframe_live.html" target="_blank">• Iframe</a><br>
-        <a href="../02_day_order_code/day_03/4_css_structure.html" target="_blank">• CSS introduction & Structure</a><br>
-        
-        <a href="../02_day_order_code/day_03/6_comments_units.html" target="_blank">• CSS Comments</a><br>
-        <a href="../02_day_order_code/day_03/8_css_live.html" target="_blank">• Color and background</a><br>
-        <a href="../02_day_order_code/day_03/7_selectors.html" target="_blank">• Selectors</a><br>
-        <a href="../02_day_order_code/day_04/1_font_text_live.html" target="_blank">• Text property</a><br>
-        <a href="../02_day_order_code/day_03/10_external_css.html" target="_blank">• External CSS</a>
-      </td>
-      <td><a href="../02_sample_code/03_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmADK9vYM/G5SnMqjY5zFOW0-YZAnnqw/edit?utm_content=DAGmADK9vYM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/03_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/03_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/03_day.html" target="_blank" class="view-button">View</a></td>
-    </tr>
-
-
-
-
-
-    <tr>
-      <td class="day-number">4</td>
-      <td class="topic">CSS Layout</td>
-      <td class="details">
-              <a href="../02_day_order_code/day_04/2_box_model_live.html" target="_blank">• Box model</a><br>
-          <a href="../02_day_order_code/day_04/4_flex_live.html" target="_blank">• Flex</a><br>
-        <a href="../02_day_order_code/day_04/6_grid_live.html" target="_blank">• Grid</a>
-      </td>
-      <td><a href="../02_sample_code/04_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmAEAsDxI/RgE6fa-X2Phr_Iv-tQbjUA/edit?utm_content=DAGmAEAsDxI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/04_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/04_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/04_day.html" target="_blank" class="view-button">View</a></td>
-    </tr>
-
-
-
-
-
-    <tr>
-      <td class="day-number">5</td>
-      <td class="topic">Project Development</td>
-      <td class="details"> 
-        <a href="https://gomathi-coder.github.io/web-development-foundation-level/08_web_presentation_2/interactive-projects/build-first-website-2.html" target="_blank">• School/Portfolio Website</a><br>
-       • Project review<br>
-       
-      </td>
-      <td><a href="../02_sample_code/05_day.html" class="view-button">Download</a></td>
-      <td colspan="4"><a href="../04_project_document/05_day_projectproject.pdf" target="_blank" class="view-button">Project 1 Guide</a></td>
-    </tr>
-
-    <!-- Day 6: No project -->
-    <tr>
-      <td class="day-number">6</td>
-      <td class="topic">Git & GitHub</td>
-      <td class="details">
-        <a href="../01_day_reference/06_day.html" target="_blank">• Version control basics</a><br>
-        <a href="../01_day_reference/06_day.html" target="_blank">• GitHub setup</a><br>
-        • Debugging & Deployment First Project
-      </td>
-      <td><a href="../02_sample_code/06_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmAIh8sRg/AGqFomtr1czOxoiP_uBRCw/edit?utm_content=DAGmAIh8sRg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td>____</td>
-      <td><a href="../06_quiz/06_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/06_day.html" class="view-button">View</a></td>
-    </tr>
-
-    <!-- Project 2: Days 7–10 -->
-    <tr>
-      <td class="day-number">7</td>
-      <td class="topic">Responsive Design</td>
-      <td class="details">
-        <a href="../01_day_reference/07_day.html" target="_blank">• Media queries</a><br>
-        <a href="../01_day_reference/07_day.html" target="_blank">• Resize browser</a><br>
-        <a href="../01_day_reference/07_day.html" target="_blank">• Viewport units</a><br>
-        <a href="../01_day_reference/07_day.html" target="_blank">• Hide elements</a>
-      </td>
-      <td><a href="../02_sample_code/07_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmC_YMCeU/BMQ_ZgdR5g1MJqJPeJyB1Q/edit?utm_content=DAGmC_YMCeU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/07_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/07_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/07_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">8</td>
-      <td class="topic">CSS Layout Systems</td>
-      <td class="details">
-        <a href="../01_day_reference/08_day.html" target="_blank">• Navigation</a><br>
-        <a href="../01_day_reference/08_day.html" target="_blank">• Mobile Navigation</a><br>
-        <a href="../01_day_reference/08_day.html" target="_blank">• Pattern</a>
-      </td>
-      <td><a href="../02_sample_code/08_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmC01yI9Y/d7-PFp3VG97ThVnoSNMT0A/edit?utm_content=DAGmC01yI9Y&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/08_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/08_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/08_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">9</td>
-      <td class="topic">HTML & CSS</td>
-      <td class="details">
-        <a href="../01_day_reference/09_day.html" target="_blank">• Pattern</a>
-      </td>
-      <td><a href="../02_sample_code/09_day.html" class="view-button">Download</a></td>
-      <td><a href="https://www.canva.com/design/DAGmC6IJmFc/6buj9o0Uyut19Lfct9uvog/edit?utm_content=DAGmC6IJmFc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/09_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../09_quiz/01_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/09_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">10</td>
-      <td class="topic">Project Development</td>
-      <td class="details"> 
-        <a href="../01_day_reference/10_day.html" target="_blank">• Restaurant/Landing Page Website</a><br>
-        <a href="../01_day_reference/10_day.html" target="_blank">• Project review</a><br>
-        <a href="../01_day_reference/10_day.html" target="_blank">• Debugging & Deployment</a>
-      </td>
-      <td><a href="../02_sample_code/10_day.html" class="view-button">Download</a></td>
-      <td colspan="4"><a href="../04_project_document/10_day_projectproject.pdf" target="_blank" class="view-button">Project 2 Guide</a></td>
-    </tr>
-
-    <!-- Project 3: Days 11–13 -->
-    <tr>
-      <td class="day-number">11</td>
-      <td class="topic">Bootstrap Basics</td>
-      <td class="details">
-        <a href="../01_day_reference/11_day.html" target="_blank">• Bootstrap Introduction</a><br>
-        <a href="../01_day_reference/11_day.html" target="_blank">• Container</a><br>
-        <a href="../01_day_reference/11_day.html" target="_blank">• Color</a><br>
-        <a href="../01_day_reference/11_day.html" target="_blank">• Grid</a><br>
-        <a href="../01_day_reference/11_day.html" target="_blank">• Image</a><br>
-        <a href="../01_day_reference/11_day.html" target="_blank">• Button</a><br>
-        <a href="../01_day_reference/11_day.html" target="_blank">• Navbar</a>
-      </td>
-      <td><a href="../02_sample_code/11_day.html" class="view-button">Download</a></td>
-      <td><a href="../03_ppt_slides/11_day.html" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/11_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/11_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/11_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">12</td>
-      <td class="topic">Bootstrap UI</td>
-      <td class="details">
-        <a href="../01_day_reference/12_day.html" target="_blank">• Slider</a><br>
-        <a href="../01_day_reference/12_day.html" target="_blank">• Accordion</a><br>
-        <a href="../01_day_reference/12_day.html" target="_blank">• Icons</a>
-      </td>
-      <td><a href="../02_sample_code/12_day.html" class="view-button">Download</a></td>
-      <td><a href="../03_ppt_slides/12_day.html" class="view-button">View</a></td>
-      <td><a href="../05_visual_assignments/12_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../06_quiz/12_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/12_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">13</td>
-      <td class="topic">Project Development</td>
-      <td class="details">
-        <a href="../01_day_reference/13_day.html" target="_blank">• E-commerce/Event Website</a><br>
-        <a href="../01_day_reference/13_day.html" target="_blank">• Project review</a><br>
-        <a href="../01_day_reference/13_day.html" target="_blank">• Debugging & Deployment</a>
-      </td>
-      <td><a href="../02_sample_code/13_day.html" class="view-button">Download</a></td>
-      <td colspan="4"><a href="../04_project_document/13_day_projectproject.pdf" target="_blank" class="view-button">Project 3 Guide</a></td>
-    </tr>
-
-    <!-- Project 4: Days 14–16 -->
-    <tr>
-      <td class="day-number">14</td>
-      <td class="topic">JavaScript Basics</td>
-      <td class="details">
-        <a href="../01_day_reference/14_day.html" target="_blank">• JS Introduction</a><br>
-        <a href="../01_day_reference/14_day.html" target="_blank">• Variables and data types</a><br>
-        <a href="../01_day_reference/14_day.html" target="_blank">• Function</a><br>
-        <a href="../01_day_reference/14_day.html" target="_blank">• Alert</a>
-      </td>
-      <td><a href="../02_sample_code/14_day.html" class="view-button">Download</a></td>
-      <td><a href="../03_ppt_slides/14_day.html" class="view-button">View</a></td>
-      <td>____</td>
-      <td><a href="../06_quiz/14_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/14_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">15</td>
-      <td class="topic">JavaScript & HTML</td>
-      <td class="details">
-        <a href="../01_day_reference/15_day.html" target="_blank">• HTML Form</a><br>
-        <a href="../01_day_reference/15_day.html" target="_blank">• Dropdown</a><br>
-        <a href="../01_day_reference/15_day.html" target="_blank">• Form styling</a><br>
-        <a href="../01_day_reference/15_day.html" target="_blank">• DOM</a><br>
-        <a href="../01_day_reference/15_day.html" target="_blank">• getElementById</a>
-      </td>
-      <td><a href="../02_sample_code/15_day.html" class="view-button">Download</a></td>
-      <td><a href="../03_ppt_slides/15_day.html" class="view-button">View</a></td>
-      <td>____</td>
-      <td><a href="../06_quiz/15_day.html" target="_blank" class="view-button">View</a></td>
-      <td><a href="../07_home_activity/15_day.html" class="view-button">View</a></td>
-    </tr>
-    <tr>
-      <td class="day-number">16</td>
-      <td class="topic">Final Project</td>
-      <td class="details">
-        <a href="../01_day_reference/16_day.html" target="_blank">• Registration Form</a><br>
-        <a href="../01_day_reference/16_day.html" target="_blank">• Project review</a><br>
-        <a href="../01_day_reference/16_day.html" target="_blank">• Debugging & Deployment</a>
-      </td>
-      <td><a href="../02_sample_code/16_day.html" class="view-button">Download</a></td>
-      <td colspan="4"><a href="../04_project_document/16_day_projectproject.pdf" target="_blank" class="view-button">Project 4 Guide</a></td>
-    </tr>
-  </tbody>
-</table>
-
+      <!-- Project 4: Days 14–16 -->
+      <tr>
+        <td class="day-number">14</td>
+        <td class="topic">JavaScript Basics</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_14/1_introduction.html" target="_blank">• JS Introduction</a><br />
+          <a href="../02_day_order_code/day_14/2_variable.html" target="_blank">• Variables and data types</a><br />
+          <a href="../02_day_order_code/day_14/3_function.html" target="_blank">• Function</a><br />
+          <a href="../02_day_order_code/day_14/4_alert.html" target="_blank">• Alert</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmGWS9zyA/S-SX5LY-ItqMlQ9CWkc0-A/edit?utm_content=DAGmGWS9zyA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a>
+        </td>
+        <td>____</td>
+        <td>
+          <a href="../06_quiz/14_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/14_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/14_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">15</td>
+        <td class="topic">JavaScript & HTML</td>
+        <td class="details">
+          <a href="../02_day_order_code/day_15/1_form_intro.html" target="_blank">• HTML Form</a><br />
+          <a href="../02_day_order_code/day_15/2_input.html" target="_blank">• Input Type</a><br />
+          <a href="../02_day_order_code/day_15/4_form_style.html" target="_blank">• Form styling</a><br />
+          <a href="../02_day_order_code/day_15/4_form_style.html" target="_blank">• DOM</a><br />
+          <a href="../02_day_order_code/day_15/4_form_style.html" target="_blank">• getElementById</a>
+        </td>
+        <td>
+          <a href="https://www.canva.com/design/DAGmGYNlmDo/ztS3mIGTppbqZ1yRYsghiA/edit?utm_content=DAGmGYNlmDo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="view-button">View</a>
+        </td>
+        <td>____</td>
+        <td>
+          <a href="../06_quiz/15_day.html" target="_blank" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../07_home_activity/15_day.html" class="view-button">View</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/15_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="day-number">16</td>
+        <td class="topic">Final Project</td>
+        <td class="details">
+          <a href="../01_projects/04_registration_form/index.html"
+            target="_blank">• Registration Form</a><br />
+          • Project review<br />
+        </td>
+        <td colspan="4">
+          <a href="../04_project_document/16_day_projectproject.pdf" target="_blank" class="view-button">Project 4
+            Guide</a>
+        </td>
+        <td>
+          <a href="../02_sample_code/16_day.html" class="view-button">Download</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
