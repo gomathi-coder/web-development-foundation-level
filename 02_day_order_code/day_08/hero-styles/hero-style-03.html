@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Section</title>
+  <style>
+    .hero-split {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    gap: 3rem;
+    background: #f1f7ff;
+    }
+
+    .hero-text {
+    flex: 1;
+    text-align: left;
+    }
+
+    .hero-text h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.7rem;
+    }
+
+    .hero-text p {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    }
+
+    .hero-text button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    }
+
+    .hero-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    }
+
+    .hero-img img {
+    max-width: 100%;
+    width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(34,34,34,0.15);
+    }
+
+    /* Responsive for tablet & mobile */
+    @media (max-width: 900px) {
+    .hero-split {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .hero-text, .hero-img {
+        flex: unset;
+        width: 100%;
+    }
+    .hero-img img {
+        width: 100%;
+        max-width: 280px;
+    }
+    }
+  </style>
+</head>
+<body>
+    <!-- Split Hero Section -->
+    <section class="hero-split">
+        <div class="hero-text">
+        <h1>Build Your First Website</h1>
+        <p>Join our easy online classes. Start coding today!</p>
+        <button>Join Us</button>
+        </div>
+        <div class="hero-img">
+        <img src="https://plus.unsplash.com/premium_photo-1720287601920-ee8c503af775?q=80&w=1470&auto=format&fit=crop" alt="Laptop and notebook">
+        </div>
+    </section>
+</body>
+</html>

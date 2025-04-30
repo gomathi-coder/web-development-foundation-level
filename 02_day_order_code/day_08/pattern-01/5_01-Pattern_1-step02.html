@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Section</title>
+  <style>
+
+    /* Dont change this below */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    
+    .hero {
+      height: 100vh;
+      min-height: 500px;
+      background: url('https://images.unsplash.com/photo-1519046904884-53103b34b206') center/cover no-repeat;
+      
+      /* Added for Step 2 */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1a3c34;
+    }
+
+    .hero-desc {
+      font-size: 32px;
+      font-weight: 600;
+      color: #1a3c34;
+    }
+
+    .hero-btn {
+      padding: 12px 30px;
+      background: #04AA6D;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 24px;
+      cursor: pointer;
+      /* explain this */
+      transition: all 0.3s ease;
+    }
+    
+    .hero-btn:hover {
+       /* explain this */
+      background: #038a5a;
+      transform: translateY(-2px);
+    }
+    
+    
+    
+    /* Dont change this above */
+
+    /* Add Additional CSS Below */
+
+  </style>
+</head>
+<body>
+  <!-- Dont change this below -->
+  <section class="hero">
+      <h1 class="hero-title">Welcome to Holiday Inn Resort</h1>
+      <h2 class="hero-desc">Have an amazing stay</h2>
+      <button class="hero-btn">Book Now</button>
+  </section>
+  <!-- Dont change this above -->
+  <!-- Add Additional Sections Below -->
+
+     <!-- About Us -->
+  <section class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Nestled in the heart of nature, Holiday Inn Resort offers an oasis of peace, blending comfort with unforgettable experiences. Relax, recharge, and create beautiful memories with us.
+      </p>
+    </div>
+  </section>
+
+  <!-- Rooms & Accommodation -->
+  <section class="rooms">
+    <div class="container">
+      <h2>Rooms & Accommodation</h2>
+      <div class="room-list">
+        <div class="room">
+          <h3>Deluxe Room</h3>
+          <p>Cozy room with a stunning view and modern amenities.</p>
+        </div>
+        <div class="room">
+          <h3>Family Suite</h3>
+          <p>Spacious suite perfect for families or small groups.</p>
+        </div>
+        <div class="room">
+          <h3>Beachfront Villa</h3>
+          <p>Private villa with direct access to the beach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section class="facilities">
+    <div class="container">
+      <h2>Facilities</h2>
+      <ul class="facility-list">
+        <li>Infinity Pool</li>
+        <li>Spa & Wellness Center</li>
+        <li>Restaurant & Bar</li>
+        <li>Beach Access</li>
+        <li>Free Wi-Fi</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Resort View">
+        <img src="https://images.unsplash.com/photo-1499696012290-34dca1b43df0?auto=format&fit=crop&w=400&q=80" alt="Room">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Pool">
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <p>"A truly relaxing and beautiful stay. The staff were friendly and the food was amazing!"</p>
+          <span>- Maria R.</span>
+        </div>
+        <div class="testimonial">
+          <p>"Perfect getaway spot for our family. Kids loved the pool and beach."</p>
+          <span>- James K.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Holiday Inn Resort. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <style>
+    /* Minimalistic additional styles below */
+
+    section {
+      padding: 50px 0 40px 0;
+      background: #fff;
+    }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #1a3c34;
+      letter-spacing: 1px;
+    }
+    p { color: #333; }
+
+    /* About */
+    .about p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #444;
+    }
+
+    /* Rooms & Accommodation */
+    .room-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .room {
+      background: #f8f8f8;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      padding: 16px 18px;
+      flex: 1 1 200px;
+      max-width: 270px;
+      min-width: 160px;
+    }
+    .room h3 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      color: #02644b;
+    }
+    .room p {
+      color: #555;
+      font-size: 0.98rem;
+    }
+    /* Facilities */
+    .facility-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 18px;
+      color: #027353;
+      font-size: 1rem;
+      padding: 0;
+    }
+    .facility-list li {
+      background: #eafcf7;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+    /* Gallery */
+    .gallery-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 22px;
+    }
+    .gallery-grid img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      transition: transform 0.2s;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    /* Testimonials */
+    .testimonial-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      margin-top: 18px;
+    }
+    .testimonial {
+      background: #f7faf9;
+      border-left: 4px solid #04AA6D;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 22px;
+      max-width: 470px;
+      text-align: left;
+    }
+    .testimonial span {
+      display: block;
+      font-size: 0.92em;
+      margin-top: 8px;
+      color: #2b945e;
+      font-style: italic;
+    }
+    /* Footer */
+    .footer {
+      background: #016B4A;
+      color: #fff;
+      text-align: center;
+      padding: 16px 0 14px 0;
+      font-size: 0.97rem;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .room-list, .facility-list, .gallery-grid {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .gallery-grid img {
+        width: 95%;
+        height: 130px;
+        max-width: 400px;
+      }
+    }
+  </style>
+</body>
+</html>

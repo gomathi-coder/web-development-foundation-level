@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bright Future Public School</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #d1c9dd;
+      color: #333;
+    }
+
+    /* header */
+
+    header {
+      background: #3D52A0;
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+
+    header h1 {
+      font-size: 40px;
+    }
+
+    header p {
+      font-style: italic;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 8px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      padding: 8px 16px;
+      border-radius: 5px;
+    }
+
+    nav ul li a:hover {
+      background-color: #0056b3;
+    }
+
+
+
+    /* home */
+
+
+    .section {
+      padding: 32px;
+      max-width: 70%;
+      margin: auto;
+      margin-top: 16px;
+      background-color: white;
+      border-radius: 10px;
+
+    }
+
+    .colorful {
+      text-align: center;
+      line-height: 2;
+      font-size: 20px;
+      background: #0FA4AF;
+      color: white;
+    }
+
+    .banner {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 16px
+    }
+
+    /* about */
+
+    .two-column {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .two-column div {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    /* academics */
+
+    table,
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 16px;
+      text-align: left;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    /* achievements */
+
+    .cards {
+      display: flex;
+      gap: 16px;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background-color: #ffeb3b;
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+    }
+
+
+    /* gallery */
+
+
+    .grid .gallery {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    /* student-life */
+
+    .icons ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+
+    }
+
+    .icons ul li {
+      font-size: 24px;
+      background-color: #e1f5fe;
+      padding: 16px;
+      border-radius: 10px;
+      min-width: 150px;
+      text-align: center;
+    }
+
+
+    
+/* notices */
+    marquee {
+    background-color: #ffe0b2;
+    padding: 8px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border-radius: 5px;
+  }
+
+
+  /* footer */
+
+  footer {
+    text-align: center;
+    padding: 16px;
+    background-color: #343a40;
+    color: white;
+    margin-top: 32px;
+
+  }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- header -->
+
+  <header>
+    <h1>Bright Future Public School</h1>
+    <p>Learning Today, Leading Tomorrow</p>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#student-life">Student Life</a></li>
+        <li><a href="#notices">Notice Board</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <!-- home -->
+
+  <section id="home" class="section colorful">
+    <h2>Welcome to Bright Future Public School</h2>
+    <img src="4.1.school_logo.png" alt="School Banner" class="banner" />
+  </section>
+
+
+
+
+  <!-- about -->
+  <div class="hint-target" data-section="about" style="position:relative;">
+
+  <section id="about" class="section two-column" >
+    <div>
+      <h2>About Us</h2>
+      <p>Bright Future Public School was established in 2005 with a mission to provide quality education in a nurturing
+        environment.</p>
+      <p><strong>Principal's Message:</strong> We aim to inspire and empower students to be lifelong learners.</p>
+    </div>
+    <div>
+      <h3>Vision & Mission</h3>
+      <ul>
+        <li>Empowering through education</li>
+        <li>Encouraging creativity and curiosity</li>
+        <li>Fostering a caring community</li>
+      </ul>
+    </div>
+  </section>
+  <div class="section-toolbar">
+    <button title="Hint" onclick="showPopup(event, this, 'about', 'hint')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 16v2"/><path d="M9 20h6"/><path d="M10 16a2 2 0 0 1 4 0"/></svg>
+    </button>
+    <button title="HTML/CSS Idea" onclick="showPopup(event, this, 'about', 'idea')">
+      <svg viewBox="0 0 24 24"><path d="M8 4c-5 8 5 8 0 16"/><path d="M16 4c5 8-5 8 0 16"/></svg>
+    </button>
+    <button title="Code" onclick="showPopup(event, this, 'about', 'code')">
+      <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h6"/></svg>
+    </button>
+  </div>
+  <!-- Place the popup here -->
+  <div class="section-helper-popup"></div>
+</div>
+
+
+
+  <!-- academics -->
+
+  <section id="academics" class="section hint-target" data-section="about">
+    <div class="section-toolbar">
+        <button title="Hint" onclick="showPopup(event, this, 'about', 'hint')">
+          <!-- Lightbulb SVG  -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 16v2"/><path d="M9 20h6"/><path d="M10 16a2 2 0 0 1 4 0"/></svg>
+        </button>
+        <button title="HTML/CSS Idea" onclick="showPopup(event, this, 'about', 'idea')">
+          <!-- Braces SVG -->
+          <svg viewBox="0 0 24 24"><path d="M8 4c-5 8 5 8 0 16"/><path d="M16 4c5 8-5 8 0 16"/></svg>
+        </button>
+        <button title="Code" onclick="showPopup(event, this, 'about', 'code')">
+          <!-- File SVG -->
+          <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h6"/></svg>
+        </button>
+      </div>
+      <div class="section-helper-popup"></div>
+    <h2>Academics</h2>
+    <table>
+      <tr>
+        <th>Grade</th>
+        <th>Subjects</th>
+      </tr>
+      <tr>
+        <td>1-5</td>
+        <td>Math, English, Science, EVS</td>
+      </tr>
+      <tr>
+        <td>6-8</td>
+        <td>Math, Science, Social, Computers</td>
+      </tr>
+      <tr>
+        <td>9-10</td>
+        <td>Math, Science, SST, English, Hindi</td>
+      </tr>
+    </table>
+  </section>
+
+
+
+
+  <!-- achievements -->
+
+  <section id="achievements" class="section colorful">
+    <h2>Achievements</h2>
+    <div class="cards">
+      <div class="card">State Level Science Fair Winner - 2023</div>
+      <div class="card">Top 10 CBSE Schools in Region</div>
+      <div class="card">Best Eco-Friendly Campus Award</div>
+    </div>
+  </section>
+
+
+  <!-- gallery -->
+
+  <section id="gallery" class="section grid">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="12.1.jpg" alt="Event 1" />
+      <img src="12.2.jpg" alt="Event 2" />
+      <img src="12.3.jpg" alt="Event 3" />
+      <img src="12.4.jpg" alt="Event 4" />
+      <img src="12.5.jpg" alt="Event 5" />
+    </div>
+    <br>
+
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/YLeBeGJpKjU?si=r8MXCnhqZljxfa9e"
+      title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  </section>
+
+
+
+
+  <!-- student-life -->
+
+  <section id="student-life" class="section icons">
+    <h2>Student Life</h2>
+    <p>We offer a wide variety of clubs and sports for holistic development.</p>
+    <ul>
+      <li><i class="fas fa-theater-masks"></i> <br> Drama Club</li>
+      <li><i class="fas fa-futbol"></i> <br> Cricket & Football</li>
+      <li><i class="fas fa-paint-brush"></i> <br> Art & Craft</li>
+      <li><i class="fas fa-music"></i> <br> Music & Dance</li>
+    </ul>
+  </section>
+
+
+
+
+  <!-- notices -->
+
+  <section id="notices" class="section">
+    <h2>Notice Board</h2>
+    <marquee>Admissions Open for 2025-26 | Science Exhibition on April 25 | Annual Day on May 10</marquee>
+    <ul>
+      <li>Summer Break starts May 15</li>
+      <li>Parent-Teacher Meeting - April 20</li>
+    </ul>
+  </section>
+
+
+
+  <!-- contact -->
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>📍 123 Learning Lane, EduTown, India</p> 
+    <p>📞 +91 98765 43210</p>
+    <p>📧 contact@brightfuture.edu</p>
+  
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124434.3083858085!2d79.95452642440793!3d12.935198456992138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f135c1501ff%3A0x288bf3cda84da330!2sSan%20Academy%20Tambaram!5e0!3m2!1sen!2sin!4v1743924913444!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <p>&copy; 2025 Bright Future Public School. All rights reserved.</p>
+  </footer>
+
+  <style>
+    /* Vertical, right-side toolbar */
+    .section-toolbar {
+      display: none;
+      position: absolute;
+      right: -52px; /* move outside the section to the right */
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: 1px solid #e3e3e3;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px #2221ff0d;
+      padding: 7px 4px;
+      gap: 0;
+      flex-direction: column;
+      align-items: center;
+      font-size: 22px;
+      cursor: pointer;
+      width: 46px;
+      min-height: 122px;
+      z-index: 12;
+    }
+    .section-toolbar button {
+      background: none;
+      border: none;
+      margin: 5px 0;
+      padding: 5px 3px;
+      border-radius: 5px;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.17s;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .section-toolbar button:hover, .section-toolbar button:focus {
+      background: #f1f9ff;
+    }
+    .section-toolbar svg {
+      display: block; width: 22px; height: 22px;
+      stroke: #3d52a0; stroke-width:2; fill:none;
+    }
+    .hint-target { position:relative; outline: none;}
+    .hint-target:hover, .hint-target:focus-within {
+      outline: 2px solid #b3caff; box-shadow: 0 0 0 3px #d1e4ff18;
+    }
+    .hint-target:hover .section-toolbar,
+    .hint-target:focus-within .section-toolbar { display: flex; }
+    
+    /* Section-bottom popup: shows under the section, centered, with max width */
+    .section-helper-popup {
+      display:none;
+      position: static;  /* ← static so that it flows in the document, not absolute */
+      background: #fffbe7;
+      color: #333;
+      border: 2px solid #b6ad90;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px #ccc6ad52;
+      padding: 22px 19px 15px 19px;
+      font-size: 17px;
+      z-index: 100;
+      margin-top: 16px;
+      margin-bottom: 24px;
+      max-width: 520px;
+      width: 98vw;
+      left: 50%;  /* Ensures centering in flex/centered container, even if parent isn't full width */
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeIn .25s;
+    }
+    @media (max-width:700px) {
+      .section-toolbar{ right: -44px; min-height: 95px;}
+      .section-helper-popup{ font-size:15px; max-width:96vw; }
+    }
+    .section-helper-popup pre {
+      background: #f3f3e6; padding: 10px; border-radius:6px; margin-top: 10px; font-size:15px; overflow:auto;
+    }
+    .section-helper-close {
+      position: absolute;
+      top: 7px;
+      right: 13px;
+      font-size: 21px; color: #8f7700; background: none; border: none;
+      cursor:pointer; font-weight:bold; line-height:1;
+    }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    </style>
+    <script>
+        const HINTS = {
+          header: `- There is space around the header's content using <b>padding</b>.<br>- Blue background with <b>background-color</b>.<br>- Large text uses <b>font-size</b>.<br>- Nav links use <b>background-color, border-radius</b> and <b>padding</b>.`,
+          home: `- Section uses a colored background with <b>background</b>.<br>- Space inside: <b>padding</b>.<br>- Image corners by <b>border-radius</b>.<br>Text is <b>centered</b>.`,
+          about: `- Two-column layout using <b>display: flex</b>.<br>- The <b>gap</b> property sets spacing.<br>- Rounded container via <b>border-radius</b>.`,
+          academics: `- Table uses borders with <b>border</b> &amp; <b>border-collapse</b>.<br>- More space inside cells with <b>padding</b>.`,
+          achievements: `- Cards are side by side with <b>display: flex</b>.<br>- Each card: yellow <b>background, padding, border-radius</b>.<br>Text is centered and bold.`,
+          gallery: `- Images arranged in a grid with <b>display: grid</b>.<br>- <b>gap</b> for spacing, <b>border-radius</b> for corners.<br>Embedded YouTube video below.`,
+          "student-life": `- Clubs and sports icons in a row, via <b>display: flex</b>.<br>- Colored club boxes: <b>background-color, border-radius, padding</b>.`,
+          notices: `- Scrolling text with <b>&lt;marquee&gt;</b>.<br>- Notice box background set.<br>- List of announcements below.`,
+          contact: `- Address, phone, email with emoji.<br>- Embedded map with <b>&lt;iframe&gt;</b>.`,
+          footer: `- Dark background, white text.<br>- Space around text is <b>padding</b>.`
+        };
+        const IDEAS = {
+          header: `<b>// Header</b>
+        header { background: #3D52A0; padding: 24px; color: white; }
+        nav ul { display: flex; justify-content: center; }
+        nav ul li a { background-color: #007bff; padding: 8px 16px; border-radius: 5px; }`,
+          home: `<b>// Home Section</b>
+        .section.colorful { background: #0FA4AF; color: white; padding: 32px; border-radius: 10px; text-align: center; }
+        .banner { width: 100%; border-radius: 10px; }`,
+          about: `<b>// About Us Section</b>
+        .two-column { display: flex; gap: 32px; flex-wrap: wrap; }
+        .section { border-radius: 10px; padding: 32px; }`,
+          academics: `<b>// Academics Table</b>
+        table, th, td { border: 1px solid #ddd; padding: 16px; }
+        table { width: 100%; border-collapse: collapse; }`,
+          achievements: `<b>// Achievements Cards</b>
+        .cards { display: flex; gap: 16px; }
+        .card { background-color: #ffeb3b; padding: 16px; border-radius: 10px; font-weight: bold; text-align: center; }`,
+          gallery: `<b>// Gallery Grid</b>
+        .gallery { display: grid; grid-template-columns: auto auto auto; gap: 16px; }
+        .gallery img { border-radius: 10px; object-fit: cover; }`,
+          "student-life": `<b>// Student Life</b>
+        .icons ul { display: flex; gap: 32px; }
+        .icons ul li { background-color: #e1f5fe; padding: 16px; border-radius: 10px; text-align: center; }`,
+          notices: `<b>// Notices</b>
+        marquee { background-color: #ffe0b2; padding: 8px; border-radius: 5px; font-weight: bold; }`,
+          contact: `<b>// Contact</b>
+        iframe { width: 100%; border: 0; border-radius: 0; height: 300px; }`,
+          footer: `<b>// Footer</b>
+        footer { padding: 16px; background-color: #343a40; color: white; }`
+        };
+        function selectHtml(section) {
+          if(section==="header") return document.querySelector('header').outerHTML;
+          if(section==="footer") return document.querySelector('footer').outerHTML;
+          let sec = document.querySelector('[data-section="'+section+'"]');
+          return sec ? sec.outerHTML : "";
+        }
+        function selectCss(section) {
+          return IDEAS[section] || "";
+        }
+        function escapeHtml(text){
+          if(!text) return '';
+          return text.replace(/[<>&]/g,c => ({"<":"&lt;", ">":"&gt;", "&":"&amp;"}[c]));
+        }
+        
+        function showPopup(evt, btn, section, kind) {
+          evt.stopPropagation();
+          // Close any open popup
+          document.querySelectorAll('.section-helper-popup').forEach(p=>{
+            p.style.display = 'none';
+            p.innerHTML = '';
+          });
+          let popup = btn.closest('.hint-target').querySelector('.section-helper-popup');
+          let content = '';
+          if(kind==="hint") {
+            content = `<button class="section-helper-close" onclick="closeSectionPopup(this)">×</button>
+              <b>Hint:</b><br><br>${HINTS[section]}`;
+          } else if(kind==="idea") {
+            content = `<button class="section-helper-close" onclick="closeSectionPopup(this)">×</button>
+              <b>HTML/CSS Idea:</b><pre>${IDEAS[section]}</pre>`;
+          } else if(kind==="code") {
+            content = `<button class="section-helper-close" onclick="closeSectionPopup(this)">×</button>
+            <b>HTML:</b><pre>${escapeHtml(selectHtml(section))}</pre>
+            <b>CSS:</b><pre>${escapeHtml(selectCss(section))}</pre>`;
+          }
+          popup.innerHTML = content;
+          popup.style.display = "block";
+          // Scroll to section bottom if needed (for small screens)
+          setTimeout(()=>{
+            let rect = popup.getBoundingClientRect();
+            if(rect.bottom>window.innerHeight-20)
+              popup.scrollIntoView({behavior:'smooth',block:'end'});
+          }, 50);
+        }
+        function closeSectionPopup(btn) {
+          btn.closest('.section-helper-popup').style.display = 'none';
+        }
+        document.body.addEventListener('click', function(e){
+          document.querySelectorAll('.section-helper-popup').forEach(p=>{
+            p.style.display='none';
+            p.innerHTML='';
+          });
+        });
+        </script>
+        <div class="helper-box" id="helper-box">
+            <span class="helper-close" onclick="closeHelper()">×</span>
+            <div id="helper-content"></div>
+          </div>
+  
+
+
+</body>
+
+</html>

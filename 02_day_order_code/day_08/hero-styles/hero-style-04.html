@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Section</title>
+  <style>
+    .hero-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    min-height: 60vh;
+    background: #fff5e6;
+    padding: 40px 20px;
+    }
+
+    .hero-illustration h1 {
+    color: #ef7d00;
+    font-size: 2.4rem;
+    }
+
+    .hero-illustration p {
+    color: #6e4508;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    }
+
+    .hero-illustration button {
+    padding: 12px 28px;
+    background: #ef7d00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    }
+
+    .hero-illustration img {
+    max-width: 200px;
+    width: 40vw;
+    border-radius: 40%;
+    box-shadow: 0 8px 24px rgba(34,34,34,0.12);
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+    .hero-illustration {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .hero-illustration img {
+        width: 60vw;
+        max-width: 300px;
+    }
+    }
+  </style>
+</head>
+<body>
+    <!-- Hero with Illustration -->
+    <section class="hero-illustration">
+        <div>
+        <h1>Coding is Fun!</h1>
+        <p>Let’s learn together with our friendly mascot!</p>
+        <button>Start Coding</button>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2020/11/12/05/43/monster-5734465_1280.png" alt="Cartoon mascot">
+    </section>
+</body>
+</html>

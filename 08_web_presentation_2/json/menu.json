@@ -340,6 +340,16 @@
         "teacher-section": "false",
         "visible": "true",
         "extended-section": "false"
+      },
+      {
+        "page-name": "Mobile View",
+        "page-url": "?page-id=mobile-view",
+        "mark-down": "07-mobile-views/01-a.md",
+        "page-id": "mobile-view",
+        "page-version": "aaa",
+        "teacher-section": "false",
+        "visible": "true",
+        "extended-section": "false"
       }
     ]
   }
