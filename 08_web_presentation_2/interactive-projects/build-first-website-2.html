@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bright Future Public School</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #d1c9dd;
+      color: #333;
+    }
+
+    /* header */
+
+    header {
+      background: #3D52A0;
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+
+    header h1 {
+      font-size: 40px;
+    }
+
+    header p {
+      font-style: italic;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 8px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      padding: 8px 16px;
+      border-radius: 5px;
+    }
+
+    nav ul li a:hover {
+      background-color: #0056b3;
+    }
+
+
+
+    /* home */
+
+
+    .section {
+      padding: 32px;
+      max-width: 70%;
+      margin: auto;
+      margin-top: 16px;
+      background-color: white;
+      border-radius: 10px;
+
+    }
+
+    .colorful {
+      text-align: center;
+      line-height: 2;
+      font-size: 20px;
+      background: #0FA4AF;
+      color: white;
+    }
+
+    .banner {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 16px
+    }
+
+    /* about */
+
+    .two-column {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .two-column div {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    /* academics */
+
+    table,
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 16px;
+      text-align: left;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    /* achievements */
+
+    .cards {
+      display: flex;
+      gap: 16px;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background-color: #ffeb3b;
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+    }
+
+
+    /* gallery */
+
+
+    .grid .gallery {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    /* student-life */
+
+    .icons ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+
+    }
+
+    .icons ul li {
+      font-size: 24px;
+      background-color: #e1f5fe;
+      padding: 16px;
+      border-radius: 10px;
+      min-width: 150px;
+      text-align: center;
+    }
+
+
+    
+/* notices */
+    marquee {
+    background-color: #ffe0b2;
+    padding: 8px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border-radius: 5px;
+  }
+
+
+  /* footer */
+
+  footer {
+    text-align: center;
+    padding: 16px;
+    background-color: #343a40;
+    color: white;
+    margin-top: 32px;
+
+  }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- header -->
+
+  <header>
+    <h1>Bright Future Public School</h1>
+    <p>Learning Today, Leading Tomorrow</p>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#student-life">Student Life</a></li>
+        <li><a href="#notices">Notice Board</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <!-- home -->
+
+  <section id="home" class="section colorful">
+    <h2>Welcome to Bright Future Public School</h2>
+    <img src="4.1.school_logo.png" alt="School Banner" class="banner" />
+  </section>
+
+
+
+
+  <!-- about -->
+
+  <section id="about" class="section two-column">
+    <div>
+      <h2>About Us</h2>
+      <p>Bright Future Public School was established in 2005 with a mission to provide quality education in a nurturing
+        environment.</p>
+      <p><strong>Principal's Message:</strong> We aim to inspire and empower students to be lifelong learners.</p>
+    </div>
+    <div>
+      <h3>Vision & Mission</h3>
+      <ul>
+        <li>Empowering through education</li>
+        <li>Encouraging creativity and curiosity</li>
+        <li>Fostering a caring community</li>
+      </ul>
+    </div>
+  </section>
+
+
+
+  <!-- academics -->
+
+  <section id="academics" class="section">
+    <h2>Academics</h2>
+    <table>
+      <tr>
+        <th>Grade</th>
+        <th>Subjects</th>
+      </tr>
+      <tr>
+        <td>1-5</td>
+        <td>Math, English, Science, EVS</td>
+      </tr>
+      <tr>
+        <td>6-8</td>
+        <td>Math, Science, Social, Computers</td>
+      </tr>
+      <tr>
+        <td>9-10</td>
+        <td>Math, Science, SST, English, Hindi</td>
+      </tr>
+    </table>
+  </section>
+
+
+
+
+  <!-- achievements -->
+
+  <section id="achievements" class="section colorful">
+    <h2>Achievements</h2>
+    <div class="cards">
+      <div class="card">State Level Science Fair Winner - 2023</div>
+      <div class="card">Top 10 CBSE Schools in Region</div>
+      <div class="card">Best Eco-Friendly Campus Award</div>
+    </div>
+  </section>
+
+
+  <!-- gallery -->
+
+  <section id="gallery" class="section grid">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="12.1.jpg" alt="Event 1" />
+      <img src="12.2.jpg" alt="Event 2" />
+      <img src="12.3.jpg" alt="Event 3" />
+      <img src="12.4.jpg" alt="Event 4" />
+      <img src="12.5.jpg" alt="Event 5" />
+    </div>
+    <br>
+
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/YLeBeGJpKjU?si=r8MXCnhqZljxfa9e"
+      title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  </section>
+
+
+
+
+  <!-- student-life -->
+
+  <section id="student-life" class="section icons">
+    <h2>Student Life</h2>
+    <p>We offer a wide variety of clubs and sports for holistic development.</p>
+    <ul>
+      <li><i class="fas fa-theater-masks"></i> <br> Drama Club</li>
+      <li><i class="fas fa-futbol"></i> <br> Cricket & Football</li>
+      <li><i class="fas fa-paint-brush"></i> <br> Art & Craft</li>
+      <li><i class="fas fa-music"></i> <br> Music & Dance</li>
+    </ul>
+  </section>
+
+
+
+
+  <!-- notices -->
+
+  <section id="notices" class="section">
+    <h2>Notice Board</h2>
+    <marquee>Admissions Open for 2025-26 | Science Exhibition on April 25 | Annual Day on May 10</marquee>
+    <ul>
+      <li>Summer Break starts May 15</li>
+      <li>Parent-Teacher Meeting - April 20</li>
+    </ul>
+  </section>
+
+
+
+  <!-- contact -->
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>📍 123 Learning Lane, EduTown, India</p> 
+    <p>📞 +91 98765 43210</p>
+    <p>📧 contact@brightfuture.edu</p>
+  
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124434.3083858085!2d79.95452642440793!3d12.935198456992138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f135c1501ff%3A0x288bf3cda84da330!2sSan%20Academy%20Tambaram!5e0!3m2!1sen!2sin!4v1743924913444!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <p>&copy; 2025 Bright Future Public School. All rights reserved.</p>
+  </footer>
+
+  <style>
+    #aid-trigger-row {
+      position: fixed;
+      top: 60px;
+      right: 28px;
+      z-index: 10020;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .aid-trigger-btn {
+      background: #345de8; color: #fff;
+      padding: 12px 19px 12px 22px;
+      border: 2px solid #fff;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px #2242;
+      font-size: 15px; font-family: inherit; font-weight: bold; margin-bottom: 0;
+      cursor: pointer; letter-spacing: 0.02em; transition: background .16s;
+    }
+    .aid-trigger-btn.selected, .aid-trigger-btn:hover { background: #2337a7; }
+    .aid-banner-bar {
+      background: #fffbe7;
+      border: 2px solid #b9b480;
+      border-radius: 12px;
+      padding: 22px 30px 17px 14px;
+      font-size: 18px;
+      color: #2d2d2d;
+      max-width: 700px;
+      box-shadow: 0 8px 32px #3345;
+      margin: 18px auto;
+      overflow-x: auto;
+      opacity: 0; pointer-events: none; transition: opacity 0.14s;
+      position:relative;
+    }
+    .aid-banner-bar.visible { opacity: 1; pointer-events: auto; animation: fadeInHint .21s;}
+    @keyframes fadeInHint {from{opacity:0;} to{opacity:1;} }
+    .aid-title {font-weight:bold; font-size:20px; margin-bottom:9px;}
+    .aid-nav-btn {
+      padding:6px 15px; background:#ffd000; color:#222; border:none; margin:4px;
+      border-radius:5px; font-size:16px; cursor:pointer; font-weight:600
+    }
+    .aid-nav-btn:disabled {background:#ede48a; color:#888; cursor:default;}
+    .aid-close {
+      float:right; color:#d44; cursor:pointer; font-size:22px;
+      font-weight:bold; background:none; border:none; padding: 0 2px; margin-left:8px
+    }
+    .aid-spotlight {
+      transition: box-shadow .18s;
+      box-shadow: 0 0 0 5px #ffee8833, 0 0 34px 16px #ffee8837 !important;
+      position:relative; z-index:1010 !important;
+    }
+    .aid-banner-bar pre {
+      font-size:15px; background: #f7f7e8; border-radius: 7px; padding: 6px 10px; overflow-x: auto; margin: 4px 0 2px 0;
+    }
+    @media (max-width:700px){
+      .aid-banner-bar{ max-width:98vw; padding:14px 2vw;}
+      #aid-trigger-row{ top:10px; right:2vw;}
+    }
+    </style>
+    <div id="aid-trigger-row">
+      <button class="aid-trigger-btn" id="aid-hint"   title="Show plain English hints for each section">Show Hint</button>
+      <button class="aid-trigger-btn" id="aid-idea"   title="Show HTML/CSS concepts used in each section">Show HTML/CSS Snippet</button>
+      <button class="aid-trigger-btn" id="aid-snippet" title="Show the actual HTML & CSS">Show the HTML & CSS Code</button>
+    </div>
+    <script>
+    // Section definitions, as previously
+    const sections = [
+      { selector: "header", name: "Header",
+        hint: `The blue section on top includes the school name and menu.<ul>
+    <li>Extra space is provided using <b>padding</b>.</li>
+    <li>The menu links are blue buttons with padding and rounded corners set by <b>background-color</b> and <b>border-radius</b>.</li>
+    <li>The school name is bigger via <b>font-size</b>.</li>
+    </ul>`,
+        idea: `header { background: #3D52A0; padding: 24px; color: white; }
+    nav ul { display: flex; justify-content: center; }
+    nav ul li a { background-color: #007bff; padding: 8px 16px; border-radius: 5px; }`,
+        code: `<header>...</header>
+    <style>
+    header { background: #3D52A0; color: white; padding: 24px; }
+    header h1 { font-size: 40px; }
+    nav ul { display: flex; justify-content: center;}
+    nav ul li a { background-color: #007bff; padding: 8px 16px; border-radius: 5px;}
+    </style>`
+      },
+      { selector: "#home", name: "Home",
+        hint: `The welcome area is in a colored, rounded box.<ul>
+    <li>Section uses <b>background-color</b> for color.</li>
+    <li>Extra space is added using <b>padding</b>.</li>
+    <li>The image has <b>border-radius</b> and <b>width:100%</b>.</li>
+    <li>Text is centered.</li></ul>`,
+        idea: `.section.colorful {
+      background: #0FA4AF;
+      color: white;
+      padding: 32px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .banner { width: 100%; border-radius: 10px; }`,
+        code: `<section id="home" class="section colorful">...</section>
+    <style>
+    .section.colorful { background: #0FA4AF; color: white; padding: 32px; border-radius: 10px; text-align: center;}
+    .banner { width: 100%; border-radius: 10px;}
+    </style>`
+      },
+      { selector: "#about", name: "About Us",
+        hint: `About is split into two columns in a white box.<ul>
+    <li>Columns via <b>display: flex</b> and <b>gap</b>.</li>
+    <li>Box has rounded corners and padding.</li></ul>`,
+        idea: `.two-column { display: flex; gap: 32px; flex-wrap: wrap;}
+    .section { border-radius: 10px; padding: 32px; }`,
+        code: `<section id="about" class="section two-column">...</section>
+    <style>
+    .two-column { display: flex; gap: 32px; flex-wrap: wrap;}
+    .section { border-radius: 10px; padding: 32px;}
+    </style>`
+      },
+      { selector: "#academics", name: "Academics",
+        hint: `The academics are in a table.<ul>
+    <li>Table cells: <b>padding</b> and <b>border</b>.</li>
+    <li>Table fills the width (<b>width:100%</b>).</li></ul>`,
+        idea: `table, th, td { border: 1px solid #ddd; padding: 16px;}
+    table { width: 100%; border-collapse: collapse; }`,
+        code: `<section id="academics" class="section">...</section>
+    <style>table, th, td { border: 1px solid #ddd; padding: 16px;} table { width: 100%; border-collapse: collapse;}</style>`
+      },
+      { selector: "#achievements", name: "Achievements",
+        hint: `Three yellow cards in a row.<ul>
+    <li>Cards: <b>display: flex</b>, <b>gap</b> for spacing, <b>background-color</b>, <b>padding</b>, <b>border-radius</b>.</li></ul>`,
+        idea: `.cards { display: flex; gap: 16px;}
+    .card { background-color: #ffeb3b; padding: 16px; border-radius: 10px; text-align: center; font-weight: bold; }`,
+        code: `<section id="achievements" class="section colorful">...</section>
+    <style>.cards { display: flex; gap: 16px;}
+    .card { background-color: #ffeb3b; padding: 16px; border-radius: 10px; text-align: center; font-weight: bold; }
+    </style>`
+      },
+      { selector: "#gallery", name: "Gallery",
+        hint: `Gallery images are in a grid; a YouTube video below.<ul>
+    <li>Images via <b>display: grid</b>; gaps, <b>border-radius</b>, fixed height <b>object-fit: cover</b>.</li></ul>`,
+        idea: `.gallery {
+      display: grid; grid-template-columns: auto auto auto; gap: 16px;
+    }
+    .gallery img { border-radius: 10px; height: 150px; object-fit: cover; }`,
+        code: `<section id="gallery" class="section grid">...</section>
+    <style>
+    .gallery { display: grid; grid-template-columns: auto auto auto; gap: 16px; }
+    .gallery img { border-radius: 10px; height: 150px; object-fit: cover; }
+    </style>`
+      },
+      { selector: "#student-life", name: "Student Life",
+        hint: `Student clubs as icon boxes in a row.<ul>
+    <li><b>display: flex</b> row; <b>background-color</b>, <b>padding</b>, <b>border-radius</b> per box.</li></ul>`,
+        idea: `.icons ul { display: flex; gap: 32px; }
+    .icons ul li { background-color: #e1f5fe; padding: 16px; border-radius: 10px; text-align: center; }
+    `,
+        code: `<section id="student-life" class="section icons">...</section>
+    <style>
+    .icons ul { display: flex; gap: 32px; }
+    .icons ul li { background-color: #e1f5fe; padding: 16px; border-radius: 10px; text-align: center; }
+    </style>`
+      },
+      { selector: "#notices", name: "Notice Board",
+        hint: `Moving top message uses the <b>&lt;marquee&gt;</b> tag.<ul>
+    <li>Marquee's background: <b>background-color</b> and <b>padding</b>.</li>
+    <li>Other announcements use a <b>list</b> below.</li></ul>`,
+        idea: `marquee { background-color: #ffe0b2; padding: 8px; border-radius: 5px; font-weight: bold;}
+    `,
+        code: `<section id="notices" class="section">...</section>
+    <style>
+    marquee { background-color: #ffe0b2; padding: 8px; border-radius: 5px; font-weight: bold;}
+    </style>`
+      },
+      { selector: "#contact", name: "Contact Us",
+        hint: `Simple contact (address, phone, email) with Google Map embed below.<ul>
+    <li>Map is an <b>&lt;iframe&gt;</b>.</li></ul>`,
+        idea: `iframe { width: 100%; height: 300px; border: 0; }`,
+        code: `<section id="contact" class="section">...</section>
+    <style>
+    iframe { width: 100%; height: 300px; border: 0; }
+    </style>`
+      },
+      { selector: "footer", name: "Footer",
+        hint: `Dark bar at bottom.<ul>
+    <li>Padding creates space; text is centered/white</li></ul>`,
+        idea: `footer { padding: 16px; background-color: #343a40; color: white; }`,
+        code: `<footer> ... </footer>
+    <style>
+    footer { padding: 16px; background-color: #343a40; color: white;}
+    </style>`
+      }
+    ];
+    
+    // State (where are we, which mode)
+    let currentIdx = -1;
+    let currentMode = 'hint';
+    
+    // Escape HTML for code printing
+    function escapeHtml(s) {
+      return s.replace(/[<>&]/g, c=>({ '<':'&lt;','>':'&gt;','&':'&amp;' })[c]);
+    }
+    
+    // Hide any old banner and highlight
+    function removeAidBanner() {
+      // Remove old bar
+      let oldBar = document.querySelector('.aid-banner-bar');
+      if(oldBar && oldBar.parentNode) oldBar.parentNode.removeChild(oldBar);
+      // Remove highlight
+      if(currentIdx>=0){
+        let el = document.querySelector(sections[currentIdx].selector);
+        if(el) el.classList.remove('aid-spotlight');
+      }
+      document.querySelectorAll('#aid-trigger-row .aid-trigger-btn').forEach(btn=>btn.classList.remove('selected'));
+      currentIdx = -1;
+    }
+    // Insert the bar just after the section
+    function showAidBanner(idx, mode) {
+      removeAidBanner();
+      if (idx < 0 || idx >= sections.length) return;
+      currentIdx = idx;
+      currentMode = mode;
+      let item = sections[idx], el = document.querySelector(item.selector);
+      if(!el) return alert('Section not found: '+item.selector);
+    
+      el.classList.add('aid-spotlight');
+      let bar = document.createElement('div');
+      bar.className = 'aid-banner-bar visible';
+      let titleMap = {
+        hint:'Hint',
+        idea:'HTML/CSS Idea',
+        code:'HTML & CSS'
+      };
+      let contentMap = {
+        hint: item.hint,
+        idea: item.idea?`<pre>${item.idea.trim()}</pre>`:"Not provided.",
+        code: item.code?`<pre>${escapeHtml(item.code.trim())}</pre>`:"Not provided."
+      };
+      bar.innerHTML = `
+        <button class="aid-close" title="Close">&times;</button>
+        <div class="aid-title">${item.name} — ${titleMap[mode]}</div>
+        <div class="aid-content">${contentMap[mode]}</div>
+        <div style="margin-top:13px;text-align:right">
+          <button class="aid-nav-btn" id="aid-prev-btn" ${idx===0?'disabled':''}>Prev</button>
+          <button class="aid-nav-btn" id="aid-next-btn" ${idx===sections.length-1?'disabled':''}>Next</button>
+        </div>
+      `;
+      // Insert just after the section/content
+      let after = el;
+      // Place after section element, not inside (even if it contains divs)
+      while (after && after.nextSibling && after.nextSibling.nodeType===3) after=after.nextSibling; //skip text node
+      if(el.parentNode && after && after.nextSibling)
+        el.parentNode.insertBefore(bar, after.nextSibling);
+      else
+        el.parentNode.appendChild(bar);
+    
+      bar.scrollIntoView({behavior:'smooth', block:'nearest'});
+    
+      bar.querySelector('.aid-close').onclick = removeAidBanner;
+      bar.querySelector('#aid-prev-btn').onclick = ()=>showAidBanner(idx-1, mode);
+      bar.querySelector('#aid-next-btn').onclick = ()=>showAidBanner(idx+1, mode);
+    
+      // Indicate selected mode
+      document.querySelectorAll('#aid-trigger-row .aid-trigger-btn').forEach(btn=>btn.classList.remove('selected'));
+      let selbtn = {'hint':'aid-hint','idea':'aid-idea','code':'aid-snippet'}[mode];
+      if (selbtn) document.getElementById(selbtn).classList.add('selected');
+    }
+    document.getElementById('aid-hint').onclick   = function(){ if(currentIdx<0) showAidBanner(0,'hint');   else showAidBanner(currentIdx,'hint');   };
+    document.getElementById('aid-idea').onclick   = function(){ if(currentIdx<0) showAidBanner(0,'idea');   else showAidBanner(currentIdx,'idea');   };
+    document.getElementById('aid-snippet').onclick= function(){ if(currentIdx<0) showAidBanner(0,'code');   else showAidBanner(currentIdx,'code');   };
+    // Remove banner on resize/scroll does nothing, as it's in-flow.
+    </script>
+</body>
+
+</html>
