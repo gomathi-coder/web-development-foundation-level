@@ -1,121 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GitHub Fundamentals Guide</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git & GitHub Basics</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
       color: #333;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
     }
-    h1, h2 {
-      color: #2c3e50;
-    }
-    section {
-      background: #fff;
-      padding: 20px 30px;
-      margin-bottom: 30px;
+
+    header {
+      background-color: #2d3436;
+      color: white;
+      padding: 20px;
+      text-align: center;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
-    ol, ul {
-      padding-left: 20px;
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
     }
+
+    .concept-box {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0984e3;
+      margin-top: 0;
+    }
+
+    .example-box {
+      background-color: #f0f7fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+
+    .analogy {
+      background: #f9f9f9;
+      padding: 12px;
+      border-left: 4px solid #dfe6e9;
+      font-style: italic;
+      margin: 15px 0;
+    }
+
+    .activity {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
     code {
-      background-color: #eaeaea;
+      background-color: #eef;
       padding: 2px 6px;
       border-radius: 4px;
-      font-family: monospace;
+      display: block;
+      margin: 6px 0;
+      white-space: pre-wrap;
     }
+
     a {
-      color: #2980b9;
+      color: #0984e3;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
+    }
+
+    .key-term {
+      background-color: #fff5ba;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>GitHub Fundamentals - Step-by-Step Guide</h1>
 
-  <section>
-    <h2>1. GitHub Account Creation</h2>
-    <ol>
-      <li>Go to <a href="https://github.com/" target="_blank">https://github.com/</a></li>
-      <li>Click on <strong>Sign up</strong> and fill in your details.</li>
-      <li>Verify your email and follow the steps to set up your profile.</li>
-    </ol>
-  </section>
+  <header>
+    <h1>Git & GitHub Basics</h1>
+    <p>Understanding version control and how to use GitHub</p>
+  </header>
 
-  <section>
-    <h2>2. Setup Git Locally</h2>
-    <ol>
-      <li>Download Git from <a href="https://git-scm.com/" target="_blank">https://git-scm.com/</a></li>
-      <li>Install Git and open Git Bash (or use Terminal on Mac/Linux).</li>
-      <li>Run the following commands to set your username and email:
-        <pre><code>git config --global user.name "Your Name"
-git config --global user.email "you@example.com"</code></pre>
-      </li>
-    </ol>
-  </section>
+  <div class="concept-box">
+    <h2>Version Control Basics</h2>
+    <p>
+      Imagine working on a school project with friends. Everyone is editing the same document. It gets messy, right?
+      <span class="key-term">Version control</span> helps track every change, so you can go back in time, see who did what, and avoid mistakes.
+    </p>
 
-  <section>
-    <h2>3. Basic Git Commands</h2>
-    <ul>
-      <li><code>git init</code> - Initialize a new Git repository</li>
-      <li><code>git add .</code> - Add all files to staging</li>
-      <li><code>git commit -m "Message"</code> - Commit changes</li>
-      <li><code>git push</code> - Push changes to remote repository</li>
-      <li><code>git pull</code> - Pull latest changes from remote</li>
-    </ul>
-  </section>
+    <div class="example-box">
+      <strong>Think of it like:</strong>
+      <ul>
+        <li>A time machine for your code</li>
+        <li>A shared notebook where each change is saved and labeled</li>
+        <li>You can go back to any earlier version if something breaks</li>
+      </ul>
+    </div>
 
-  <section>
-    <h2>4. Create and Push a New Repository</h2>
-    <ol>
-      <li>Go to your GitHub profile and click <strong>New Repository</strong>.</li>
-      <li>Give it a name (e.g. <code>portfolio-site</code>) and create it.</li>
-      <li>Open Git Bash in your project folder and run:
-        <pre><code>git init
-git remote add origin https://github.com/yourusername/portfolio-site.git
-git add .
-git commit -m "Initial commit"
-git push -u origin master</code></pre>
-      </li>
-    </ol>
-  </section>
+    <div class="analogy">
+      It's like using "Undo" and "Redo" — but for your entire project history!
+    </div>
 
-  <section>
-    <h2>5. Deploy Using GitHub Pages</h2>
-    <ol>
-      <li>Go to your repository on GitHub.</li>
-      <li>Click <strong>Settings</strong> > <strong>Pages</strong>.</li>
-      <li>Under <strong>Source</strong>, choose <code>main</code> or <code>master</code> branch, then click <strong>Save</strong>.</li>
-      <li>Your site will be published at <code>https://yourusername.github.io/portfolio-site/</code></li>
-    </ol>
-  </section>
+    <div class="activity">
+      <strong>Try This:</strong> Ask your teacher to show you how a file changes over time using version control software like Git.
+    </div>
+  </div>
 
-  <section>
-    <h2>6. Share Live URL and Collaborate</h2>
-    <ul>
-      <li>Copy and share your GitHub Pages URL with others.</li>
-      <li>Collaborate by adding team members to your repository settings under <strong>Collaborators</strong>.</li>
-    </ul>
-  </section>
+  <div class="concept-box">
+    <h2>GitHub Setup</h2>
+    <p>
+      <span class="key-term">GitHub</span> is like a digital locker where you keep all your project versions safe and share them with others.
+      It works with Git to store your files online.
+    </p>
 
-  <section>
-    <h2>Optional: Drag-and-Drop Upload</h2>
-    <ol>
-      <li>Create a repository on GitHub.</li>
-      <li>Click on <strong>"Add file" > "Upload files"</strong>.</li>
-      <li>Drag and drop your HTML/CSS files into the browser window.</li>
-      <li>Click <strong>Commit changes</strong>.</li>
-      <li>Then deploy it using GitHub Pages as described above.</li>
-    </ol>
-  </section>
+    <div class="example-box">
+      <strong>Steps to Get Started:</strong>
+      <ol>
+        <li>Go to <a href="https://github.com" target="_blank">github.com</a> and create a free account</li>
+        <li>Download Git from <a href="https://git-scm.com" target="_blank">git-scm.com</a></li>
+        <li>Open a terminal or Git Bash</li>
+        <li>Set your name and email:</li>
+        <code>git config --global user.name "Your Name"</code>
+        <code>git config --global user.email "you@example.com"</code>
+        <li>Create a new folder for your project</li>
+        <code>git init</code>
+        <li>Create a new GitHub repository and link it:</li>
+        <code>git remote add origin https://github.com/your-username/your-repo.git</code>
+      </ol>
+    </div>
+
+    <div class="analogy">
+      Git is your journal. GitHub is your cloud diary, accessible from anywhere.
+    </div>
+
+    <div class="activity">
+      <strong>Try This:</strong> Create your first GitHub repository and push your HTML project to it!
+    </div>
+  </div>
 
 </body>
 </html>
