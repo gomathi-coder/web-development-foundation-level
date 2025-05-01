@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Grid Playground for Kids</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body, html { background: #f8f9fa; }
+    .visual-output { min-height: 220px; }
+    .editor-label { font-weight:bold; color: #858484;}
+    .editor-container, .monaco-editor { min-height: 300px; height: 300px !important; }
+    .code-popup-bg { position: fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.25); z-index:1060; display:flex; justify-content:center; align-items:center;}
+    .code-popup { background: #fff; border-radius: 10px; min-width:320px; max-width:670px; padding: 1.2em 1em 1.7em 1.5em; box-shadow: 0 4px 32px #9b9b; }
+    .code-popup-content { max-height:320px; overflow:auto; background: #f4f6fa; border-radius: 6px; padding: 10px; font-size: 0.95em; margin-top: 0.5em; margin-bottom: 0.5em; }
+    /* For syntax highlighting (simple for <code>/<pre>) */
+    .code-popup-content code { color: #333; }
+    .code-popup-content pre {
+      background: none; /* already styled above */
+      margin: 0; padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container py-4">
+  <header class="d-flex align-items-center mb-4">
+    <h3 class="mb-0 flex-grow-1 fw-semibold">CSS Grid Playground for Kids</h3>
+    <select id="topic-select" class="form-select w-auto ms-3"></select>
+  </header>
+  <div class="accordion" id="mainAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="acc1-head">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section1" aria-expanded="true" aria-controls="section1">
+          Edit HTML and CSS
+        </button>
+      </h2>
+      <div id="section1" class="accordion-collapse collapse show" aria-labelledby="acc1-head" >
+        <div class="accordion-body">
+          <div class="row g-3">
+            <div class="col-md-6 col-12">
+              <label class="editor-label mb-1">CSS</label>
+              <div id="css-editor" class="editor-container border"></div>
+            </div>
+            <div class="col-md-6 col-12">
+              <label class="editor-label mb-1">HTML</label>
+              <div id="html-editor" class="editor-container border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="acc2-head">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#section2" aria-expanded="false" aria-controls="section2">
+          Visual Output
+        </button>
+      </h2>
+      <div id="section2" class="accordion-collapse collapse show" aria-labelledby="acc2-head" >
+        <div class="accordion-body">
+          <div class="d-flex align-items-center mb-2">
+            <span class="fw-bold me-2">Preview</span>
+            <button id="show-code-btn" type="button" class="btn btn-light btn-sm ms-2" title="Show Full Code">
+              <svg style="width:1.22em" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 17l-5-5 5-5m8 10l5-5-5-5"></path></svg>
+              Show Code
+            </button>
+          </div>
+          <div class="visual-output border" style="overflow:auto;">
+            <iframe id="live-preview" style="border:none;width:100%;height:220px;background:transparent;" sandbox="allow-same-origin"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="acc3-head">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#section3" aria-expanded="false" aria-controls="section3">
+          How It Works
+        </button>
+      </h2>
+      <div id="section3" class="accordion-collapse collapse show" aria-labelledby="acc3-head" >
+        <div class="accordion-body">
+          <div id="desc-box" class="desc-box bg-light border rounded px-3 py-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="code-popup-bg" class="code-popup-bg" style="display:none;">
+  <div class="code-popup position-relative">
+    <strong>Full Example Code</strong>
+    <button id="popup-copy" class="btn btn-outline-secondary btn-sm ms-2">Copy</button>
+    <button id="popup-download" class="btn btn-outline-primary btn-sm">Download HTML</button>
+    <button id="popup-close" class="btn btn-light btn-sm position-absolute end-0 top-0 mt-2 me-3" style="font-size:1.2em;">×</button>
+    <div><small class="text-muted">HTML + CSS below:</small></div>
+    <div id="popup-code" class="code-popup-content"></div>
+  </div>
+</div>
+<script>
+const gridTopics = [
+  {
+    id: "twoColumn",
+    name: "Simple 2-Column Layout",
+    html: `<div class="two-col-grid">\n  <div class="left">[IMAGE ✨]</div>\n  <div class="right">This is some nice text about me!</div>\n</div>`,
+    css: `.two-col-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 16px;\n}\n.left {\n  background: lightblue;\n  padding: 20px;\n}\n.right {\n  background: lightgoldenrodyellow;\n  padding: 20px;\n}`,
+    description: "**Properties used:**\n- `display: grid`: Makes the box a grid.\n- `grid-template-columns: 1fr 1fr`: Two columns, equal width.\n- `gap`: Adds space between columns.\n\n**What happens?**\nThe content is split into two equal vertical columns.\nTry editing the code!"
+  },
+  {
+    id: "holyGrail",
+    name: "Magazine-Style Homepage (Holy Grail Layout)",
+    html: `<div class="layout">\n  <header class="header">Header</header>\n  <nav class="sidebar">Sidebar</nav>\n  <main class="main">Main Content</main>\n  <aside class="ads">Ads/Widget</aside>\n  <footer class="footer">Footer</footer>\n</div>`,
+    css: `.layout {\n  display: grid;\n  grid-template-areas: \n    "header  header  header"\n    "sidebar main    ads"\n    "footer  footer  footer";\n  grid-template-columns: 150px 1fr 150px;\n  grid-template-rows: auto 1fr auto;\n  gap: 10px;\n}\n.header  { grid-area: header;  background: #8ecae6; padding: 10px;}\n.sidebar { grid-area: sidebar; background: #b0d0d3; padding: 10px;}\n.main    { grid-area: main;    background: #fbc4ab; padding: 10px;}\n.ads     { grid-area: ads;     background: #ffb4a2; padding: 10px;}\n.footer  { grid-area: footer;  background: #b5838d; padding: 10px;}\n`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-areas`\n- `grid-area`\n- `grid-template-columns / grid-template-rows`\n- `gap`\n\n**What happens?**\nHeader at the top, sidebars and main content in the middle, and footer at the bottom. Named areas make big code easy!"
+  },
+  {
+    id: "gallery",
+    name: "Image Gallery / Photo Album",
+    html: `<div class="gallery">\n  <img src="https://placehold.co/150x100?text=1" alt="Pic 1">\n  <img src="https://placehold.co/150x100?text=2" alt="Pic 2">\n  <img src="https://placehold.co/150x100?text=3" alt="Pic 3">\n  <img src="https://placehold.co/150x100?text=4" alt="Pic 4">\n</div>`,
+    css: `.gallery {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 10px;\n}\n.gallery img {\n  width: 100%;\n  display: block;\n  border-radius: 8px;\n}`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-columns: repeat(3, 1fr)`\n- `gap`\n\n**What happens?**\nPictures line up in 3 tidy columns. Add or remove images to see how the grid works!"
+  },
+  {
+    id: "productList",
+    name: "Product Listing",
+    html: `<div class="products">\n  <div class="product">Product 1</div>\n  <div class="product">Product 2</div>\n  <div class="product">Product 3</div>\n  <div class="product">Product 4</div>\n</div>`,
+    css: `.products {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));\n  gap: 20px;\n}\n.product {\n  background: #caffbf;\n  padding: 20px;\n  border-radius: 10px;\n  text-align: center;\n}`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-columns: repeat(auto-fit, minmax(140px, 1fr))`\n- `gap`\n\n**What happens?**\nProduct boxes grow/shrink to fit the window!"
+  },
+  {
+    id: "cardGrid",
+    name: "Card Grid",
+    html: `<div class="card-grid">\n  <div class="card">Alice</div>\n  <div class="card">Bob</div>\n  <div class="card">Charlie</div>\n  <div class="card">Dana</div>\n</div>`,
+    css: `.card-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));\n  gap: 16px;\n}\n.card {\n  background: #f7b801;\n  border-radius: 12px;\n  padding: 24px;\n  text-align: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))`\n- `gap`\n\n**What happens?**\nEach card fits nicely and moves to next line if there's not enough space. Try editing!"
+  }
+];
+
+let selectedTopic = gridTopics[0];
+let cssEditor, htmlEditor;
+
+function $(id) { return document.getElementById(id); }
+function markdownToHtml(md) {
+  return md
+    .replace(/^(\s*)\*\*([^\*]+)\*\*/gm, '<b>$2</b>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/- ([^\n]+)/g, '• $1')
+    .replace(/\n/g, '<br>');
+}
+function updateEditorsAndPreview(updateEditors = true) {
+  // Always update desc box
+  $('desc-box').innerHTML = markdownToHtml(selectedTopic.description);
+
+  // Only update editors and preview if Monaco is loaded
+  if (cssEditor && htmlEditor) {
+    if (updateEditors) {
+      cssEditor.setValue(selectedTopic.css);
+      htmlEditor.setValue(selectedTopic.html);
+    }
+    updatePreview();
+  } else {
+    // Monaco not loaded yet -- just set the output preview for first page load and dropdown change
+    const css = selectedTopic.css || '';
+    const html = selectedTopic.html || '';
+    const full = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+    $('live-preview').srcdoc = full;
+  }
+}
+function updatePreview() {
+  const css = cssEditor ? cssEditor.getValue() : '';
+  const html = htmlEditor ? htmlEditor.getValue() : '';
+  const full = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+  $('live-preview').srcdoc = full;
+}
+function populateTopicDropdown() {
+  const sel = $('topic-select');
+  sel.innerHTML = '';
+  gridTopics.forEach((t, i) => {
+    const opt = document.createElement('option');
+    opt.value = t.id;
+    opt.textContent = t.name;
+    sel.appendChild(opt);
+  });
+}
+function findTopicById(id) {
+  return gridTopics.find(t => t.id === id) || gridTopics[0];
+}
+function escapeHtml(str) {
+  return str.replace(/[&<>]/g, function(c) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];
+  });
+}
+
+function formatHtmlCode(html) {
+  // This is a very basic pretty printer for this document's needs
+  // You might want a real HTML beautifier for better results
+
+  // Remove leading/trailing whitespace per line, and unify \n
+  html = html.replace(/\r\n/g,"\n");
+  let lines = html.split("\n");
+
+  let indent = 0, out = [];
+  for (let line of lines) {
+    line = line.trim();
+    if (!line) continue;
+    if (line.match(/^<\/(html|head|body|div|header|footer|nav|main|aside|style)/)) indent--;
+    out.push("  ".repeat(Math.max(indent,0)) + line);
+    if (line.match(/^<(html|head|body|div|header|footer|nav|main|aside|style)[ >]/) && !line.match(/\/>/) && !line.match(/^<!/)) indent++;
+    if (line.match(/^<!DOCTYPE/)) indent = 0;
+  }
+  return out.join('\n');
+}
+function openCodePopup() {
+  const css = cssEditor ? cssEditor.getValue() : '';
+  const html = htmlEditor ? htmlEditor.getValue() : '';
+  // Full HTML structure
+  const doc = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Grid Example</title>
+  <style>
+${css}
+  </style>
+</head>
+<body>
+${html}
+</body>
+</html>`;
+  // Format for pretty display:
+  let formatted = formatHtmlCode(doc);
+
+  $('popup-code').innerHTML =
+    `<pre><code>${escapeHtml(formatted)}</code></pre>`;
+  $('code-popup-bg').style.display = "flex";
+}
+
+function closeCodePopup() {
+  $('code-popup-bg').style.display = "none";
+}
+function copyPopupCode() {
+  // Copy without formatting tags
+  const pre = $('popup-code').querySelector('pre');
+  if (pre) {
+    navigator.clipboard.writeText(pre.innerText || pre.textContent);
+  }
+}
+function downloadPopupCode() {
+  const css = cssEditor ? cssEditor.getValue() : '';
+  const html = htmlEditor ? htmlEditor.getValue() : '';
+  const full = `<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<title>CSS Grid Example</title>\n<style>\n${css}\n</style>\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
+  const blob = new Blob([full], {type:"text/html"});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${selectedTopic.id || "grid-example"}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+window.initMonacoEditors = function() {
+  cssEditor = monaco.editor.create($('css-editor'), {
+    value: selectedTopic.css,
+    language: 'css',
+    minimap: { enabled: false },
+    theme: "vs-dark", // Set Monaco to dark theme
+    scrollBeyondLastLine: false,
+    fontSize: 14,
+    automaticLayout: true,
+    roundedSelection: false,
+    wordWrap: "on"
+  });
+  htmlEditor = monaco.editor.create($('html-editor'), {
+    value: selectedTopic.html,
+    language: 'html',
+    minimap: { enabled: false },
+    theme: "vs-dark", // Set Monaco to dark theme
+    scrollBeyondLastLine: false,
+    fontSize: 14,
+    automaticLayout: true,
+    roundedSelection: false,
+    wordWrap: "on"
+  });
+
+  cssEditor.onDidChangeModelContent(updatePreview);
+  htmlEditor.onDidChangeModelContent(updatePreview);
+
+  // ONCE Monaco is loaded, override the topic select handler to also update code editors
+  $('topic-select').addEventListener('change', function() {
+    selectedTopic = findTopicById(this.value);
+    updateEditorsAndPreview(true);
+  });
+
+  updateEditorsAndPreview(true);
+};
+// Initial UI boot (before Monaco loads)
+window.addEventListener('DOMContentLoaded', () => {
+  populateTopicDropdown();
+  $('topic-select').value = selectedTopic.id;
+  $('show-code-btn').onclick = openCodePopup;
+  $('popup-close').onclick = closeCodePopup;
+  $('code-popup-bg').onclick = e => { if (e.target === $('code-popup-bg')) closeCodePopup(); }
+  $('popup-copy').onclick = copyPopupCode;
+  $('popup-download').onclick = downloadPopupCode;
+  // Ensure desc box and preview are set at least once before Monaco loads
+  updateEditorsAndPreview(false);
+
+  // Dropdown works before Monaco
+  $('topic-select').addEventListener('change', function () {
+    selectedTopic = findTopicById(this.value);
+    updateEditorsAndPreview(false);
+  });
+});
+</script>
+<!-- Bootstrap JS for accordion/collapse support -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Monaco Editor Loader and configuration (must be LAST) -->
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.34.0/min/vs/loader.js"></script>
+<script>
+  require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.0/min/vs' } });
+  require(['vs/editor/editor.main'], function () {
+    window.initMonacoEditors();
+  });
+</script>
+</body>
+</html>
