@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ultimate Box Model Demo Playground</title>
+  <style>
+    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #f0f4fc; }
+    h1 { text-align: center; margin: 20px 0 20px 0; }
+    .controls {
+      display: flex; gap: 24px; justify-content: center; margin-bottom: 30px; margin-top: 10px;
+    }
+    label { font-size: 1.1em; font-weight: 500; }
+    select {
+      font-size: 1.07em; margin-left: 7px; min-width: 185px; border: 1.5px solid #b4daf7;
+      border-radius: 5px; padding: 5px 11px; background: #fff;
+    }
+    .compare-block {
+      background: #fff;
+      border-radius: 10px;
+      border: 1.5px solid #b9cdf0;
+      margin: 0 auto 42px auto;
+      font-size: 1.06em;
+      padding: 0;
+      box-shadow: 0 3px 18px #0001;
+      max-width: 1200px;
+      width: 98vw;
+      min-height: 280px;
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+    }
+    .compare-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: #e3ecfb;
+      padding: 0 8px 0 0;
+      border-radius: 10px 10px 0 0;
+      padding-right: 0px;
+    }
+    .compare-title {
+      color: #2250af;
+      font-weight: 700;
+      font-size: 1.21em;
+      letter-spacing: 0.02em;
+      padding: 14px 0 13px 0;
+      margin: 0;
+      flex: 1 1 auto;
+      background: none;
+      padding-left: 20px;
+    }
+    .fullhtml-btn {
+      appearance: none;
+      border: none;
+      font-size: 1.06em;
+      padding: 4px 15px 4px 10px;
+      border-radius: 5px;
+      background: #d1e0fa;
+      cursor: pointer;
+      margin-left: 12px;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 20px;
+      transition: background 0.17s;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: 5px;
+    }
+    .fullhtml-btn:active, .fullhtml-btn:focus { background: #bcd6f8; outline: 2px solid #4982e4; }
+    .popup-backdrop {
+      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+      background: #1117; z-index: 1111; display: flex; align-items: center; justify-content: center;
+    }
+    .popup-dialog {
+      background: #fff; border-radius: 14px; box-shadow: 0 8px 32px #0002;
+      padding: 25px 28px 16px 28px; min-width: 310px; max-width: 680px; width: 80vw;
+      max-height: 90vh; overflow: auto; position: relative;
+      display: flex; flex-direction: column;
+    }
+    .popup-dialog h3 {
+      margin: 0 0 10px 0; color: #2250af; font-size: 1.13em;
+      display: flex; align-items: center;
+      gap: 6px;
+    }
+    .popup-actions {
+      display: flex; gap: 14px; margin-top: 11px; justify-content: flex-end; align-items: center;
+    }
+    .popup-actions button, .popup-actions a {
+      display: inline-block;
+      font-size: 0.99em;
+      border-radius: 4px;
+      padding: 6px 18px;
+      border: none;
+      background: #e3ecfb;
+      color: #135;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      outline: none;
+      transition: background 0.16s;
+    }
+    .popup-actions button:hover, .popup-actions a:hover { background: #bcd6f8; }
+    .popup-close-x {
+      font-size: 1.36em; background: none; border: none; color: #999;
+      cursor: pointer; position: absolute; top: 8px; right: 18px; z-index: 10;
+      line-height: 1;
+    }
+    .popup-dialog pre {
+      background: #222b38;
+      color: #f8f8f2;
+      border-radius: 7px;
+      font-family: FiraMono,Consolas,monospace;
+      font-size: 0.97em;
+      padding: 12px 11px 10px 12px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 0 0 0 0;
+      min-height: 194px;
+      max-height: 45vh;
+      overflow: auto;
+    }
+    .left-side {
+      width: 30%; min-width: 170px; max-width: 340px;
+      box-sizing: border-box; padding: 16px 18px 0 18px;
+      display: flex; flex-direction: column; gap: 19px;
+      border-right: 1.5px solid #f0eae9;
+      justify-content: flex-start;
+    }
+    .right-side {
+      width: 70%; padding: 13px 38px 13px 38px;
+      display: flex; flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .section-title {
+      font-weight: bold; margin-bottom: 7px; color: #2779a7;
+      font-size: 1.03em;
+    }
+    .block-section textarea {
+      width: 100%; min-height: 100px; border-radius: 6px; border: 1.5px solid #90caf9;
+      font-family: FiraMono, Consolas, monospace; font-size: 0.97em; padding: 8px 11px;
+      color: #f8f8f2; background: #232837; box-sizing: border-box; margin-bottom: 12px; resize: vertical;
+      transition: border 0.17s;
+    }
+    .block-section textarea:focus { outline: none; border: 2px solid #2250af; }
+    .visual-label {
+      color: #565130; margin-bottom: 7px; font-weight: 500; font-size: 1.1em;
+    }
+    .visual-output-area {
+      min-height: 60px; background: #fffbe7; border-radius: 8px;
+      align-items: center; display: flex; gap: 10px; border: 1.5px solid #faebd7;
+      font-size: 16px; font-weight: 500; margin-bottom: 6px;
+      min-width: 210px; padding: 12px 13px; flex-wrap: wrap;
+      width: 98%;
+      box-sizing: border-box;
+    }
+    
+    /* Box Model Specific Styles */
+    .box-model-demo {
+      margin: 20px 0;
+      background: #e3f2fd;
+      padding: 20px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .box-model-container {
+      background: #bbdefb;
+      padding: 20px;
+      border: 2px dashed #64b5f6;
+      margin: 20px;
+    }
+    .box-model-content {
+      background: #90caf9;
+      padding: 40px;
+      text-align: center;
+      font-weight: bold;
+      border: 2px solid #42a5f5;
+    }
+    .box-model-margin {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px dotted #1e88e5;
+      pointer-events: none;
+    }
+    .box-model-padding {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      border: 2px dashed #42a5f5;
+      pointer-events: none;
+    }
+    .box-model-border {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      right: 40px;
+      bottom: 40px;
+      border: 2px solid #1976d2;
+      pointer-events: none;
+    }
+    .box-model-label {
+      position: absolute;
+      font-size: 12px;
+      font-weight: bold;
+      color: #0d47a1;
+      background: rgba(255,255,255,0.8);
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .box-model-margin-label {
+      top: -10px;
+      left: 10px;
+    }
+    .box-model-border-label {
+      top: 30px;
+      left: 10px;
+    }
+    .box-model-padding-label {
+      top: 10px;
+      left: 10px;
+    }
+    .box-model-content-label {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    /* Specific examples */
+    .box-standard {
+      box-sizing: content-box;
+      width: 300px;
+      padding: 20px;
+      border: 10px solid #f44336;
+      margin: 30px;
+      background: #ffcdd2;
+    }
+    .box-borderbox {
+      box-sizing: border-box;
+      width: 300px;
+      padding: 20px;
+      border: 10px solid #4caf50;
+      margin: 30px;
+      background: #c8e6c9;
+    }
+    .box-overflow {
+      width: 200px;
+      height: 100px;
+      padding: 10px;
+      border: 5px solid #ff9800;
+      margin: 15px;
+      background: #ffe0b2;
+    }
+    .box-overflow-visible {
+      overflow: visible;
+    }
+    .box-overflow-hidden {
+      overflow: hidden;
+    }
+    .box-overflow-scroll {
+      overflow: scroll;
+    }
+    .box-overflow-auto {
+      overflow: auto;
+    }
+    .box-outline {
+      width: 250px;
+      height: 80px;
+      padding: 15px;
+      border: 3px solid #9c27b0;
+      outline: 5px solid #ce93d8;
+      margin: 20px;
+      background: #e1bee7;
+    }
+    .box-margin-collapse {
+      margin: 0;
+    }
+    .box-margin-collapse-top {
+      margin-top: 30px;
+    }
+    .box-margin-collapse-bottom {
+      margin-bottom: 30px;
+    }
+    
+    @media (max-width: 800px) {
+      .compare-block { flex-direction: column; min-width: 0; max-width: none;}
+      .left-side, .right-side { width: 99vw !important; max-width: 99vw !important; border: 0 !important; padding-left: 6vw; padding-right: 6vw;}
+      .left-side { padding-bottom: 8px; }
+      .compare-title { font-size: 1.1em;}
+    }
+  </style>
+</head>
+<body>
+  <h1>Ultimate Box Model Demo Playground</h1>
+  <div class="controls">
+    <label>
+      Top Panel:
+      <select id="dropdown-1"></select>
+    </label>
+    <label>
+      Bottom Panel:
+      <select id="dropdown-2"></select>
+    </label>
+  </div>
+  <div id="compare-block-1" class="compare-block"></div>
+  <div id="compare-block-2" class="compare-block"></div>
+
+  <!-- Popup/dialog root -->
+  <div id="popup-root"></div>
+
+<script>
+const EXAMPLES = [
+  {
+    group: "Box Model Basics",
+    key: "box-model-visualization",
+    title: "Box Model Visualization",
+    style: `
+.box-model-demo {
+  margin: 20px 0;
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+.box-model-container {
+  background: #bbdefb;
+  padding: 20px;
+  border: 2px dashed #64b5f6;
+  margin: 20px;
+}
+.box-model-content {
+  background: #90caf9;
+  padding: 40px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid #42a5f5;
+}
+.box-model-margin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px dotted #1e88e5;
+  pointer-events: none;
+}
+.box-model-padding {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px dashed #42a5f5;
+  pointer-events: none;
+}
+.box-model-border {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 2px solid #1976d2;
+  pointer-events: none;
+}
+.box-model-label {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: #0d47a1;
+  background: rgba(255,255,255,0.8);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+.box-model-margin-label {
+  top: -10px;
+  left: 10px;
+}
+.box-model-border-label {
+  top: 30px;
+  left: 10px;
+}
+.box-model-padding-label {
+  top: 10px;
+  left: 10px;
+}
+.box-model-content-label {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+`,
+    html: `<div class="box-model-demo">
+  <div class="box-model-margin"></div>
+  <div class="box-model-margin-label">Margin</div>
+  <div class="box-model-container">
+    <div class="box-model-padding"></div>
+    <div class="box-model-padding-label">Padding</div>
+    <div class="box-model-border"></div>
+    <div class="box-model-border-label">Border</div>
+    <div class="box-model-content">
+      Content
+      <div class="box-model-content-label">Content Area</div>
+    </div>
+  </div>
+</div>`
+  },
+  {
+    group: "Box Model Basics",
+    key: "content-box-vs-border-box",
+    title: "content-box vs border-box",
+    style: `
+.box-standard {
+  box-sizing: content-box;
+  width: 300px;
+  padding: 20px;
+  border: 10px solid #f44336;
+  margin: 30px;
+  background: #ffcdd2;
+}
+.box-borderbox {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 10px solid #4caf50;
+  margin: 30px;
+  background: #c8e6c9;
+}
+.box-model-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+`,
+    html: `<div>
+  <div class="box-model-label">content-box (default): width = content width only</div>
+  <div class="box-standard">Total width = 300 + 20*2 + 10*2 = 360px</div>
+  
+  <div class="box-model-label" style="margin-top:40px">border-box: width includes padding & border</div>
+  <div class="box-borderbox">Total width = 300px (includes padding & border)</div>
+</div>`
+  },
+  {
+    group: "Margin & Padding",
+    key: "margin-collapsing",
+    title: "Margin Collapsing",
+    style: `
+.box-margin-collapse {
+  margin: 0;
+  padding: 15px;
+  background: #e1bee7;
+  border: 1px solid #9c27b0;
+}
+.box-margin-collapse-top {
+  margin-top: 30px;
+}
+.box-margin-collapse-bottom {
+  margin-bottom: 30px;
+}
+.box-model-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+`,
+    html: `<div class="box-model-label">Adjacent vertical margins collapse (only the larger margin applies)</div>
+<div class="box-margin-collapse box-margin-collapse-bottom">Box 1 (margin-bottom: 30px)</div>
+<div class="box-margin-collapse box-margin-collapse-top">Box 2 (margin-top: 30px)</div>
+<div class="box-model-label" style="margin-top:20px">Result: 30px gap between boxes (not 60px)</div>`
+  },
+  {
+    group: "Margin & Padding",
+    key: "negative-margins",
+    title: "Negative Margins",
+    style: `
+.box-negative-margin {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: 2px solid #2196f3;
+  background: #bbdefb;
+}
+.box-negative-margin-1 {
+  margin-bottom: -20px;
+}
+.box-negative-margin-2 {
+  margin-top: 40px;
+}
+.box-model-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+`,
+    html: `<div class="box-model-label">Negative margins can pull elements closer together or overlap them</div>
+<div class="box-negative-margin box-negative-margin-1">Box 1 (margin-bottom: -20px)</div>
+<div class="box-negative-margin box-negative-margin-2">Box 2 (margin-top: 40px)</div>
+<div class="box-model-label">Actual gap between boxes: 40px - 20px = 20px</div>`
+  },
+  {
+    group: "Overflow",
+    key: "overflow-behavior",
+    title: "Overflow Behavior",
+    style: `
+.box-overflow {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: 5px solid #ff9800;
+  margin: 15px;
+  background: #ffe0b2;
+}
+.box-overflow-visible {
+  overflow: visible;
+}
+.box-overflow-hidden {
+  overflow: hidden;
+}
+.box-overflow-scroll {
+  overflow: scroll;
+}
+.box-overflow-auto {
+  overflow: auto;
+}
+.box-model-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+`,
+    html: `<div style="display:flex; flex-wrap:wrap; gap:20px;">
+  <div>
+    <div class="box-model-label">overflow: visible (default)</div>
+    <div class="box-overflow box-overflow-visible">
+      This content is too large for its container and will overflow visibly. Lorem ipsum dolor sit amet.
+    </div>
+  </div>
+  <div>
+    <div class="box-model-label">overflow: hidden</div>
+    <div class="box-overflow box-overflow-hidden">
+      This content is too large for its container and will be clipped. Lorem ipsum dolor sit amet.
+    </div>
+  </div>
+  <div>
+    <div class="box-model-label">overflow: scroll</div>
+    <div class="box-overflow box-overflow-scroll">
+      This content is too large for its container and will have scrollbars. Lorem ipsum dolor sit amet.
+    </div>
+  </div>
+  <div>
+    <div class="box-model-label">overflow: auto</div>
+    <div class="box-overflow box-overflow-auto">
+      This content is too large for its container and will have scrollbars only if needed. Lorem ipsum dolor sit amet.
+    </div>
+  </div>
+</div>`
+  },
+  {
+    group: "Borders & Outlines",
+    key: "border-vs-outline",
+    title: "Border vs Outline",
+    style: `
+.box-outline {
+  width: 250px;
+  height: 80px;
+  padding: 15px;
+  border: 3px solid #9c27b0;
+  outline: 5px solid #ce93d8;
+  margin: 20px;
+  background: #e1bee7;
+}
+.box-model-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+`,
+    html: `<div class="box-model-label">Outline vs Border: Outline doesn't take space in the box model</div>
+<div class="box-outline">
+  This box has both border (3px purple) and outline (5px light purple)
+</div>
+<div class="box-model-label">Note: Outline is outside the border but doesn't affect layout</div>`
+  },
+  {
+    group: "Borders & Outlines",
+    key: "border-radius",
+    title: "Border Radius",
+    style: `
+.box-border-radius {
+  width: 200px;
+  height: 100px;
+  padding: 15px;
+  border: 4px solid #ff5722;
+  margin: 15px;
+  background: #ffccbc;
+}
+.box-border-radius-1 {
+  border-radius: 10px;
+}
+.box-border-radius-2 {
+  border-radius: 20px 0;
+}
+.box-border-radius-3 {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.box-border-radius-4 {
+  border-radius: 10px 30px 50px 5px;
+}
+.box-model-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+`,
+    html: `<div style="display:flex; flex-wrap:wrap; gap:20px;">
+  <div>
+    <div class="box-model-label">border-radius: 10px</div>
+    <div class="box-border-radius box-border-radius-1">Rounded corners</div>
+  </div>
+  <div>
+    <div class="box-model-label">border-radius: 20px 0</div>
+    <div class="box-border-radius box-border-radius-2">Elliptical corners</div>
+  </div>
+  <div>
+    <div class="box-model-label">border-radius: 50%</div>
+    <div class="box-border-radius box-border-radius-3">Circle</div>
+  </div>
+  <div>
+    <div class="box-model-label">border-radius: 10px 30px 50px 5px</div>
+    <div class="box-border-radius box-border-radius-4">Different radii</div>
+  </div>
+</div>`
+  }
+];
+
+// --- Helper: Grouping for dropdown
+function groupOptionsHtml(groups) {
+  let res = '';
+  Object.keys(groups).forEach(grp=>{
+    res += `<optgroup label="${grp}">` + groups[grp].map(d=>
+      `<option value="${d.key}">${d.title}</option>`
+    ).join('') + `</optgroup>`;
+  });
+  return res;
+}
+const EX_GRP = {};
+EXAMPLES.forEach(e => { if(!EX_GRP[e.group]) EX_GRP[e.group]=[]; EX_GRP[e.group].push(e); });
+
+// Generate full HTML page
+function getFullHtmlPage(title, css, html) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(title)}</title>
+  <style>
+${css.trim()}
+  </style>
+</head>
+<body>
+${html.trim()}
+</body>
+</html>`;
+}
+function escapeHtml(str) {
+  return str.replace(/[<>&"]/g, function(c) {
+    return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
+  });
+}
+
+// POPUP LOGIC
+function showPopup(htmlStr, filename="box-model-example.html") {
+  const popupRoot = document.getElementById('popup-root');
+  popupRoot.innerHTML = `
+    <div class="popup-backdrop" tabindex="-1">
+      <div class="popup-dialog" tabindex="0">
+        <button class="popup-close-x" title="Close" aria-label="Close">&times;</button>
+        <h3>Full HTML Page</h3>
+        <pre id="popup-html">${escapeHtml(htmlStr)}</pre>
+        <div class="popup-actions">
+          <button id="popup-copy">Copy</button>
+          <a id="popup-download" href="#" download="${filename}">Download</a>
+          <button id="popup-close">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+  // Focus handling
+  setTimeout(()=>popupRoot.querySelector('.popup-dialog').focus(), 120);
+  // Copy
+  document.getElementById("popup-copy").onclick = function() {
+    navigator.clipboard.writeText(htmlStr).then(() => {
+      this.innerText = "Copied!";
+      setTimeout(()=>{this.innerText="Copy";}, 1200);
+    });
+  };
+  // Download
+  document.getElementById("popup-download").onclick = function(e) {
+    const blob = new Blob([htmlStr], {type:"text/html"});
+    this.href = URL.createObjectURL(blob);
+    // let browser handle download (download attr is set)
+  };
+  // Close
+  function closePopup() {popupRoot.innerHTML = "";}
+  document.getElementById("popup-close").onclick = closePopup;
+  document.querySelector(".popup-close-x").onclick = closePopup;
+  popupRoot.querySelector('.popup-backdrop').onclick = function(ev) {
+    if(ev.target === popupRoot.querySelector('.popup-backdrop'))
+      closePopup();
+  };
+  document.addEventListener("keydown", function esc(e){
+    if (e.key === "Escape") closePopup(), document.removeEventListener("keydown", esc);
+  });
+}
+
+// --- DOM and panel update logic
+function renderDemoPanel(blockEl, example, styleVal=null, htmlVal=null, panelSuffix) {
+  blockEl.innerHTML = `
+    <div style="display:flex;flex-direction:column;width:100%">
+      <div class="compare-title-bar">
+        <div class="compare-title">${example.title}</div>
+        <button class="fullhtml-btn" type="button" title="View full HTML of this example" data-panel="${panelSuffix}">
+          🡥 Full HTML
+        </button>
+      </div>
+      <div style="display:flex;flex-direction:row;">
+        <div class="left-side">
+          <div class="block-section" id="style-block">
+            <div class="section-title">styles</div>
+            <textarea class="style-input" spellcheck="false">${(styleVal||example.style).trim()}</textarea>
+          </div>
+          <div class="block-section" id="html-block">
+            <div class="section-title">html</div>
+            <textarea class="html-input" spellcheck="false">${(htmlVal||example.html).trim()}</textarea>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="visual-label">visual output:</div>
+          <div class="visual-output-area live-output" id="live-output-${panelSuffix}"></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function applyLivePanel(panelIdx, example, styleVal, htmlVal) {
+  // Scoped style per panel
+  let styleId = "panel-style-scope-"+panelIdx;
+  let styleTag = document.getElementById(styleId);
+  if(!styleTag) {
+    styleTag = document.createElement("style");
+    styleTag.id = styleId;
+    document.head.appendChild(styleTag);
+  }
+  styleTag.textContent = styleVal;
+  // Visual output area
+  let live = document.getElementById("live-output-"+panelIdx);
+  if(live) live.innerHTML = htmlVal;
+}
+
+function setHandlers(panelIdx, blockEl, example) {
+  let styleArea = blockEl.querySelector('.style-input');
+  let htmlArea  = blockEl.querySelector('.html-input');
+  function updateNow() {
+    applyLivePanel(panelIdx, example, styleArea.value, htmlArea.value);
+  }
+  styleArea.addEventListener('input', updateNow);
+  htmlArea.addEventListener('input', updateNow);
+  // Full HTML popup button:
+  blockEl.querySelector('.fullhtml-btn').onclick = function() {
+    const htmlPage = getFullHtmlPage(example.title, styleArea.value, htmlArea.value);
+    showPopup(htmlPage, 'box-model-demo.html');
+  };
+  updateNow(); // initial render
+}
+
+// --- Initializations ---
+const dropdowns = [document.getElementById('dropdown-1'), document.getElementById('dropdown-2')];
+const blockEls  = [document.getElementById('compare-block-1'), document.getElementById('compare-block-2')];
+
+dropdowns.forEach(drop=>{
+  drop.innerHTML = groupOptionsHtml(EX_GRP);
+});
+
+function reloadPanels() {
+  [0,1].forEach(idx=>{
+    const selVal = dropdowns[idx].value;
+    const example = EXAMPLES.find(d=>d.key === selVal);
+    renderDemoPanel(blockEls[idx], example, null, null, idx+1);
+    setHandlers(idx+1, blockEls[idx], example);
+  });
+}
+
+dropdowns.forEach(drop=> drop.addEventListener('change', reloadPanels));
+reloadPanels();
+
+</script>
+</body>
+</html>
