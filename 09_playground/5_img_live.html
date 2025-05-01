@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML &lt;img&gt; Tag Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .playground {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .controls {
+      width: 300px;
+    }
+
+    .control-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .visual-output {
+      flex-grow: 1;
+      background: #f5f5f5;
+      padding: 20px;
+      min-height: 200px;
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-output img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .code-output {
+      margin-top: 30px;
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML &lt;img&gt; Tag Playground</h1>
+  <p style="text-align: center;">Customize your &lt;img&gt; tag with various styles!</p>
+
+  <div class="playground">
+    <div class="controls">
+      <div class="control-group">
+        <label for="img-url">Image URL:</label>
+        <input type="text" id="img-url" value="https://via.placeholder.com/150">
+      </div>
+
+      <div class="control-group">
+        <label for="img-alt">Alt Text:</label>
+        <input type="text" id="img-alt" value="Placeholder Image">
+      </div>
+
+      <div class="control-group">
+        <label>Width:</label>
+        <div class="flex-row">
+          <input type="number" id="img-width" value="150">
+          <select id="width-unit">
+            <option value="px">px</option>
+            <option value="%">%</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Height:</label>
+        <div class="flex-row">
+          <input type="number" id="img-height" value="150">
+          <select id="height-unit">
+            <option value="px">px</option>
+            <option value="%">%</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Border Radius:</label>
+        <div class="flex-row">
+          <input type="number" id="img-radius" value="0">
+          <select id="radius-unit">
+            <option value="px">px</option>
+            <option value="%">%</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="border-color">Border Color (2px solid):</label>
+        <select id="border-color">
+          <option value="">None</option>
+          <option value="black">Black</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="orange">Orange</option>
+        </select>
+      </div>
+
+      
+
+      <div class="control-group">
+        <label for="img-objectfit">Object Fit:</label>
+        <select id="img-objectfit">
+          <option value="">Default</option>
+          <option value="cover">Cover</option>
+          <option value="contain">Contain</option>
+          <option value="fill">Fill</option>
+          <option value="none">None</option>
+          <option value="scale-down">Scale Down</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="visual-output" id="visual-output">
+      <img src="https://via.placeholder.com/150" alt="Placeholder Image" width="150" height="150">
+    </div>
+  </div>
+
+  <div class="code-output" id="code-output">
+&lt;img src="https://via.placeholder.com/150" alt="Placeholder Image" width="150" height="150"&gt;
+  </div>
+
+  <script>
+    const imgUrlInput = document.getElementById('img-url');
+    const imgAltInput = document.getElementById('img-alt');
+    const imgWidthInput = document.getElementById('img-width');
+    const widthUnit = document.getElementById('width-unit');
+    const imgHeightInput = document.getElementById('img-height');
+    const heightUnit = document.getElementById('height-unit');
+    const imgRadiusInput = document.getElementById('img-radius');
+    const radiusUnit = document.getElementById('radius-unit');
+    const borderColorSelect = document.getElementById('border-color');
+    const imgShadowInput = document.getElementById('img-shadow');
+    const imgObjectFit = document.getElementById('img-objectfit');
+
+    const visualOutput = document.getElementById('visual-output');
+    const codeOutput = document.getElementById('code-output');
+
+    function updateImage() {
+      const src = imgUrlInput.value.trim();
+      const alt = imgAltInput.value.trim();
+      const width = imgWidthInput.value + widthUnit.value;
+      const height = imgHeightInput.value + heightUnit.value;
+      const radius = imgRadiusInput.value + radiusUnit.value;
+      const borderColor = borderColorSelect.value;
+      const shadow = imgShadowInput.value;
+      const objectFit = imgObjectFit.value;
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      img.style.width = width;
+      img.style.height = height;
+      img.style.borderRadius = radius;
+      img.style.boxShadow = shadow;
+      if (borderColor) img.style.border = `2px solid ${borderColor}`;
+      if (objectFit) img.style.objectFit = objectFit;
+
+      visualOutput.innerHTML = '';
+      visualOutput.appendChild(img);
+
+      let styleString = `style="width: ${width}; height: ${height}; border-radius: ${radius};`;
+      if (borderColor) styleString += ` border: 2px solid ${borderColor};`;
+      if (shadow) styleString += ` box-shadow: ${shadow};`;
+      if (objectFit) styleString += ` object-fit: ${objectFit};`;
+      styleString += `"`;
+
+      codeOutput.textContent =
+        `<img src="${src}" alt="${alt}" ${styleString}>`;
+    }
+
+    [
+      imgUrlInput,
+      imgAltInput,
+      imgWidthInput,
+      widthUnit,
+      imgHeightInput,
+      heightUnit,
+      imgRadiusInput,
+      radiusUnit,
+      borderColorSelect,
+      imgShadowInput,
+      imgObjectFit
+    ].forEach(input => input.addEventListener('input', updateImage));
+
+    updateImage(); // Initialize
+  </script>
+
+</body>
+</html>
