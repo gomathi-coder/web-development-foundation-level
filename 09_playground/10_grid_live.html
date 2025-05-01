@@ -2,838 +2,321 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ultimate CSS Grid Demo Playground</title>
+  <title>CSS Grid Playground for Kids</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #f0f4fc; }
-    h1 { text-align: center; margin: 20px 0 20px 0; }
-    .controls {
-      display: flex; gap: 24px; justify-content: center; margin-bottom: 30px; margin-top: 10px;
-    }
-    label { font-size: 1.1em; font-weight: 500; }
-    select {
-      font-size: 1.07em; margin-left: 7px; min-width: 185px; border: 1.5px solid #b4daf7;
-      border-radius: 5px; padding: 5px 11px; background: #fff;
-    }
-    .compare-block {
-      background: #fff;
-      border-radius: 10px;
-      border: 1.5px solid #b9cdf0;
-      margin: 0 auto 42px auto;
-      font-size: 1.06em;
-      padding: 0;
-      box-shadow: 0 3px 18px #0001;
-      max-width: 1200px;
-      width: 98vw;
-      min-height: 280px;
-      display: flex;
-      flex-direction: row;
-      gap: 0;
-    }
-    .compare-title-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      background: #e3ecfb;
-      padding: 0 8px 0 0;
-      border-radius: 10px 10px 0 0;
-      padding-right: 0px;
-    }
-    .compare-title {
-      color: #2250af;
-      font-weight: 700;
-      font-size: 1.21em;
-      letter-spacing: 0.02em;
-      padding: 14px 0 13px 0;
-      margin: 0;
-      flex: 1 1 auto;
-      background: none;
-      padding-left: 20px;
-    }
-    .fullhtml-btn {
-      appearance: none;
-      border: none;
-      font-size: 1.06em;
-      padding: 4px 15px 4px 10px;
-      border-radius: 5px;
-      background: #d1e0fa;
-      cursor: pointer;
-      margin-left: 12px;
-      margin-top: 0;
-      margin-bottom: 0;
-      margin-right: 20px;
-      transition: background 0.17s;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      gap: 5px;
-    }
-    .fullhtml-btn:active, .fullhtml-btn:focus { background: #bcd6f8; outline: 2px solid #4982e4; }
-    .popup-backdrop {
-      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
-      background: #1117; z-index: 1111; display: flex; align-items: center; justify-content: center;
-    }
-    .popup-dialog {
-      background: #fff; border-radius: 14px; box-shadow: 0 8px 32px #0002;
-      padding: 25px 28px 16px 28px; min-width: 310px; max-width: 680px; width: 80vw;
-      max-height: 90vh; overflow: auto; position: relative;
-      display: flex; flex-direction: column;
-    }
-    .popup-dialog h3 {
-      margin: 0 0 10px 0; color: #2250af; font-size: 1.13em;
-      display: flex; align-items: center;
-      gap: 6px;
-    }
-    .popup-actions {
-      display: flex; gap: 14px; margin-top: 11px; justify-content: flex-end; align-items: center;
-    }
-    .popup-actions button, .popup-actions a {
-      display: inline-block;
-      font-size: 0.99em;
-      border-radius: 4px;
-      padding: 6px 18px;
-      border: none;
-      background: #e3ecfb;
-      color: #135;
-      cursor: pointer;
-      font-weight: 500;
-      text-decoration: none;
-      outline: none;
-      transition: background 0.16s;
-    }
-    .popup-actions button:hover, .popup-actions a:hover { background: #bcd6f8; }
-    .popup-close-x {
-      font-size: 1.36em; background: none; border: none; color: #999;
-      cursor: pointer; position: absolute; top: 8px; right: 18px; z-index: 10;
-      line-height: 1;
-    }
-    .popup-dialog pre {
-      background: #222b38;
-      color: #f8f8f2;
-      border-radius: 7px;
-      font-family: FiraMono,Consolas,monospace;
-      font-size: 0.97em;
-      padding: 12px 11px 10px 12px;
-      white-space: pre-wrap;
-      word-break: break-all;
-      margin: 0 0 0 0;
-      min-height: 194px;
-      max-height: 45vh;
-      overflow: auto;
-    }
-    .left-side {
-      width: 30%; min-width: 170px; max-width: 340px;
-      box-sizing: border-box; padding: 16px 18px 0 18px;
-      display: flex; flex-direction: column; gap: 19px;
-      border-right: 1.5px solid #f0eae9;
-      justify-content: flex-start;
-    }
-    .right-side {
-      width: 70%; padding: 13px 38px 13px 38px;
-      display: flex; flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
-    .section-title {
-      font-weight: bold; margin-bottom: 7px; color: #2779a7;
-      font-size: 1.03em;
-    }
-    .block-section textarea {
-      width: 100%; min-height: 100px; border-radius: 6px; border: 1.5px solid #90caf9;
-      font-family: FiraMono, Consolas, monospace; font-size: 0.97em; padding: 8px 11px;
-      color: #f8f8f2; background: #232837; box-sizing: border-box; margin-bottom: 12px; resize: vertical;
-      transition: border 0.17s;
-    }
-    .block-section textarea:focus { outline: none; border: 2px solid #2250af; }
-    .visual-label {
-      color: #565130; margin-bottom: 7px; font-weight: 500; font-size: 1.1em;
-    }
-    .visual-output-area {
-      min-height: 60px; background: #fffbe7; border-radius: 8px;
-      align-items: center; display: flex; gap: 10px; border: 1.5px solid #faebd7;
-      font-size: 16px; font-weight: 500; margin-bottom: 6px;
-      min-width: 210px; padding: 12px 13px; flex-wrap: wrap;
-      width: 98%;
-      box-sizing: border-box;
-    }
-    
-    /* Grid Specific Styles */
-    .grid-container {
-      display: grid;
-      gap: 10px;
-      padding: 10px;
-      background: #e3f2fd;
-      border-radius: 8px;
-    }
-    .grid-item {
-      background: #bbdefb;
-      border: 2px solid #64b5f6;
-      padding: 20px;
-      text-align: center;
-      font-weight: bold;
-      border-radius: 4px;
-    }
-    .grid-item-1 { background: #fce38a; }
-    .grid-item-2 { background: #95e1d3; }
-    .grid-item-3 { background: #f3797e; color: white; }
-    .grid-item-4 { background: #e1bee7; }
-    .grid-item-5 { background: #c8e6c9; }
-    .grid-item-6 { background: #ffccbc; }
-    
-    /* Specific grid examples */
-    .grid-basic {
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 100px 100px;
-    }
-    .grid-fractions {
-      grid-template-columns: 1fr 2fr 1fr;
-    }
-    .grid-named-areas {
-      grid-template-areas:
-        "header header header"
-        "sidebar main main"
-        "footer footer footer";
-    }
-    .header { grid-area: header; }
-    .sidebar { grid-area: sidebar; }
-    .main { grid-area: main; }
-    .footer { grid-area: footer; }
-    .grid-auto-flow-row {
-      grid-auto-flow: row;
-    }
-    .grid-auto-flow-column {
-      grid-auto-flow: column;
-    }
-    .grid-dense {
-      grid-auto-flow: dense;
-    }
-    .grid-align-items {
-      align-items: center;
-    }
-    .grid-justify-items {
-      justify-items: center;
-    }
-    .grid-gap-example {
-      gap: 20px;
-    }
-    .grid-line-names {
-      grid-template-columns: [first] 100px [line2] 100px [line3] auto [col4-start] 50px [five] 40px [end];
-      grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
-    }
-    .grid-implicit {
-      grid-auto-rows: 80px;
-    }
-    .grid-spanning {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .item-span-2-col {
-      grid-column: span 2;
-    }
-    .item-span-2-row {
-      grid-row: span 2;
-    }
-    .grid-placement {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .item-placed {
-      grid-column: 2 / 4;
-      grid-row: 1 / 3;
-    }
-    
-    @media (max-width: 800px) {
-      .compare-block { flex-direction: column; min-width: 0; max-width: none;}
-      .left-side, .right-side { width: 99vw !important; max-width: 99vw !important; border: 0 !important; padding-left: 6vw; padding-right: 6vw;}
-      .left-side { padding-bottom: 8px; }
-      .compare-title { font-size: 1.1em;}
+    body, html { background: #f8f9fa; }
+    .visual-output { min-height: 220px; }
+    .editor-label { font-weight:bold; color: #858484;}
+    .editor-container, .monaco-editor { min-height: 300px; height: 300px !important; }
+    .code-popup-bg { position: fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.25); z-index:1060; display:flex; justify-content:center; align-items:center;}
+    .code-popup { background: #fff; border-radius: 10px; min-width:320px; max-width:670px; padding: 1.2em 1em 1.7em 1.5em; box-shadow: 0 4px 32px #9b9b; }
+    .code-popup-content { max-height:320px; overflow:auto; background: #f4f6fa; border-radius: 6px; padding: 10px; font-size: 0.95em; margin-top: 0.5em; margin-bottom: 0.5em; }
+    /* For syntax highlighting (simple for <code>/<pre>) */
+    .code-popup-content code { color: #333; }
+    .code-popup-content pre {
+      background: none; /* already styled above */
+      margin: 0; padding: 0;
     }
   </style>
 </head>
 <body>
-  <h1>Ultimate CSS Grid Demo Playground</h1>
-  <div class="controls">
-    <label>
-      Top Panel:
-      <select id="dropdown-1"></select>
-    </label>
-    <label>
-      Bottom Panel:
-      <select id="dropdown-2"></select>
-    </label>
+<div class="container py-4">
+  <header class="d-flex align-items-center mb-4">
+    <h3 class="mb-0 flex-grow-1 fw-semibold">CSS Grid Playground for Kids</h3>
+    <select id="topic-select" class="form-select w-auto ms-3"></select>
+  </header>
+  <div class="accordion" id="mainAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="acc1-head">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section1" aria-expanded="true" aria-controls="section1">
+          Edit HTML and CSS
+        </button>
+      </h2>
+      <div id="section1" class="accordion-collapse collapse show" aria-labelledby="acc1-head" >
+        <div class="accordion-body">
+          <div class="row g-3">
+            <div class="col-md-6 col-12">
+              <label class="editor-label mb-1">CSS</label>
+              <div id="css-editor" class="editor-container border"></div>
+            </div>
+            <div class="col-md-6 col-12">
+              <label class="editor-label mb-1">HTML</label>
+              <div id="html-editor" class="editor-container border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="acc2-head">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#section2" aria-expanded="false" aria-controls="section2">
+          Visual Output
+        </button>
+      </h2>
+      <div id="section2" class="accordion-collapse collapse show" aria-labelledby="acc2-head" >
+        <div class="accordion-body">
+          <div class="d-flex align-items-center mb-2">
+            <span class="fw-bold me-2">Preview</span>
+            <button id="show-code-btn" type="button" class="btn btn-light btn-sm ms-2" title="Show Full Code">
+              <svg style="width:1.22em" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 17l-5-5 5-5m8 10l5-5-5-5"></path></svg>
+              Show Code
+            </button>
+          </div>
+          <div class="visual-output border" style="overflow:auto;">
+            <iframe id="live-preview" style="border:none;width:100%;height:220px;background:transparent;" sandbox="allow-same-origin"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="acc3-head">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#section3" aria-expanded="false" aria-controls="section3">
+          How It Works
+        </button>
+      </h2>
+      <div id="section3" class="accordion-collapse collapse show" aria-labelledby="acc3-head" >
+        <div class="accordion-body">
+          <div id="desc-box" class="desc-box bg-light border rounded px-3 py-2"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="compare-block-1" class="compare-block"></div>
-  <div id="compare-block-2" class="compare-block"></div>
-
-  <!-- Popup/dialog root -->
-  <div id="popup-root"></div>
-
+</div>
+<div id="code-popup-bg" class="code-popup-bg" style="display:none;">
+  <div class="code-popup position-relative">
+    <strong>Full Example Code</strong>
+    <button id="popup-copy" class="btn btn-outline-secondary btn-sm ms-2">Copy</button>
+    <button id="popup-download" class="btn btn-outline-primary btn-sm">Download HTML</button>
+    <button id="popup-close" class="btn btn-light btn-sm position-absolute end-0 top-0 mt-2 me-3" style="font-size:1.2em;">×</button>
+    <div><small class="text-muted">HTML + CSS below:</small></div>
+    <div id="popup-code" class="code-popup-content"></div>
+  </div>
+</div>
 <script>
-const EXAMPLES = [
+const gridTopics = [
   {
-    group: "Grid Basics",
-    key: "grid-basic",
-    title: "Basic Grid Layout",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 100px 100px;
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-.grid-item-4 { background: #e1bee7; }
-.grid-item-5 { background: #c8e6c9; }
-.grid-item-6 { background: #ffccbc; }
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item grid-item-1">1</div>
-  <div class="grid-item grid-item-2">2</div>
-  <div class="grid-item grid-item-3">3</div>
-  <div class="grid-item grid-item-4">4</div>
-  <div class="grid-item grid-item-5">5</div>
-  <div class="grid-item grid-item-6">6</div>
-</div>`
+    id: "twoColumn",
+    name: "Simple 2-Column Layout",
+    html: `<div class="two-col-grid">\n  <div class="left">[IMAGE ✨]</div>\n  <div class="right">This is some nice text about me!</div>\n</div>`,
+    css: `.two-col-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 16px;\n}\n.left {\n  background: lightblue;\n  padding: 20px;\n}\n.right {\n  background: lightgoldenrodyellow;\n  padding: 20px;\n}`,
+    description: "**Properties used:**\n- `display: grid`: Makes the box a grid.\n- `grid-template-columns: 1fr 1fr`: Two columns, equal width.\n- `gap`: Adds space between columns.\n\n**What happens?**\nThe content is split into two equal vertical columns.\nTry editing the code!"
   },
   {
-    group: "Grid Basics",
-    key: "grid-fractions",
-    title: "Fraction Units (fr)",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-  height: 100px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item grid-item-1">1fr</div>
-  <div class="grid-item grid-item-2">2fr</div>
-  <div class="grid-item grid-item-3">1fr</div>
-</div>` 
+    id: "holyGrail",
+    name: "Magazine-Style Homepage (Holy Grail Layout)",
+    html: `<div class="layout">\n  <header class="header">Header</header>\n  <nav class="sidebar">Sidebar</nav>\n  <main class="main">Main Content</main>\n  <aside class="ads">Ads/Widget</aside>\n  <footer class="footer">Footer</footer>\n</div>`,
+    css: `.layout {\n  display: grid;\n  grid-template-areas: \n    "header  header  header"\n    "sidebar main    ads"\n    "footer  footer  footer";\n  grid-template-columns: 150px 1fr 150px;\n  grid-template-rows: auto 1fr auto;\n  gap: 10px;\n}\n.header  { grid-area: header;  background: #8ecae6; padding: 10px;}\n.sidebar { grid-area: sidebar; background: #b0d0d3; padding: 10px;}\n.main    { grid-area: main;    background: #fbc4ab; padding: 10px;}\n.ads     { grid-area: ads;     background: #ffb4a2; padding: 10px;}\n.footer  { grid-area: footer;  background: #b5838d; padding: 10px;}\n`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-areas`\n- `grid-area`\n- `grid-template-columns / grid-template-rows`\n- `gap`\n\n**What happens?**\nHeader at the top, sidebars and main content in the middle, and footer at the bottom. Named areas make big code easy!"
   },
   {
-    group: "Grid Basics",
-    key: "grid-named-areas",
-    title: "Named Grid Areas",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "sidebar main main"
-    "footer footer footer";
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-  min-height: 300px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.header { grid-area: header; background: #fce38a; }
-.sidebar { grid-area: sidebar; background: #95e1d3; }
-.main { grid-area: main; background: #f3797e; color: white; }
-.footer { grid-area: footer; background: #e1bee7; }
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item header">Header</div>
-  <div class="grid-item sidebar">Sidebar</div>
-  <div class="grid-item main">Main Content</div>
-  <div class="grid-item footer">Footer</div>
-</div>`
+    id: "gallery",
+    name: "Image Gallery / Photo Album",
+    html: `<div class="gallery">\n  <img src="https://placehold.co/150x100?text=1" alt="Pic 1">\n  <img src="https://placehold.co/150x100?text=2" alt="Pic 2">\n  <img src="https://placehold.co/150x100?text=3" alt="Pic 3">\n  <img src="https://placehold.co/150x100?text=4" alt="Pic 4">\n</div>`,
+    css: `.gallery {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 10px;\n}\n.gallery img {\n  width: 100%;\n  display: block;\n  border-radius: 8px;\n}`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-columns: repeat(3, 1fr)`\n- `gap`\n\n**What happens?**\nPictures line up in 3 tidy columns. Add or remove images to see how the grid works!"
   },
   {
-    group: "Grid Placement",
-    key: "grid-auto-flow",
-    title: "Grid Auto Flow",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(2, 100px);
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-}
-.grid-auto-flow-row {
-  grid-auto-flow: row;
-}
-.grid-auto-flow-column {
-  grid-auto-flow: column;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-.grid-item-4 { background: #e1bee7; }
-.grid-item-5 { background: #c8e6c9; }
-.grid-item-6 { background: #ffccbc; }
-`,
-    html: `<div style="display:flex; gap:20px; flex-wrap:wrap;">
-  <div>
-    <p>grid-auto-flow: row (default)</p>
-    <div class="grid-container grid-auto-flow-row">
-      <div class="grid-item grid-item-1">1</div>
-      <div class="grid-item grid-item-2">2</div>
-      <div class="grid-item grid-item-3">3</div>
-      <div class="grid-item grid-item-4">4</div>
-      <div class="grid-item grid-item-5">5</div>
-      <div class="grid-item grid-item-6">6</div>
-    </div>
-  </div>
-  <div>
-    <p>grid-auto-flow: column</p>
-    <div class="grid-container grid-auto-flow-column">
-      <div class="grid-item grid-item-1">1</div>
-      <div class="grid-item grid-item-2">2</div>
-      <div class="grid-item grid-item-3">3</div>
-      <div class="grid-item grid-item-4">4</div>
-      <div class="grid-item grid-item-5">5</div>
-      <div class="grid-item grid-item-6">6</div>
-    </div>
-  </div>
-</div>`
+    id: "productList",
+    name: "Product Listing",
+    html: `<div class="products">\n  <div class="product">Product 1</div>\n  <div class="product">Product 2</div>\n  <div class="product">Product 3</div>\n  <div class="product">Product 4</div>\n</div>`,
+    css: `.products {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));\n  gap: 20px;\n}\n.product {\n  background: #caffbf;\n  padding: 20px;\n  border-radius: 10px;\n  text-align: center;\n}`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-columns: repeat(auto-fit, minmax(140px, 1fr))`\n- `gap`\n\n**What happens?**\nProduct boxes grow/shrink to fit the window!"
   },
   {
-    group: "Grid Placement",
-    key: "grid-spanning",
-    title: "Grid Item Spanning",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-  min-height: 200px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-.grid-item-4 { background: #e1bee7; }
-.grid-item-5 { background: #c8e6c9; }
-.grid-item-6 { background: #ffccbc; }
-.item-span-2-col {
-  grid-column: span 2;
-}
-.item-span-2-row {
-  grid-row: span 2;
-}
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item grid-item-1 item-span-2-col">Span 2 columns</div>
-  <div class="grid-item grid-item-2">Normal</div>
-  <div class="grid-item grid-item-3 item-span-2-row">Span 2 rows</div>
-  <div class="grid-item grid-item-4">Normal</div>
-  <div class="grid-item grid-item-5">Normal</div>
-  <div class="grid-item grid-item-6">Normal</div>
-</div>`
-  },
-  {
-    group: "Grid Placement",
-    key: "grid-placement",
-    title: "Explicit Item Placement",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-  min-height: 200px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-.item-placed {
-  grid-column: 2 / 4;
-  grid-row: 1 / 3;
-  background: #e1bee7;
-}
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item grid-item-1">1</div>
-  <div class="grid-item grid-item-2">2</div>
-  <div class="grid-item grid-item-3">3</div>
-  <div class="grid-item item-placed">Placed at column 2-4, row 1-3</div>
-  <div class="grid-item grid-item-1">5</div>
-  <div class="grid-item grid-item-2">6</div>
-</div>`
-  },
-  {
-    group: "Grid Alignment",
-    key: "grid-alignment",
-    title: "Grid Alignment (align & justify)",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(2, 80px);
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-  height: 200px;
-}
-.grid-align-items {
-  align-items: center;
-}
-.grid-justify-items {
-  justify-items: center;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-  width: 60px;
-  height: 40px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-.grid-item-4 { background: #e1bee7; }
-.grid-item-5 { background: #c8e6c9; }
-.grid-item-6 { background: #ffccbc; }
-`,
-    html: `<div style="display:flex; gap:20px; flex-wrap:wrap;">
-  <div>
-    <p>align-items: center</p>
-    <div class="grid-container grid-align-items">
-      <div class="grid-item grid-item-1">1</div>
-      <div class="grid-item grid-item-2">2</div>
-      <div class="grid-item grid-item-3">3</div>
-      <div class="grid-item grid-item-4">4</div>
-      <div class="grid-item grid-item-5">5</div>
-      <div class="grid-item grid-item-6">6</div>
-    </div>
-  </div>
-  <div>
-    <p>justify-items: center</p>
-    <div class="grid-container grid-justify-items">
-      <div class="grid-item grid-item-1">1</div>
-      <div class="grid-item grid-item-2">2</div>
-      <div class="grid-item grid-item-3">3</div>
-      <div class="grid-item grid-item-4">4</div>
-      <div class="grid-item grid-item-5">5</div>
-      <div class="grid-item grid-item-6">6</div>
-    </div>
-  </div>
-</div>`
-  },
-  {
-    group: "Grid Advanced",
-    key: "grid-line-names",
-    title: "Grid Line Names",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: [first] 100px [line2] 100px [line3] auto [col4-start] 50px [five] 40px [end];
-  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-  height: 200px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { 
-  background: #fce38a;
-  grid-column: first / line3;
-  grid-row: row1-start / last-line;
-}
-.grid-item-2 { 
-  background: #95e1d3;
-  grid-column: line3 / five;
-  grid-row: row1-start / third-line;
-}
-.grid-item-3 { 
-  background: #f3797e; 
-  color: white;
-  grid-column: five / end;
-  grid-row: row1-start / row1-end;
-}
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item grid-item-1">first / line3<br>row1-start / last-line</div>
-  <div class="grid-item grid-item-2">line3 / five<br>row1-start / third-line</div>
-  <div class="grid-item grid-item-3">five / end<br>row1-start / row1-end</div>
-</div>`
-  },
-  {
-    group: "Grid Advanced",
-    key: "grid-implicit",
-    title: "Implicit Grid Tracks",
-    style: `
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 80px;
-  gap: 10px;
-  padding: 10px;
-  background: #e3f2fd;
-  border-radius: 8px;
-}
-.grid-item {
-  background: #bbdefb;
-  border: 2px solid #64b5f6;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 4px;
-}
-.grid-item-1 { background: #fce38a; }
-.grid-item-2 { background: #95e1d3; }
-.grid-item-3 { background: #f3797e; color: white; }
-.grid-item-4 { background: #e1bee7; }
-.grid-item-5 { background: #c8e6c9; }
-.grid-item-6 { background: #ffccbc; }
-.grid-item-7 { background: #b2dfdb; }
-.grid-item-8 { background: #d7ccc8; }
-`,
-    html: `<div class="grid-container">
-  <div class="grid-item grid-item-1">1</div>
-  <div class="grid-item grid-item-2">2</div>
-  <div class="grid-item grid-item-3">3</div>
-  <div class="grid-item grid-item-4">4</div>
-  <div class="grid-item grid-item-5">5</div>
-  <div class="grid-item grid-item-6">6</div>
-  <div class="grid-item grid-item-7">7 (implicit row)</div>
-  <div class="grid-item grid-item-8">8 (implicit row)</div>
-</div>`
+    id: "cardGrid",
+    name: "Card Grid",
+    html: `<div class="card-grid">\n  <div class="card">Alice</div>\n  <div class="card">Bob</div>\n  <div class="card">Charlie</div>\n  <div class="card">Dana</div>\n</div>`,
+    css: `.card-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));\n  gap: 16px;\n}\n.card {\n  background: #f7b801;\n  border-radius: 12px;\n  padding: 24px;\n  text-align: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}`,
+    description: "**Properties used:**\n- `display: grid`\n- `grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))`\n- `gap`\n\n**What happens?**\nEach card fits nicely and moves to next line if there's not enough space. Try editing!"
   }
 ];
 
-// --- Helper: Grouping for dropdown
-function groupOptionsHtml(groups) {
-  let res = '';
-  Object.keys(groups).forEach(grp=>{
-    res += `<optgroup label="${grp}">` + groups[grp].map(d=>
-      `<option value="${d.key}">${d.title}</option>`
-    ).join('') + `</optgroup>`;
-  });
-  return res;
-}
-const EX_GRP = {};
-EXAMPLES.forEach(e => { if(!EX_GRP[e.group]) EX_GRP[e.group]=[]; EX_GRP[e.group].push(e); });
+let selectedTopic = gridTopics[0];
+let cssEditor, htmlEditor;
 
-// Generate full HTML page
-function getFullHtmlPage(title, css, html) {
-  return `<!DOCTYPE html>
-<html lang="en">
+function $(id) { return document.getElementById(id); }
+function markdownToHtml(md) {
+  return md
+    .replace(/^(\s*)\*\*([^\*]+)\*\*/gm, '<b>$2</b>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/- ([^\n]+)/g, '• $1')
+    .replace(/\n/g, '<br>');
+}
+function updateEditorsAndPreview(updateEditors = true) {
+  // Always update desc box
+  $('desc-box').innerHTML = markdownToHtml(selectedTopic.description);
+
+  // Only update editors and preview if Monaco is loaded
+  if (cssEditor && htmlEditor) {
+    if (updateEditors) {
+      cssEditor.setValue(selectedTopic.css);
+      htmlEditor.setValue(selectedTopic.html);
+    }
+    updatePreview();
+  } else {
+    // Monaco not loaded yet -- just set the output preview for first page load and dropdown change
+    const css = selectedTopic.css || '';
+    const html = selectedTopic.html || '';
+    const full = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+    $('live-preview').srcdoc = full;
+  }
+}
+function updatePreview() {
+  const css = cssEditor ? cssEditor.getValue() : '';
+  const html = htmlEditor ? htmlEditor.getValue() : '';
+  const full = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+  $('live-preview').srcdoc = full;
+}
+function populateTopicDropdown() {
+  const sel = $('topic-select');
+  sel.innerHTML = '';
+  gridTopics.forEach((t, i) => {
+    const opt = document.createElement('option');
+    opt.value = t.id;
+    opt.textContent = t.name;
+    sel.appendChild(opt);
+  });
+}
+function findTopicById(id) {
+  return gridTopics.find(t => t.id === id) || gridTopics[0];
+}
+function escapeHtml(str) {
+  return str.replace(/[&<>]/g, function(c) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];
+  });
+}
+
+function formatHtmlCode(html) {
+  // This is a very basic pretty printer for this document's needs
+  // You might want a real HTML beautifier for better results
+
+  // Remove leading/trailing whitespace per line, and unify \n
+  html = html.replace(/\r\n/g,"\n");
+  let lines = html.split("\n");
+
+  let indent = 0, out = [];
+  for (let line of lines) {
+    line = line.trim();
+    if (!line) continue;
+    if (line.match(/^<\/(html|head|body|div|header|footer|nav|main|aside|style)/)) indent--;
+    out.push("  ".repeat(Math.max(indent,0)) + line);
+    if (line.match(/^<(html|head|body|div|header|footer|nav|main|aside|style)[ >]/) && !line.match(/\/>/) && !line.match(/^<!/)) indent++;
+    if (line.match(/^<!DOCTYPE/)) indent = 0;
+  }
+  return out.join('\n');
+}
+function openCodePopup() {
+  const css = cssEditor ? cssEditor.getValue() : '';
+  const html = htmlEditor ? htmlEditor.getValue() : '';
+  // Full HTML structure
+  const doc = `<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>${escapeHtml(title)}</title>
+  <title>CSS Grid Example</title>
   <style>
-${css.trim()}
+${css}
   </style>
 </head>
 <body>
-${html.trim()}
+${html}
 </body>
 </html>`;
-}
-function escapeHtml(str) {
-  return str.replace(/[<>&"]/g, function(c) {
-    return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
-  });
+  // Format for pretty display:
+  let formatted = formatHtmlCode(doc);
+
+  $('popup-code').innerHTML =
+    `<pre><code>${escapeHtml(formatted)}</code></pre>`;
+  $('code-popup-bg').style.display = "flex";
 }
 
-// POPUP LOGIC
-function showPopup(htmlStr, filename="grid-example.html") {
-  const popupRoot = document.getElementById('popup-root');
-  popupRoot.innerHTML = `
-    <div class="popup-backdrop" tabindex="-1">
-      <div class="popup-dialog" tabindex="0">
-        <button class="popup-close-x" title="Close" aria-label="Close">&times;</button>
-        <h3>Full HTML Page</h3>
-        <pre id="popup-html">${escapeHtml(htmlStr)}</pre>
-        <div class="popup-actions">
-          <button id="popup-copy">Copy</button>
-          <a id="popup-download" href="#" download="${filename}">Download</a>
-          <button id="popup-close">Close</button>
-        </div>
-      </div>
-    </div>
-  `;
-  // Focus handling
-  setTimeout(()=>popupRoot.querySelector('.popup-dialog').focus(), 120);
-  // Copy
-  document.getElementById("popup-copy").onclick = function() {
-    navigator.clipboard.writeText(htmlStr).then(() => {
-      this.innerText = "Copied!";
-      setTimeout(()=>{this.innerText="Copy";}, 1200);
-    });
-  };
-  // Download
-  document.getElementById("popup-download").onclick = function(e) {
-    const blob = new Blob([htmlStr], {type:"text/html"});
-    this.href = URL.createObjectURL(blob);
-    // let browser handle download (download attr is set)
-  };
-  // Close
-  function closePopup() {popupRoot.innerHTML = "";}
-  document.getElementById("popup-close").onclick = closePopup;
-  document.querySelector(".popup-close-x").onclick = closePopup;
-  popupRoot.querySelector('.popup-backdrop').onclick = function(ev) {
-    if(ev.target === popupRoot.querySelector('.popup-backdrop'))
-      closePopup();
-  };
-  document.addEventListener("keydown", function esc(e){
-    if (e.key === "Escape") closePopup(), document.removeEventListener("keydown", esc);
-  });
+function closeCodePopup() {
+  $('code-popup-bg').style.display = "none";
 }
-
-// --- DOM and panel update logic
-function renderDemoPanel(blockEl, example, styleVal=null, htmlVal=null, panelSuffix) {
-  blockEl.innerHTML = `
-    <div style="display:flex;flex-direction:column;width:100%">
-      <div class="compare-title-bar">
-        <div class="compare-title">${example.title}</div>
-        <button class="fullhtml-btn" type="button" title="View full HTML of this example" data-panel="${panelSuffix}">
-          🡥 Full HTML
-        </button>
-      </div>
-      <div style="display:flex;flex-direction:row;">
-        <div class="left-side">
-          <div class="block-section" id="style-block">
-            <div class="section-title">styles</div>
-            <textarea class="style-input" spellcheck="false">${(styleVal||example.style).trim()}</textarea>
-          </div>
-          <div class="block-section" id="html-block">
-            <div class="section-title">html</div>
-            <textarea class="html-input" spellcheck="false">${(htmlVal||example.html).trim()}</textarea>
-          </div>
-        </div>
-        <div class="right-side">
-          <div class="visual-label">visual output:</div>
-          <div class="visual-output-area live-output" id="live-output-${panelSuffix}"></div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function applyLivePanel(panelIdx, example, styleVal, htmlVal) {
-  // Scoped style per panel
-  let styleId = "panel-style-scope-"+panelIdx;
-  let styleTag = document.getElementById(styleId);
-  if(!styleTag) {
-    styleTag = document.createElement("style");
-    styleTag.id = styleId;
-    document.head.appendChild(styleTag);
+function copyPopupCode() {
+  // Copy without formatting tags
+  const pre = $('popup-code').querySelector('pre');
+  if (pre) {
+    navigator.clipboard.writeText(pre.innerText || pre.textContent);
   }
-  styleTag.textContent = styleVal;
-  // Visual output area
-  let live = document.getElementById("live-output-"+panelIdx);
-  if(live) live.innerHTML = htmlVal;
 }
-
-function setHandlers(panelIdx, blockEl, example) {
-  let styleArea = blockEl.querySelector('.style-input');
-  let htmlArea  = blockEl.querySelector('.html-input');
-  function updateNow() {
-    applyLivePanel(panelIdx, example, styleArea.value, htmlArea.value);
-  }
-  styleArea.addEventListener('input', updateNow);
-  htmlArea.addEventListener('input', updateNow);
-  // Full HTML popup button:
-  blockEl.querySelector('.fullhtml-btn').onclick = function() {
-    const htmlPage = getFullHtmlPage(example.title, styleArea.value, htmlArea.value);
-    showPopup(htmlPage, 'grid-demo.html');
-  };
-  updateNow(); // initial render
+function downloadPopupCode() {
+  const css = cssEditor ? cssEditor.getValue() : '';
+  const html = htmlEditor ? htmlEditor.getValue() : '';
+  const full = `<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<title>CSS Grid Example</title>\n<style>\n${css}\n</style>\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
+  const blob = new Blob([full], {type:"text/html"});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${selectedTopic.id || "grid-example"}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
+window.initMonacoEditors = function() {
+  cssEditor = monaco.editor.create($('css-editor'), {
+    value: selectedTopic.css,
+    language: 'css',
+    minimap: { enabled: false },
+    theme: "vs-dark", // Set Monaco to dark theme
+    scrollBeyondLastLine: false,
+    fontSize: 14,
+    automaticLayout: true,
+    roundedSelection: false,
+    wordWrap: "on"
+  });
+  htmlEditor = monaco.editor.create($('html-editor'), {
+    value: selectedTopic.html,
+    language: 'html',
+    minimap: { enabled: false },
+    theme: "vs-dark", // Set Monaco to dark theme
+    scrollBeyondLastLine: false,
+    fontSize: 14,
+    automaticLayout: true,
+    roundedSelection: false,
+    wordWrap: "on"
+  });
 
-// --- Initializations ---
-const dropdowns = [document.getElementById('dropdown-1'), document.getElementById('dropdown-2')];
-const blockEls  = [document.getElementById('compare-block-1'), document.getElementById('compare-block-2')];
+  cssEditor.onDidChangeModelContent(updatePreview);
+  htmlEditor.onDidChangeModelContent(updatePreview);
 
-dropdowns.forEach(drop=>{
-  drop.innerHTML = groupOptionsHtml(EX_GRP);
+  // ONCE Monaco is loaded, override the topic select handler to also update code editors
+  $('topic-select').addEventListener('change', function() {
+    selectedTopic = findTopicById(this.value);
+    updateEditorsAndPreview(true);
+  });
+
+  updateEditorsAndPreview(true);
+};
+// Initial UI boot (before Monaco loads)
+window.addEventListener('DOMContentLoaded', () => {
+  populateTopicDropdown();
+  $('topic-select').value = selectedTopic.id;
+  $('show-code-btn').onclick = openCodePopup;
+  $('popup-close').onclick = closeCodePopup;
+  $('code-popup-bg').onclick = e => { if (e.target === $('code-popup-bg')) closeCodePopup(); }
+  $('popup-copy').onclick = copyPopupCode;
+  $('popup-download').onclick = downloadPopupCode;
+  // Ensure desc box and preview are set at least once before Monaco loads
+  updateEditorsAndPreview(false);
+
+  // Dropdown works before Monaco
+  $('topic-select').addEventListener('change', function () {
+    selectedTopic = findTopicById(this.value);
+    updateEditorsAndPreview(false);
+  });
 });
-
-function reloadPanels() {
-  [0,1].forEach(idx=>{
-    const selVal = dropdowns[idx].value;
-    const example = EXAMPLES.find(d=>d.key === selVal);
-    renderDemoPanel(blockEls[idx], example, null, null, idx+1);
-    setHandlers(idx+1, blockEls[idx], example);
+</script>
+<!-- Bootstrap JS for accordion/collapse support -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Monaco Editor Loader and configuration (must be LAST) -->
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.34.0/min/vs/loader.js"></script>
+<script>
+  require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.0/min/vs' } });
+  require(['vs/editor/editor.main'], function () {
+    window.initMonacoEditors();
   });
-}
-
-dropdowns.forEach(drop=> drop.addEventListener('change', reloadPanels));
-reloadPanels();
-
 </script>
 </body>
 </html>
