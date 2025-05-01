@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Project Skeleton with Collapsible Sidebar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome (Optional for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: #F8FAFC; }
+        .sidebar {
+            background: #003366;
+            min-height: 100vh;
+        }
+        .sidebar .nav-link {
+            color: #fff !important;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #0055a5;
+            border-radius: .3rem;
+        }
+        .hamburger-btn {
+            color: #003366;
+            font-size: 1.8em;
+            padding: .2em;
+            background: transparent;
+            border: none;
+        }
+        .main-content {
+            padding: 2rem 1rem;
+        }
+        /* Sample block stylings */
+        .question      { border-left: 4px solid #0d6efd; background: #e9f4ff; padding:1em; border-radius: .3rem; margin-bottom:1em;}
+        .hints         { border-left: 4px solid #6c757d; background:#f5f7fa; padding:1em; border-radius: .3rem; margin-bottom:1em;}
+        .action        { border-left: 4px solid #198754; background: #e7f7ef; padding:1em; border-radius: .3rem; margin-bottom:1em;}
+        .message       { background: #eee; padding:1em; border-radius:.3rem; color:#333; margin-bottom:1em;}
+        .milestone-achieved { background:linear-gradient(90deg, #d4fc79 0%, #96e6a1 100%); padding:1em; border-radius:.3rem; font-weight:bold; margin-bottom:1em;}
+        .caution       { border-left: 4px solid #fd7e14; background:#fff1e1; color:#c05621; padding:1em; border-radius:.3rem; margin-bottom:1em;}
+        @media (max-width: 767px) {
+            .main-content { padding: 1rem .5rem; }
+        }
+    </style>
+</head>
+<body>
+<!-- Hamburger menu button (for small screens) -->
+<button class="hamburger-btn d-block d-lg-none m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+    <i class="fa fa-bars"></i>
+</button>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar: Offcanvas for small, regular column for large -->
+        <nav class="sidebar offcanvas-lg offcanvas-start col-lg-2 p-0" tabindex="-1" id="sidebarMenu">
+            <div class="offcanvas-header d-lg-none">
+                <h5 class="offcanvas-title text-white">Sections</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body px-0">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#section1">Section 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section2">Section 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section3">Section 3</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Main Content -->
+        <main class="col-lg-10 ms-auto main-content">
+            <section id="section1" class="mb-4">
+                <div class="question"><b>Q:</b> Example question block here.</div>
+                <div class="hints">This is a hint block for guidance.</div>
+                <div class="action">What is your next step? Try it out!</div>
+            </section>
+            <section id="section2" class="mb-4">
+                <div class="message">A simple message for the user.</div>
+                <div class="milestone-achieved">🎉 Milestone achieved message!</div>
+            </section>
+            <section id="section3" class="mb-4">
+                <div class="caution"><strong>Caution:</strong> Always do X before Y.</div>
+            </section>
+        </main>
+    </div>
+</div>
+<!-- Bootstrap 5 JS (for offcanvas sidebar) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Sidebar navigation: smooth scroll & active highlight
+document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const targetID = this.getAttribute('href');
+        const targetEl = document.querySelector(targetID);
+        if (targetEl) {
+            e.preventDefault();
+            // Hide sidebar on small screens after click
+            if(window.innerWidth < 992){
+                const sidebarEl = document.getElementById('sidebarMenu');
+                var sidebar = bootstrap.Offcanvas.getInstance(sidebarEl) || new bootstrap.Offcanvas(sidebarEl);
+                sidebar.hide();
+            }
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelectorAll('.sidebar .nav-link').forEach(lnk => lnk.classList.remove('active'));
+            this.classList.add('active');
+        }
+    });
+});
+</script>
+</body>
+</html>

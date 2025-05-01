@@ -1,3 +1,13 @@
+I am creating a step by step procedure for students to build a web page.
+the below content details it out. create an html page, make it minimalistic and elegent. use boostrap for styling
+whereever we have question, hints, action - use appropriate styling
+wherever there is a view, embed that as an iframe with an option to open the page in a new window
+the text i have given in question, hints , action are just pointers, you can rephrase it in simple english for the students to understand
+
+create the web page layout such that in the left side there is a collapsible nav bar
+
+<CONTENT-START>
+
 question
 what you have observed in this project page
 

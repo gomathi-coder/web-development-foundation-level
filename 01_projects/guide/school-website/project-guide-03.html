@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Step by Step: Build Your Web Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS/Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: #F8FAFC; }
+        .sidebar {
+            background: #003366;
+            min-height: 100vh;
+        }
+        .sidebar .nav-link {
+            color: #000 !important;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #0055a5;
+            border-radius: .3rem;
+        }
+        .hamburger-btn {
+            color: #003366;
+            font-size: 1.8em;
+            padding: .2em;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+        .main-content {
+            padding: 2rem 1rem;
+        }
+        .question {
+            border-left: 4px solid #0d6efd; background: #e9f4ff;
+            padding: 1em; margin-bottom: 1em; border-radius: .3rem;
+        }
+        .hints {
+            border-left: 4px solid #6c757d; background: #f5f7fa;
+            padding: 1em; margin-bottom: 1em; border-radius: .3rem;
+        }
+        .action {
+            border-left: 4px solid #198754; background: #e7f7ef;
+            padding: 1em; margin-bottom: 1em; border-radius: .3rem;
+        }
+        .message {
+            background: #eee; padding: 1em; border-radius: .3rem;
+            color: #333; margin-bottom: 1em;
+        }
+        .milestone-achieved {
+            background: linear-gradient(90deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 1em; border-radius: .3rem; font-weight: bold; margin-bottom: 1em;
+        }
+        .caution {
+            border-left: 4px solid #fd7e14; background: #fff1e1; color: #c05621;
+            padding: 1em; margin-bottom: 1em; border-radius: .3rem;
+        }
+        .view-container {
+            border: 1px solid #dee2e6; border-radius: .5em;
+            margin-bottom: 1.5em; background: #fff; padding: 1em; position: relative;
+        }
+        .view-toolbar {
+            text-align: right; margin-bottom: 0.3em;
+        }
+        .view-iframe {
+            width: 100%; height: 380px; border: 0; border-radius: .3em;
+        }
+        .checklist li { margin-bottom: .5em; }
+        @media (max-width: 767px) {
+            .main-content { padding: 1rem .5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hamburger button for sidebar (visible on mobile/small) -->
+<button class="hamburger-btn d-block d-lg-none m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+    <i class="fa fa-bars"></i>
+</button>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar as Bootstrap Offcanvas -->
+        <nav class="sidebar offcanvas-lg offcanvas-start col-lg-2 p-0" tabindex="-1" id="sidebarMenu">
+            <div class="offcanvas-header d-lg-none">
+                <h5 class="offcanvas-title text-white">Sections</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body px-0">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#step1">Skeleton</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#step2">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#step3">Achievements & Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#step4">Icons & Marquee</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#recap">Recap</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-lg-10 ms-auto main-content">
+            <!-- Step 1: Skeleton -->
+            <section id="step1" class="content-section mb-4">
+                <div class="question"><b>Q:</b> What stands out on the project page?</div>
+                <div class="hints">The page is divided into several vertical sections.</div>
+                <div class="hints">
+                    These use a flex layout:<br>
+                    <code>display: flex; justify-content: center; flex-direction: column; align-items: center;</code>
+                </div>
+                <div class="action">Let’s start by creating the web page framework!</div>
+                <div class="view-container">
+                    <div class="view-toolbar">
+                        <a href="school-website-v1-01.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a>
+                    </div>
+                    <iframe class="view-iframe" src="school-website-v1-01.html"></iframe>
+                </div>
+                <div class="question"><b>Q:</b> What's present in the header?</div>
+                <div class="hints">- Background is blue<br>- Large font for the school’s name<br>- Smaller text underneath for the tagline<br>- Navigation menu<br>- Balanced padding at the top and bottom of the header</div>
+                <div class="hints">
+                    <ul>
+                        <li>Use <code>h1</code> for the school’s name</li>
+                        <li>Put the tagline in a <code>p</code> tag</li>
+                        <li>Navigation links as <code>a</code> elements inside a <code>div</code></li>
+                        <li>Arrange menu with flex: <code>display: flex; justify-content: center; gap:10px;</code></li>
+                    </ul>
+                </div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v1-02.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v1-02.html"></iframe>
+                </div>
+                <div class="hints">The navigation menu is white text on a blue background, spaced apart, with rounded edges.</div>
+                <div class="action">Let's improve the menu layout and design!</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v1-03.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v1-03.html"></iframe>
+                </div>
+                <div class="action">The next step is to add a footer at the bottom of the page.</div>
+                <div class="hints">Look carefully at the background, text color, and how things are spaced in the footer.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v1-04.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v1-04.html"></iframe>
+                </div>
+                <div class="question"><b>Q:</b> What is displayed on the welcome page?</div>
+                <div class="hints">- Does not fill the full width of the page<br>- Different background<br>- Only a heading and one image</div>
+                <div class="hints">- <code>h1</code> for welcome message<br>- Image fits the box properly</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v1-05.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v1-05.html"></iframe>
+                </div>
+                <div class="question"><b>Q:</b> How does your version compare to the reference?</div>
+                <div class="hints">- More rounded borders for sections<br>- The image also has rounded corners<br>- Different background color for the page<br>- Not enough space under the image<br>- Welcome text isn't white and lacks spacing</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v1-06.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v1-06.html"></iframe>
+                </div>
+                <div class="question"><b>Q:</b> Are your navigation links taking you to the right sections?</div>
+                <div class="hints">Each section should have its own unique <code>id</code>. Set your navigation links’ <code>href</code> to those ids.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v1-07.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v1-07.html"></iframe>
+                </div>
+                <div class="milestone-achieved">🎉 Awesome! You've set up the basic web page structure with sections, navigation, and an image!</div>
+            </section>
+
+            <!-- Step 2 -->
+            <section id="step2" class="content-section mb-4">
+                <div class="milestone-achieved">Starting Milestone 2</div>
+                <div class="question"><b>Q:</b> Does the "About Us" layout look familiar?</div>
+                <div class="hints">
+                  - It's made with a two-column grid<br>
+                  - The heading uses <code>h1</code> and there's a paragraph<br>
+                  - "Vision & Mission" use <code>h2</code> and a bulleted list<br>
+                  - Notice padding and that there’s no background color here
+                </div>
+                <div class="action">Let’s build the HTML for this section, then apply Bootstrap classes and add CSS.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v2-01.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v2-01.html"></iframe>
+                </div>
+                <div class="hints">Use a grid, remember padding, and add rounded corners where appropriate!</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v2-02.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v2-02.html"></iframe>
+                </div>
+                <div class="message">Let’s make a two-column table next: start by creating the structure, then move on to the styling.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v2-03.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v2-03.html"></iframe>
+                </div>
+                <div class="hints">While styling, add space, rounded corners, and make the table stretch the full width. Style both <code>th</code> and <code>td</code> for a polished look.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v2-04.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v2-04.html"></iframe>
+                </div>
+                <div class="milestone-achieved">🎉 Nicely done! That’s two more sections finished—and you’re picking up speed!</div>
+            </section>
+            <!-- Step 3 -->
+            <section id="step3" class="content-section mb-4">
+                <div class="milestone-achieved">Starting Milestone 3</div>
+                <div class="message">The Achievements block uses a flex container with a familiar style.</div>
+                <div class="hints">Pay attention to the background, center the section heading, and use color and rounding on individual cards.</div>
+                <div class="action">Begin by drafting the HTML structure for this achievements section.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v3-01.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v3-01.html"></iframe>
+                </div>
+                <div class="hints">Each card should stand out: tweak font sizes, round the corners, and use background colors. Adjust the header’s font size as well!</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v3-02.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v3-02.html"></iframe>
+                </div>
+                <div class="hints">The Gallery contains two elements: an image grid, and another area to embed HTML.</div>
+                <div class="action">Start with the HTML grid for the photo gallery.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v3-03.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v3-03.html"></iframe>
+                </div>
+                <div class="caution">Check the image styles again—there’s room for improvement.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v3-04.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v3-04.html"></iframe>
+                </div>
+                <div class="hints">Add a YouTube “share” button in the gallery header—just a copy-and-paste step!</div>
+                <div class="view-container">
+                    <div class="view-toolbar">
+                        <a href="school-website-v3-05.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a>
+                    </div>
+                    <iframe class="view-iframe" src="school-website-v3-05.html"></iframe>
+                </div>
+                <div class="milestone-achieved">🎉 You’re nearly done! These two creative sections are ready to show off.</div>
+            </section>
+
+            <!-- Step 4 -->
+            <section id="step4" class="content-section mb-4">
+                <div class="milestone-achieved">Starting Milestone 4</div>
+                <div class="message">This section switches from regular images to icon packs. Using icons has its own standardized process.</div>
+                <div class="caution">For icons (such as Font Awesome), don’t forget to put their CDN link in the <code>&lt;head&gt;</code> of your HTML. For example:<br>
+                    <code>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</code></div>
+                <div class="action">As usual, begin with the HTML structure for this area.</div>
+                <div class="view-container">
+                    <div class="view-toolbar">
+                        <a href="school-website-v4-01.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a>
+                    </div>
+                    <iframe class="view-iframe" src="school-website-v4-01.html"></iframe>
+                </div>
+                <div class="hints">Employ a basic flex arrangement for easy alignment.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v4-02.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v4-02.html"></iframe>
+                </div>
+                <div class="message">The “marquee” produces scrolling text—a nostalgic yet eye-catching element.</div>
+                <div class="caution">Use <code>&lt;marquee&gt;</code> for animated text, but keep in mind it isn’t recommended for modern, accessible sites since some browsers may not support it.</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v4-03.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v4-03.html"></iframe>
+                </div>
+                <div class="message">The final block includes an icon, some description, and an embedded map (for example, from Google Maps).</div>
+                <div class="view-container">
+                    <div class="view-toolbar"><a href="school-website-v4-04.html" target="_blank" class="btn btn-outline-primary btn-sm">Open in new window <i class="fa fa-external-link-alt"></i></a></div>
+                    <iframe class="view-iframe" src="school-website-v4-04.html"></iframe>
+                </div>
+                <div class="milestone-achieved">🎉 Congratulations, you’ve finished your site!</div>
+            </section>
+
+            <!-- Recap -->
+            <section id="recap" class="content-section mb-4">
+                <div class="message">This project has walked you through a real web development process! You're ready to try even bigger and more complex tasks.<br>
+                Let’s look back and compile a checklist:</div>
+                <div class="hints">
+                    <ul class="checklist">
+                        <li>Learn how web pages fit together: header, content sections, and footer.</li>
+                        <li>Use flexbox and grid for laying out content as needed.</li>
+                        <li>Style everything using both Bootstrap and your own CSS.</li>
+                        <li>Work with HTML tags: headings, paragraphs, links, images, tables, lists, etc.</li>
+                        <li>Make sections pop with backgrounds, border effects, and spacing.</li>
+                        <li>Set up navigation links with anchors and unique ids for sections.</li>
+                        <li>Embed full pages or maps using <code>iframe</code>.</li>
+                        <li>Add third-party icon sets (e.g., via Font Awesome).</li>
+                        <li>Integrate fun extras like moving text or scrollers.</li>
+                        <li><b>Frequently used CSS:</b> <br>
+                            <code>
+                                display: flex;<br>
+                                justify-content: center;<br>
+                                align-items: center;<br>
+                                flex-direction: column;<br>
+                                gap: 10px;<br>
+                                padding, margin, border-radius, background-color
+                            </code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="actions">
+                    <ul>
+                        <li>Pay special attention to areas where you struggled and review them.</li>
+                        <li>Recreate the layouts you practiced to reinforce what you learned.</li>
+                        <li>Take on another mini-project right away and apply your newfound skills!</li>
+                    </ul>
+                </div>
+                <div class="milestone-achieved">🚀 Ready for the next steps? Try hosting, optimizing for mobile, and exploring even more web topics!</div>
+            </section>
+        </main>
+    </div>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Smooth scroll and nav highlight logic -->
+<script>
+document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Smooth scroll and active class
+        const targetID = this.getAttribute('href');
+        const targetEl = document.querySelector(targetID);
+        if (targetEl) {
+            e.preventDefault();
+            // Remove offcanvas on small screens
+            if(window.innerWidth < 992){
+                const sidebarEl = document.getElementById('sidebarMenu');
+                var sidebar = bootstrap.Offcanvas.getInstance(sidebarEl) || new bootstrap.Offcanvas(sidebarEl);
+                sidebar.hide();
+            }
+            // Scroll smoothly
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Active style for selected nav
+            document.querySelectorAll('.sidebar .nav-link').forEach(lnk => lnk.classList.remove('active'));
+            this.classList.add('active');
+        }
+    });
+});
+</script>
+</body>
+</html>

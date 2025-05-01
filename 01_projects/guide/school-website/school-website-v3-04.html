@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bright Future Public School</title>
+  <style>
+	body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	  background-color: #d1c9dd;
+	 }
+
+    /* header */
+	
+	.page {
+		display: flex;
+		justify-content: center;
+		flex-direction:column;
+		align-items: center;
+		gap:20px;
+	}
+
+    header {
+      background: #3D52A0;
+      color: white;
+      text-align: center;
+      padding: 24px;
+	    width: 100%;
+    }
+	
+	.school-name {
+      font-size: 40px;
+    }
+
+    .school-tag-line {
+      font-style: italic;
+    }
+	
+	.menu {
+      display: flex;
+      justify-content: center;
+	  gap:10px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      padding: 8px 16px;
+      border-radius: 5px;
+    }
+	
+	.welcome {
+	  width: 70%;
+	  text-align:center;
+	  background: #0FA4AF;
+	  border-radius:10px;
+	  padding:30px;
+	}
+	
+	.welcome h2 {
+		color:white;
+		padding:10px;
+	}
+	
+	.school-photo {
+	  width: 80%;
+	  border-radius:10px;
+	}
+
+  .about {
+    background-color: white;
+    padding:30px;
+    border-radius:10px;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+  }
+
+  .academics {
+    background-color: white;
+    padding:30px;
+    border-radius:10px;
+    width: 70%;
+  }
+
+  .academics table {
+    width:100%;
+    border-collapse: collapse;
+  }
+
+  .academics th {
+    border:1px solid grey;
+    padding:10px;
+    text-align:left;
+  }
+
+  .academics td {
+    border:1px solid grey;
+    padding:10px;
+    text-align:left;
+  }
+
+  .achievements {
+
+    width: 70%;
+	  text-align:center;
+	  background: #0FA4AF;
+	  border-radius:10px;
+	  padding:30px;
+
+  }
+
+  .achievements h2 {
+    color:white;
+    font-size:32px;
+  }
+
+  .achievements-cards-list {
+    display:flex;
+    gap: 16px;    
+    justify-content: center;
+  }
+
+  .achievements-card {
+      
+      background-color: #ffeb3b;
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+      font-size:22px;
+  }
+
+  .gallery {
+    background-color: white;
+    width: 70%;
+	  text-align:center;
+	  border-radius:10px;
+	  padding:30px;
+  }
+
+  .gallery-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .gallery-images img {
+    width: 100%;
+    border-radius: 10px;
+    height: 150px;
+    object-fit: cover;
+  }
+	
+	footer {
+    text-align: center;
+    padding: 16px;
+    background-color: #343a40;
+    color: white;
+	  width:100%;
+	}
+    
+  </style>
+</head>
+
+<body>
+
+
+  <!-- header -->
+  <div class="page" >
+  <header>
+    <h1 class="school-name" >Bright Future Public School</h1>
+    <p class="school-tag-line" >Learning Today, Leading Tomorrow</p>
+	  <div class="menu">
+		<a href="#home">Home</a>
+		<a href="#about">About Us</a>
+		<a href="#academics">Academics</a>
+		<a href="#achievements">Achievements</a>
+		<a href="#gallery">Gallery</a>
+		<a href="#student-life">Student Life</a>
+		<a href="#notices">Notice Board</a>
+		<a href="#contact">Contact Us</a>
+	  </div>
+  </header>
+
+
+
+  <!-- home -->
+
+  <section id="welcome" class="welcome">
+    <h2>Welcome to Bright Future Public School</h2>
+    <img src="4.1.school_logo.png" alt="School Banner" class="school-photo" />
+  </section>
+
+
+
+
+  <!-- about -->
+
+  <section id="about" class="about">
+    <div>
+      <h2>About Us</h2>
+      <p>Bright Future Public School was established in 2005 with a mission to provide quality education in a nurturing
+        environment.</p>
+      <p><strong>Principal's Message:</strong> We aim to inspire and empower students to be lifelong learners.</p>
+    </div>
+    <div>
+      <h3>Vision & Mission</h3>
+      <ul>
+        <li>Empowering through education</li>
+        <li>Encouraging creativity and curiosity</li>
+        <li>Fostering a caring community</li>
+      </ul>
+    </div>
+  </section>
+
+
+
+  <!-- academics -->
+
+  <section id="academics" class="academics">
+    <h2>Academics</h2>
+    <table>
+      <tr>
+        <th>Grade</th>
+        <th>Subjects</th>
+      </tr>
+      <tr>
+        <td>1-5</td>
+        <td>Math, English, Science, EVS</td>
+      </tr>
+      <tr>
+        <td>6-8</td>
+        <td>Math, Science, Social, Computers</td>
+      </tr>
+      <tr>
+        <td>9-10</td>
+        <td>Math, Science, SST, English, Hindi</td>
+      </tr>
+    </table>
+  </section>
+
+
+
+
+  <!-- achievements -->
+
+  <section id="achievements" class="achievements">
+    <h2>Achievements</h2>
+    <div class="achievements-cards-list">
+      <div class="achievements-card">State Level Science Fair Winner - 2023</div>
+      <div class="achievements-card">Top 10 CBSE Schools in Region</div>
+      <div class="achievements-card">Best Eco-Friendly Campus Award</div>
+    </div>
+  </section>
+
+
+  <!-- gallery -->
+
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-images">
+      <img src="12.1.jpg" alt="Event 1" />
+      <img src="12.2.jpg" alt="Event 2" />
+      <img src="12.3.jpg" alt="Event 3" />
+      <img src="12.4.jpg" alt="Event 4" />
+      <img src="12.5.jpg" alt="Event 5" />
+    </div>
+  </section>
+
+
+
+
+  <!-- student-life -->
+
+  <section id="student-life" class="student-life">
+    student-life
+  </section>
+
+
+
+
+  <!-- notices -->
+
+  <section id="notices" class="notices">
+    notices
+  </section>
+
+
+
+  <!-- contact -->
+
+  <section id="contact" class="contact" >
+    contact
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <p>&copy; 2025 Bright Future Public School. All rights reserved.</p>
+  </footer>
+</div>
+</body>
+
+</html>
