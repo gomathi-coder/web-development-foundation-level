@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background: transparent;
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+.flex-container {
+  display: flex;
+  gap: 32px;
+}
+.flex-item {
+  background: #2196f3;
+  color: #fff;
+  padding: 32px;
+  border-radius: 8px;
+  flex: 1 1 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.flex-item:last-child {
+  background: #ff9800;
+}
+/* Responsive: stack items vertically on small screens */
+@media (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .flex-item {
+    font-size: 1rem;
+    padding: 20px;
+    margin:10px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="flex-container">
+  <div class="flex-item">Item 1</div>
+  <div class="flex-item">Item 2</div>
+  <div class="flex-item">Item 3</div>
+</div>
+</body>
+</html>

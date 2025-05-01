@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flexbox Live Comparison Playground</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #f0f4fc;
+      color: #183153;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100%;
+    }
+    body {
+      box-sizing: border-box;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      margin-bottom: 24px;
+      margin-top: 18px;
+    }
+    label {
+      font-size: 1.15em;
+      font-weight: 500;
+    }
+    select {
+      font-size: 1.1em;
+      padding: 5px 18px;
+      margin-left: 7px;
+      min-width: 150px;
+      border-radius: 5px;
+      border: 1.5px solid #b4daf7;
+      background: #fff;
+    }
+    .main-compare-row {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      width: 100vw;
+      box-sizing: border-box;
+    }
+    .comparison-block {
+      flex: 1 1 50%;
+      max-width: 700px;
+      min-width: 310px;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      border-radius: 10px;
+      border: 1.5px solid #b9cdf0;
+      min-height: 410px;
+      box-shadow: 0 3px 18px #0001;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-bottom: 24px;
+      /* Stretch to nearly full screen with some gap at sides */
+      box-sizing: border-box;
+    }
+    .block-heading {
+      background: #e3edfa;
+      border-radius: 10px 10px 0 0;
+      padding: 16px 18px 12px 20px;
+      font-size: 1.22em;
+      font-weight: 600;
+      color: #234580;
+      min-height: 48px;
+    }
+    .block-content {
+      padding: 17px 28px 17px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .block-visual {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .visual-output-label {
+      font-size: 1em;
+      color: #6e6d68;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .visual-output-area {
+      min-height: 78px;
+      background: #fffbe7;
+      border-radius: 8px;
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      border: 1.5px solid #faebd7;
+      font-size: 16px;
+      padding: 11px 14px;
+      font-weight: 500;
+      font-family: inherit;
+      margin-bottom: 3px;
+      min-width: 210px;
+      flex-wrap: wrap;
+    }
+    .facilities, .facilities-flex-row, .facilities-flex-col {
+      margin: 0 !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      width: 100% !important;
+    }
+
+    /* Individual boxes */
+    .facilities > div,
+    .facilities-flex-row > div,
+    .facilities-flex-col > div {
+      padding: 14px 13px;
+      margin: 7px 10px 7px 0;
+      border-radius: 6px;
+      color: #124076;
+      font-weight: bold;
+      outline: 1px solid #90caf9;
+      min-width: 120px;
+      white-space: pre-line;
+      font-size: 1.01em;
+      box-shadow: 0 2px 8px #0001;
+    }
+    .box-a { background: #fce38a; }
+    .box-b { background: #95e1d3; }
+    .box-c { background: #f3797e; color: #fff; }
+
+    .facilities-flex-row {
+      display: flex;
+      flex-direction: row;
+    }
+    .facilities-flex-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .code-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #246aad;
+      font-size: 1.04em;
+    }
+    pre {
+      margin: 0 0 16px 0;
+      font-size: 0.97em;
+      background: #232837;
+      color: #fff;
+      padding: 9px 13px;
+      border-radius: 6px;
+      overflow-x: auto;
+      line-height: 1.47em;
+      font-family: FiraMono, Consolas, monospace;
+    }
+    @media (max-width: 1000px) {
+      .main-compare-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+      .comparison-block {
+        min-width: 0;
+        max-width: none;
+        width: 97vw;
+        margin: 0 auto 18px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<h1>Flexbox Comparison – Side-by-Side Playground</h1>
+
+<div class="controls">
+  <label>
+    Left Side:
+    <select id="dropdown-1">
+      <option value="noflex">Without Flex</option>
+      <option value="flexrow">With Flex (row)</option>
+      <option value="flexcol">With Flex (col)</option>
+    </select>
+  </label>
+  <label>
+    Right Side:
+    <select id="dropdown-2">
+      <option value="noflex">Without Flex</option>
+      <option value="flexrow">With Flex (row)</option>
+      <option value="flexcol">With Flex (col)</option>
+    </select>
+  </label>
+</div>
+
+<div class="main-compare-row">
+  <div class="comparison-block" id="compare-block-1">
+    <!-- Content loaded by JavaScript -->
+  </div>
+  <div class="comparison-block" id="compare-block-2">
+    <!-- Content loaded by JavaScript -->
+  </div>
+</div>
+
+<script>
+// HTML, CSS, and Visual Output for each mode
+const DATA = {
+  noflex: {
+    heading: 'Without Flex',
+    style: `<span class="code-title">styles</span><pre>.facilities {\n  /* No flex! (default block layout) */\n}\n.facilities > div {\n  /* Shared box styling */\n}\n.box-a { background: #fce38a; }\n.box-b { background: #95e1d3; }\n.box-c { background: #f3797e; color:#fff; }</pre>`,
+    html: `<span class="code-title">html</span><pre>&lt;section class="facilities"&gt;\n  &lt;div class="box-a"&gt;STEM Lab&lt;/div&gt;\n  &lt;div class="box-b"&gt;Library&lt;/div&gt;\n  &lt;div class="box-c"&gt;Indoor and Outdoor Playground&lt;/div&gt;\n&lt;/section&gt;</pre>`,
+    visual: `
+      <div class="visual-output-label">visual output:</div>
+      <div class="visual-output-area">
+        <section class="facilities" >
+          <div class="box-a">STEM Lab</div>
+          <div class="box-b">Library</div>
+          <div class="box-c">Indoor and Outdoor Playground</div>
+        </section>
+      </div>
+    `
+  },
+  flexrow: {
+    heading: 'With Flex (row)',
+    style: `<span class="code-title">styles</span><pre>.facilities-flex-row {\n  display: flex;\n  flex-direction: row;\n}\n.box-a { background: #fce38a; }\n.box-b { background: #95e1d3; }\n.box-c { background: #f3797e; color:#fff; }</pre>`,
+    html: `<span class="code-title">html</span><pre>&lt;section class="facilities-flex-row"&gt;\n  &lt;div class="box-a"&gt;STEM Lab&lt;/div&gt;\n  &lt;div class="box-b"&gt;Library&lt;/div&gt;\n  &lt;div class="box-c"&gt;Indoor and Outdoor Playground&lt;/div&gt;\n&lt;/section&gt;</pre>`,
+    visual: `
+      <div class="visual-output-label">visual output:</div>
+      <div class="visual-output-area">
+        <section class="facilities-flex-row" >
+          <div class="box-a">STEM Lab</div>
+          <div class="box-b">Library</div>
+          <div class="box-c">Indoor and Outdoor Playground</div>
+        </section>
+      </div>
+    `
+  },
+  flexcol: {
+    heading: 'With Flex (col)',
+    style: `<span class="code-title">styles</span><pre>.facilities-flex-col {\n  display: flex;\n  flex-direction: column;\n}\n.box-a { background: #fce38a; }\n.box-b { background: #95e1d3; }\n.box-c { background: #f3797e; color:#fff; }</pre>`,
+    html: `<span class="code-title">html</span><pre>&lt;section class="facilities-flex-col"&gt;\n  &lt;div class="box-a"&gt;STEM Lab&lt;/div&gt;\n  &lt;div class="box-b"&gt;Library&lt;/div&gt;\n  &lt;div class="box-c"&gt;Indoor and Outdoor Playground&lt;/div&gt;\n&lt;/section&gt;</pre>`,
+    visual: `
+      <div class="visual-output-label">visual output:</div>
+      <div class="visual-output-area">
+        <section class="facilities-flex-col" >
+          <div class="box-a">STEM Lab</div>
+          <div class="box-b">Library</div>
+          <div class="box-c">Indoor and Outdoor Playground</div>
+        </section>
+      </div>
+    `
+  }
+};
+
+function loadBlock(el, kind) {
+  el.innerHTML = `
+    <div class="block-heading">${DATA[kind].heading}</div>
+    <div class="block-content">
+      <div class="block-visual">
+        ${DATA[kind].visual}
+      </div>
+      <div>${DATA[kind].style}</div>
+      <div>${DATA[kind].html}</div>
+    </div>
+  `;
+}
+
+// Initial load
+const d1 = document.getElementById('dropdown-1');
+const d2 = document.getElementById('dropdown-2');
+const b1 = document.getElementById('compare-block-1');
+const b2 = document.getElementById('compare-block-2');
+
+function reload() {
+  loadBlock(b1, d1.value);
+  loadBlock(b2, d2.value);
+}
+
+d1.addEventListener('change', reload);
+d2.addEventListener('change', reload);
+reload();
+
+</script>
+</body>
+</html>

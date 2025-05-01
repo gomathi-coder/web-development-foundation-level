@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ultimate Flexbox Demo Playground</title>
+  <style>
+    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #f0f4fc; }
+    h1 { text-align: center; margin: 20px 0 20px 0; }
+    .controls {
+      display: flex; gap: 24px; justify-content: center; margin-bottom: 30px; margin-top: 10px;
+    }
+    label { font-size: 1.1em; font-weight: 500; }
+    select {
+      font-size: 1.07em; margin-left: 7px; min-width: 185px; border: 1.5px solid #b4daf7;
+      border-radius: 5px; padding: 5px 11px; background: #fff;
+    }
+    .compare-block {
+      background: #fff;
+      border-radius: 10px;
+      border: 1.5px solid #b9cdf0;
+      margin: 0 auto 42px auto;
+      font-size: 1.06em;
+      padding: 0;
+      box-shadow: 0 3px 18px #0001;
+      max-width: 1200px;
+      width: 98vw;
+      min-height: 280px;
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+    }
+    .compare-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: #e3ecfb;
+      padding: 0 8px 0 0;
+      border-radius: 10px 10px 0 0;
+    }
+    .compare-title {
+      color: #2250af;
+      font-weight: 700;
+      font-size: 1.21em;
+      letter-spacing: 0.02em;
+      padding: 14px 0 13px 0;
+      margin: 0;
+      flex: 1 1 auto;
+      background: none;
+    }
+    .fullhtml-btn {
+      appearance: none;
+      border: none;
+      font-size: 1.06em;
+      padding: 4px 15px 4px 10px;
+      border-radius: 5px;
+      background: #d1e0fa;
+      cursor: pointer;
+      margin-left: 12px;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 0;
+      transition: background 0.17s;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: 5px;
+    }
+    .fullhtml-btn:active, .fullhtml-btn:focus { background: #bcd6f8; outline: 2px solid #4982e4; }
+    .popup-backdrop {
+      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+      background: #1117 40%; z-index: 1111; display: flex; align-items: center; justify-content: center;
+    }
+    .popup-dialog {
+      background: #fff; border-radius: 14px; box-shadow: 0 8px 32px #0002;
+      padding: 25px 28px 16px 28px; min-width: 310px; max-width: 680px; width: 80vw;
+      max-height: 90vh; overflow: auto; position: relative;
+      display: flex; flex-direction: column;
+    }
+    .popup-dialog h3 {
+      margin: 0 0 10px 0; color: #2250af; font-size: 1.13em;
+      display: flex; align-items: center;
+      gap: 6px;
+    }
+    .popup-actions {
+      display: flex; gap: 14px; margin-top: 11px; justify-content: flex-end; align-items: center;
+    }
+    .popup-actions button, .popup-actions a {
+      display: inline-block;
+      font-size: 0.99em;
+      border-radius: 4px;
+      padding: 6px 18px;
+      border: none;
+      background: #e3ecfb;
+      color: #135;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+      outline: none;
+      transition: background 0.16s;
+    }
+    .popup-actions button:hover, .popup-actions a:hover { background: #bcd6f8; }
+    .popup-close-x {
+      font-size: 1.36em; background: none; border: none; color: #999;
+      cursor: pointer; position: absolute; top: 8px; right: 18px; z-index: 10;
+      line-height: 1;
+    }
+    .popup-dialog pre {
+      background: #222b38;
+      color: #f8f8f2;
+      border-radius: 7px;
+      font-family: FiraMono,Consolas,monospace;
+      font-size: 0.97em;
+      padding: 12px 11px 10px 12px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 0 0 0 0;
+      min-height: 194px;
+      max-height: 45vh;
+      overflow: auto;
+    }
+    .left-side {
+      width: 30%; min-width: 170px; max-width: 340px;
+      box-sizing: border-box; padding: 16px 18px 0 18px;
+      display: flex; flex-direction: column; gap: 19px;
+      border-right: 1.5px solid #f0eae9;
+      justify-content: flex-start;
+    }
+    .right-side {
+      width: 70%; padding: 13px 38px 13px 38px;
+      display: flex; flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .section-title {
+      font-weight: bold; margin-bottom: 7px; color: #2779a7;
+      font-size: 1.03em;
+    }
+    .block-section textarea {
+      width: 100%; min-height: 100px; border-radius: 6px; border: 1.5px solid #90caf9;
+      font-family: FiraMono, Consolas, monospace; font-size: 0.97em; padding: 8px 11px;
+      color: #f8f8f2; background: #232837; box-sizing: border-box; margin-bottom: 12px; resize: vertical;
+      transition: border 0.17s;
+    }
+    .block-section textarea:focus { outline: none; border: 2px solid #2250af; }
+    .visual-label {
+      color: #565130; margin-bottom: 7px; font-weight: 500; font-size: 1.1em;
+    }
+    .visual-output-area {
+      min-height: 60px; background: #fffbe7; border-radius: 8px;
+      align-items: center; display: flex; gap: 10px; border: 1.5px solid #faebd7;
+      font-size: 16px; font-weight: 500; margin-bottom: 6px;
+      min-width: 210px; padding: 12px 13px; flex-wrap: wrap;
+      width: 98%;
+      box-sizing: border-box;
+    }
+    .facilities, .facilities-flex-row, .facilities-flex-col, .jc-demo, .ai-demo, .ac-demo, .wrap-demo, .grow-demo, .shrink-demo, .basis-demo, .as-demo, .order-demo {
+      margin: 0 !important; background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; width: 100% !important;
+    }
+    .facilities > div, .facilities-flex-row > div, .facilities-flex-col > div,
+    .jc-demo > div, .ai-demo > div, .ac-demo > div, .wrap-demo > div, .grow-demo > div, .shrink-demo > div, .basis-demo > div, .as-demo > div, .order-demo > div {
+      padding: 14px 13px; margin: 7px 10px 7px 0; border-radius: 6px; color: #124076; font-weight: bold; outline: 1px solid #90caf9; min-width: 80px; white-space: pre-line; font-size: 1.01em; box-shadow: 0 2px 8px #0001;
+    }
+    .box-a { background: #fce38a; }
+    .box-b { background: #95e1d3; }
+    .box-c { background: #f3797e; color: #fff; }
+    .jc-demo              { display: flex; }
+    .jc-start             { justify-content: flex-start; }
+    .jc-center            { justify-content: center; }
+    .jc-end               { justify-content: flex-end; }
+    .jc-spaceb            { justify-content: space-between; }
+    .jc-spacea            { justify-content: space-around; }
+    .jc-spacee            { justify-content: space-evenly; }
+    .ai-demo              { display: flex; height: 60px; }
+    .ai-stretch           { align-items: stretch; }
+    .ai-center            { align-items: center; }
+    .ai-start             { align-items: flex-start; }
+    .ai-end               { align-items: flex-end; }
+    .ac-demo              { display: flex; flex-wrap: wrap; height: 120px;}
+    .ac-stretch           { align-content: stretch;}
+    .ac-center            { align-content: center;}
+    .ac-start             { align-content: flex-start;}
+    .ac-end               { align-content: flex-end;}
+    .ac-spaceb            { align-content: space-between;}
+    .ac-spacea            { align-content: space-around;}
+    .wrap-demo            { display: flex; flex-wrap: wrap; width: 280px;}
+    .no-wrap              { flex-wrap: nowrap; }
+    .wrap-all             { flex-wrap: wrap; }
+    .wrap-reverse         { flex-wrap: wrap-reverse; }
+    .grow-demo            { display: flex;}
+    .grow0                { flex-grow: 0;}
+    .grow1                { flex-grow: 1;}
+    .grow2                { flex-grow: 2;}
+    .shrink-demo          { display: flex; width: 220px;}
+    .shrink0              { flex-shrink: 0;}
+    .shrink1              { flex-shrink: 1;}
+    .basis-demo           { display: flex;}
+    .basis1               { flex-basis: 70px;}
+    .basis2               { flex-basis: 120px;}
+    .basis3               { flex-basis: 180px;}
+    .as-demo              { display: flex; align-items: flex-start; height: 80px;}
+    .self-start           { align-self: flex-start;}
+    .self-center          { align-self: center;}
+    .self-end             { align-self: flex-end;}
+    .order-demo           { display: flex;}
+    .ord1                 { order: 2; }
+    .ord2                 { order: 1; }
+    .ord3                 { order: 3; }
+    @media (max-width: 800px) {
+      .compare-block { flex-direction: column; min-width: 0; max-width: none;}
+      .left-side, .right-side { width: 99vw !important; max-width: 99vw !important; border: 0 !important; padding-left: 6vw; padding-right: 6vw;}
+      .left-side { padding-bottom: 8px; }
+      .compare-title { font-size: 1.1em;}
+    }
+  </style>
+</head>
+<body>
+  <h1>Ultimate Flexbox Demo Playground</h1>
+  <div class="controls">
+    <label>
+      Top Panel:
+      <select id="dropdown-1"></select>
+    </label>
+    <label>
+      Bottom Panel:
+      <select id="dropdown-2"></select>
+    </label>
+  </div>
+  <div id="compare-block-1" class="compare-block"></div>
+  <div id="compare-block-2" class="compare-block"></div>
+
+  <!-- Popup/dialog root -->
+  <div id="popup-root"></div>
+
+<script>
+/** ...INSERT ALL EXAMPLES DATA HERE, like before... **/
+const EXAMPLES = [
+{
+  group: "Block vs Flex",
+  key: "noflex",
+  title: "Without Flex (Block layout)",
+  style: `.facilities {
+  /* No flex! (default block layout) */
+}
+.facilities > div {
+  /* shared box styling */
+}
+.box-a { background: #fce38a; }
+.box-b { background: #95e1d3; }
+.box-c { background: #f3797e; color:#fff; }
+`,
+  html: `<section class="facilities">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</section>`
+},
+{
+  group: "Block vs Flex",
+  key: "flexrow",
+  title: "Flexbox: Row Direction",
+  style: `.facilities-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.box-a { background: #fce38a; }
+.box-b { background: #95e1d3; }
+.box-c { background: #f3797e; color:#fff; }
+`,
+  html: `<section class="facilities-flex-row">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</section>`
+},
+{
+  group: "Block vs Flex",
+  key: "flexcol",
+  title: "Flexbox: Column Direction",
+  style: `.facilities-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.box-a { background: #fce38a; }
+.box-b { background: #95e1d3; }
+.box-c { background: #f3797e; color:#fff; }
+`,
+  html: `<section class="facilities-flex-col">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</section>`
+},
+// ... rest of EXAMPLES from earlier post ...
+{
+  group: "Justify Content",
+  key: "justify-start",
+  title: "justify-content: flex-start (default)",
+  style: `.jc-demo.jc-start {
+  display: flex;
+  justify-content: flex-start;
+}`,
+  html: `<div class="jc-demo jc-start">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Justify Content",
+  key: "justify-center",
+  title: "justify-content: center",
+  style: `.jc-demo.jc-center {
+  display: flex;
+  justify-content: center;
+}`,
+  html: `<div class="jc-demo jc-center">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Justify Content",
+  key: "justify-end",
+  title: "justify-content: flex-end",
+  style: `.jc-demo.jc-end {
+  display: flex;
+  justify-content: flex-end;
+}`,
+  html: `<div class="jc-demo jc-end">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Justify Content",
+  key: "justify-space-between",
+  title: "justify-content: space-between",
+  style: `.jc-demo.jc-spaceb {
+  display: flex;
+  justify-content: space-between;
+}`,
+  html: `<div class="jc-demo jc-spaceb">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Justify Content",
+  key: "justify-space-around",
+  title: "justify-content: space-around",
+  style: `.jc-demo.jc-spacea {
+  display: flex;
+  justify-content: space-around;
+}`,
+  html: `<div class="jc-demo jc-spacea">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Justify Content",
+  key: "justify-space-evenly",
+  title: "justify-content: space-evenly",
+  style: `.jc-demo.jc-spacee {
+  display: flex;
+  justify-content: space-evenly;
+}`,
+  html: `<div class="jc-demo jc-spacee">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Items",
+  key: "align-items-stretch",
+  title: "align-items: stretch (default)",
+  style: `.ai-demo.ai-stretch {
+  display: flex;
+  align-items: stretch;
+  height: 60px;
+}`,
+  html: `<div class="ai-demo ai-stretch">
+  <div class="box-a" style="height:100%;">STEM Lab</div>
+  <div class="box-b" style="height:100%;">Library</div>
+  <div class="box-c" style="height:100%;">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Items",
+  key: "align-items-center",
+  title: "align-items: center",
+  style: `.ai-demo.ai-center {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}`,
+  html: `<div class="ai-demo ai-center">
+  <div class="box-a" style="height:30px">STEM Lab</div>
+  <div class="box-b" style="height:46px">Library</div>
+  <div class="box-c" style="height:24px">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Items",
+  key: "align-items-start",
+  title: "align-items: flex-start",
+  style: `.ai-demo.ai-start {
+  display: flex;
+  align-items: flex-start;
+  height: 60px;
+}`,
+  html: `<div class="ai-demo ai-start">
+  <div class="box-a" style="height:30px">STEM Lab</div>
+  <div class="box-b" style="height:46px">Library</div>
+  <div class="box-c" style="height:24px">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Items",
+  key: "align-items-end",
+  title: "align-items: flex-end",
+  style: `.ai-demo.ai-end {
+  display: flex;
+  align-items: flex-end;
+  height: 60px;
+}`,
+  html: `<div class="ai-demo ai-end">
+  <div class="box-a" style="height:30px">STEM Lab</div>
+  <div class="box-b" style="height:46px">Library</div>
+  <div class="box-c" style="height:24px">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Content",
+  key: "align-content-stretch",
+  title: "align-content: stretch (default)",
+  style: `.ac-demo.ac-stretch {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 120px;
+}`,
+  html: `<div class="ac-demo ac-stretch">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Content",
+  key: "align-content-center",
+  title: "align-content: center",
+  style: `.ac-demo.ac-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 120px;
+}`,
+  html: `<div class="ac-demo ac-center">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Content",
+  key: "align-content-start",
+  title: "align-content: flex-start",
+  style: `.ac-demo.ac-start {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 120px;
+}`,
+  html: `<div class="ac-demo ac-start">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Content",
+  key: "align-content-end",
+  title: "align-content: flex-end",
+  style: `.ac-demo.ac-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  height: 120px;
+}`,
+  html: `<div class="ac-demo ac-end">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Content",
+  key: "align-content-space-between",
+  title: "align-content: space-between",
+  style: `.ac-demo.ac-spaceb {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 120px;
+}`,
+  html: `<div class="ac-demo ac-spaceb">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Align Content",
+  key: "align-content-space-around",
+  title: "align-content: space-around",
+  style: `.ac-demo.ac-spacea {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  height: 120px;
+}`,
+  html: `<div class="ac-demo ac-spacea">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Wrap",
+  key: "wrap-nowrap",
+  title: "flex-wrap: nowrap (default)",
+  style: `.wrap-demo.no-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+}`,
+  html: `<div class="wrap-demo no-wrap">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Wrap",
+  key: "wrap-wrap",
+  title: "flex-wrap: wrap",
+  style: `.wrap-demo.wrap-all {
+  display: flex;
+  flex-wrap: wrap;
+}`,
+  html: `<div class="wrap-demo wrap-all">
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+  <div class="box-a">STEM Lab</div>
+  <div class="box-b">Library</div>
+  <div class="box-c">Indoor and Outdoor Playground</div>
+</div>`
+},
+{
+  group: "Grow / Shrink / Basis / Align Self",
+  key: "grow-demonstration",
+  title: "flex-grow example",
+  style: `.grow-demo {
+  display: flex;
+}
+.grow0 { flex-grow: 0; }
+.grow1 { flex-grow: 1; }
+.grow2 { flex-grow: 2; }
+`,
+  html: `<div class="grow-demo">
+  <div class="box-a grow0">Grow 0</div>
+  <div class="box-b grow1">Grow 1</div>
+  <div class="box-c grow2">Grow 2</div>
+</div>`
+},
+{
+  group: "Grow / Shrink / Basis / Align Self",
+  key: "shrink-demonstration",
+  title: "flex-shrink example",
+  style: `.shrink-demo { display: flex; width: 220px; }
+.shrink0 { flex-shrink: 0; }
+.shrink1 { flex-shrink: 1; }
+`,
+  html: `<div class="shrink-demo">
+  <div class="box-a shrink1" style="width:70px;">Shrink 1</div>
+  <div class="box-b shrink1" style="width:70px;">Shrink 1</div>
+  <div class="box-c shrink0" style="width:130px;">Shrink 0</div>
+</div>`
+},
+{
+  group: "Grow / Shrink / Basis / Align Self",
+  key: "basis-demonstration",
+  title: "flex-basis example",
+  style: `.basis-demo {
+  display: flex;
+}
+.basis1 { flex-basis: 70px;}
+.basis2 { flex-basis: 120px;}
+.basis3 { flex-basis: 180px;}
+`,
+  html: `<div class="basis-demo">
+  <div class="box-a basis1">70px</div>
+  <div class="box-b basis2">120px</div>
+  <div class="box-c basis3">180px</div>
+</div>`
+},
+{
+  group: "Grow / Shrink / Basis / Align Self",
+  key: "align-self-demo",
+  title: "align-self on a single item",
+  style: `.as-demo { display: flex; align-items: flex-start; height: 80px;}
+.self-start { align-self: flex-start;}
+.self-center { align-self: center;}
+.self-end { align-self: flex-end; }
+`,
+  html: `<div class="as-demo">
+  <div class="box-a self-start">Start</div>
+  <div class="box-b self-center">Center</div>
+  <div class="box-c self-end">End</div>
+</div>`
+},
+{
+  group: "Order",
+  key: "order-demo",
+  title: "order of flex items",
+  style: `.order-demo { display: flex;}
+.ord1 { order: 2; }
+.ord2 { order: 1; }
+.ord3 { order: 3; }
+`,
+  html: `<div class="order-demo">
+  <div class="box-a ord1">order:2</div>
+  <div class="box-b ord2">order:1</div>
+  <div class="box-c ord3">order:3</div>
+</div>`
+}
+];
+
+// --- Helper: Grouping for dropdown
+function groupOptionsHtml(groups) {
+  let res = '';
+  Object.keys(groups).forEach(grp=>{
+    res += `<optgroup label="${grp}">` + groups[grp].map(d=>
+      `<option value="${d.key}">${d.title}</option>`
+    ).join('') + `</optgroup>`;
+  });
+  return res;
+}
+const EX_GRP = {};
+EXAMPLES.forEach(e => { if(!EX_GRP[e.group]) EX_GRP[e.group]=[]; EX_GRP[e.group].push(e); });
+
+// Generate full HTML page
+function getFullHtmlPage(title, css, html) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(title)}</title>
+  <style>
+${css.trim()}
+  </style>
+</head>
+<body>
+${html.trim()}
+</body>
+</html>`;
+}
+function escapeHtml(str) {
+  return str.replace(/[<>&"]/g, function(c) {
+    return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
+  });
+}
+
+// POPUP LOGIC
+function showPopup(htmlStr, filename="flexbox-example.html") {
+  const popupRoot = document.getElementById('popup-root');
+  popupRoot.innerHTML = `
+    <div class="popup-backdrop" tabindex="-1">
+      <div class="popup-dialog" tabindex="0">
+        <button class="popup-close-x" title="Close" aria-label="Close">&times;</button>
+        <h3>Full HTML Page</h3>
+        <pre id="popup-html">${escapeHtml(htmlStr)}</pre>
+        <div class="popup-actions">
+          <button id="popup-copy">Copy</button>
+          <a id="popup-download" href="#" download="${filename}">Download</a>
+          <button id="popup-close">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+  // Focus handling
+  setTimeout(()=>popupRoot.querySelector('.popup-dialog').focus(), 120);
+  // Copy
+  document.getElementById("popup-copy").onclick = function() {
+    navigator.clipboard.writeText(htmlStr).then(() => {
+      this.innerText = "Copied!";
+      setTimeout(()=>{this.innerText="Copy";}, 1200);
+    });
+  };
+  // Download
+  document.getElementById("popup-download").onclick = function(e) {
+    const blob = new Blob([htmlStr], {type:"text/html"});
+    this.href = URL.createObjectURL(blob);
+    // let browser handle download (download attr is set)
+  };
+  // Close
+  function closePopup() {popupRoot.innerHTML = "";}
+  document.getElementById("popup-close").onclick = closePopup;
+  document.querySelector(".popup-close-x").onclick = closePopup;
+  popupRoot.querySelector('.popup-backdrop').onclick = function(ev) {
+    if(ev.target === popupRoot.querySelector('.popup-backdrop'))
+      closePopup();
+  };
+  document.addEventListener("keydown", function esc(e){
+    if (e.key === "Escape") closePopup(), document.removeEventListener("keydown", esc);
+  });
+}
+
+// --- DOM and panel update logic (CHANGED: .compare-title-bar) ---
+function renderDemoPanel(blockEl, example, styleVal=null, htmlVal=null, panelSuffix) {
+  blockEl.innerHTML = `
+    <div style="display:flex;flex-direction:column;width:100%">
+      <div class="compare-title-bar">
+        <div class="compare-title">${example.title}</div>
+        <button class="fullhtml-btn" type="button" title="View full HTML of this example" data-panel="${panelSuffix}">
+          🡥 Full HTML
+        </button>
+      </div>
+      <div style="display:flex;flex-direction:row;">
+        <div class="left-side">
+          <div class="block-section" id="style-block">
+            <div class="section-title">styles</div>
+            <textarea class="style-input" spellcheck="false">${(styleVal||example.style).trim()}</textarea>
+          </div>
+          <div class="block-section" id="html-block">
+            <div class="section-title">html</div>
+            <textarea class="html-input" spellcheck="false">${(htmlVal||example.html).trim()}</textarea>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="visual-label">visual output:</div>
+          <div class="visual-output-area live-output" id="live-output-${panelSuffix}"></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function applyLivePanel(panelIdx, example, styleVal, htmlVal) {
+  // Scoped style per panel
+  let styleId = "panel-style-scope-"+panelIdx;
+  let styleTag = document.getElementById(styleId);
+  if(!styleTag) {
+    styleTag = document.createElement("style");
+    styleTag.id = styleId;
+    document.head.appendChild(styleTag);
+  }
+  styleTag.textContent = styleVal;
+  // Visual output area
+  let live = document.getElementById("live-output-"+panelIdx);
+  if(live) live.innerHTML = htmlVal;
+}
+
+function setHandlers(panelIdx, blockEl, example) {
+  let styleArea = blockEl.querySelector('.style-input');
+  let htmlArea  = blockEl.querySelector('.html-input');
+  function updateNow() {
+    applyLivePanel(panelIdx, example, styleArea.value, htmlArea.value);
+  }
+  styleArea.addEventListener('input', updateNow);
+  htmlArea.addEventListener('input', updateNow);
+  // Full HTML popup button:
+  blockEl.querySelector('.fullhtml-btn').onclick = function() {
+    const htmlPage = getFullHtmlPage(example.title, styleArea.value, htmlArea.value);
+    showPopup(htmlPage, 'flexbox-demo.html');
+  };
+  updateNow(); // initial render
+}
+
+// --- Initializations ---
+const dropdowns = [document.getElementById('dropdown-1'), document.getElementById('dropdown-2')];
+const blockEls  = [document.getElementById('compare-block-1'), document.getElementById('compare-block-2')];
+
+dropdowns.forEach(drop=>{
+  drop.innerHTML = groupOptionsHtml(EX_GRP);
+});
+
+function reloadPanels() {
+  [0,1].forEach(idx=>{
+    const selVal = dropdowns[idx].value;
+    const example = EXAMPLES.find(d=>d.key === selVal);
+    renderDemoPanel(blockEls[idx], example, null, null, idx+1);
+    setHandlers(idx+1, blockEls[idx], example);
+  });
+}
+
+dropdowns.forEach(drop=> drop.addEventListener('change', reloadPanels));
+reloadPanels();
+
+</script>
+</body>
+</html>

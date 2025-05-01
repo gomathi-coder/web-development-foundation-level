@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Design Patterns Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8fafc; }
+    .device-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      position: relative;
+    }
+    .laptop-shell, .mobile-shell {
+      background: #333;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px #3332;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .laptop-shell {
+      padding: 28px 10px 10px 10px;
+      overflow: visible;
+    }
+    .laptop-bottom {
+      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+      width: 92%; height: 20px; background: #777;
+      border-radius: 0 0 12px 12px;
+      z-index: -1;
+    }
+    .mobile-shell {
+      border-radius: 40px;
+      border: 6px solid #222;
+      background: #222;
+      box-shadow: 0 8px 40px #2225;
+      padding: 10px;
+    }
+    .collapse-btn {
+      position: absolute;
+      top: 10px;
+      right: -18px;
+      z-index: 10;
+      border-radius: 0 4px 4px 0;
+      box-shadow: 2px 0 6px #0002;
+    }
+    iframe.preview-frame {
+      border: none;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 12px #2223;
+      display: block;
+      margin: 0 auto;
+      transition: width 0.3s;
+    }
+    #viewHtmlBtn {
+      position: absolute;
+      right: 35px;
+      bottom: 24px;
+      z-index: 20;
+    }
+    @media (max-width: 900px) {
+      .laptop-shell { width: 90vw; min-width: 280px; min-height: 200px;}
+      .device-frame { height: auto !important;}
+    }
+    pre.html-output {
+      font-family: monospace;
+      font-size: 13px;
+      background: #f8fafc;
+      color: #222;
+      border-radius: 6px;
+      padding: 1em;
+      overflow-x: auto;
+      border: 1px solid #ccc;
+      max-height: 60vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid py-3">
+    <div class="row flex-nowrap">
+      <!-- Left Pane -->
+      <div class="col-md-4 col-12 position-relative" id="leftPane">
+        <button class="btn btn-outline-secondary collapse-btn" id="collapseBtn" type="button" title="Collapse/Expand">⮜</button>
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <!-- Pattern Dropdown -->
+            <label for="patternSelect" class="form-label fw-bold mb-2">Responsive Design Pattern:</label>
+            <select class="form-select mb-3" id="patternSelect"></select>
+            <div class="btn-group mb-3 w-100" role="group">
+              <button type="button" id="desktopBtn" class="btn btn-primary"><span class="me-1">💻</span>Desktop</button>
+              <button type="button" id="mobileBtn" class="btn btn-outline-primary"><span class="me-1">📱</span>Mobile</button>
+            </div>
+            <h6>Style code (CSS):</h6>
+            <textarea id="styleCode" class="form-control mb-3" style="font-family: monospace; min-height:220px; background:#222; color:#f8f8f2; font-size:16px; border-radius:8px; border:none; padding:1rem; white-space:pre;"></textarea>
+            <h6>HTML code:</h6>
+            <textarea id="htmlCode" class="form-control" style="font-family: monospace; min-height:120px; background:#222; color:#f8f8f2; font-size:16px; border-radius:8px; border:none; padding:1rem; white-space:pre;"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Right Pane (Preview) -->
+      <div class="col-md-8 col-12 position-relative">
+        <div class="device-frame d-flex align-items-center justify-content-center min-vh-50" id="deviceFrame"></div>
+        <button id="viewHtmlBtn" type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#viewHtmlModal" title="View full HTML">View Full HTML</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for full HTML -->
+  <div class="modal fade" id="viewHtmlModal" tabindex="-1" aria-labelledby="modalHtmlLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalHtmlLabel">Full HTML Output</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" title="Close"></button>
+        </div>
+        <div class="modal-body">
+          <pre class="html-output" id="fullHtmlOut" readonly spellcheck="false"></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="copyHtmlBtn" class="btn btn-outline-primary btn-sm">Copy</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ---- Responsive Pattern Setup ----
+    const RESPONSIVE_PATTERNS = [
+      {
+        group: "Layout Adaptation",
+        patterns: [
+          {
+            name: "Vertical vs Horizontal stacking",
+            css:
+`.container-stack {
+  display: flex;
+  gap: 24px;
+}
+.stack-item {
+  background: #009688;
+  color: #fff;
+  flex: 1 1 0;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+@media (max-width: 600px) {
+  .container-stack {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+`,
+            html:
+`<div class="container-stack">
+  <div class="stack-item">First</div>
+  <div class="stack-item">Second</div>
+  <div class="stack-item">Third</div>
+</div>`
+          },
+          {
+            name: "Single column on mobile, multi-column on desktop",
+            css:
+`.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.product {
+  background: #8bc34a;
+  color: #263238;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+@media (max-width: 800px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 500px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+`,
+            html:
+`<div class="product-grid">
+  <div class="product">Item A</div>
+  <div class="product">Item B</div>
+  <div class="product">Item C</div>
+</div>`
+          },
+          {
+            name: "Section Reordering",
+            css:
+`.reorder-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.section {
+  flex: 1 1 0;
+  padding: 2rem;
+  background: #1976d2;
+  color: #fff;
+  border-radius: 0.5rem;
+}
+@media (max-width: 600px) {
+  .reorder-container {
+    flex-direction: column;
+  }
+  .section:nth-child(2) {
+    order: -1;
+  }
+}
+`,
+            html:
+`<div class="reorder-container">
+  <div class="section">Main Content</div>
+  <div class="section">Sidebar</div>
+</div>`
+          }
+        ]
+      },
+      {
+        group: "Typography",
+        patterns: [
+          {
+            name: "Responsive Font Size (clamp & vw)",
+            css:
+`body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.title {
+  font-size: clamp(1.3rem, 5vw, 2.5rem);
+  font-weight: bold;
+  color: #B71C1C;
+  margin-bottom: 0.2em;
+}
+.subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  color: #37474F;
+}
+`,
+            html:
+`<div>
+  <div class="title">Responsive Title</div>
+  <div class="subtitle">Font size adapts to screen width</div>
+</div>`
+          },
+          {
+            name: "Legible Text & Line Height",
+            css:
+`body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.article {
+  max-width: 480px;
+  font-size: 1.120rem;
+  line-height: 1.7;
+  margin: 0 auto;
+  padding: 1em;
+  background: #f3e5f5;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .article {
+    font-size: 1rem;
+    line-height: 1.63;
+    padding: 0.75em;
+  }
+}
+`,
+            html:
+`<article class="article">
+  <strong>Good typography</strong> improves readability, accessibility, and user experience. 
+  Responsive sites increase font size and adjust line height at larger viewports, 
+  and reduce them just enough for mobiles—without making it hard to read!
+</article>`
+          }
+        ]
+      },
+      {
+        group: "Spacing",
+        patterns: [
+          {
+            name: "Touch Target Padding and Reduced Gaps",
+            css:
+`.button-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+.rbtn {
+  background: #ffb300;
+  color: #263238;
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0;
+  transition: background 0.2s;
+}
+.rbtn:active { background: #ffa000; }
+@media (max-width: 540px) {
+  .button-row {
+    gap: 0.5rem;
+  }
+  .rbtn {
+    padding: 0.7em 1.2em;
+    font-size: 0.97rem;
+  }
+}
+`,
+            html:
+`<div class="button-row">
+  <button class="rbtn">Cancel</button>
+  <button class="rbtn">Apply</button>
+  <button class="rbtn">Filter</button>
+</div>`
+          }
+        ]
+      },
+      {
+        group: "Navigation",
+        patterns: [
+          {
+            name: "Hamburger Navigation (Mobile)",
+            css:
+`.nav-demo {
+  background: #222;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1em;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#mainNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+}
+.nav-links {
+  display: flex;
+  gap: 2em;
+}
+.hamburger {
+  display: none;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: inline;
+  }
+}
+/* Demo 'show menu' on mobile */
+#mainNav.show .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background: #444;
+  position: absolute;
+  left:0; right:0; top:100%;
+  padding: 1em 2em;
+}
+`,
+            html:
+`<nav class="nav-demo">
+  <div id="mainNav">
+    <div style="font-weight:bold;">Brand</div>
+    <div class="nav-links">
+      <a href="#" style="color:#fff;text-decoration:none;">Home</a>
+      <a href="#" style="color:#fff;text-decoration:none;">About</a>
+      <a href="#" style="color:#fff;text-decoration:none;">Contact</a>
+    </div>
+    <button class="hamburger" onclick="this.parentNode.classList.toggle('show')">&#9776;</button>
+  </div>
+</nav>`
+          }
+        ]
+      },
+      {
+        group: "Visibility of Elements",
+        patterns: [
+          {
+            name: "Show/Hide Elements by Device",
+            css:
+`.email-field {
+  display: block;
+  font-size: 1.2em;
+}
+.mobile-tip {
+  display: none;
+  font-size: 1em;
+  color: #d84315;
+  padding: 0.3em 0.8em;
+  margin: 0.4em 0 0 0;
+  border-radius: 6px;
+  background: #fff9c4;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .mobile-tip { display: block; }
+}
+`,
+            html:
+`<div>
+  <label for="email" class="email-field">Email:</label>
+  <input id="email" type="email" class="form-control" />
+  <div class="mobile-tip">Tip: We won't spam you! (This message only on mobile)</div>
+</div>`
+          },
+          {
+            name: '"Read More" Progressive Disclosure',
+            css:
+`.desc-box {
+  font-family: system-ui, sans-serif;
+  background: #e3f2fd;
+  padding: 1em 1.2em;
+  max-width: 420px;
+  border-radius: 10px;
+  margin: 1em auto 0;
+}
+.more-content { display: none; }
+input[type=checkbox]:checked ~ .more-content { display: inline; }
+.read-more-label {
+  color: #1976d2;
+  cursor: pointer;
+  user-select: none;
+}
+@media (max-width: 600px){
+  .desc-box { font-size: 0.98rem; }
+}
+`,
+            html:
+`<div class="desc-box">
+  Responsive design is crucial&nbsp;
+  <input id="readmore1" type="checkbox" style="display:none">
+  <span class="more-content">for every web project, since users will view sites on endless devices.<br></span>
+  <label for="readmore1" class="read-more-label">Read more</label>
+</div>`
+          }
+        ]
+      },
+      {
+        group: "Images and Media",
+        patterns: [
+          {
+            name: "Fluid/Responsive Images (max-width:100%)",
+            css:
+`.img-wrap {
+  background: #004d40;
+  max-width: 480px;
+  border-radius: 16px;
+  padding: 1.2em;
+  text-align: center;
+  margin: 1.5em auto 0;
+}
+.img-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+`,
+            html:
+`<div class="img-wrap">
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Nature">
+  <div class="caption text-white mt-2">Nature image is fluid and scales!</div>
+</div>`
+          },
+          {
+            name: "Responsive <picture> + srcset",
+            css:
+`.img-wrap {
+  background: #e0f2f1;
+  max-width: 430px;
+  border-radius: 12px;
+  padding: 1.2em;
+  text-align: center;
+  margin: 1.5em auto;
+}
+.img-wrap img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+`,
+            html:`<div class="img-wrap">
+  <picture>
+    <source srcset="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=260"
+            media="(max-width: 400px)">
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400"
+         alt="Responsive demo">
+  </picture>
+  <div class="caption mt-2">Optimized performance—loads smallest file for each device!</div>
+</div>`
+          },
+          {
+            name: "object-fit for images",
+            css:
+`.cropwrap {
+  width: 320px;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #00251a;
+  margin: 1em auto;
+  text-align: center;
+}
+.cropwrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.note { color: #fff; font-size: 0.98em; margin-top: 0.6em; }
+`,
+            html:
+`<div class="cropwrap">
+  <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?w=600" alt="Cropped">
+</div>
+<div class="note">object-fit: cover; gives you the well-cropped desktop or mobile hero/image banner!</div>`
+          }
+        ]
+      },
+      {
+        group: "CSS Units for Responsiveness",
+        patterns: [
+          {
+            name: "em, rem, %, vw, fr demo",
+            css:
+`:root {
+  font-size: 16px;
+}
+.units-demo {
+  margin: 2em auto;
+  max-width: 450px;
+  padding: 1em 2em;
+  border-radius: 14px;
+  background: #e0f7fa;
+}
+.units-demo h4 {
+  font-size: 2rem;
+  margin-bottom: 0.7em;
+}
+.unit-box {
+  padding: 1em 0;
+  margin-bottom: 1em;
+  background: #80deea;
+  border-radius: 8px;
+  font-family: monospace;
+}
+.unit-em { padding-left: 2em; }
+.unit-rem { padding-left: 2rem; }
+.unit-percent { width: 70%; }
+.unit-vw { font-size: 4vw; }
+.units-demo .grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1em;
+  margin-top: 0.7em;
+}
+@media (max-width: 600px) {
+  .units-demo h4 { font-size: 1.2rem; }
+  .units-demo .grid { grid-template-columns: 1fr; }
+}
+`,
+            html:
+`<div class="units-demo">
+  <h4>CSS Units in Action</h4>
+  <div class="unit-box unit-em">Padding uses <b>em</b> (relative to current font size)</div>
+  <div class="unit-box unit-rem">Padding uses <b>rem</b> (relative to root font size)</div>
+  <div class="unit-box unit-percent">Width = 70% of parent box</div>
+  <div class="unit-box unit-vw">This is 4vw font size</div>
+  <div class="grid">
+    <div style="background:#4dd0e1;">1fr<br>Grid cell 1</div>
+    <div style="background:#0097a7;">2fr<br>Grid cell 2</div>
+  </div>
+</div>`
+          }
+        ]
+      },
+      {
+        group: "Responsive Typography",
+        patterns: [
+          {
+            name: "Fluid Sizing (clamp() and calc())",
+            css:
+`.fluid-text {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #00838f;
+  margin-bottom: 12px;
+}
+@media (max-width: 500px) {
+  .fluid-text {
+    font-size: 1.1rem;
+  }
+}
+.calc-demo {
+  font-size: calc(1em + 1vw);
+  color: #212121;
+}
+`,
+            html:
+`<div>
+  <div class="fluid-text">Fluid Sizing with clamp()</div>
+  <div class="calc-demo">Font size with <b>calc(1em + 1vw)</b></div>
+</div>`
+          }
+        ]
+      }
+    ];
+
+    // ---- END Patterns ----
+
+    // DOM grab
+    const leftPane = document.getElementById('leftPane');
+    const collapseBtn = document.getElementById('collapseBtn');
+    const deviceFrame = document.getElementById('deviceFrame');
+    const styleCode = document.getElementById('styleCode');
+    const htmlCode = document.getElementById('htmlCode');
+    const desktopBtn = document.getElementById('desktopBtn');
+    const mobileBtn = document.getElementById('mobileBtn');
+    const patternSelect = document.getElementById('patternSelect');
+
+    // For modal
+    const viewHtmlBtn = document.getElementById('viewHtmlBtn');
+    const fullHtmlOut = document.getElementById('fullHtmlOut');
+    const copyHtmlBtn = document.getElementById('copyHtmlBtn');
+
+    let currentDevice = 'desktop';
+
+    // Helper: make the preview
+    function makePreviewDoc(css, html) {
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { background: transparent; margin: 0; padding: 0; box-sizing: border-box; }
+${css}
+</style>
+</head>
+<body>
+${html}
+</body>
+</html>
+`;
+    }
+
+    // Fill the pattern dropdown with OPTGROUPs
+    function populatePatternDropdown() {
+      let s = '';
+      let idx = 0;
+      RESPONSIVE_PATTERNS.forEach(group => {
+        s += `<optgroup label="${group.group}">`;
+        group.patterns.forEach(p => {
+          s += `<option value="${idx}">${p.name}</option>`;
+          idx++;
+        });
+        s += `</optgroup>`;
+      });
+      patternSelect.innerHTML = s;
+      patternSelect.selectedIndex = 0;
+    }
+
+    // Find pattern by flat index
+    function getPatternByIndex(idx) {
+      let i = 0;
+      for (const group of RESPONSIVE_PATTERNS) {
+        for (const p of group.patterns) {
+          if (i === idx) return p;
+          i++;
+        }
+      }
+      return RESPONSIVE_PATTERNS[0].patterns[0];
+    }
+
+    // Provide pattern by dropdown
+    function loadPattern(idx) {
+      const p = getPatternByIndex(idx);
+      styleCode.value = (p.css || "").trim();
+      htmlCode.value = (p.html || "").trim();
+      setTimeout(renderPreview, 10);
+    }
+
+    // Device preview
+    function renderPreview() {
+      // remove previous iframe if any
+      let oldFrame = deviceFrame.querySelector('iframe.preview-frame');
+      if (oldFrame) oldFrame.remove();
+      let userHTML = htmlCode.value.replace(/<script.*?>.*?<\/script>/gi, "");
+      let userCSS = styleCode.value;
+
+      if (currentDevice === 'mobile') {
+        deviceFrame.innerHTML = `
+          <div class="mobile-shell" style="width: 395px; height: 555px;">
+            <iframe class="preview-frame mobile-screen"
+              id="liveFrame"
+              style="width: 375px; height:480px; background: #fff;"
+              scrolling="auto"></iframe>
+          </div>`;
+        setTimeout(() => {
+          let iframe = document.getElementById('liveFrame');
+          iframe.contentWindow.document.open();
+          iframe.contentWindow.document.write(makePreviewDoc(userCSS, userHTML));
+          iframe.contentWindow.document.close();
+        }, 10);
+      } else {
+        let screenWidth = Math.min(deviceFrame.clientWidth * 0.95, 800);
+        screenWidth = Math.max(screenWidth, 360);
+        deviceFrame.innerHTML = `
+  <div class="laptop-shell" style="width: ${screenWidth+40}px; height: 420px;">
+    <iframe class="preview-frame laptop-screen"
+      id="liveFrame"
+      style="width: ${screenWidth}px; height: 360px; background: #fff;"
+      scrolling="auto"></iframe>
+    <div class="laptop-bottom"></div>
+  </div>
+`;
+        setTimeout(() => {
+          let iframe = document.getElementById('liveFrame');
+          iframe.contentWindow.document.open();
+          iframe.contentWindow.document.write(makePreviewDoc(userCSS, userHTML));
+          iframe.contentWindow.document.close();
+        }, 10);
+      }
+    }
+
+    // Device toggle
+    desktopBtn.addEventListener('click', function() {
+      currentDevice = 'desktop';
+      desktopBtn.classList.add('btn-primary');
+      desktopBtn.classList.remove('btn-outline-primary');
+      mobileBtn.classList.remove('btn-primary');
+      mobileBtn.classList.add('btn-outline-primary');
+      renderPreview();
+    });
+    mobileBtn.addEventListener('click', function() {
+      currentDevice = 'mobile';
+      mobileBtn.classList.add('btn-primary');
+      mobileBtn.classList.remove('btn-outline-primary');
+      desktopBtn.classList.remove('btn-primary');
+      desktopBtn.classList.add('btn-outline-primary');
+      renderPreview();
+    });
+
+    styleCode.addEventListener('input', renderPreview);
+    htmlCode.addEventListener('input', renderPreview);
+
+    // Collapsible Left Pane
+    let collapsed = false;
+    collapseBtn.addEventListener('click', function() {
+      collapsed = !collapsed;
+      if (collapsed) {
+        leftPane.style.width = '36px';
+        leftPane.style.minWidth = '36px';
+        leftPane.style.maxWidth = '36px';
+        leftPane.querySelector('.card').style.display = 'none';
+        collapseBtn.innerHTML = '⮞';
+      } else {
+        leftPane.style.width = '';
+        leftPane.style.minWidth = '';
+        leftPane.style.maxWidth = '';
+        leftPane.querySelector('.card').style.display = '';
+        collapseBtn.innerHTML = '⮜';
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (currentDevice === 'desktop') renderPreview();
+    });
+
+    // Modal: View Full HTML
+    viewHtmlBtn.addEventListener('click', function() {
+      const full = makePreviewDoc(styleCode.value, htmlCode.value);
+      fullHtmlOut.textContent = full;
+    });
+    // Modal: Copy HTML
+    copyHtmlBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText(fullHtmlOut.textContent);
+      copyHtmlBtn.textContent = "Copied!";
+      setTimeout(() => { copyHtmlBtn.textContent = "Copy"; }, 1200);
+    });
+
+    // Dropdown select event
+    patternSelect.addEventListener('change', function() {
+      loadPattern(patternSelect.selectedIndex);
+    });
+
+    // On load
+    populatePatternDropdown();
+    loadPattern(0);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox for Kids</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f4fc; color: #222; }
+    h1 { color: #4682b4; }
+    h2 { margin-top: 32px; }
+    .example { margin: 18px 0 34px 0; }
+    .diagram { font-family: monospace; background: #eee; padding: 6px; border-radius: 5px; margin-bottom: 7px; display: inline-block; }
+    .flex-demo {
+      display: flex;
+      gap: 10px;
+      background: #dbeafe;
+      padding: 13px;
+      border-radius: 6px;
+      min-height: 60px;
+      margin-bottom: 10px;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .box { background: #60a5fa; color: #fff; padding: 14px 22px; border-radius: 5px; font-weight: bold; font-size: 1.08em; }
+    .a { background: #a5b4fc; }
+    .b { background: #f472b6; }
+    .c { background: #facc15; color: #111; }
+    .small { height: 24px; }
+    .tall { height: 52px; }
+    .explain { font-size: 1.13em; margin-bottom: 5px; }
+    .flex-group { margin-bottom: 36px; border-bottom: 2px solid #e0e5ec; padding-bottom: 26px; }
+  </style>
+</head>
+<body>
+  <h1>Flexbox – See What Each Property Does!</h1>
+  <div class="flex-group">
+    <h2>1. <code>flex-direction</code></h2>
+    <div class="diagram">[A][B][C] &larr; <b>row</b></div>
+    <div class="explain">‘Row’ puts boxes side by side.</div>
+    <div class="flex-demo" style="flex-direction: row;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+    </div>
+    <div class="diagram">[A]<br>[B]<br>[C] &larr; <b>column</b></div>
+    <div class="explain">‘Column’ stacks them up and down.</div>
+    <div class="flex-demo" style="flex-direction: column; height:110px;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <h2>2. <code>justify-content</code></h2>
+    <div class="diagram">[A][B][C]   (left)</div>
+    <div class="flex-demo" style="justify-content: flex-start;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+    </div>
+    <div class="diagram">   [A][B][C]   (center)</div>
+    <div class="flex-demo" style="justify-content: center;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+    </div>
+    <div class="diagram">[A] [B] [C] (spread out)</div>
+    <div class="flex-demo" style="justify-content: space-between;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <h2>3. <code>align-items</code></h2>
+    <div class="diagram">
+      [A]<br>[B]<br>[C]<br>(on top)
+    </div>
+    <div class="flex-demo" style="align-items: flex-start; height: 62px;">
+      <div class="box a small">A</div>
+      <div class="box b tall">B</div>
+      <div class="box c small">C</div>
+    </div>
+    <div class="diagram">
+      (center)
+      <br>[A]<br>[B]<br>[C]
+    </div>
+    <div class="flex-demo" style="align-items:center; height: 62px;">
+      <div class="box a small">A</div>
+      <div class="box b tall">B</div>
+      <div class="box c small">C</div>
+    </div>
+    <div class="diagram">
+      (bottom)
+      <br>[A]<br>[B]<br>[C]
+    </div>
+    <div class="flex-demo" style="align-items:flex-end; height: 62px;">
+      <div class="box a small">A</div>
+      <div class="box b tall">B</div>
+      <div class="box c small">C</div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <h2>4. <code>flex-wrap</code></h2>
+    <div class="diagram">
+      [A][B][C][D][E]<br>[F][G]
+    </div>
+    <div class="explain">Boxes jump to the next line if there is not enough space.</div>
+    <div class="flex-demo" style="flex-wrap: wrap; width: 280px;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+      <div class="box" style="background:#38bdf8;">D</div>
+      <div class="box" style="background:#4ade80;">E</div>
+      <div class="box" style="background:#f87171;">F</div>
+      <div class="box" style="background:#fbbf24;">G</div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <h2>5. <code>align-content</code></h2>
+    <div class="diagram">
+      [A][B][C]           <br>
+                         <br>
+      [D][E][F]           (rows spread vertically)
+    </div>
+    <div class="flex-demo" style="flex-wrap: wrap; align-content: space-between; height: 110px;">
+      <div class="box a">A</div>
+      <div class="box b">B</div>
+      <div class="box c">C</div>
+      <div class="box" style="background:#38bdf8;">D</div>
+      <div class="box" style="background:#4ade80;">E</div>
+      <div class="box" style="background:#f87171;">F</div>
+    </div>
+  </div>
+
+  <div class="flex-group">
+    <h2>6. <code>flex-grow</code></h2>
+    <div class="diagram">
+      [==A==][==B==][========C========]
+    </div>
+    <div class="explain">‘C’ grows more—takes more space.</div>
+    <div class="flex-demo">
+      <div class="box a" style="flex-grow: 1;">A</div>
+      <div class="box b" style="flex-grow: 1;">B</div>
+      <div class="box c" style="flex-grow: 3;">C</div>
+    </div>
+  </div>
+  <div class="flex-group">
+    <h2>7. <code>flex-shrink</code></h2>
+    <div class="diagram">
+      [A][B] [C won't shrink!]
+    </div>
+    <div class="flex-demo" style="width: 220px;">
+      <div class="box a" style="flex-shrink:1;">A</div>
+      <div class="box b" style="flex-shrink:1;">B</div>
+      <div class="box c" style="flex-shrink:0; width:100px;">C</div>
+    </div>
+  </div>
+  <div class="flex-group">
+    <h2>8. <code>flex-basis</code></h2>
+    <div class="diagram">
+      [A 100px][B 100px][C 200px]
+    </div>
+    <div class="explain">‘C’ starts wider, others are 100px.</div>
+    <div class="flex-demo">
+      <div class="box a" style="flex-basis:100px;">A</div>
+      <div class="box b" style="flex-basis:100px;">B</div>
+      <div class="box c" style="flex-basis:200px;">C</div>
+    </div>
+  </div>
+  <div class="flex-group">
+    <h2>9. <code>align-self</code></h2>
+    <div class="diagram">
+      [A]<br>[B]<br>       [C] (is at the bottom)
+    </div>
+    <div class="explain">One box can be different!</div>
+    <div class="flex-demo" style="height: 60px; align-items: flex-start;">
+      <div class="box a small">A</div>
+      <div class="box b small">B</div>
+      <div class="box c small" style="align-self: flex-end;">C</div>
+    </div>
+  </div>
+</body>
+</html>
