@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Query</title>
+  <style>
+    .cards {
+      display: flex;
+      gap: 16px;
+    }
+  
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background-color: #ffeb3b;
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+    }
+  
+    /* Media Query for Achievements Section */
+    @media screen and (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+      }
+  
+      .card {
+        margin-bottom: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <h2>Achievements</h2>
+    <div class="cards">
+      <div class="card">State Level Science Fair Winner - 2023</div>
+      <div class="card">Top 10 CBSE Schools in Region</div>
+      <div class="card">Best Eco-Friendly Campus Award</div>
+    </div>
+  </section>
+</body>
+
+</html>
