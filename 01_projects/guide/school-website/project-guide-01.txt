@@ -1,0 +1,105 @@
+question
+what you have observed in this project page
+
+hints
+there are totally x number of sections
+all arranged one below other
+
+hints
+all arranged one below other, they have used flex,
+		display: flex;
+		justify-content: center;
+		flex-direction:column;
+		align-items: center;
+
+action
+lets construct the skeleton for this
+
+view
+school-website-v1-01.html
+
+question
+what you observe in the header
+
+hints
+blue background
+school name in big font
+tag line in small font
+menus are there
+in the header box in top and bottom there are good space
+
+
+hints
+h1 - school name
+p - tagline
+menus are anchor tag inside div
+	display: flex;
+    justify-content: center;
+	gap:10px;
+		
+view
+school-website-v1-02.html
+
+hints
+menu text color white
+background blue
+enough spacing
+corners rounded
+
+action
+lets structure the menu properly
+
+view
+school-website-v1-03.html
+
+action
+now lets construct the footer
+
+hints
+observe the background color
+font color
+spacing
+
+view
+school-website-v1-04.html
+
+question
+what you observe in the welcome page
+
+hints
+width is not 100%
+background color is different
+just a title and an image
+
+hints
+h1 text
+image fitting to the parent
+
+view
+school-website-v1-05.html
+
+question
+do you see any difference from the original project page and yours
+
+hints
+rounder border for the section
+rounded border for the image
+overall page backgrouund color is different
+below the image the spacing is less
+welcome message is not in white color and also spacing
+
+
+view
+school-website-v1-06.html
+
+question
+when you click on the menu is it navigating
+
+hints
+id for each section and href value in anchor tag
+
+view
+school-website-v1-07.html
+
+milestone-achieved
+congrats we have not just created the skeleton but also created 3 sections with menu & image

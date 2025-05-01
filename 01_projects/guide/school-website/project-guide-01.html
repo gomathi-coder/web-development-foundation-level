@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webpage Building — Step-by-Step Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f7f9fa;
+        }
+        .iframe-box {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            position: relative;
+        }
+        .iframe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .7rem;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #cdd2d7;
+            border-radius: 8px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container my-5" style="max-width: 800px;">
+    <h2 class="fw-bold mb-4">Step-by-Step: Build a School Webpage</h2>
+
+    <!-- Question -->
+    <div class="alert alert-primary">
+        <strong>Question:</strong> Take a look at the project page. What do you notice about how it's organized?
+    </div>
+
+    <!-- Hints -->
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong> The page is divided into several sections. They are all arranged one below the other from top to bottom.
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong> Instead of stacking them by default, the designer used <code>flex</code> properties like:<br>
+        <code>
+            display: flex;<br>
+            justify-content: center;<br>
+            flex-direction: column;<br>
+            align-items: center;
+        </code>
+        <br>These make the layout neat and centered.
+    </div>
+
+    <!-- Action -->
+    <div class="alert alert-warning">
+        <strong>Action:</strong> Let's start by creating the basic structure or "skeleton" of our webpage.
+    </div>
+
+    <!-- View 1 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Basic Skeleton</span>
+            <a href="school-website-v1-01.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-01.html"></iframe>
+    </div>
+
+    <!-- Header Observation -->
+    <div class="alert alert-primary">
+        <strong>Question:</strong> Look at the header section of the page. What features can you spot there?
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        <ul class="mb-0">
+            <li>The background color of the header is blue.</li>
+            <li>The school name appears in a large, bold font.</li>
+            <li>There's a tagline below the school name, in a smaller font.</li>
+            <li>You can also see some menu links.</li>
+            <li>There is extra space above and below the header contents, making it look clean and comfortable.</li>
+        </ul>
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        The code uses an <code>h1</code> tag for the school name and a <code>p</code> tag for the tagline.<br>
+        The menu links are placed inside a <code>div</code> with flex layout:<br>
+        <code>
+           display: flex; <br>
+           justify-content: center; <br>
+           gap: 10px;
+        </code>
+    </div>
+
+    <!-- View 2 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Header Section</span>
+            <a href="school-website-v1-02.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-02.html"></iframe>
+    </div>
+
+    <!-- Menu styling -->
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        The menu text is white, the background is blue, there is good spacing between items, and the menu corners are rounded for a soft look.
+    </div>
+    <div class="alert alert-warning">
+        <strong>Action:</strong> Now, let's organize and style the menu to look clean and easy to use.
+    </div>
+
+    <!-- View 3 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Styled Menu</span>
+            <a href="school-website-v1-03.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-03.html"></iframe>
+    </div>
+
+    <div class="alert alert-warning">
+        <strong>Action:</strong> Let's now create the footer for the page.
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        Look at the footer's background color, the color of the text, and how much space is around the text.
+    </div>
+
+    <!-- View 4 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Footer Section</span>
+            <a href="school-website-v1-04.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-04.html"></iframe>
+    </div>
+
+    <!-- Welcome section observation -->
+    <div class="alert alert-primary">
+        <strong>Question:</strong> Check the "Welcome" section on the homepage. What differences do you notice there?
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        <ul class="mb-0">
+            <li>The welcome section doesn’t use up the full width of the page.</li>
+            <li>The background color is different from the rest of the page.</li>
+            <li>This section includes just a title and an image.</li>
+        </ul>
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        The title uses an <code>h1</code> tag, and the image fits nicely within its container.
+    </div>
+    <!-- View 5 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Welcome Section</span>
+            <a href="school-website-v1-05.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-05.html"></iframe>
+    </div>
+
+    <!-- Differences -->
+    <div class="alert alert-primary">
+        <strong>Question:</strong> Compare your project with the original. What small details do you notice are different?
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        <ul class="mb-0">
+            <li>The section has more rounded corners.</li>
+            <li>The image has rounded edges as well.</li>
+            <li>The background color for the whole page isn’t the same.</li>
+            <li>There isn’t much space below the image.</li>
+            <li>The welcome message text isn’t white, and there’s a bit less space around it.</li>
+        </ul>
+    </div>
+    <!-- View 6 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Improved Welcome Section</span>
+            <a href="school-website-v1-06.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-06.html"></iframe>
+    </div>
+    
+    <!-- Menu navigation -->
+    <div class="alert alert-primary">
+        <strong>Question:</strong> When you click on a menu item, does the page move to the correct section?
+    </div>
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        For menu links to work, each section needs a unique <code>id</code>, and the corresponding menu link should use <code>href="#section-id"</code>.
+    </div>
+    <!-- View 7 -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> Menu Navigation in Action</span>
+            <a href="school-website-v1-07.html" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="school-website-v1-07.html"></iframe>
+    </div>
+
+    <!-- Milestone -->
+    <div class="alert alert-success">
+        <strong>Milestone Achieved!</strong><br>
+        Congratulations! You’ve successfully created a clean and simple layout with a header, menu, welcome section, image, and footer!
+    </div>
+</div>
+</body>
+</html>

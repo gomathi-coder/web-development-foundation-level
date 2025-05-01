@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Guide: [Your Title Here]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f7f9fa;
+        }
+        .iframe-box {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            position: relative;
+        }
+        .iframe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .7rem;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #cdd2d7;
+            border-radius: 8px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container my-5" style="max-width: 800px;">
+    <h2 class="fw-bold mb-4">[Project Title Here]</h2>
+
+    <!-- QUESTION -->
+    <div class="alert alert-primary">
+        <strong>Question:</strong> <!-- Your question goes here! -->
+    </div>
+
+    <!-- HINT(s) -->
+    <div class="alert alert-secondary mb-2">
+        <strong>Hint:</strong>
+        <!-- Helpful hint for students. Add more hint blocks as needed. -->
+    </div>
+
+    <!-- ACTION -->
+    <div class="alert alert-warning">
+        <strong>Action:</strong> <!-- Action instruction for the students -->
+    </div>
+
+    <!-- VIEW -->
+    <div class="iframe-box">
+        <div class="iframe-header">
+            <span><strong>View Example:</strong> [Short Description]</span>
+            <a href="[YOUR_FILE.html]" class="btn btn-sm btn-outline-primary" target="_blank">Open in new window</a>
+        </div>
+        <iframe src="[YOUR_FILE.html]"></iframe>
+    </div>
+
+    <!-- REPEAT ABOVE BLOCKS AS NEEDED FOR EACH STEP -->
+
+    <!-- MILESTONE -->
+    <div class="alert alert-success">
+        <strong>Milestone:</strong> <!-- Short congratulatory message or summary -->
+    </div>
+</div>
+</body>
+</html>
