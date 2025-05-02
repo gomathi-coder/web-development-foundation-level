@@ -16,7 +16,7 @@
     }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: auto auto auto;
       gap: 30px;
       margin-top: 40px;
     }
@@ -25,10 +25,9 @@
       border-radius: 8px;
       background: #fff;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     }
     .feature:hover {
-      transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     .feature-icon {
@@ -60,7 +59,7 @@
     /* Mobile Responsive Styles */
     @media (max-width: 768px) {
       .features-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: auto;
         gap: 20px;
       }
       h2 {
@@ -77,35 +76,6 @@
       }
     }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 30px 10px;
-      }
-      .features-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        margin-top: 30px;
-      }
-      h2 {
-        font-size: 26px;
-      }
-      .features p.subtitle {
-        font-size: 16px;
-      }
-      .feature {
-        padding: 20px;
-      }
-      .feature-icon {
-        font-size: 36px;
-        margin-bottom: 15px;
-      }
-      h3 {
-        font-size: 18px;
-      }
-      p {
-        font-size: 15px;
-      }
-    }
   </style>
 </head>
 <body>
