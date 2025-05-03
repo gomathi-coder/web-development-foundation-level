@@ -1,0 +1,52 @@
+{
+    "assessment_topic":"Box Model",
+    "assessment_level":"Easy",
+    "assessment_questions":
+    [
+      {
+        "title": "Box Model Practical Assessment 1",
+        "description": "Style the announcement box with a border, padding, and centered text.",
+        "source_html": "<div>Important Announcement!</div>",
+        "source_css": "",
+        "target_html": "<div class=\"announcement\">Important Announcement!</div>",
+        "target_css": ".announcement {\n  width: 400px;\n  padding: 16px;\n  margin: 40px auto;\n  border: 2px solid orange;\n  border-radius: 8px;\n  text-align: center;\n}",
+        "hint": "Notice how padding makes space inside the box, and margin centers the announcement box."
+      },
+      {
+        "title": "Box Model Practical Assessment 2",
+        "description": "Create a colorful badge using background, border, and padding.",
+        "source_html": "<span>New</span>",
+        "source_css": "",
+        "target_html": "<span class=\"badge\">New</span>",
+        "target_css": ".badge {\n  display: inline-block;\n  background: #48c774;\n  color: #fff;\n  padding: 6px 18px;\n  border: 1px solid #34804c;\n  border-radius: 12px;\n  font-weight: bold;\n}",
+        "hint": "Observe the use of border-radius for pill shape, padding for space inside, and display property for inline-block shape."
+      },
+      {
+        "title": "Box Model Practical Assessment 3",
+        "description": "Give the image container a fixed size, padding, and a shadow.",
+        "source_html": "<div>Pic Here</div>",
+        "source_css": "",
+        "target_html": "<div class=\"image-box\">Pic Here</div>",
+        "target_css": ".image-box {\n  width: 200px;\n  height: 200px;\n  padding: 20px;\n  border: 2px solid #888;\n  border-radius: 15px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.12);\n  background: #f8f8f8;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}",
+        "hint": "Use width/height for the box, border/border-radius for outline and corners, and padding for inner spacing."
+      },
+      {
+        "title": "Box Model Practical Assessment 4",
+        "description": "Style a simple menu button with different sizes, colors, and box-sizing.",
+        "source_html": "<button>Menu</button>",
+        "source_css": "",
+        "target_html": "<button class=\"menu-btn\">Menu</button>",
+        "target_css": ".menu-btn {\n  width: 120px;\n  height: 40px;\n  padding: 8px 0;\n  background: #292b2c;\n  color: #fff;\n  border: 2px solid #222;\n  border-radius: 6px;\n  box-sizing: border-box;\n  font-size: 1.1em;\n}",
+        "hint": "Box-sizing: border-box is used so that padding and border are included in the width/height."
+      },
+      {
+        "title": "Box Model Practical Assessment 5",
+        "description": "Create a side panel with a thick border on one side and extra margin.",
+        "source_html": "<aside>Links</aside>",
+        "source_css": "",
+        "target_html": "<aside class=\"side-panel\">Links</aside>",
+        "target_css": ".side-panel {\n  width: 180px;\n  height: 320px;\n  padding: 18px;\n  margin: 16px 0 16px 40px;\n  border-left: 6px solid #4a90e2;\n  background: #e9f3fb;\n  border-radius: 0 10px 10px 0;\n}",
+        "hint": "Pay attention to margin-left for spacing, border-left for thickness, and border-radius for rounded panel edges."
+      }
+    ]
+    }

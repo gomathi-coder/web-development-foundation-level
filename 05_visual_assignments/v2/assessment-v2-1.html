@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assessment Viewer</title>
+  <!-- Bootstrap 5 and Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    html, body { height: 100%; width: 100%; }
+    #container { min-height: 100vh; display: flex; flex-direction: row; background: #f4f8fc; }
+    /* Let Bootstrap handle pane responsiveness */
+    #left-pane {
+      transition: width .2s;
+      background: #212529;
+      color: #fff;
+      min-width: 220px;
+      max-width: 300px;
+      overflow-y: auto;
+      border-right: 1px solid #2a2f37;
+    }
+    #left-pane .list-group-item.active {
+      background: #1443a6 !important;
+      color: #fff !important;
+      border-color: #1443a6 !important;
+    }
+    #left-pane.collapsed {
+      width: 0 !important;
+      padding: 0 !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+      border: none !important;
+    }
+    #left-pane .list-group-item { cursor: pointer; }
+    .toggle-left-btn {
+      position: absolute;
+      left: calc(100% - 15px);
+      top: 70px;
+      z-index: 10;
+      width: 34px;
+      height: 34px;
+      background: #212529;
+      border: 1px solid #2a2f37;
+      color: #b0cee0;
+      border-radius: 0 7px 7px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    #right-pane { flex: 1; min-width: 0; }
+    .monaco-editor-ctn {
+      height: 170px;
+      border: 1px solid #222b38;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      overflow: hidden;
+      background: #1a2235;
+    }
+    .section-title {
+      font-weight: bold; font-size: 1.13em; margin-bottom: .6rem; color: #2157b6;
+      letter-spacing: 0.5px;
+    }
+    .visual-pane {
+      min-height: 90px;
+      min-width: 200px;
+      width: 100%;
+      height: 130px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .hint-box {
+      font-size: 1em;
+      color: #706100;
+      background: #fff9d9;
+      border-left: 5px solid #ffe066;
+      border-radius: 0px 6px 6px 0;
+      padding: 12px 18px;
+      margin-top: .5rem;
+    }
+    .popup-icon-btn {
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      color: #5576c1;
+      margin-left: 5px;
+      vertical-align: bottom;
+      cursor: pointer;
+      padding: 2px 8px;
+      transition: background .13s;
+    }
+    .popup-icon-btn:hover { color: #3564a1; background: #eaecf6; }
+    .modal-lg { min-width: 530px; }
+    .output-section-title {
+      font-weight: 600;
+      color: #2157b6;
+      letter-spacing: 0.3px;
+      margin-bottom: .6rem;
+      font-size: 1.11em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .question-title {
+      font-size: 1.3em;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1c355e;
+      letter-spacing: 0.04em;
+    }
+    .question-description {
+      font-size: 1em;
+      color: #384569;
+      margin-bottom: 1.3rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    /* For dark Monaco bg inside white cols */
+    .bg-monaco { background: #1e1e1e; border-radius: 6px; }
+    @media (max-width: 900px) {
+      #container { flex-direction: column;}
+      #left-pane { max-width: 100vw; min-width: 120px;}
+    }
+  </style>
+  <!-- Monaco Editor loader -->
+  <script src="https://unpkg.com/monaco-editor@0.43.0/min/vs/loader.js"></script>
+</head>
+<body class="bg-light">
+  <header class="bg-primary text-white py-3 px-4 mb-0">
+    <span id="assessment-title">Assessment - Loading...</span>
+  </header>
+  <div id="container" style="position:relative;">
+    <div id="left-pane">
+      <div class="fs-5 fw-bold px-3 pt-3 pb-2 mb-2 border-bottom border-secondary d-flex align-items-center">
+        <span>Questions</span>
+        <span class="flex-grow-1"></span>
+        <span id="collapse-btn" class="ms-2" style="cursor:pointer;">
+          <i class="bi bi-chevron-double-left"></i>
+        </span>
+      </div>
+      <div id="question-list" class="list-group list-group-flush"></div>
+    </div>
+    <div class="toggle-left-btn d-none" id="expand-btn" style="top:70px;">
+      <i class="bi bi-chevron-double-right"></i>
+    </div>
+    <div class="container-fluid py-4" id="right-pane" style="display:none;">
+      <div class="row mb-4">
+        <div class="col">
+          <div class="question-title" id="question-title"></div>
+          <div class="question-description" id="question-desc"></div>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="section-title">Source HTML</div>
+          <div class="monaco-editor-ctn" id="src_html_view"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="section-title">Source CSS</div>
+          <div class="monaco-editor-ctn" id="src_css_view"></div>
+        </div>
+      </div>
+      <div class="row g-4 mt-2">
+        <div class="col-md-6 mb-2">
+          <div class="section-title mb-2">Visual Output of Source</div>
+          <iframe class="visual-pane" id="source_output" loading="lazy"></iframe>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="section-title mb-2">
+            Visual Output of Target
+            <button type="button" class="popup-icon-btn" data-bs-toggle="tooltip" title="Show hint">
+              <i class="bi bi-info-circle"></i>
+            </button>
+          </div>
+          <iframe class="visual-pane mb-2" id="target_output" loading="lazy"></iframe>
+          <div class="hint-box d-none" id="visual-hint-box"></div>
+        </div>
+      </div>
+      <div class="row g-4 mt-2">
+        <div class="col-md-6">
+          <div class="section-title">Edit HTML <span class="text-secondary" style="font-size:0.92em">(your answer)</span></div>
+          <div class="monaco-editor-ctn" id="edit_html"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="section-title">Edit CSS <span class="text-secondary" style="font-size:0.92em">(your answer)</span></div>
+          <div class="monaco-editor-ctn" id="edit_css"></div>
+        </div>
+      </div>
+      <div class="row g-4 mt-2">
+        <div class="col">
+          <div class="output-section-title mt-1 mb-2">
+            Output of your edited code
+            <button type="button" id="view-source-btn" class="popup-icon-btn ms-2" title="Show source code">
+              <i class="bi bi-code-slash"></i>
+            </button>
+          </div>
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <button id="run-btn" class="btn btn-primary btn-sm px-4"><i class="bi bi-play"></i> Run</button>
+          </div>
+          <iframe class="visual-pane mb-2" style="min-height:110px;" id="output_iframe"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for viewing source code -->
+  <div class="modal fade" id="codeModal" tabindex="-1" aria-labelledby="codeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content bg-light">
+        <div class="modal-header">
+          <h5 class="modal-title fs-5" id="codeModalLabel">Source Code of Your Output</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-3">
+          <pre id="modal-code" class="bg-dark text-light p-3 rounded" style="font-size:1em; overflow:auto;"></pre>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary me-2" id="copy-code-btn"><i class="bi bi-clipboard"></i> Copy</button>
+          <button class="btn btn-outline-success" id="download-code-btn"><i class="bi bi-download"></i> Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (with Popper for modal) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Monaco Loader
+    let monacoLoaded = false;
+    function loadMonaco(callback) {
+      if (monacoLoaded) return callback && callback();
+      require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@0.43.0/min/vs' } });
+      window.MonacoEnvironment = { getWorkerUrl: () => proxy };
+      let proxy = URL.createObjectURL(new Blob([`
+        self.MonacoEnvironment = {baseUrl: 'https://unpkg.com/monaco-editor@0.43.0/min/'};
+        importScripts('https://unpkg.com/monaco-editor@0.43.0/min/vs/base/worker/workerMain.js');
+      `], { type: 'text/javascript' }));
+      require(["vs/editor/editor.main"], () => {
+        monacoLoaded = true;
+        callback && callback();
+      });
+    }
+    // Get URL param topic
+    function getUrlParam(name){
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    // Monaco editor instances
+    const editors = {};
+    let assessment = null;
+    let currIdx = 0;
+    let leftCollapsed = false;
+
+    function renderQuestionNav() {
+      const ql = document.getElementById('question-list');
+      ql.innerHTML = '';
+      assessment.assessment_questions.forEach((q,idx)=>{
+        let item = document.createElement('a');
+        item.className = 'list-group-item list-group-item-action' + (idx===currIdx ? ' active':'');
+        item.textContent = q.title;
+        item.onclick = ()=>{if(currIdx!==idx){loadQuestion(idx);}};
+        ql.appendChild(item);
+      });
+    }
+    function setHeaderTopic() {
+      let h = `${assessment.assessment_topic} - ${assessment.assessment_level}`;
+      document.getElementById('assessment-title').textContent = h;
+      document.title = h;
+    }
+
+    // Render HTML+CSS to an iframe (sandboxed)
+    function renderInIframe(iframe, html, css) {
+      let doc = iframe.contentWindow.document;
+      doc.open();
+      doc.write(`
+        <style>body{margin:0;padding:20px;font-family:sans-serif;}</style>
+        <style>${css||''}</style>
+        ${html||''}
+      `);
+      doc.close();
+    }
+
+    function showPane(paneId, value, lang, readonly) {
+      let ctn = document.getElementById(paneId);
+      ctn.innerHTML="Loading...";
+      loadMonaco(()=>{
+        ctn.innerHTML="";
+        if (editors[paneId]) editors[paneId].dispose();
+        editors[paneId] = monaco.editor.create(ctn, {
+          value: value || "",
+          language: lang,
+          theme: "vs-dark",
+          minimap: { enabled: false },
+          readOnly: !!readonly,
+          fontSize: 15.5,
+          scrollBeyondLastLine: false,
+          roundedSelection: false,
+          wordWrap: 'on'
+        });
+      });
+    }
+    function getEditorValue(paneId) {
+      return editors[paneId] ? editors[paneId].getValue() : '';
+    }
+    function setEditorValue(paneId, value) {
+      if (editors[paneId]) editors[paneId].setValue(value||'');
+    }
+    function loadQuestion(idx) {
+      currIdx = idx;
+      document.querySelectorAll('#question-list .list-group-item').forEach((li,i)=>li.classList.toggle('active', i===idx));
+      const q = assessment.assessment_questions[idx];
+
+      // Title and description
+      document.getElementById('question-title').textContent = q.title;
+      document.getElementById('question-desc').textContent = q.description;
+
+      // View hints
+      document.getElementById('visual-hint-box').textContent = q.hint||"";
+
+      // Source, target, editors
+      showPane('src_html_view', q.source_html, 'html', true);
+      showPane('src_css_view', q.source_css, 'css', true);
+
+      // Output in iframes
+      setTimeout(()=>{
+        renderInIframe(document.getElementById('source_output'), q.source_html, q.source_css);
+        renderInIframe(document.getElementById('target_output'), q.target_html, q.target_css);
+      },180);
+
+      showPane('edit_html', q.source_html, 'html', false);
+      showPane('edit_css', q.source_css, 'css', false);
+
+      setTimeout(()=>{
+        renderInIframe(document.getElementById('output_iframe'), "", "");
+      },50);
+    }
+
+    function makeHtmlDoc(html, css) {
+      return (
+`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Your Output</title>
+  <style>
+${css||''}
+  </style>
+</head>
+<body>
+${html||''}
+</body>
+</html>`
+      );
+    }
+
+    // Run button handler
+    function doRun() {
+      let html = getEditorValue('edit_html');
+      let css  = getEditorValue('edit_css');
+      renderInIframe(document.getElementById('output_iframe'), html, css);
+    }
+
+    // Popup source code
+    function showSourcePopup(){ 
+      let html = getEditorValue('edit_html');
+      let css  = getEditorValue('edit_css');
+      let code = makeHtmlDoc(html, css);
+      document.getElementById('modal-code').textContent = code;
+      let modal = new bootstrap.Modal(document.getElementById('codeModal'), {});
+      modal.show();
+      // Save code for copy/download
+      window._currentModalCode = code;
+    }
+
+    // Copy code button
+    document.getElementById('copy-code-btn').onclick = function(){
+      if (navigator.clipboard && window._currentModalCode)
+        navigator.clipboard.writeText(window._currentModalCode);
+    };
+
+    // Download code button
+    document.getElementById('download-code-btn').onclick = function(){
+      if (!window._currentModalCode) return;
+      let blob = new Blob([window._currentModalCode], {type: "text/html"});
+      let a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'output.html';
+      a.click();
+    };
+
+    // Toggle left pane
+    document.getElementById('collapse-btn').onclick = function(){
+      document.getElementById('left-pane').classList.add('collapsed');
+      document.getElementById('expand-btn').classList.remove('d-none');
+    };
+    document.getElementById('expand-btn').onclick = function(){
+      document.getElementById('left-pane').classList.remove('collapsed');
+      document.getElementById('expand-btn').classList.add('d-none');
+    };
+
+    // Show Modal on button
+    document.getElementById('view-source-btn').onclick = function() {
+      showSourcePopup();
+    };
+
+    // Hint tooltip and show
+    let hintIconBtn;
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show hint on click
+      hintIconBtn = document.querySelector('.section-title button.popup-icon-btn');
+      hintIconBtn.addEventListener('click', function() {
+        document.getElementById('visual-hint-box').classList.toggle('d-none');
+      });
+      // Show Bootstrap tooltip
+      new bootstrap.Tooltip(hintIconBtn, { trigger: 'hover focus' });
+    });
+
+    // RUN btn
+    document.getElementById('run-btn').onclick = doRun;
+
+    // MAIN: Load JSON and initialize
+    (function main(){
+      let topic = getUrlParam('topic');
+      if (!topic){
+        alert('Missing URL parameter: topic');
+        return;
+      }
+      fetch(topic+'.json')
+        .then(resp=>{
+          if (!resp.ok) throw new Error('File not found');
+          return resp.json();
+        })
+        .then(data=>{
+          assessment = {
+            assessment_topic:data.assessment_topic || data.assessmentTopic || "Assessment",
+            assessment_level:data.assessment_level || data.assessmentLevel || "Unknown",
+            assessment_questions:data.assessment_questions || data.assessmentQuestions || []
+          };
+          if (assessment.assessment_questions.length === 0) throw new Error('No questions found!');
+          document.getElementById('right-pane').style.display="";
+          setHeaderTopic();
+          renderQuestionNav();
+          loadQuestion(0);
+        })
+        .catch(e=>{
+          document.getElementById('assessment-title').textContent = "Error: "+e.message;
+          document.getElementById('right-pane').innerHTML = "<div class='text-danger p-3'>Unable to load assessment file.<br>"+e.message+"</div>";
+        });
+    })();
+
+    // Responsive reload of Monaco editors on resize
+    window.addEventListener('resize', ()=>{
+      Object.values(editors).forEach(ed=>ed?.layout && ed.layout());
+    });
+  </script>
+</body>
+</html>
