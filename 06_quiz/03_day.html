@@ -1,206 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CSS Fundamentals Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimedia & CSS Quiz</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       max-width: 800px;
-      margin: auto;
+      margin: 0 auto;
       padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
     }
     .quiz-container {
-      background: #fff;
+      background: white;
+      padding: 25px;
       border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     h1 {
       text-align: center;
-      color: #2c3e50;
+      color: #3D52A0;
     }
     .question {
       margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
     }
     .options {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 15px;
+      margin-top: 15px;
     }
     .option {
-      background: #e3f2fd;
-      padding: 10px;
-      border-radius: 6px;
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
     }
     .option:hover {
-      background: #bbdefb;
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
     }
     .result {
+      display: none;
       margin-top: 10px;
       padding: 10px;
-      display: none;
+      border-radius: 5px;
     }
     .correct {
-      color: green;
-      display: block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block !important;
     }
     .incorrect {
-      color: red;
-      display: block;
+      background: #ffebee;
+      color: #c62828;
+      display: block !important;
     }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>CSS Fundamentals Quiz</h1>
+    <h1>Multimedia & CSS Quiz</h1>
 
-    <!-- Q1: Multimedia -->
+    <!-- Q1: Video Tag -->
     <div class="question">
-      <h3>1. Which HTML tag is used to embed audio files?</h3>
+      <h3>1. Which HTML tag is used to embed a video?</h3>
       <div class="options">
         <div class="option" onclick="checkAnswer(1, 'a')">&lt;video&gt;</div>
-        <div class="option" onclick="checkAnswer(1, 'b')">&lt;audio&gt;</div>
-        <div class="option" onclick="checkAnswer(1, 'c')">&lt;media&gt;</div>
-        <div class="option" onclick="checkAnswer(1, 'd')">&lt;sound&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;media&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">&lt;movie&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">&lt;embed&gt;</div>
       </div>
       <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <div class="code">
+          &lt;video width="320" height="240" controls&gt;<br>
+          &nbsp;&nbsp;&lt;source src="movie.mp4" type="video/mp4"&gt;<br>
+          &lt;/video&gt;
+        </div>
+      </div>
     </div>
 
-    <!-- Q2: Iframe -->
+    <!-- Q2: Audio Tag -->
     <div class="question">
-      <h3>2. What does an &lt;iframe&gt; element do?</h3>
+      <h3>2. What is the correct HTML for adding an audio file?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a')">Inserts an image</div>
-        <div class="option" onclick="checkAnswer(2, 'b')">Embeds another webpage</div>
-        <div class="option" onclick="checkAnswer(2, 'c')">Displays a video player</div>
-        <div class="option" onclick="checkAnswer(2, 'd')">Adds animation</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">&lt;sound src="sound.mp3"&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">&lt;audio src="sound.mp3"&gt;&lt;/audio&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">&lt;music file="sound.mp3"&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">&lt;mp3 src="sound.mp3"&gt;</div>
       </div>
       <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <div class="code">
+          &lt;audio controls&gt;<br>
+          &nbsp;&nbsp;&lt;source src="sound.mp3" type="audio/mpeg"&gt;<br>
+          &lt;/audio&gt;
+        </div>
+      </div>
     </div>
 
-    <!-- Q3: CSS Introduction -->
+    <!-- Q3: Iframe -->
     <div class="question">
-      <h3>3. What does CSS stand for?</h3>
+      <h3>3. What does an iframe do in HTML?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'a')">Computer Style Sheets</div>
-        <div class="option" onclick="checkAnswer(3, 'b')">Creative Style Sheets</div>
-        <div class="option" onclick="checkAnswer(3, 'c')">Cascading Style Sheets</div>
-        <div class="option" onclick="checkAnswer(3, 'd')">Colorful Style Sheets</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">Embeds another HTML page</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">Creates a frame around images</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">Adds interactive forms</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">Displays 3D content</div>
       </div>
       <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="code">
+          &lt;iframe src="https://example.com" width="500" height="300"&gt;&lt;/iframe&gt;
+        </div>
+      </div>
     </div>
 
-    <!-- Q4: CSS Structure -->
+    <!-- Q4: CSS Introduction -->
     <div class="question">
-      <h3>4. In CSS, what comes between the curly braces {}?</h3>
+      <h3>4. What does CSS stand for?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'a')">HTML tags</div>
-        <div class="option" onclick="checkAnswer(4, 'b')">Properties and values</div>
-        <div class="option" onclick="checkAnswer(4, 'c')">Class names</div>
-        <div class="option" onclick="checkAnswer(4, 'd')">JavaScript code</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">Computer Style Sheets</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Creative Style System</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Cascading Style Sheets</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Colorful Style Syntax</div>
       </div>
       <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <p>CSS is used to style HTML elements.</p>
+      </div>
     </div>
 
     <!-- Q5: CSS Comments -->
     <div class="question">
       <h3>5. How do you write a comment in CSS?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a')">// this is a comment</div>
-        <div class="option" onclick="checkAnswer(5, 'b')"># this is a comment</div>
-        <div class="option" onclick="checkAnswer(5, 'c')">/* this is a comment */</div>
-        <div class="option" onclick="checkAnswer(5, 'd')">&lt;!-- this is a comment --&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">// This is a comment</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">&lt;!-- This is a comment --&gt;</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">/* This is a comment */</div>
+        <div class="option" onclick="checkAnswer(5, 'd')"># This is a comment</div>
       </div>
       <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="code">
+          /* This is a CSS comment */<br>
+          body {<br>
+          &nbsp;&nbsp;background-color: white;<br>
+          }
+        </div>
+      </div>
     </div>
 
-    <!-- Q6: Color and background -->
+    <!-- Q6: CSS Background -->
     <div class="question">
-      <h3>6. Which property changes the background color of an element?</h3>
+      <h3>6. Which CSS property sets the background color of an element?</h3>
       <div class="options">
         <div class="option" onclick="checkAnswer(6, 'a')">color</div>
-        <div class="option" onclick="checkAnswer(6, 'b')">background-color</div>
-        <div class="option" onclick="checkAnswer(6, 'c')">bg-color</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">bgcolor</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">background-color</div>
         <div class="option" onclick="checkAnswer(6, 'd')">background</div>
       </div>
       <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          body {<br>
+          &nbsp;&nbsp;background-color: lightblue;<br>
+          }
+        </div>
+      </div>
     </div>
 
-    <!-- Q7: Selectors -->
+    <!-- Q7: CSS Selectors -->
     <div class="question">
-      <h3>7. Which symbol is used for a class selector in CSS?</h3>
+      <h3>7. Which selector targets all &lt;p&gt; elements?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(7, 'a')">#</div>
-        <div class="option" onclick="checkAnswer(7, 'b')">.</div>
-        <div class="option" onclick="checkAnswer(7, 'c')">@</div>
-        <div class="option" onclick="checkAnswer(7, 'd')">%</div>
+        <div class="option" onclick="checkAnswer(7, 'a')">.p</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">#p</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">p</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">*p</div>
       </div>
       <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="code">
+          p {<br>
+          &nbsp;&nbsp;font-size: 16px;<br>
+          &nbsp;&nbsp;color: black;<br>
+          }
+        </div>
+      </div>
     </div>
 
-    <!-- Q8: External CSS -->
+    <!-- Q8: Text Properties -->
     <div class="question">
-      <h3>8. How do you link an external CSS file?</h3>
+      <h3>8. Which CSS property changes the text color?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(8, 'a')">&lt;style src="style.css"&gt;</div>
-        <div class="option" onclick="checkAnswer(8, 'b')">&lt;css link="style.css"&gt;</div>
-        <div class="option" onclick="checkAnswer(8, 'c')">&lt;link rel="stylesheet" href="style.css"&gt;</div>
-        <div class="option" onclick="checkAnswer(8, 'd')">&lt;script src="style.css"&gt;</div>
+        <div class="option" onclick="checkAnswer(8, 'a')">text-color</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">font-color</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">color</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">text-style</div>
       </div>
       <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="code">
+          h1 {<br>
+          &nbsp;&nbsp;color: red;<br>
+          }
+        </div>
+      </div>
     </div>
 
-    <!-- Q9: CSS Selectors -->
+    <!-- Q9: External CSS -->
     <div class="question">
-      <h3>9. What does the “*” (asterisk) selector target in CSS?</h3>
+      <h3>9. How do you link an external CSS file?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(9, 'a')">Only paragraphs</div>
-        <div class="option" onclick="checkAnswer(9, 'b')">All elements</div>
-        <div class="option" onclick="checkAnswer(9, 'c')">Header only</div>
-        <div class="option" onclick="checkAnswer(9, 'd')">Images only</div>
+        <div class="option" onclick="checkAnswer(9, 'a')">&lt;style src="styles.css"&gt;</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">&lt;css&gt;styles.css&lt;/css&gt;</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">&lt;link rel="stylesheet" href="styles.css"&gt;</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">&lt;stylesheet&gt;styles.css&lt;/stylesheet&gt;</div>
       </div>
       <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <div class="code">
+          &lt;head&gt;<br>
+          &nbsp;&nbsp;&lt;link rel="stylesheet" href="styles.css"&gt;<br>
+          &lt;/head&gt;
+        </div>
+      </div>
     </div>
 
     <!-- Q10: CSS Structure -->
     <div class="question">
       <h3>10. What is the correct CSS syntax?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(10, 'a')">body:color=black;</div>
-        <div class="option" onclick="checkAnswer(10, 'b')">{body;color:black;}</div>
-        <div class="option" onclick="checkAnswer(10, 'c')">body { color: black; }</div>
-        <div class="option" onclick="checkAnswer(10, 'd')">body = {color: black;}</div>
+        <div class="option" onclick="checkAnswer(10, 'a')">body {color: black;}</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">body:color=black</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">{body;color:black}</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">body = color:black</div>
       </div>
       <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <div class="code">
+          selector {<br>
+          &nbsp;&nbsp;property: value;<br>
+          }
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
-    function checkAnswer(q, answer) {
-      const correct = {
-        1: 'b',
-        2: 'b',
-        3: 'c',
-        4: 'b',
-        5: 'c',
-        6: 'b',
-        7: 'b',
-        8: 'c',
-        9: 'b',
-        10: 'c'
-      };
-      const result = document.getElementById('result' + q);
-      if (answer === correct[q]) {
-        result.textContent = 'Correct!';
+    const correctAnswers = {
+      1: 'a',
+      2: 'b',
+      3: 'a',
+      4: 'c',
+      5: 'c',
+      6: 'c',
+      7: 'c',
+      8: 'c',
+      9: 'c',
+      10: 'a'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
         result.className = 'result correct';
+        visual.style.display = 'block';
       } else {
-        result.textContent = 'Incorrect. Try again!';
+        result.textContent = '❌ Incorrect. Try again!';
         result.className = 'result incorrect';
       }
     }
