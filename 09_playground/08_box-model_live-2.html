@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Box Model Interactive Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS CDN (for look, only) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8fafb; }
+    .editor-container { height: 320px; min-height: 250px;}
+    .monaco-editor, .monaco-editor-background { border-radius: 0.5rem; }
+    .preview-frame { border: 1px solid #dde; border-radius: 0.5em; width: 100%; min-height: 310px; background: #fff; }
+    .toolbar { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;}
+    .icon-btn { border: none; background: none; cursor: pointer; }
+    .icon-btn svg { vertical-align: middle; }
+    .editor-label { font-size: 1.08em; font-weight: 600; margin-bottom: .2em; color: #0561a8;}
+    .preview-area { background: #fff; border-radius: 0.5em; box-shadow: 0 2px 7px #0001; padding: 1em;}
+    .how-it-works { background: #e8eef9; border-left: 5px solid #2686c1; padding: 1.3em 1.7em; border-radius: 0.5em; margin-bottom:2em;}
+    /* Custom Modal */
+    .custom-modal-bg {
+      position: fixed; z-index: 1600; left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(18,26,40, 0.66);
+      display: none; align-items: center; justify-content: center;
+      transition: opacity 0.23s;
+    }
+    .custom-modal-bg.active { display: flex; }
+    .custom-modal {
+      background: #242639; color: #f7f7f7;
+      border-radius: 9px; max-width: 850px; width: 94vw;
+      box-shadow: 0 2px 24px #1122  ;
+      padding: 0; overflow: hidden;
+      animation: cmfadein .25s;
+    }
+    @keyframes cmfadein { from { opacity:0;transform:translateY(42px);} to { opacity:1;transform:none; } }
+    .custom-modal-header, .custom-modal-footer { padding: .9em 1.4em; }
+    .custom-modal-header { border-bottom: 1px solid #364561; display: flex; align-items: center; justify-content: space-between; }
+    .custom-modal-footer { border-top: 1px solid #364561; text-align: right; background: #222942;}
+    .custom-modal-title { font-size: 1.2rem; font-weight: 600; margin: 0;}
+    .custom-modal-close {
+      border: none; background: none; font-size: 1.8rem; line-height: 1; color: #fff; cursor: pointer;
+      margin-left:8px;
+    }
+    .custom-modal-body {
+      padding: 1.1em 1.5em 1em 1.5em;
+      background: #202124;
+      color: #e7e7e7;
+    }
+    .custom-modal pre { background: #202124; color: #e7e7e7; border-radius: 7px; margin-bottom: 0;}
+    .btn-copy, .btn-download {
+      background: #243254; border: none; color: #d0e5ff; padding: 6px 22px; border-radius: 6px; margin-right:7px; font-weight:600;
+      transition: background .12s;
+    }
+    .btn-copy:hover, .btn-download:hover { background: #1a2238;}
+    .bootstrap-collapse-icon::after { content: '▼'; margin-left: .5em; font-size: .85em; }
+    .collapsing .bootstrap-collapse-icon::after, .collapsed .bootstrap-collapse-icon::after { content: '►'; }
+    @media (max-width: 600px) {
+      .custom-modal { padding: 0 .1em; }
+      .custom-modal-header, .custom-modal-footer, .custom-modal-body { padding-left:.5em; padding-right:.5em;}
+      .custom-modal-title { font-size:.97em;}
+    }
+  </style>
+  <!-- Monaco Loader -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="container-fluid border-bottom py-3 bg-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h3 class="mb-0 fw-bold text-primary">🟦 CSS Box Model Playground</h3>
+      <select id="conceptSelect" class="form-select w-auto" aria-label="Select box model concept">
+        <optgroup label="Technical Details">
+          <option value="content-area">Content Area</option>
+          <option value="padding">Padding</option>
+          <option value="border">Border</option>
+          <option value="margin">Margin</option>
+          <option value="box-sizing">Box-Sizing Property (content-box vs border-box)</option>
+          <option value="width-height">Width and Height Properties</option>
+          <option value="shorthand">Shorthand vs Longhand (margin/padding/border)</option>
+          <option value="units">Units for Spacing (px, em, rem, %, etc.)</option>
+          <option value="outline-vs-border">Outline vs Border</option>
+          <option value="devtools">Browser Developer Tools: Visualizing the Box Model</option>
+        </optgroup>
+        <optgroup label="Functional Details">
+          <option value="spacing-between">Spacing Between Elements</option>
+          <option value="controlling-size">Controlling Element Size</option>
+          <option value="centering-auto">Centering Elements with margin: auto</option>
+          <option value="responsive-percent">Responsive Layouts Using Percentages</option>
+          <option value="margin-collapsing">Margin Collapsing (Vertical)</option>
+          <option value="padding-inner">Padding for Inner Space</option>
+          <option value="border-definition">Border for Definition/Separation</option>
+          <option value="negative-margin">Overlap with Negative Margins</option>
+          <option value="nesting-inheritance">Nesting and Box Inheritance</option>
+          <option value="alignment-layouts">Alignment and Positioning in Layouts</option>
+        </optgroup>
+      </select>
+    </div>
+  </header>
+
+  <!-- CODE SECTION -->
+  <div class="container my-4">
+    <details open>
+      <summary class="fs-5 fw-semibold mb-2 pe-2">
+        <span>Code Section</span>
+        <span class="bootstrap-collapse-icon"></span>
+      </summary>
+      <div class="row g-3 editor-container">
+        <div class="col-md-6">
+          <div class="editor-label">CSS Editor</div>
+          <div id="css-editor" class="border rounded-3" style="height:280px;"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="editor-label">HTML Editor</div>
+          <div id="html-editor" class="border rounded-3" style="height:280px;"></div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- VISUAL OUTPUT SECTION -->
+  <div class="container mb-4">
+    <details open>
+      <summary class="fs-5 fw-semibold mb-2 pe-2">
+        <span>Visual Output</span>
+        <span class="bootstrap-collapse-icon"></span>
+      </summary>
+      <div class="preview-area">
+        <div class="toolbar mb-2">
+          <button class="icon-btn" title="Show Code" id="showCodeBtn">
+            <svg width="22" height="22" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+              <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM8 13c-3.727 0-6.651-3.029-7.584-4C1.349 6.971 4.273 4 8 4c3.727 0 6.651 2.971 7.584 4-.933.971-3.857 4-7.584 4z"/>
+              <path d="M8 5.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm0 1A1.5 1.5 0 1 0 8 11a1.5 1.5 0 0 0 0-3z"/>
+            </svg>
+          </button>
+        </div>
+        <iframe id="preview-frame" class="preview-frame" title="Visual Output" sandbox="allow-scripts"></iframe>
+      </div>
+    </details>
+  </div>
+
+  <!-- CUSTOM MODAL (for show code) -->
+  <div class="custom-modal-bg" id="customModalBg" tabindex="-1">
+    <div class="custom-modal" role="dialog" aria-modal="true">
+      <div class="custom-modal-header">
+        <span class="custom-modal-title">Complete HTML Code</span>
+        <button class="custom-modal-close" id="closeModalBtn" title="Close">&times;</button>
+      </div>
+      <div class="custom-modal-body">
+        <pre id="fullCodePre" style="max-height:45vh; overflow:auto"></pre>
+      </div>
+      <div class="custom-modal-footer">
+        <button class="btn-copy" id="copyCodeBtn">Copy</button>
+        <button class="btn-download" id="downloadCodeBtn">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS SECTION -->
+  <div class="container my-4">
+    <div class="how-it-works">
+      <h4>How It Works</h4>
+      <div id="howItWorksText">
+        <!-- Dynamic explanation goes here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Monaco Editor Loader/Logic -->
+  <script>
+    // --- EXAMPLES FOR CONCEPTS:
+    const concepts = {
+      // TECHNICAL DETAILS
+      "content-area": {
+        css: `.demo-box {
+  background: #d7ebfa;
+  color: #133353;
+  width: 260px;
+  font-size: 1.2em;
+  padding: 0;
+  border: 2px solid #1976d2;
+  text-align: center;
+  margin: 1.5em auto;
+}`,
+        html: `<div class="demo-box">
+  This is the <b>content area</b>.
+</div>`,
+        how: `
+<b>Content Area:</b>
+<br>
+This is the innermost area of a box, where actual HTML content (such as text or images) is displayed.
+<br>
+In CSS, <code>width</code> and <code>height</code> properties by default apply *only* to the content area.
+<br>
+Other box model features (padding, border, margin) expand outward from here.
+`
+      },
+      "padding": {
+        css: `.demo-box {
+  background: #fbe9e7;
+  border: 2px solid #ffab91;
+  padding: 40px;
+  color: #bf360c;
+  font-size: 1.2em;
+  width: 250px;
+  text-align: center;
+  margin: 2em auto;
+}`,
+        html: `<div class="demo-box">
+  This box has <b>padding</b>!
+</div>`,
+        how: `
+<b>Padding:</b>
+<br>
+Padding is the space <b>inside the border</b>, but <b>outside the content</b>.
+<br>
+It pushes content away from the box border.
+<br>
+The property <code>padding</code> can be set on all sides or individually using <code>padding-top</code>, <code>padding-right</code>, etc.
+`
+      },
+      "border": {
+        css: `.demo-box {
+  background: #f1f8e9;
+  color: #33691e;
+  padding: 22px;
+  border: 7px solid #7cb342;
+  font-size: 1.18em;
+  width: 250px;
+  text-align: center;
+  margin: 2em auto;
+}`,
+        html: `<div class="demo-box">
+  This box has a <b>border</b>.
+</div>`,
+        how: `
+<b>Border:</b>
+<br>
+Border appears <b>between the padding and the margin</b>.
+<br>
+It can be of various width, color, and styles. Borders define the edge of the visible box.
+<br>
+Can set with <code>border: width style color</code>, or for each side using <code>border-top</code>, etc.
+`
+      },
+      "margin": {
+        css: `.demo-box {
+  background: #fffde7;
+  color: #836300;
+  border: 2px solid #ffd54f;
+  padding: 1em;
+  width: 220px;
+  margin: 3em auto 2em auto;
+  text-align: center;
+  font-size: 1.12em;
+}`,
+        html: `<div class="demo-box">
+  This box has <b>margin</b>!
+</div>`,
+        how: `
+<b>Margin:</b>
+<br>
+Margin is the transparent space <b>outside the border</b> of a box.
+<br>
+Margins separate elements from each other. Can be set on all sides using <code>margin</code>, or each side individually.
+`
+      },
+      "box-sizing": {
+        css: `.demo-box1 {
+  width: 140px;
+  border: 7px solid #43a047;
+  padding: 1.1em;
+  background: #e8f5e9;
+  margin: 20px auto;
+  box-sizing: content-box;
+}
+
+.demo-box2 {
+  width: 140px;
+  border: 7px solid #c2185b;
+  padding: 1.1em;
+  background: #fce4ec;
+  margin: 20px auto;
+  box-sizing: border-box;
+}`,
+        html: `<div class="demo-box1">
+  <b>content-box</b>
+  <br>(default)
+</div>
+<div class="demo-box2">
+  <b>border-box</b>
+</div>`,
+        how: `
+<b>Box-Sizing Property:</b>
+<br>
+When <code>box-sizing: content-box</code> (the default), <b>width</b> and <b>height</b> only include the content area.
+<br>
+When <code>box-sizing: border-box</code>, <b>width</b> includes content, padding, and border.
+<br>
+This makes layouts more predictable, especially for responsive design.
+`
+      },
+      "width-height": {
+        css: `.fixed-box {
+  width: 120px;
+  height: 80px;
+  background: #c5cae9;
+  color: #283593;
+  border-radius: 9px;
+  padding: 8px;
+  font-weight: 600;
+  margin: 2em auto;
+  border: 2px solid #5c6bc0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}`,
+        html: `<div class="fixed-box">
+  120x80 px
+</div>`,
+        how: `
+<b>Width and Height Properties:</b>
+<br>
+<code>width</code> and <code>height</code> set the size of the <b>content area</b> by default.
+<br>
+Other features like padding, border, margin can make the visible box larger (unless <code>box-sizing: border-box</code> is set).
+`
+      },
+      "shorthand": {
+        css: `.shorthand-box {
+  padding: 24px 14px 12px 4px;
+  border: 2px dashed #00acc1;
+  margin: 2em auto;
+  background: #e0f7fa;
+  color: #006064;
+  width: 260px;
+  font-size: 1.09em;
+}`,
+        html: `<div class="shorthand-box">
+  <b>Padding and border shorthand</b>.<br><i>(See the CSS code)</i>
+</div>`,
+        how: `
+<b>Shorthand vs Longhand:</b>
+<br>
+Shorthand properties allow you to set values for all box sides in a single line (e.g., <code>padding: 24px 14px 12px 4px</code>).
+<br>
+Longhand lets you write each side separately (e.g., <code>padding-top</code>, <code>padding-right</code>, etc.).
+`
+      },
+      "units": {
+        css: `.unit-box {
+  background: #ffe0b2;
+  color: #bf360c;
+  width: 23vw;
+  padding: 2em 4vw 8% 32px;
+  border: 2px solid #ff9800;
+  margin: 3vh auto;
+  font-size: 1.08em;
+}`,
+        html: `<div class="unit-box">
+  Padding: 2em 4vw 8% 32px
+</div>`,
+        how: `
+<b>Units for Spacing:</b>
+<br>
+Box model properties (padding, margin, border width) accept many units:
+<ul>
+  <li>Absolute: <code>px</code>, <code>pt</code>
+  <li>Relative: <code>em</code>, <code>rem</code>, <code>%</code>, <code>vw</code>, <code>vh</code>
+</ul>
+Using relative units enables responsive design.
+`
+      },
+      "outline-vs-border": {
+        css: `.outln-box {
+  background: #f3e5f5;
+  color: #4a148c;
+  padding: 24px;
+  border: 3px solid #ab47bc;
+  outline: 4px dashed #d500f9;
+  outline-offset: 8px;
+  width: 220px;
+  margin: 2em auto;
+  text-align: center;
+}`,
+        html: `<div class="outln-box">
+  <b>Outline</b> is outside border,
+  not part of box size.
+</div>`,
+        how: `
+<b>Outline vs Border:</b>
+<br>
+<code>border</code> is part of the box size and affects layout.
+<br>
+<code>outline</code> is always outside the border and does <b>not</b> change box dimensions.
+<br>
+Outlines are useful for focus indicators and visual styling.
+`
+      },
+      "devtools": {
+        css: `.devtools-box {
+  background: #fffde7;
+  border: 3px solid #ffd600;
+  color: #f57c00;
+  padding: 18px 28px;
+  font-size: 1.12em;
+  width: 250px;
+  text-align: center;
+  margin: 2.3em auto;
+}`,
+        html: `<div class="devtools-box">
+  <b>Right-click</b> and Inspect to use <b>DevTools</b>.<br>
+  See the browser's Box Model visualization!
+</div>`,
+        how: `
+<b>Browser Developer Tools:</b>
+<br>
+Modern browsers let you inspect elements to <b>visually see the box model</b> for any DOM element.<br>
+This includes highlighted margin, border, padding, and content areas interactively.
+`
+      },
+      // FUNCTIONAL DETAILS
+      "spacing-between": {
+        css: `.fun-box {
+  background: #c8e6c9;
+  color: #256029;
+  border: 2px solid #43a047;
+  padding: 17px;
+  margin-right: 26px;
+  display: inline-block;
+}
+.fun-box2 {
+  background: #b3e5fc;
+  color: #01579b;
+  border: 2px solid #039be5;
+  padding: 17px;
+  display: inline-block;
+}`,
+        html: `<div class="fun-box">Box 1</div>
+<div class="fun-box2">Box 2</div>`,
+        how: `
+<b>Spacing Between Elements:</b>
+<br>
+Margin is the most common way to control space between elements. <br>
+Here, <code>margin-right</code> adds space between inline-block or flex/grid elements.
+`
+      },
+      "controlling-size": {
+        css: `.small-box {
+  width: 60px;
+  height: 60px;
+  background: #b39ddb;
+  color: #32127a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 2em auto;
+}`,
+        html: `<div class="small-box">60x60</div>`,
+        how: `
+<b>Controlling Element Size:</b>
+<br>
+Set <code>width</code> and <code>height</code> to strictly control the dimensions of a box.
+<br>
+Use <code>box-sizing</code> to determine whether padding/border is included.
+`
+      },
+      "centering-auto": {
+        css: `.center-me {
+  width: 200px;
+  margin: 0 auto;
+  background: #d1c4e9;
+  color: #4527a0;
+  border-radius: 9px;
+  padding: 15px;
+  text-align: center;
+  margin-top: 3em;
+}`,
+        html: `<div class="center-me">
+  Centered using <b>margin: auto</b>
+</div>`,
+        how: `
+<b>Centering Elements with margin: auto:</b>
+<br>
+Set a fixed <code>width</code> and <code>margin-left: auto; margin-right: auto</code> (or <code>margin: 0 auto</code>)
+<br>
+Centers a block element horizontally in its container.
+`
+      },
+      "responsive-percent": {
+        css: `.perc-box {
+  width: 60%;
+  margin: 2em auto;
+  background: #ffccbc;
+  color: #d84315;
+  padding: 16px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.07em;
+}`,
+        html: `<div class="perc-box">
+  Responsive box (width: 60%)
+</div>`,
+        how: `
+<b>Responsive Layouts Using Percentages:</b>
+<br>
+Properties like <code>width</code>, <code>padding</code>, and <code>margin</code> can use <code>%</code> units for layouts that adapt to the parent/container size.
+`
+      },
+      "margin-collapsing": {
+        css: `.collapse-a {
+  background: #ffecb3;
+  color: #8d6e63;
+  margin-bottom: 40px;
+  padding: 14px;
+  width: 190px;
+  text-align: center;
+}
+.collapse-b {
+  background: #ede7f6;
+  color: #6a1b9a;
+  margin-top: 70px;
+  padding: 14px;
+  width: 190px;
+  text-align: center;
+}`,
+        html: `<div class="collapse-a">Box A<br>(margin-bottom: 40px)</div>
+<div class="collapse-b">Box B<br>(margin-top: 70px)</div>`,
+        how: `
+<b>Margin Collapsing (Vertical):</b>
+<br>
+When two block elements are adjacent, their vertical margins "collapse" to the largest of the two. <br>
+It prevents margins from stacking up. Here, the vertical space between the two boxes is 70px (the larger value).
+`
+      },
+      "padding-inner": {
+        css: `.pad-in {
+  padding: 2.2em;
+  background: #c8e6c9;
+  color: #33691e;
+  border: 2px solid #43a047;
+  width: 170px;
+  margin: 2em auto;
+  text-align: center;
+}`,
+        html: `<div class="pad-in">
+  Padding adds <b>inner space</b>
+</div>`,
+        how: `
+<b>Padding for Inner Space:</b>
+<br>
+Padding increases the space between the content and border of an element.
+<br>
+Ideal for adding breathing room to text or child elements.
+`
+      },
+      "border-definition": {
+        css: `.def-sep {
+  border: 6px double #1976d2;
+  background: #bbdefb;
+  color: #0d47a1;
+  padding: 22px;
+  width: 210px;
+  text-align: center;
+  margin: 2em auto;
+}`,
+        html: `<div class="def-sep">
+  <b>Border</b> for separation/definition
+</div>`,
+        how: `
+<b>Border for Definition/Separation:</b>
+<br>
+A border visually separates an element from others, or highlights its presence in the layout.
+`
+      },
+      "negative-margin": {
+        css: `.neg1 {
+  background: #81c784;
+  color: #1b5e20;
+  border: 2px solid #388e3c;
+  padding: 15px;
+  margin-right: -33px;
+  display: inline-block;
+}
+.neg2 {
+  background: #fff176;
+  color: #b71c1c;
+  border: 2px solid #fff176;
+  display: inline-block;
+  padding: 15px;
+}`,
+        html: `<div class="neg1">Box A</div><div class="neg2">Box B<br>(negative margin)</div>`,
+        how: `
+<b>Overlap with Negative Margins:</b>
+<br>
+Negative margins pull an element closer to or on top of neighboring elements, causing overlaps.
+<br>
+Common for creative layouts, but beware of accessibility/usability issues.
+`
+      },
+      "nesting-inheritance": {
+        css: `.nest-parent {
+  padding: 23px;
+  background: #e0f2f1;
+  color: #00695c;
+  width: 240px;
+  margin: 2em auto;
+}
+.nest-child {
+  margin: 15px;
+  padding: 10px;
+  background: #fff9c4;
+  color: #704214;
+}`,
+        html: `<div class="nest-parent">
+  Parent (padding)
+  <div class="nest-child">Child (margin, padding)</div>
+</div>`,
+        how: `
+<b>Nesting and Box Inheritance:</b>
+<br>
+When boxes are nested, the parent's padding applies inside its own border, and the child's margin applies outside the child's box but inside the parent's padding (unless special cases).
+`
+      },
+      "alignment-layouts": {
+        css: `.align-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 76px;
+  background: #b2ebf2;
+  color: #006064;
+  border-radius: 8px;
+  border: 2px solid #26c6da;
+  width: 240px;
+  margin: 2.5em auto;
+  font-size: 1.08em;
+}`,
+        html: `<div class="align-box">
+  Aligned with <b>flex</b> and box model
+</div>`,
+        how: `
+<b>Alignment and Positioning in Layouts:</b>
+<br>
+Modern layouts use flex or grid for alignment, but spacing and sizing are still handled by the box model: padding, margin, border, width, and height.
+`
+      }
+    };
+
+    // --- MONACO SETUP
+    let cssEditor, htmlEditor;
+    let initMonacoCalled = false;
+
+    function createFullHTML(css, html) {
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Box Model Demo</title>
+  <style>
+${css}
+  </style>
+</head>
+<body>
+${html}
+</body>
+</html>`;
+    }
+
+    function updatePreview() {
+      const css = cssEditor ? cssEditor.getValue() : '';
+      const html = htmlEditor ? htmlEditor.getValue() : '';
+      const fullDoc = createFullHTML(css, html);
+      const frame = document.getElementById('preview-frame');
+      // Only allow-scripts, not allow-same-origin, for security.
+      const blob = new Blob([fullDoc], {type: 'text/html'});
+      frame.src = URL.createObjectURL(blob);
+    }
+
+    function loadConcept(concept) {
+      const data = concepts[concept];
+      if (!data) return;
+      cssEditor.setValue(data.css);
+      htmlEditor.setValue(data.html);
+      // Show explanation
+      document.getElementById('howItWorksText').innerHTML = data.how || "";
+      updatePreview();
+    }
+
+    function setUpMonaco() {
+      require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' } });
+      require(['vs/editor/editor.main'], function () {
+        cssEditor = monaco.editor.create(document.getElementById('css-editor'), {
+          value: concepts["content-area"].css,
+          language: "css",
+          theme: "vs-dark",
+          minimap: {enabled:false},
+          fontSize: 16,
+          automaticLayout: true
+        });
+        htmlEditor = monaco.editor.create(document.getElementById('html-editor'), {
+          value: concepts["content-area"].html,
+          language: "html",
+          theme: "vs-dark",
+          minimap: {enabled:false},
+          fontSize: 16,
+          automaticLayout: true
+        });
+        cssEditor.onDidChangeModelContent(updatePreview);
+        htmlEditor.onDidChangeModelContent(updatePreview);
+        initMonacoCalled = true;
+        // Initial explanation
+        document.getElementById('howItWorksText').innerHTML = concepts["content-area"].how;
+        updatePreview();
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+
+      setUpMonaco();
+
+      document.getElementById('conceptSelect').addEventListener('change', function(e){
+        if (!initMonacoCalled) return;
+        loadConcept(this.value);
+      });
+
+      // Show code popup (custom)
+      document.getElementById("showCodeBtn").addEventListener('click', function(){
+        const css = cssEditor ? cssEditor.getValue() : '';
+        const html = htmlEditor ? htmlEditor.getValue() : '';
+        document.getElementById('fullCodePre').textContent = createFullHTML(css, html);
+        document.getElementById('customModalBg').classList.add('active');
+      });
+
+      // Close modal logic
+      document.getElementById("closeModalBtn").addEventListener('click', function(){
+        document.getElementById('customModalBg').classList.remove('active');
+      });
+      document.getElementById("customModalBg").addEventListener('click', function(e){
+        if(e.target === this) this.classList.remove('active');
+      });
+      window.addEventListener('keydown', function(evt){
+        if (evt.key === "Escape") document.getElementById('customModalBg').classList.remove('active');
+      });
+
+      // Copy code btn
+      document.getElementById("copyCodeBtn").addEventListener('click', function(){
+        const code = document.getElementById('fullCodePre').textContent;
+        if(navigator.clipboard) {
+          navigator.clipboard.writeText(code);
+        } else {
+          // legacy
+          const ta = document.createElement('textarea');
+          ta.value = code;
+          document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        this.textContent = "Copied!";
+        setTimeout(()=>this.textContent="Copy", 1400);
+      });
+
+      // Download code btn
+      document.getElementById("downloadCodeBtn").addEventListener('click', function(){
+        const code = document.getElementById('fullCodePre').textContent;
+        const blob = new Blob([code], {type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = "box-model-demo.html";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(()=>{ URL.revokeObjectURL(url); document.body.removeChild(a); }, 100);
+      });
+    });
+  </script>
+</body>
+</html>
