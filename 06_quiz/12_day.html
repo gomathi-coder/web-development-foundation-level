@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bootstrap UI Quiz: Navbars & Cards</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap UI Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-      body {
+    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       max-width: 800px;
       margin: 0 auto;
@@ -77,125 +77,363 @@
       color: #c62828;
       display: block !important;
     }
+    .layout-demo {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      position: relative;
+      border: 1px dashed #999;
+    }
+    .demo-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #3D52A0;
+      color: white;
+      padding: 10px;
+    }
+    .demo-hamburger {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .demo-hamburger span {
+      height: 3px;
+      background: white;
+    }
+    .demo-pattern {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-2 div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-3 div {
+      background: #3D52A0;
+      height: 50px;
+      flex: 1 1 200px;
+    }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>Bootstrap UI</h1>
+    <h1>Bootstrap UI Quiz: Grid, Icons & Sliders</h1>
 
-    <!-- Question 1: Navbar -->
+    <!-- Q1: Bootstrap Grid Basics -->
     <div class="question">
-      <h3>1. What does a Bootstrap <code>.navbar</code> component typically contain?</h3>
-      <div class="visual-example" id="visual1">
-        <p>The navbar includes navigation links, brand name, toggler, and is responsive:</p>
-        <div class="code">
-&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;<br>
-  &nbsp;&nbsp;&lt;a class="navbar-brand" href="#"&gt;MySite&lt;/a&gt;<br>
-  &nbsp;&nbsp;&lt;button class="navbar-toggler" type="button"&gt;...&lt;/button&gt;<br>
-  &nbsp;&nbsp;&lt;div class="collapse navbar-collapse"&gt;<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="navbar-nav"&gt;...&lt;/ul&gt;<br>
-  &nbsp;&nbsp;&lt;/div&gt;<br>
-&lt;/nav&gt;
-        </div>
-      </div>
+      <h3>1. What's the correct class structure for Bootstrap's 12-column grid system?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'a', 'visual1')">Only links and buttons</div>
-        <div class="option" onclick="checkAnswer(1, 'b', 'visual1')">Table data and rows</div>
-        <div class="option" onclick="checkAnswer(1, 'c', 'visual1')">Brand, toggler, and links</div>
-        <div class="option" onclick="checkAnswer(1, 'd', 'visual1')">Card content and images</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">container > row > col-*</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">row > container > col-*</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">col-* > row > container</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">container > col-* > row</div>
       </div>
       <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <p>Bootstrap grid structure:</p>
+        <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6"&gt;Column 1&lt;/div&gt;
+    &lt;div class="col-md-6"&gt;Column 2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
     </div>
 
-    <!-- Question 2: Cards -->
+    <!-- Q2: Responsive Grid -->
     <div class="question">
-      <h3>2. What is the purpose of Bootstrap <code>.card</code> component?</h3>
-      <div class="visual-example" id="visual2">
-        <p>The <code>.card</code> is used to display content in a flexible and extensible container.</p>
-        <div class="code">
-&lt;div class="card"&gt;<br>
-  &nbsp;&nbsp;&lt;img src="image.jpg" class="card-img-top"&gt;<br>
-  &nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p class="card-text"&gt;Some quick content.&lt;/p&gt;<br>
-  &nbsp;&nbsp;&lt;/div&gt;<br>
-&lt;/div&gt;
-        </div>
-      </div>
+      <h3>2. How would you create a layout that shows 3 columns on desktop, 2 on tablet, and 1 on mobile?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a', 'visual2')">To draw shapes</div>
-        <div class="option" onclick="checkAnswer(2, 'b', 'visual2')">To style tables</div>
-        <div class="option" onclick="checkAnswer(2, 'c', 'visual2')">To structure reusable content blocks</div>
-        <div class="option" onclick="checkAnswer(2, 'd', 'visual2')">To display charts only</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">col-lg-4 col-md-6 col-12</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">col-4 col-6 col-12</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">col-desktop-3 col-tablet-2 col-mobile-1</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">col-grid-3 col-grid-2 col-grid-1</div>
       </div>
       <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <p>Responsive column classes:</p>
+        <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-lg-4 col-md-6 col-12"&gt;Item&lt;/div&gt;
+  &lt;div class="col-lg-4 col-md-6 col-12"&gt;Item&lt;/div&gt;
+  &lt;div class="col-lg-4 col-md-6 col-12"&gt;Item&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
     </div>
 
-    <!-- Question 3: Navbar Toggler -->
+    <!-- Q3: Grid Gaps -->
     <div class="question">
-      <h3>3. What is the purpose of the navbar toggler button?</h3>
-      <div class="visual-example" id="visual3">
-        <p>The navbar toggler collapses or expands the menu on smaller screens.</p>
-        <div class="code">
-&lt;button class="navbar-toggler" type="button"&gt;<br>
-  &nbsp;&nbsp;&lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;<br>
-&lt;/button&gt;
-        </div>
-      </div>
+      <h3>3. What's the Bootstrap 5 way to add consistent spacing between grid columns?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'a', 'visual3')">To hide the footer</div>
-        <div class="option" onclick="checkAnswer(3, 'b', 'visual3')">To expand/collapse menu on mobile</div>
-        <div class="option" onclick="checkAnswer(3, 'c', 'visual3')">To toggle image size</div>
-        <div class="option" onclick="checkAnswer(3, 'd', 'visual3')">To animate buttons</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">gap-* utility classes on the row</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">margin utilities on each column</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">padding utilities on each column</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">spacer divs between columns</div>
       </div>
       <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <p>Using gap utilities:</p>
+        <pre><code>&lt;div class="row gap-3"&gt;
+  &lt;div class="col"&gt;Item&lt;/div&gt;
+  &lt;div class="col"&gt;Item&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>Available sizes: gap-1 (4px) to gap-5 (48px)</p>
+      </div>
     </div>
 
-    <!-- Question 4: Card Structure -->
+    <!-- Q4: Bootstrap Icons -->
     <div class="question">
-      <h3>4. Which of the following is usually included inside a Bootstrap card?</h3>
-      <div class="visual-example" id="visual4">
-        <p>Cards can include headers, footers, images, text, and links.</p>
-        <div class="code">
-&lt;div class="card"&gt;<br>
-  &nbsp;&nbsp;&lt;div class="card-header"&gt;Header&lt;/div&gt;<br>
-  &nbsp;&nbsp;&lt;div class="card-body"&gt;Main content&lt;/div&gt;<br>
-  &nbsp;&nbsp;&lt;div class="card-footer"&gt;Footer&lt;/div&gt;<br>
-&lt;/div&gt;
-        </div>
-      </div>
+      <h3>4. How do you include Bootstrap Icons in your project?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'a', 'visual4')">Only images</div>
-        <div class="option" onclick="checkAnswer(4, 'b', 'visual4')">Form only</div>
-        <div class="option" onclick="checkAnswer(4, 'c', 'visual4')">Images, text, buttons</div>
-        <div class="option" onclick="checkAnswer(4, 'd', 'visual4')">CSS only</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">Add the CDN link or install via npm</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">They're included automatically with Bootstrap CSS</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Import from Google Fonts</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Use Font Awesome classes</div>
       </div>
       <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <p>Bootstrap Icons CDN:</p>
+        <pre><code>&lt;link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"&gt;</code></pre>
+        <p>Usage example:</p>
+        <pre><code>&lt;i class="bi bi-heart-fill"&gt;&lt;/i&gt;</code></pre>
+        <div class="d-flex align-items-center mt-2">
+          <i class="bi bi-heart-fill text-danger icon-preview"></i>
+          <span>Heart icon preview</span>
+        </div>
+      </div>
     </div>
 
+    <!-- Q5: Icon Sizing -->
+    <div class="question">
+      <h3>5. What's the proper way to increase the size of a Bootstrap Icon?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">Add fs-* (font-size) utility classes</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">Use width and height CSS properties</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">Add size="lg" attribute</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">Wrap in a div with fixed dimensions</div>
+      </div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <p>Icon sizing examples:</p>
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-star-fill fs-1 icon-preview"></i>
+            <span>fs-1 (2.5rem)</span>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-star-fill fs-3 icon-preview"></i>
+            <span>fs-3 (1.75rem)</span>
+          </div>
+          <div class="d-flex align-items-center">
+            <i class="bi bi-star-fill fs-6 icon-preview"></i>
+            <span>fs-6 (1rem)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6: Icon Buttons -->
+    <div class="question">
+      <h3>6. How would you create a button with only a Bootstrap Icon?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">button.btn > i.bi-[icon-name]</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">a.icon-button > span.icon</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">div.button > svg.icon</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">btn-icon with icon attribute</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <p>Icon button example:</p>
+        <pre><code>&lt;button class="btn btn-primary"&gt;
+  &lt;i class="bi bi-trash"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;button class="btn btn-outline-secondary"&gt;
+  &lt;i class="bi bi-gear"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+        <div class="mt-2">
+          <button class="btn btn-primary me-2">
+            <i class="bi bi-trash"></i>
+          </button>
+          <button class="btn btn-outline-secondary">
+            <i class="bi bi-gear"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7: Carousel Basics -->
+    <div class="question">
+      <h3>7. What's the essential structure for a Bootstrap Carousel?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">carousel > inner > items + controls + indicators</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">slider > slides + navigation</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">carousel-container > slide-items</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">slideshow > slide + buttons</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <p>Basic carousel structure:</p>
+        <pre><code>&lt;div id="myCarousel" class="carousel slide"&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="carousel-item active"&gt;
+      &lt;img src="..." class="d-block w-100"&gt;
+    &lt;/div&gt;
+    &lt;div class="carousel-item"&gt;
+      &lt;img src="..." class="d-block w-100"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="carousel-control-prev" data-bs-target="#myCarousel"&gt;
+    &lt;span class="carousel-control-prev-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="carousel-control-next" data-bs-target="#myCarousel"&gt;
+    &lt;span class="carousel-control-next-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- Q8: Carousel Options -->
+    <div class="question">
+      <h3>8. How would you make a carousel auto-rotate with 5-second intervals?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">data-bs-interval="5000" on carousel div</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">auto-rotate="5" on carousel div</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">interval: 5000 in JavaScript</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">Add CSS animation with 5s duration</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <p>Carousel with auto-rotation:</p>
+        <pre><code>&lt;div id="autoCarousel" class="carousel slide" 
+  data-bs-ride="carousel" data-bs-interval="5000"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+        <p>Or via JavaScript initialization:</p>
+        <pre><code>const myCarousel = new bootstrap.Carousel('#autoCarousel', {
+  interval: 5000,
+  ride: 'carousel'
+})</code></pre>
+      </div>
+    </div>
+
+    <!-- Q9: Customizing Sliders -->
+    <div class="question">
+      <h3>9. How can you customize the appearance of Bootstrap's carousel indicators?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">Override CSS variables or write custom CSS</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">Use data-bs-indicator-style attribute</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">Add modifier classes like indicators-rounded</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">You can't customize the default indicators</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <p>Customizing indicators with CSS variables:</p>
+        <pre><code>.carousel-indicators {
+  --bs-carousel-indicator-width: 20px;
+  --bs-carousel-indicator-height: 3px;
+  --bs-carousel-indicator-active-bg: #ff6b6b;
+}</code></pre>
+        <p>Or with custom CSS:</p>
+        <pre><code>.carousel-indicators button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 0 5px;
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Q10: Grid + Carousel -->
+    <div class="question">
+      <h3>10. How would you create a responsive grid of cards that becomes a carousel on mobile?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">Use grid classes with carousel at breakpoint</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">Create two separate layouts and toggle visibility</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">Use CSS transform on mobile</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">Bootstrap doesn't support this pattern</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <p>Combining grid and carousel:</p>
+        <pre><code>&lt;!-- Desktop Grid --&gt;
+&lt;div class="d-none d-md-block"&gt;
+  &lt;div class="row row-cols-3 g-4"&gt;
+    &lt;div class="col"&gt;&lt;div class="card"&gt;...&lt;/div&gt;&lt;/div&gt;
+    &lt;!-- more cards --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Mobile Carousel --&gt;
+&lt;div class="d-md-none"&gt;
+  &lt;div id="mobileCarousel" class="carousel slide"&gt;
+    &lt;div class="carousel-inner"&gt;
+      &lt;div class="carousel-item active"&gt;&lt;div class="card"&gt;...&lt;/div&gt;&lt;/div&gt;
+      &lt;!-- more slides --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
   </div>
 
   <script>
-    function checkAnswer(questionNum, selectedOption, visualId) {
-      const correctAnswers = {
-        1: 'c',
-        2: 'c',
-        3: 'b',
-        4: 'c'
-      };
+    const correctAnswers = {
+      1: 'a',
+      2: 'a',
+      3: 'a',
+      4: 'a',
+      5: 'a',
+      6: 'a',
+      7: 'a',
+      8: 'a',
+      9: 'a',
+      10: 'a'
+    };
 
-      const resultDiv = document.getElementById(`result${questionNum}`);
-      const visualDiv = document.getElementById(visualId);
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
 
-      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      // Hide all visuals first
+      document.querySelectorAll('.visual-example').forEach(el => {
+        el.style.display = 'none';
+      });
+
+      // Show result
+      result.style.display = 'block';
 
       if (selectedOption === correctAnswers[questionNum]) {
-        resultDiv.textContent = '✅ Correct!';
-        resultDiv.className = 'result correct';
-        visualDiv.style.display = 'block';
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        if (visual) visual.style.display = 'block';
       } else {
-        resultDiv.textContent = '❌ Incorrect. Try again!';
-        resultDiv.className = 'result incorrect';
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
       }
     }
   </script>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap Basics Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -76,137 +77,405 @@
       color: #c62828;
       display: block !important;
     }
+    .layout-demo {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      position: relative;
+      border: 1px dashed #999;
+    }
+    .demo-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #3D52A0;
+      color: white;
+      padding: 10px;
+    }
+    .demo-hamburger {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .demo-hamburger span {
+      height: 3px;
+      background: white;
+    }
+    .demo-pattern {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-2 div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-3 div {
+      background: #3D52A0;
+      height: 50px;
+      flex: 1 1 200px;
+    }
   </style>
 </head>
 <body>
   <div class="quiz-container">
     <h1>Bootstrap Basics Quiz</h1>
 
-    <!-- Question 1 -->
+    <!-- Q1: Bootstrap Introduction -->
     <div class="question">
-      <h3>1. What is the purpose of the Bootstrap grid system?</h3>
-      <div class="visual-example" id="visual1">
-        <p>The grid system is used to create responsive layouts using rows and columns.</p>
-        <div class="code">
-          &lt;div class="container"&gt;<br>
-          &nbsp;&nbsp;&lt;div class="row"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-6"&gt;Left&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-6"&gt;Right&lt;/div&gt;<br>
-          &nbsp;&nbsp;&lt;/div&gt;<br>
-          &lt;/div&gt;
-        </div>
-      </div>
+      <h3>1. What is the primary advantage of using Bootstrap?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'a', 'visual1')">To apply animations</div>
-        <div class="option" onclick="checkAnswer(1, 'b', 'visual1')">To write JavaScript code</div>
-        <div class="option" onclick="checkAnswer(1, 'c', 'visual1')">To build responsive layouts</div>
-        <div class="option" onclick="checkAnswer(1, 'd', 'visual1')">To upload media files</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">Rapid development with pre-built components</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">Better JavaScript performance</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">Automatic SEO optimization</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">Replacement for custom CSS</div>
       </div>
       <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <p>Bootstrap provides:</p>
+        <ul>
+          <li>Responsive grid system</li>
+          <li>Pre-styled components (buttons, cards, etc.)</li>
+          <li>Utility classes for common styling</li>
+          <li>Cross-browser compatibility</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Question 2 -->
+    <!-- Q2: Container -->
     <div class="question">
-      <h3>2. Which class is used to create a button in Bootstrap?</h3>
-      <div class="visual-example" id="visual2">
-        <p>Bootstrap buttons use the <code>.btn</code> class along with a color class like <code>.btn-primary</code>.</p>
-        <div class="code">
-          &lt;button class="btn btn-primary"&gt;Click Me&lt;/button&gt;
-        </div>
-      </div>
+      <h3>2. What's the difference between .container and .container-fluid?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a', 'visual2')">.button-main</div>
-        <div class="option" onclick="checkAnswer(2, 'b', 'visual2')">.btn-primary</div>
-        <div class="option" onclick="checkAnswer(2, 'c', 'button-style')">.button-style</div>
-        <div class="option" onclick="checkAnswer(2, 'd', 'visual2')">.btn-color</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">.container has max-widths at breakpoints, .container-fluid is always 100% width</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">.container is for fixed layouts, .container-fluid is for flexbox</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">.container has padding, .container-fluid doesn't</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">There is no difference</div>
       </div>
       <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <div class="code">
+          &lt;div class="container"&gt;Fixed-width container&lt;/div&gt;<br>
+          &lt;div class="container-fluid"&gt;Full-width container&lt;/div&gt;
+        </div>
+        <p>.container breakpoints:</p>
+        <ul>
+          <li>100% width below 576px</li>
+          <li>540px (sm)</li>
+          <li>720px (md)</li>
+          <li>960px (lg)</li>
+          <li>1140px (xl)</li>
+          <li>1320px (xxl)</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Question 3 -->
+    <!-- Q3: Color -->
     <div class="question">
-      <h3>3. What does the class <code>.mt-3</code> do in Bootstrap?</h3>
-      <div class="visual-example" id="visual3">
-        <p><code>.mt-3</code> adds top margin spacing. <code>m</code> stands for margin, <code>t</code> is for top, and <code>3</code> is the size.</p>
-        <div class="code">
-          &lt;div class="mt-3"&gt;This div has top margin&lt;/div&gt;
-        </div>
-      </div>
+      <h3>3. Which class would you use for a light blue background in Bootstrap?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'a', 'visual3')">Adds margin to the left</div>
-        <div class="option" onclick="checkAnswer(3, 'b', 'visual3')">Adds margin to the top</div>
-        <div class="option" onclick="checkAnswer(3, 'c', 'visual3')">Adds margin to the bottom</div>
-        <div class="option" onclick="checkAnswer(3, 'd', 'visual3')">Adds padding</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">bg-info</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">bg-primary</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">bg-blue</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">bg-light</div>
       </div>
       <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="demo-box bg-info">bg-info</div>
+        <div class="demo-box bg-primary">bg-primary</div>
+        <div class="demo-box bg-light">bg-light</div>
+        <p>Bootstrap theme colors include:</p>
+        <ul>
+          <li>primary (blue)</li>
+          <li>secondary (gray)</li>
+          <li>success (green)</li>
+          <li>danger (red)</li>
+          <li>warning (yellow)</li>
+          <li>info (light blue)</li>
+          <li>light (light gray)</li>
+          <li>dark (dark gray)</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Question 4 -->
+    <!-- Q4: Button -->
     <div class="question">
-      <h3>4. Which component is used for grouping content into a box with padding and border?</h3>
-      <div class="visual-example" id="visual4">
-        <p>The <code>.card</code> component is used to display content inside a box with consistent styling.</p>
-        <div class="code">
-          &lt;div class="card"&gt;<br>
-          &nbsp;&nbsp;&lt;div class="card-body"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;Card content<br>
-          &nbsp;&nbsp;&lt;/div&gt;<br>
-          &lt;/div&gt;
-        </div>
-      </div>
+      <h3>4. How do you create a large, outlined danger button in Bootstrap?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'a', 'visual4')">.badge</div>
-        
-        <div class="option" onclick="checkAnswer(4, 'c', 'visual4')">.panel</div>
-        <div class="option" onclick="checkAnswer(4, 'b', 'visual4')">.card</div>
-        <div class="option" onclick="checkAnswer(4, 'd', 'visual4')">.alert</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">btn btn-outline-danger btn-lg</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">button outline danger large</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">btn btn-danger outline lg</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">btn-large outline-danger</div>
       </div>
       <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <button class="btn btn-outline-danger btn-lg m-3">Example Button</button>
+        <p>Bootstrap button classes:</p>
+        <div class="code">
+          &lt;button class="btn btn-outline-danger btn-lg"&gt;Button&lt;/button&gt;
+        </div>
+        <p>Button variations:</p>
+        <button class="btn btn-primary m-1">Primary</button>
+        <button class="btn btn-secondary m-1">Secondary</button>
+        <button class="btn btn-success m-1">Success</button>
+        <button class="btn btn-outline-warning m-1">Outline Warning</button>
+        <button class="btn btn-sm btn-danger m-1">Small Danger</button>
+      </div>
     </div>
 
-    <!-- Question 5 -->
+    <!-- Q5: Box Model - Margin -->
     <div class="question">
-      <h3>5. Which class makes a container full width and responsive?</h3>
-      <div class="visual-example" id="visual5">
-        <p><code>.container-fluid</code> spans the entire width of the viewport.</p>
-        <div class="code">
-          &lt;div class="container-fluid"&gt;Full width content&lt;/div&gt;
-        </div>
-      </div>
+      <h3>5. Which class adds 16px margin to all sides of an element?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a', 'visual5')">.container-box</div>
-      
-        <div class="option" onclick="checkAnswer(5, 'c', 'visual5')">.box-fluid</div>
-        <div class="option" onclick="checkAnswer(5, 'd', 'visual5')">.row-fluid</div>
-        <div class="option" onclick="checkAnswer(5, 'b', 'visual5')">.container-fluid</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">m-3</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">p-3</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">margin-3</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">mx-3</div>
       </div>
       <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="bg-primary text-white p-2 m-3">This has m-3 (16px margin)</div>
+        <p>Bootstrap spacing utilities:</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Property</th>
+              <th>Size (rem)</th>
+              <th>Size (px)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>m-0</td>
+              <td>margin: 0</td>
+              <td>0</td>
+              <td>0px</td>
+            </tr>
+            <tr>
+              <td>m-1</td>
+              <td>margin: 0.25rem</td>
+              <td>0.25</td>
+              <td>4px</td>
+            </tr>
+            <tr>
+              <td>m-2</td>
+              <td>margin: 0.5rem</td>
+              <td>0.5</td>
+              <td>8px</td>
+            </tr>
+            <tr>
+              <td>m-3</td>
+              <td>margin: 1rem</td>
+              <td>1</td>
+              <td>16px</td>
+            </tr>
+            <tr>
+              <td>m-4</td>
+              <td>margin: 1.5rem</td>
+              <td>1.5</td>
+              <td>24px</td>
+            </tr>
+            <tr>
+              <td>m-5</td>
+              <td>margin: 3rem</td>
+              <td>3</td>
+              <td>48px</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
+    <!-- Q6: Box Model - Padding -->
+    <div class="question">
+      <h3>6. How would you add padding only to the left and right of an element?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">px-3</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">p-3</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">pl-pr-3</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">padding-x-3</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="bg-success text-white py-2 px-3">This has px-3 (left/right padding)</div>
+        <p>Directional padding classes:</p>
+        <ul>
+          <li>p-* (all sides)</li>
+          <li>px-* (left and right)</li>
+          <li>py-* (top and bottom)</li>
+          <li>pt-* (top)</li>
+          <li>pe-* (end/right in LTR)</li>
+          <li>pb-* (bottom)</li>
+          <li>ps-* (start/left in LTR)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q7: Flex - Direction -->
+    <div class="question">
+      <h3>7. Which class creates a vertical flexbox container?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">flex-column</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">flex-vertical</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">flex-col</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">column-flex</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="d-flex flex-column bg-light p-2">
+          <div class="demo-flex-item">Item 1</div>
+          <div class="demo-flex-item">Item 2</div>
+          <div class="demo-flex-item">Item 3</div>
+        </div>
+        <p>Flex direction classes:</p>
+        <div class="code">
+          &lt;div class="d-flex flex-column"&gt;...&lt;/div&gt;
+        </div>
+        <p>Other flex directions:</p>
+        <ul>
+          <li>flex-row (default)</li>
+          <li>flex-column-reverse</li>
+          <li>flex-row-reverse</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q8: Flex - Justify -->
+    <div class="question">
+      <h3>8. What class would evenly space flex items with space between them?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">justify-content-between</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">justify-between</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">flex-space-between</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">space-between</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="d-flex justify-content-between bg-light p-2">
+          <div class="demo-flex-item">Item 1</div>
+          <div class="demo-flex-item">Item 2</div>
+          <div class="demo-flex-item">Item 3</div>
+        </div>
+        <p>Justify content classes:</p>
+        <ul>
+          <li>justify-content-start</li>
+          <li>justify-content-end</li>
+          <li>justify-content-center</li>
+          <li>justify-content-between</li>
+          <li>justify-content-around</li>
+          <li>justify-content-evenly</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q9: Flex - Align -->
+    <div class="question">
+      <h3>9. How do you center-align flex items vertically?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">align-items-center</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">flex-align-center</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">align-center</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">vertical-align-center</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <div class="d-flex align-items-center bg-light p-2" style="height: 100px;">
+          <div class="demo-flex-item">Centered Item</div>
+        </div>
+        <p>Align items classes:</p>
+        <div class="code">
+          &lt;div class="d-flex align-items-center"&gt;...&lt;/div&gt;
+        </div>
+        <p>Other alignment options:</p>
+        <ul>
+          <li>align-items-start</li>
+          <li>align-items-end</li>
+          <li>align-items-baseline</li>
+          <li>align-items-stretch (default)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q10: Responsive Flex -->
+    <div class="question">
+      <h3>10. How would you make a flex container only on large screens?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">d-lg-flex</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">flex-lg</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">lg-flex</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">responsive-flex-lg</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <div class="code">
+          &lt;div class="d-block d-lg-flex"&gt;<br>
+          &nbsp;&nbsp;&lt;!-- Content --&gt;<br>
+          &lt;/div&gt;
+        </div>
+        <p>Bootstrap responsive display classes:</p>
+        <ul>
+          <li>d-none (hidden)</li>
+          <li>d-flex (flex on all screens)</li>
+          <li>d-sm-flex (flex on sm and up)</li>
+          <li>d-md-flex (flex on md and up)</li>
+          <li>d-lg-flex (flex on lg and up)</li>
+          <li>d-xl-flex (flex on xl and up)</li>
+          <li>d-xxl-flex (flex on xxl and up)</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <script>
-    function checkAnswer(questionNum, selectedOption, visualId) {
-      const correctAnswers = {
-        1: 'c',
-        2: 'b',
-        3: 'b',
-        4: 'b',
-        5: 'b'
-      };
+    const correctAnswers = {
+      1: 'a',
+      2: 'a',
+      3: 'a',
+      4: 'a',
+      5: 'a',
+      6: 'a',
+      7: 'a',
+      8: 'a',
+      9: 'a',
+      10: 'a'
+    };
 
-      const resultDiv = document.getElementById(`result${questionNum}`);
-      const visualDiv = document.getElementById(visualId);
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
 
       document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
 
       if (selectedOption === correctAnswers[questionNum]) {
-        resultDiv.textContent = '✅ Correct!';
-        resultDiv.className = 'result correct';
-        visualDiv.style.display = 'block';
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
       } else {
-        resultDiv.textContent = '❌ Incorrect. Try again!';
-        resultDiv.className = 'result incorrect';
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
       }
     }
   </script>

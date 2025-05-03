@@ -179,16 +179,92 @@
       </div>
     </div>
   </div>
+<!-- Q7: Doctype declaration -->
+<div class="question">
+  <h3>7. What is the purpose of <code>&lt;!DOCTYPE html&gt;</code> in HTML?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(7, 'a')">Defines a comment</div>
+    <div class="option" onclick="checkAnswer(7, 'b')">Links CSS to HTML</div>
+    <div class="option" onclick="checkAnswer(7, 'c')">Defines HTML version</div>
+    <div class="option" onclick="checkAnswer(7, 'd')">Inserts a JavaScript file</div>
+  </div>
+  <div id="result7" class="result"></div>
+  <div class="visual-example" id="visual7">
+    <div class="code">&lt;!DOCTYPE html&gt;</div>
+    <p>This tells the browser to use HTML5.</p>
+  </div>
+</div>
+
+<!-- Q8: Head vs Body -->
+<div class="question">
+  <h3>8. Where should the page metadata like title and links to stylesheets be placed?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(8, 'a')">In the &lt;footer&gt;</div>
+    <div class="option" onclick="checkAnswer(8, 'b')">In the &lt;body&gt;</div>
+    <div class="option" onclick="checkAnswer(8, 'c')">In the &lt;head&gt;</div>
+    <div class="option" onclick="checkAnswer(8, 'd')">Anywhere</div>
+  </div>
+  <div id="result8" class="result"></div>
+  <div class="visual-example" id="visual8">
+    <div class="code">
+      &lt;head&gt;<br>
+      &nbsp;&nbsp;&lt;title&gt;My Site&lt;/title&gt;<br>
+      &nbsp;&nbsp;&lt;link rel="stylesheet" href="style.css"&gt;<br>
+      &lt;/head&gt;
+    </div>
+  </div>
+</div>
+
+<!-- Q9: Line Break tag -->
+<div class="question">
+  <h3>9. Which tag is used to insert a line break?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(9, 'a')">&lt;br&gt;</div>
+    <div class="option" onclick="checkAnswer(9, 'b')">&lt;lb&gt;</div>
+    <div class="option" onclick="checkAnswer(9, 'c')">&lt;break&gt;</div>
+    <div class="option" onclick="checkAnswer(9, 'd')">&lt;n&gt;</div>
+  </div>
+  <div id="result9" class="result"></div>
+  <div class="visual-example" id="visual9">
+    <div class="code">
+      Hello&lt;br&gt;World
+    </div>
+    <p>Hello<br>World</p>
+  </div>
+</div>
+
+<!-- Q10: Bold text -->
+<div class="question">
+  <h3>10. Which HTML tag is used to make text bold?</h3>
+  <div class="options">
+    <div class="option" onclick="checkAnswer(10, 'a')">&lt;b&gt;</div>
+    <div class="option" onclick="checkAnswer(10, 'b')">&lt;strong&gt;</div>
+    <div class="option" onclick="checkAnswer(10, 'c')">Both A and B</div>
+    <div class="option" onclick="checkAnswer(10, 'd')">&lt;font weight="bold"&gt;</div>
+  </div>
+  <div id="result10" class="result"></div>
+  <div class="visual-example" id="visual10">
+    <div class="code">
+      &lt;strong&gt;Important!&lt;/strong&gt;
+    </div>
+    <p><strong>Important!</strong></p>
+  </div>
+</div>
 
   <script>
     const correctAnswers = {
-      1: 'a',
-      2: 'a',
-      3: 'b',
-      4: 'c',
-      5: 'c',
-      6: 'a'
-    };
+  1: 'a',
+  2: 'a',
+  3: 'b',
+  4: 'c',
+  5: 'c',
+  6: 'a',
+  7: 'c',
+  8: 'c',
+  9: 'a',
+  10: 'c'
+};
+
 
     function checkAnswer(questionNum, selectedOption) {
       const result = document.getElementById(`result${questionNum}`);

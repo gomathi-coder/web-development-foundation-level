@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Layout Practical Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Layout Quiz</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -76,163 +76,272 @@
       color: #c62828;
       display: block !important;
     }
-    .example-output {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-      background: #ff9800;
-      color: white;
-      font-size: 18px;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-    .html-output {
-      margin-top: 20px;
-      padding: 20px;
-      background: #eeeeee;
-      border-radius: 10px;
+    .diagram {
+      background: white;
+      padding: 15px;
+      border: 1px solid #ddd;
+      margin: 10px 0;
     }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>CSS Layout Practical Quiz</h1>
+    <h1>CSS Layout Quiz: Box Model, Flexbox & Grid</h1>
 
-    <!-- Question 1 -->
+    <!-- Q1: Box Model Components -->
     <div class="question">
-      <h3>1. Which of the following CSS properties is used to define the box model?</h3>
+      <h3>1. Which of these is NOT part of the CSS Box Model?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'b')">box-style</div>
-        <div class="option" onclick="checkAnswer(1, 'a')">box-sizing</div>
-        <div class="option" onclick="checkAnswer(1, 'c')">box</div>
-        <div class="option" onclick="checkAnswer(1, 'd')">box-model</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">Content</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">Padding</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">Border</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">Shadow</div>
       </div>
       <div id="result1" class="result"></div>
-      <div class="visual-example" id="example1">
-        <div class="example-output" id="output1">Example: Box model applied to an element.</div>
-        <div class="html-output">
-          <div style="box-sizing: border-box; width: 300px; padding: 20px; border: 5px solid black;">This element has box-sizing set to border-box.</div>
-        </div>
-        <div class="code">
-          <pre>box-sizing: border-box;</pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 2 -->
-    <div class="question">
-      <h3>2. How do you add a margin to the top of an element in CSS?</h3>
-      <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a')">margin-top</div>
-        <div class="option" onclick="checkAnswer(2, 'b')">top-margin</div>
-        <div class="option" onclick="checkAnswer(2, 'c')">margin</div>
-        <div class="option" onclick="checkAnswer(2, 'd')">margin-bottom</div>
-      </div>
-      <div id="result2" class="result"></div>
-      <div class="visual-example" id="example2">
-        <div class="example-output" id="output2">Example: 20px margin applied to the top.</div>
-        <div class="html-output">
-          <div style="margin-top: 20px; background-color: lightgreen;">This element has a top margin.</div>
-        </div>
-        <div class="code">
-          <pre>margin-top: 20px;</pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 3 -->
-    <div class="question">
-      <h3>3. How do you add padding inside an element in CSS?</h3>
-      <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'd')">border</div>
-        <div class="option" onclick="checkAnswer(3, 'a')">padding</div>
-        <div class="option" onclick="checkAnswer(3, 'c')">margin</div>
-        <div class="option" onclick="checkAnswer(3, 'b')">space</div>
-      </div>
-      <div id="result3" class="result"></div>
-      <div class="visual-example" id="example3">
-        <div class="example-output" id="output3">Example: 20px padding applied inside the element.</div>
-        <div class="html-output">
-          <div style="padding: 20px; background-color: lightblue;">This element has padding inside.</div>
-        </div>
-        <div class="code">
-          <pre>padding: 20px;</pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 4 -->
-    <div class="question">
-      <h3>4. Which CSS property is used to set the display type of an element?</h3>
-      <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'b')">flex</div>
-        <div class="option" onclick="checkAnswer(4, 'd')">visibility</div>
-        <div class="option" onclick="checkAnswer(4, 'a')">display</div>
-        <div class="option" onclick="checkAnswer(4, 'c')">position</div>
-      </div>
-      <div id="result4" class="result"></div>
-      <div class="visual-example" id="example4">
-        <div class="example-output" id="output4">Example: Display set to flex.</div>
-        <div class="html-output">
-          <div style="display: flex; justify-content: space-between;">
-            <div style="background-color: #ff9800; width: 100px; padding: 10px;">Box 1</div>
-            <div style="background-color: #4caf50; width: 100px; padding: 10px;">Box 2</div>
-            <div style="background-color: #2196f3; width: 100px; padding: 10px;">Box 3</div>
+      <div class="visual-example" id="visual1">
+        <div class="diagram">
+          <div style="text-align: center; margin: 10px; padding: 20px; border: 5px solid #3D52A0; background: #e1f5fe;">
+            Content
+            <div style="font-size: smaller; margin-top: 10px;">(Box Model Components: Content, Padding, Border, Margin)</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Q2: Box Sizing -->
+    <div class="question">
+      <h3>2. What does <code>box-sizing: border-box</code> do?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(2, 'a')">Includes padding and border in element's width</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">Adds extra space outside the border</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">Makes the element responsive</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">Creates a 3D box effect</div>
+      </div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
         <div class="code">
-          <pre>display: flex;</pre>
+          .box {<br>
+          &nbsp;&nbsp;width: 200px;<br>
+          &nbsp;&nbsp;padding: 20px;<br>
+          &nbsp;&nbsp;border: 5px solid black;<br>
+          &nbsp;&nbsp;box-sizing: border-box; /* Total width stays 200px */<br>
+          }
         </div>
       </div>
     </div>
 
-    <!-- Question 5 -->
+    <!-- Q3: Flex Direction -->
     <div class="question">
-      <h3>5. What is the default value of the `display` property in CSS?</h3>
+      <h3>3. Which flex-direction value arranges items vertically?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a')">block</div>
-        <div class="option" onclick="checkAnswer(5, 'c')">inline-block</div>
-        <div class="option" onclick="checkAnswer(5, 'd')">none</div>
-        <div class="option" onclick="checkAnswer(5, 'b')">inline</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">row</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">column</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">vertical</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">stack</div>
+      </div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="code">
+          .container {<br>
+          &nbsp;&nbsp;display: flex;<br>
+          &nbsp;&nbsp;flex-direction: column;<br>
+          }
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 10px;">
+          <div style="background: #3D52A0; color: white; padding: 5px;">Item 1</div>
+          <div style="background: #3D52A0; color: white; padding: 5px;">Item 2</div>
+          <div style="background: #3D52A0; color: white; padding: 5px;">Item 3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: Justify Content -->
+    <div class="question">
+      <h3>4. Which justify-content value spaces items evenly with equal space around them?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(4, 'a')">flex-start</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">center</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">space-between</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">space-around</div>
+      </div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <div class="code">
+          .container {<br>
+          &nbsp;&nbsp;display: flex;<br>
+          &nbsp;&nbsp;justify-content: space-around;<br>
+          }
+        </div>
+        <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+          <div style="background: #3D52A0; color: white; padding: 5px;">1</div>
+          <div style="background: #3D52A0; color: white; padding: 5px;">2</div>
+          <div style="background: #3D52A0; color: white; padding: 5px;">3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: Align Items -->
+    <div class="question">
+      <h3>5. What does align-items: center do in a flex container?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(5, 'a')">Centers items horizontally</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">Centers items vertically</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">Stacks items in the center</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">Distributes space around items</div>
       </div>
       <div id="result5" class="result"></div>
-      <div class="visual-example" id="example5">
-        <div class="example-output" id="output5">Example: Block-level elements by default.</div>
-        <div class="html-output">
-          <div style="background-color: #ff9800; width: 100px; padding: 10px;">This is a block-level element.</div>
-        </div>
+      <div class="visual-example" id="visual5">
         <div class="code">
-          <pre>display: block;</pre>
+          .container {<br>
+          &nbsp;&nbsp;display: flex;<br>
+          &nbsp;&nbsp;height: 200px;<br>
+          &nbsp;&nbsp;align-items: center; /* Vertical centering */<br>
+          }
         </div>
       </div>
     </div>
 
-    <script>
-      function checkAnswer(questionNumber, answer) {
-        const correctAnswers = {
-          1: 'a',
-          2: 'a',
-          3: 'a',
-          4: 'a',
-          5: 'a'
-        };
+    <!-- Q6: Grid Template Columns -->
+    <div class="question">
+      <h3>6. What does <code>grid-template-columns: 1fr 2fr</code> create?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">Two equal-width columns</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">One column twice as wide as the other</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">Two rows with different heights</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">A responsive grid with 12 columns</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          .container {<br>
+          &nbsp;&nbsp;display: grid;<br>
+          &nbsp;&nbsp;grid-template-columns: 1fr 2fr;<br>
+          }
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 5px; margin-top: 10px;">
+          <div style="background: #3D52A0; color: white; padding: 10px;">1fr</div>
+          <div style="background: #3D52A0; color: white; padding: 10px;">2fr</div>
+        </div>
+      </div>
+    </div>
 
-        const resultElement = document.getElementById('result' + questionNumber);
-        const visualExample = document.getElementById('example' + questionNumber);
-        const correctOutput = document.getElementById('output' + questionNumber);
+    <!-- Q7: Grid Gap -->
+    <div class="question">
+      <h3>7. Which property sets the gap between grid rows and columns?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">margin</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">spacing</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">gap</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">grid-space</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="code">
+          .container {<br>
+          &nbsp;&nbsp;display: grid;<br>
+          &nbsp;&nbsp;gap: 20px; /* Sets both row and column gap */<br>
+          }
+        </div>
+      </div>
+    </div>
 
-        if (answer === correctAnswers[questionNumber]) {
-          resultElement.textContent = "Correct!";
-          resultElement.className = "result correct";
-          visualExample.style.display = 'block'; // Show visual example
-        } else {
-          resultElement.textContent = "Incorrect! Try again.";
-          resultElement.className = "result incorrect";
-          visualExample.style.display = 'none'; // Hide visual example
-        }
-      }
-    </script>
+    <!-- Q8: Grid Area -->
+    <div class="question">
+      <h3>8. How do you make a grid item span multiple columns?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">grid-column: span 2</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">column-span: 2</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">span-columns: 2</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">grid-span: 2</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="code">
+          .item {<br>
+          &nbsp;&nbsp;grid-column: span 2;<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9: Flex vs Grid -->
+    <div class="question">
+      <h3>9. When should you use Flexbox over Grid?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">For one-dimensional layouts (rows OR columns)</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">For complex two-dimensional layouts</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">When you need many overlapping items</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">For print-style layouts</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <p>Flexbox is ideal for:</p>
+        <ul>
+          <li>Navigation bars</li>
+          <li>Centering content vertically</li>
+          <li>Distributing space along a single axis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q10: Grid Template Areas -->
+    <div class="question">
+      <h3>10. What is the purpose of grid-template-areas?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">To name grid lines</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">To create visual templates for the grid</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">To set the grid gap size</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">To define the number of columns</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <div class="code">
+          .container {<br>
+          &nbsp;&nbsp;display: grid;<br>
+          &nbsp;&nbsp;grid-template-areas:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;"header header"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;"sidebar main"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;"footer footer";<br>
+          }<br>
+          .header { grid-area: header; }<br>
+          .sidebar { grid-area: sidebar; }<br>
+          .main { grid-area: main; }<br>
+          .footer { grid-area: footer; }
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script>
+    const correctAnswers = {
+      1: 'd',
+      2: 'a',
+      3: 'b',
+      4: 'd',
+      5: 'b',
+      6: 'b',
+      7: 'c',
+      8: 'a',
+      9: 'a',
+      10: 'b'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
 </body>
 </html>
