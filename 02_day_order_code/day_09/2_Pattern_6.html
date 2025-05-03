@@ -17,7 +17,7 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: auto auto auto auto;
       gap: 15px;
       margin-top: 30px;
     }
@@ -26,21 +26,18 @@
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     }
     .gallery-item:hover {
-      transform: scale(1.02);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+     
     }
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
+
     h2 {
       font-size: 32px;
       margin-bottom: 15px;
@@ -60,7 +57,7 @@
         padding: 30px 10px;
       }
       .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: auto;
         gap: 12px;
       }
       .gallery-item {
@@ -75,26 +72,6 @@
       }
     }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 25px 10px;
-      }
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      .gallery-item {
-        height: 180px;
-      }
-      h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-      p.subtitle {
-        font-size: 14px;
-        margin-bottom: 20px;
-      }
-    }
   </style>
 </head>
 <body>

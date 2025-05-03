@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Effects Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Basics Quiz</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -76,156 +76,267 @@
       color: #c62828;
       display: block !important;
     }
-    .example-output {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-      background: #ff9800;
-      color: white;
-      font-size: 18px;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-    .html-output {
-      margin-top: 20px;
-      padding: 20px;
-      background: #eeeeee;
-      border-radius: 10px;
+    @media (max-width: 600px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>CSS Effects Quiz</h1>
+    <h1>HTML & CSS Basics Quiz</h1>
 
-    <!-- Question 1 -->
+    <!-- Q1: HTML Basics -->
     <div class="question">
-      <h3>1. How can you create a smooth transition when changing the background color of an element?</h3>
+      <h3>1. What is the correct HTML element for the largest heading?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'a')">Use `transition: background-color 0.3s;`</div>
-        <div class="option" onclick="checkAnswer(1, 'b')">Use `background-color: smooth;`</div>
-        <div class="option" onclick="checkAnswer(1, 'c')">Use `background-color: transition;`</div>
-        <div class="option" onclick="checkAnswer(1, 'd')">Use `transition: all 0.3s;`</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">&lt;h1&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;head&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">&lt;heading&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">&lt;h6&gt;</div>
       </div>
       <div id="result1" class="result"></div>
-      <div class="visual-example" id="example1">
-        <div class="example-output" id="output1">Example: Smooth background color transition</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .element { transition: background-color 0.3s; }
-          </div>
+      <div class="visual-example" id="visual1">
+        <div class="code">
+          &lt;h1&gt;This is a main heading&lt;/h1&gt;<br>
+          &lt;h2&gt;This is a subheading&lt;/h2&gt;
         </div>
       </div>
     </div>
 
-    <!-- Question 2 -->
+    <!-- Q2: HTML Structure -->
     <div class="question">
-      <h3>2. What property is used to apply a 2D transformation to an element?</h3>
+      <h3>2. Which element contains the visible page content?</h3>
       <div class="options">
-       
-        <div class="option" onclick="checkAnswer(2, 'b')">transition</div>
-        <div class="option" onclick="checkAnswer(2, 'c')">animation</div>
-        <div class="option" onclick="checkAnswer(2, 'd')">scale</div>
-        <div class="option" onclick="checkAnswer(2, 'a')">transform</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">&lt;head&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">&lt;meta&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">&lt;body&gt;</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">&lt;html&gt;</div>
       </div>
       <div id="result2" class="result"></div>
-      <div class="visual-example" id="example2">
-        <div class="example-output" id="output2">Example: Applying a 2D transformation</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .element { transform: rotate(45deg); }
-          </div>
+      <div class="visual-example" id="visual2">
+        <div class="code">
+          &lt;!DOCTYPE html&gt;<br>
+          &lt;html&gt;<br>
+          &nbsp;&nbsp;&lt;head&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Page Title&lt;/title&gt;<br>
+          &nbsp;&nbsp;&lt;/head&gt;<br>
+          &nbsp;&nbsp;&lt;body&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Visible content goes here --&gt;<br>
+          &nbsp;&nbsp;&lt;/body&gt;<br>
+          &lt;/html&gt;
         </div>
       </div>
     </div>
 
-    <!-- Question 3 -->
+    <!-- Q3: CSS Basics -->
     <div class="question">
-      <h3>3. Which value of the `transform` property will scale an element by 1.5 times its original size?</h3>
+      <h3>3. Where is the correct place to insert CSS in an HTML document?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'a')">scale(1.5)</div>
-        <div class="option" onclick="checkAnswer(3, 'b')">scaleX(1.5)</div>
-        <div class="option" onclick="checkAnswer(3, 'c')">scaleY(1.5)</div>
-        <div class="option" onclick="checkAnswer(3, 'd')">scale(150%)</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">In the &lt;body&gt; section</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">In the &lt;head&gt; section</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">At the end of the document</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">In a separate .css file</div>
       </div>
       <div id="result3" class="result"></div>
-      <div class="visual-example" id="example3">
-        <div class="example-output" id="output3">Example: Scaling an element by 1.5 times</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .element { transform: scale(1.5); }
-          </div>
+      <div class="visual-example" id="visual3">
+        <p>CSS can be added in three ways:</p>
+        <div class="code">
+          /* External CSS */<br>
+          &lt;link rel="stylesheet" href="styles.css"&gt;<br><br>
+          /* Internal CSS */<br>
+          &lt;style&gt;<br>
+          &nbsp;&nbsp;body { background-color: white; }<br>
+          &lt;/style&gt;<br><br>
+          /* Inline CSS */<br>
+          &lt;p style="color:red;"&gt;This is a paragraph.&lt;/p&gt;
         </div>
       </div>
     </div>
 
-    <!-- Question 4 -->
+    <!-- Q4: CSS Selectors -->
     <div class="question">
-      <h3>4. How do you create a transition effect when hovering over a button that changes the font size?</h3>
+      <h3>4. Which CSS selector targets elements with class="example"?</h3>
       <div class="options">
-      
-        <div class="option" onclick="checkAnswer(4, 'b')">Use `transition: all 0.3s;`</div>
-        <div class="option" onclick="checkAnswer(4, 'c')">Use `font-size: transition;`</div>
-        <div class="option" onclick="checkAnswer(4, 'a')">Use `transition: font-size 0.3s ease;`</div>
-        <div class="option" onclick="checkAnswer(4, 'd')">Use `transform: font-size 0.3s;`</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">#example</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">example</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">.example</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">*example</div>
       </div>
       <div id="result4" class="result"></div>
-      <div class="visual-example" id="example4">
-        <div class="example-output" id="output4">Example: Hover transition on font size</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .button:hover { font-size: 20px; transition: font-size 0.3s ease; }
-          </div>
+      <div class="visual-example" id="visual4">
+        <div class="code">
+          /* HTML */<br>
+          &lt;div class="example"&gt;Content&lt;/div&gt;<br><br>
+          /* CSS */<br>
+          .example {<br>
+          &nbsp;&nbsp;color: blue;<br>
+          }
         </div>
       </div>
     </div>
 
-    <!-- Question 5 -->
+    <!-- Q5: CSS Box Model -->
     <div class="question">
-      <h3>5. What is the correct syntax to apply a rotation transformation of 90 degrees to an element?</h3>
+      <h3>5. Which CSS property adds space between content and its border?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a')">transform: rotate(90deg);</div>
-        <div class="option" onclick="checkAnswer(5, 'b')">transform: rotate(45deg);</div>
-        <div class="option" onclick="checkAnswer(5, 'c')">rotate: 90deg;</div>
-        <div class="option" onclick="checkAnswer(5, 'd')">transform: rotate(90);</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">margin</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">border</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">padding</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">spacing</div>
       </div>
       <div id="result5" class="result"></div>
-      <div class="visual-example" id="example5">
-        <div class="example-output" id="output5">Example: Applying a 90-degree rotation</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .element { transform: rotate(90deg); }
-          </div>
+      <div class="visual-example" id="visual5">
+        <div class="code">
+          div {<br>
+          &nbsp;&nbsp;padding: 20px; /* Inner space */<br>
+          &nbsp;&nbsp;border: 1px solid black;<br>
+          &nbsp;&nbsp;margin: 10px; /* Outer space */<br>
+          }
         </div>
       </div>
     </div>
 
-    <script>
-      function checkAnswer(questionNumber, answer) {
-        const correctAnswers = {
-          1: 'a',
-          2: 'a',
-          3: 'a',
-          4: 'a',
-          5: 'a'
-        };
+    <!-- Q6: CSS Colors -->
+    <div class="question">
+      <h3>6. Which is a valid way to set color in CSS?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">color: #FF0000;</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">color: rgb(255, 0, 0);</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">color: red;</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">All of the above</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          /* All these are valid */<br>
+          p { color: red; }<br>
+          p { color: #FF0000; }<br>
+          p { color: rgb(255, 0, 0); }<br>
+          p { color: hsl(0, 100%, 50%); }
+        </div>
+      </div>
+    </div>
 
-        const resultElement = document.getElementById('result' + questionNumber);
-        const visualExample = document.getElementById('example' + questionNumber);
-        const correctOutput = document.getElementById('output' + questionNumber);
+    <!-- Q7: Media Query Basics -->
+    <div class="question">
+      <h3>7. What is the purpose of CSS media queries?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">To apply different styles based on device characteristics</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">To add multimedia content</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">To query a database</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">To create animations</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="code">
+          @media (max-width: 768px) {<br>
+          &nbsp;&nbsp;/* Styles for screens smaller than 768px */<br>
+          &nbsp;&nbsp;body {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;font-size: 14px;<br>
+          &nbsp;&nbsp;}<br>
+          }
+        </div>
+      </div>
+    </div>
 
-        if (answer === correctAnswers[questionNumber]) {
-          resultElement.textContent = "Correct!";
-          resultElement.className = "result correct";
-          visualExample.style.display = 'block'; // Show visual example
-        } else {
-          resultElement.textContent = "Incorrect! Try again.";
-          resultElement.className = "result incorrect";
-          visualExample.style.display = 'none'; // Hide visual example
-        }
-      }
-    </script>
+    <!-- Q8: Media Query Syntax -->
+    <div class="question">
+      <h3>8. Which media query targets screens with a maximum width of 600px?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">@media (min-width: 600px)</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">@media screen and (max-width: 600px)</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">@media (device-width: 600px)</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">@media (width <= 600px)</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="code">
+          @media screen and (max-width: 600px) {<br>
+          &nbsp;&nbsp;.menu {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+          &nbsp;&nbsp;}<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9: Responsive Design -->
+    <div class="question">
+      <h3>9. What is the purpose of the viewport meta tag?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">To control the page's dimensions and scaling on mobile</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">To set the background image</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">To define the website's boundaries</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">To create a visible border around the page</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <div class="code">
+          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        </div>
+        <p>This tag ensures proper rendering and touch zooming on mobile devices.</p>
+      </div>
+    </div>
+
+    <!-- Q10: Mobile-First Approach -->
+    <div class="question">
+      <h3>10. In mobile-first design, how should media queries typically be structured?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">Start with mobile styles, then add larger screens with min-width</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">Start with desktop styles, then adjust for mobile with max-width</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">Create separate stylesheets for each device</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">Use only pixel values for all sizes</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <div class="code">
+          /* Mobile styles (default) */<br>
+          body { font-size: 14px; }<br><br>
+          /* Tablet styles */<br>
+          @media (min-width: 768px) {<br>
+          &nbsp;&nbsp;body { font-size: 16px; }<br>
+          }<br><br>
+          /* Desktop styles */<br>
+          @media (min-width: 1024px) {<br>
+          &nbsp;&nbsp;body { font-size: 18px; }<br>
+          }
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script>
+    const correctAnswers = {
+      1: 'a',
+      2: 'c',
+      3: 'b',
+      4: 'c',
+      5: 'c',
+      6: 'd',
+      7: 'a',
+      8: 'b',
+      9: 'a',
+      10: 'a'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
 </body>
 </html>

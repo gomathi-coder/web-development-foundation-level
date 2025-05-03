@@ -25,7 +25,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: auto auto auto auto;
       gap: 30px;
     }
     .footer-column h3 {
@@ -71,6 +71,44 @@
       color: #aaa;
       font-size: 14px;
     }
+
+    @media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: auto;
+
+  }
+
+  .footer-column {
+    margin-bottom: 30px;
+  }
+
+  .footer-column h3 {
+    font-size: 16px;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 8px;
+  }
+
+  .logo {
+    margin: 0 auto 15px;
+    display: block;
+  }
+
+  iframe {
+    height: 200px;
+  }
+
+  .contact-info p {
+    font-size: 13px;
+  }
+
+  .copyright {
+    font-size: 13px;
+    padding-top: 15px;
+  }
+}
+
   </style>
 </head>
 <body>

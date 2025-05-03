@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS + HTML Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms & DOM Quiz</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,13 +44,21 @@
     .option:hover {
       background: #b3e5fc;
     }
-    .option.correct {
-      background: #c8e6c9 !important;
-      color: #2e7d32;
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
     }
-    .option.incorrect {
-      background: #ffcdd2 !important;
-      color: #c62828;
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
     }
     .result {
       display: none;
@@ -58,107 +66,313 @@
       padding: 10px;
       border-radius: 5px;
     }
-    .correct-msg {
+    .correct {
       background: #e8f5e9;
       color: #2e7d32;
-      display: block;
+      display: block !important;
     }
-    .incorrect-msg {
+    .incorrect {
       background: #ffebee;
       color: #c62828;
-      display: block;
+      display: block !important;
+    }
+    .layout-demo {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      position: relative;
+      border: 1px dashed #999;
+    }
+    .demo-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #3D52A0;
+      color: white;
+      padding: 10px;
+    }
+    .demo-hamburger {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .demo-hamburger span {
+      height: 3px;
+      background: white;
+    }
+    .demo-pattern {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-2 div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-3 div {
+      background: #3D52A0;
+      height: 50px;
+      flex: 1 1 200px;
     }
   </style>
 </head>
 <body>
-
   <div class="quiz-container">
-    <h1>JavaScript & HTML Quiz</h1>
+    <h1>Forms & DOM Quiz</h1>
 
-    <!-- Question Template -->
-    <div class="question" id="q1">
-      <h3>1. What is the correct syntax for declaring a function in JavaScript?</h3>
+    <!-- Q1: Form Tag -->
+    <div class="question">
+      <h3>1. Which HTML tag is used to create a form?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(this, 'q1', 'a')">function: myFunc() {}</div>
-        <div class="option" onclick="checkAnswer(this, 'q1', 'b')">function myFunc() {}</div>
-        <div class="option" onclick="checkAnswer(this, 'q1', 'c')">create function myFunc() {}</div>
-        <div class="option" onclick="checkAnswer(this, 'q1', 'd')">function = myFunc() {}</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">&lt;form&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;input&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">&lt;fieldset&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">&lt;section&gt;</div>
       </div>
-      <div class="result" id="result-q1"></div>
+      <div id="result1" class="result"></div>
+      <div class="visual-example" id="visual1">
+        <div class="code">
+          &lt;form action="/submit" method="post"&gt;<br>
+          &nbsp;&nbsp;&lt;!-- form elements go here --&gt;<br>
+          &lt;/form&gt;
+        </div>
+      </div>
     </div>
 
-    <div class="question" id="q2">
-      <h3>2. What event is used to run code when a button is clicked?</h3>
+    <!-- Q2: Input Types -->
+    <div class="question">
+      <h3>2. Which input type creates a checkbox?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(this, 'q2', 'a')">onhover</div>
-        <div class="option" onclick="checkAnswer(this, 'q2', 'b')">onpress</div>
-        <div class="option" onclick="checkAnswer(this, 'q2', 'c')">onclick</div>
-        <div class="option" onclick="checkAnswer(this, 'q2', 'd')">onload</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">type="radio"</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">type="check"</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">type="checkbox"</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">type="toggle"</div>
       </div>
-      <div class="result" id="result-q2"></div>
+      <div id="result2" class="result"></div>
+      <div class="visual-example" id="visual2">
+        <div class="form-preview">
+          <input type="checkbox" id="agree"> <label for="agree">I agree</label>
+        </div>
+        <div class="code">
+          &lt;input type="checkbox" id="agree"&gt;<br>
+          &lt;label for="agree"&gt;I agree&lt;/label&gt;
+        </div>
+      </div>
     </div>
 
-    <div class="question" id="q3">
-      <h3>3. Which of the following gets the value from an input field with ID 'email'?</h3>
+    <!-- Q3: Form Styling -->
+    <div class="question">
+      <h3>3. Which CSS property changes the background color of an input when focused?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(this, 'q3', 'a')">getElement('email').value</div>
-        <div class="option" onclick="checkAnswer(this, 'q3', 'b')">document.query('email').value</div>
-        <div class="option" onclick="checkAnswer(this, 'q3', 'c')">document.getElementById('email').value</div>
-        <div class="option" onclick="checkAnswer(this, 'q3', 'd')">document.value('email')</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">:hover</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">:active</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">:focus</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">:selected</div>
       </div>
-      <div class="result" id="result-q3"></div>
+      <div id="result3" class="result"></div>
+      <div class="visual-example" id="visual3">
+        <div class="code">
+          input:focus {<br>
+          &nbsp;&nbsp;background-color: #f0f8ff;<br>
+          &nbsp;&nbsp;border-color: #3D52A0;<br>
+          }
+        </div>
+      </div>
     </div>
 
-    <div class="question" id="q4">
-      <h3>4. What does the following code output?<br><code>alert(typeof 10);</code></h3>
+    <!-- Q4: Label Association -->
+    <div class="question">
+      <h3>4. How do you properly associate a label with an input?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(this, 'q4', 'a')">"object"</div>
-        <div class="option" onclick="checkAnswer(this, 'q4', 'b')">"string"</div>
-        <div class="option" onclick="checkAnswer(this, 'q4', 'c')">"number"</div>
-        <div class="option" onclick="checkAnswer(this, 'q4', 'd')">"integer"</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">Using the 'name' attribute</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">Using the 'id' and 'for' attributes</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">Placing them side by side</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">Using the 'class' attribute</div>
       </div>
-      <div class="result" id="result-q4"></div>
+      <div id="result4" class="result"></div>
+      <div class="visual-example" id="visual4">
+        <div class="form-preview">
+          <label for="username">Username:</label>
+          <input type="text" id="username">
+        </div>
+        <div class="code">
+          &lt;label for="username"&gt;Username:&lt;/label&gt;<br>
+          &lt;input type="text" id="username"&gt;
+        </div>
+      </div>
     </div>
 
-    <div class="question" id="q5">
-      <h3>5. What is the correct way to add a submit event to a form?</h3>
+    <!-- Q5: DOM Selection -->
+    <div class="question">
+      <h3>5. Which method selects an element by its ID?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(this, 'q5', 'a')">form.onSubmit = runFunction()</div>
-        <div class="option" onclick="checkAnswer(this, 'q5', 'b')">form.submit(runFunction)</div>
-        <div class="option" onclick="checkAnswer(this, 'q5', 'c')">form.addEventListener("submit", runFunction)</div>
-        <div class="option" onclick="checkAnswer(this, 'q5', 'd')">submit.runFunction(form)</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">document.querySelector()</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">document.getElementById()</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">document.getElementsByClassName()</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">document.findElement()</div>
       </div>
-      <div class="result" id="result-q5"></div>
+      <div id="result5" class="result"></div>
+      <div class="visual-example" id="visual5">
+        <div class="code">
+          // HTML: &lt;div id="header"&gt;...&lt;/div&gt;<br>
+          const header = document.getElementById('header');
+        </div>
+      </div>
     </div>
 
+    <!-- Q6: Event Listeners -->
+    <div class="question">
+      <h3>6. How do you attach a click event to a button with ID "submit-btn"?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">button.addEventListener('press', handler)</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">button.onClick(handler)</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">button.addEvent('click', handler)</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">button.addEventListener('click', handler)</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="code">
+          const btn = document.getElementById('submit-btn');<br>
+          btn.addEventListener('click', function() {<br>
+          &nbsp;&nbsp;alert('Button clicked!');<br>
+          });
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7: Form Validation -->
+    <div class="question">
+      <h3>7. Which HTML5 attribute makes an input field required?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">mandatory="true"</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">validate="required"</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">required</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">necessary="yes"</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="form-preview">
+          <input type="text" required placeholder="Required field">
+        </div>
+        <div class="code">
+          &lt;input type="text" required&gt;
+        </div>
+      </div>
+    </div>
+
+    <!-- Q8: DOM Manipulation -->
+    <div class="question">
+      <h3>8. How would you change the text of a &lt;p id="demo"&gt; element?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">document.getElementById('demo').value = "New text"</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">document.getElementById('demo').innerHTML = "New text"</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">document.getElementById('demo').text = "New text"</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">document.getElementById('demo').content = "New text"</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <div class="code">
+          &lt;p id="demo"&gt;Original text&lt;/p&gt;<br><br>
+          // JavaScript:<br>
+          document.getElementById('demo').innerHTML = "New text";
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9: Form Submission -->
+    <div class="question">
+      <h3>9. How do you prevent a form from submitting using JavaScript?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">event.stop()</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">event.cancel()</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">event.preventDefault()</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">form.stopSubmission()</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <div class="code">
+          document.querySelector('form').addEventListener('submit', function(event) {<br>
+          &nbsp;&nbsp;event.preventDefault();<br>
+          &nbsp;&nbsp;// Validation or AJAX code here<br>
+          });
+        </div>
+      </div>
+    </div>
+
+    <!-- Q10: CSS Form Layout -->
+    <div class="question">
+      <h3>10. Which CSS property is commonly used to create responsive form layouts?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">display: table</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">display: flex</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">position: absolute</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">float: left</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <div class="code">
+          form {<br>
+          &nbsp;&nbsp;display: flex;<br>
+          &nbsp;&nbsp;flex-direction: column;<br>
+          &nbsp;&nbsp;gap: 1rem;<br>
+          }
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
     const correctAnswers = {
-      q1: 'b',
-      q2: 'c',
-      q3: 'c',
-      q4: 'c',
-      q5: 'c'
+      1: 'a',
+      2: 'c',
+      3: 'c',
+      4: 'b',
+      5: 'b',
+      6: 'd',
+      7: 'c',
+      8: 'b',
+      9: 'c',
+      10: 'b'
     };
 
-    function checkAnswer(selectedOption, questionId, answerId) {
-      const allOptions = document.querySelectorAll(`#${questionId} .option`);
-      allOptions.forEach(option => option.classList.remove('correct', 'incorrect'));
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
 
-      const resultDiv = document.getElementById(`result-${questionId}`);
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
 
-      if (correctAnswers[questionId] === answerId) {
-        selectedOption.classList.add('correct');
-        resultDiv.textContent = "✅ Correct!";
-        resultDiv.className = "result correct-msg";
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
       } else {
-        selectedOption.classList.add('incorrect');
-        resultDiv.textContent = "❌ Incorrect. Try again!";
-        resultDiv.className = "result incorrect-msg";
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
       }
     }
   </script>
-
 </body>
 </html>

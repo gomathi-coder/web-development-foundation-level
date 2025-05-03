@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Layout Systems Quiz</title>
   <style>
     body {
@@ -76,22 +76,65 @@
       color: #c62828;
       display: block !important;
     }
-    .example-output {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-      background: #ff9800;
-      color: white;
-      font-size: 18px;
-      border-radius: 5px;
-      margin-top: 10px;
+    .layout-demo {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      position: relative;
+      border: 1px dashed #999;
     }
-    .html-output {
-      margin-top: 20px;
-      padding: 20px;
-      background: #eeeeee;
-      border-radius: 10px;
+    .demo-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #3D52A0;
+      color: white;
+      padding: 10px;
+    }
+    .demo-hamburger {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .demo-hamburger span {
+      height: 3px;
+      background: white;
+    }
+    .demo-pattern {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-2 div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-3 div {
+      background: #3D52A0;
+      height: 50px;
+      flex: 1 1 200px;
     }
   </style>
 </head>
@@ -99,131 +142,326 @@
   <div class="quiz-container">
     <h1>CSS Layout Systems Quiz</h1>
 
-    <!-- Question 1 -->
+    <!-- Q1: Navigation Basics -->
     <div class="question">
-      <h3>1. Which property is used in Flexbox to align items horizontally?</h3>
+      <h3>1. What is the most semantic HTML element for primary navigation?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'a')">justify-content</div>
-        <div class="option" onclick="checkAnswer(1, 'b')">align-items</div>
-        <div class="option" onclick="checkAnswer(1, 'c')">align-self</div>
-        <div class="option" onclick="checkAnswer(1, 'd')">flex-direction</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">&lt;nav&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">&lt;div class="nav"&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">&lt;menu&gt;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">&lt;ul&gt;</div>
       </div>
       <div id="result1" class="result"></div>
-      <div class="visual-example" id="example1">
-        <div class="example-output" id="output1">Example: Flexbox align items horizontally</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .container { display: flex; justify-content: space-between; }
-          </div>
+      <div class="visual-example" id="visual1">
+        <p>Semantic navigation example:</p>
+        <div class="code">
+          &lt;nav&gt;<br>
+          &nbsp;&nbsp;&lt;ul&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;<br>
+          &nbsp;&nbsp;&lt;/ul&gt;<br>
+          &lt;/nav&gt;
         </div>
       </div>
     </div>
 
-    <!-- Question 2 -->
+    <!-- Q2: Flexbox Navigation -->
     <div class="question">
-      <h3>2. How can you create a horizontal navigation bar using Flexbox?</h3>
+      <h3>2. Which CSS property would you use to evenly space navigation items horizontally?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a')">Set the display of the container to `block`.</div>
-        <div class="option" onclick="checkAnswer(2, 'b')">Set the display of the container to `flex` and `flex-direction: row;`.</div>
-        <div class="option" onclick="checkAnswer(2, 'c')">Use `position: absolute;` for the navigation items.</div>
-        <div class="option" onclick="checkAnswer(2, 'd')">Use `display: inline-block;` for each item.</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">display: flex; justify-content: space-around;</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">display: grid; grid-auto-flow: column;</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">display: block; text-align: center;</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">float: left; margin: auto;</div>
       </div>
       <div id="result2" class="result"></div>
-      <div class="visual-example" id="example2">
-        <div class="example-output" id="output2">Example: Horizontal Navigation Bar using Flexbox</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .nav { display: flex; justify-content: space-around; }
-          </div>
+      <div class="visual-example" id="visual2">
+        <div class="demo-nav">
+          <span>Home</span>
+          <span>About</span>
+          <span>Services</span>
+          <span>Contact</span>
+        </div>
+        <p>Flexbox is ideal for navigation menus:</p>
+        <div class="code">
+          nav ul {<br>
+          &nbsp;&nbsp;display: flex;<br>
+          &nbsp;&nbsp;justify-content: space-around;<br>
+          &nbsp;&nbsp;list-style: none;<br>
+          &nbsp;&nbsp;padding: 0;<br>
+          }
         </div>
       </div>
     </div>
 
-    <!-- Question 3 -->
+    <!-- Q3: Mobile Navigation -->
     <div class="question">
-      <h3>3. Which of the following is the correct value for the `position` property to make an element fixed at the top of the page?</h3>
+      <h3>3. What's the common approach for mobile navigation on large websites?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'd')">fixed</div>
-        <div class="option" onclick="checkAnswer(3, 'a')">absolute</div>
-        <div class="option" onclick="checkAnswer(3, 'b')">relative</div>
-        <div class="option" onclick="checkAnswer(3, 'c')">static</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">Hamburger menu that expands when clicked</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">Showing all navigation items in tiny font</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">Requiring users to rotate their device</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">Using only footer navigation</div>
       </div>
       <div id="result3" class="result"></div>
-      <div class="visual-example" id="example3">
-        <div class="example-output" id="output3">Example: Fixed Position at the Top</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .header { position: fixed; top: 0; left: 0; width: 100%; }
+      <div class="visual-example" id="visual3">
+        <div class="layout-demo">
+          <div class="demo-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
+        </div>
+        <p>Hamburger menu implementation:</p>
+        <div class="code">
+          /* Mobile first */<br>
+          .nav-menu { display: none; }<br>
+          .hamburger { display: block; }<br><br>
+          
+          /* Desktop */<br>
+          @media (min-width: 768px) {<br>
+          &nbsp;&nbsp;.nav-menu { display: flex; }<br>
+          &nbsp;&nbsp;.hamburger { display: none; }<br>
+          }
         </div>
       </div>
     </div>
 
-    <!-- Question 4 -->
+    <!-- Q4: Sticky Navigation -->
     <div class="question">
-      <h3>4. How can you use media queries to make a Flexbox container responsive?</h3>
+      <h3>4. How do you create a navigation bar that stays fixed at the top when scrolling?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'a')">Use media queries to change `flex-direction` based on screen width.</div>
-        <div class="option" onclick="checkAnswer(4, 'b')">Use media queries to change `display: flex` to `display: block`.</div>
-        <div class="option" onclick="checkAnswer(4, 'c')">Use media queries to remove padding in Flexbox.</div>
-        <div class="option" onclick="checkAnswer(4, 'd')">None of the above.</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">position: sticky; top: 0;</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">float: top;</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">display: fixed;</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">position: absolute; top: 0;</div>
       </div>
       <div id="result4" class="result"></div>
-      <div class="visual-example" id="example4">
-        <div class="example-output" id="output4">Example: Flexbox Responsive Design</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            @media (max-width: 600px) { .container { flex-direction: column; } }
-          </div>
+      <div class="visual-example" id="visual4">
+        <p>Sticky navigation remains visible while scrolling:</p>
+        <div class="code">
+          nav {<br>
+          &nbsp;&nbsp;position: sticky;<br>
+          &nbsp;&nbsp;top: 0;<br>
+          &nbsp;&nbsp;background: white;<br>
+          &nbsp;&nbsp;z-index: 100;<br>
+          &nbsp;&nbsp;box-shadow: 0 2px 5px rgba(0,0,0,0.1);<br>
+          }
         </div>
       </div>
     </div>
 
-    <!-- Question 5 -->
+    <!-- Q5: Pattern 01 (Card Grid) -->
     <div class="question">
-      <h3>5. What does `flex-wrap: wrap` do in a Flexbox container?</h3>
+      <h3>5. Which CSS technique is best for creating a responsive card grid (Pattern 01)?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a')">It makes the items align in a row.</div>
-        <div class="option" onclick="checkAnswer(5, 'b')">It ensures that items stay in a single row.</div>
-        <div class="option" onclick="checkAnswer(5, 'c')">It allows items to move to the next line if needed.</div>
-        <div class="option" onclick="checkAnswer(5, 'd')">It centers the items vertically.</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">CSS Grid with auto-fill and minmax()</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">Floats with clearfix</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">Absolute positioning</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">Table layout</div>
       </div>
       <div id="result5" class="result"></div>
-      <div class="visual-example" id="example5">
-        <div class="example-output" id="output5">Example: Flex-wrap in action</div>
-        <div class="html-output">
-          <div style="font-family: 'Courier New', monospace; background: #263238; color: #f8f8f2; padding: 15px;">
-            .container { display: flex; flex-wrap: wrap; }
-          </div>
+      <div class="visual-example" id="visual5">
+        <div class="demo-pattern">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p>CSS Grid for card layouts:</p>
+        <div class="code">
+          .card-grid {<br>
+          &nbsp;&nbsp;display: grid;<br>
+          &nbsp;&nbsp;grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));<br>
+          &nbsp;&nbsp;gap: 20px;<br>
+          }
         </div>
       </div>
     </div>
 
-    <script>
-      function checkAnswer(questionNumber, answer) {
-        const correctAnswers = {
-          1: 'a',
-          2: 'b',
-          3: 'd',
-          4: 'a',
-          5: 'c'
-        };
+    <!-- Q6: Pattern 02 (Sidebar + Main) -->
+    <div class="question">
+      <h3>6. For a sidebar + main content layout (Pattern 02), which approach is most flexible?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">CSS Grid with grid-template-columns: 1fr 3fr;</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">Two floated divs</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">Absolute positioned sidebar</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">Flexbox with fixed widths</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="visual-example" id="visual6">
+        <div class="demo-pattern-2">
+          <div></div>
+          <div></div>
+        </div>
+        <p>Sidebar layout with CSS Grid:</p>
+        <div class="code">
+          .layout {<br>
+          &nbsp;&nbsp;display: grid;<br>
+          &nbsp;&nbsp;grid-template-columns: 1fr 3fr;<br>
+          &nbsp;&nbsp;gap: 20px;<br>
+          }<br><br>
+          
+          @media (max-width: 768px) {<br>
+          &nbsp;&nbsp;.layout { grid-template-columns: 1fr; }<br>
+          }
+        </div>
+      </div>
+    </div>
 
-        const resultElement = document.getElementById('result' + questionNumber);
-        const visualExample = document.getElementById('example' + questionNumber);
-        const correctOutput = document.getElementById('output' + questionNumber);
+    <!-- Q7: Pattern 03 (Masonry) -->
+    <div class="question">
+      <h3>7. How would you implement a responsive masonry layout (Pattern 03)?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">CSS Grid with auto-rows and dense packing</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">Multiple floated columns</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">JavaScript calculation</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">CSS columns property</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="visual-example" id="visual7">
+        <div class="demo-pattern-3">
+          <div style="height: 70px;"></div>
+          <div style="height: 100px;"></div>
+          <div style="height: 60px;"></div>
+          <div style="height: 90px;"></div>
+          <div style="height: 80px;"></div>
+        </div>
+        <p>Modern masonry with CSS Grid:</p>
+        <div class="code">
+          .masonry {<br>
+          &nbsp;&nbsp;display: grid;<br>
+          &nbsp;&nbsp;grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));<br>
+          &nbsp;&nbsp;grid-auto-rows: 10px;<br>
+          &nbsp;&nbsp;grid-auto-flow: dense;<br>
+          &nbsp;&nbsp;gap: 15px;<br>
+          }<br>
+          .item {<br>
+          &nbsp;&nbsp;grid-row-end: span var(--row-span);<br>
+          }
+        </div>
+      </div>
+    </div>
 
-        if (answer === correctAnswers[questionNumber]) {
-          resultElement.textContent = "Correct!";
-          resultElement.className = "result correct";
-          visualExample.style.display = 'block'; // Show visual example
-        } else {
-          resultElement.textContent = "Incorrect! Try again.";
-          resultElement.className = "result incorrect";
-          visualExample.style.display = 'none'; // Hide visual example
-        }
-      }
-    </script>
+    <!-- Q8: Mobile Nav Toggle -->
+    <div class="question">
+      <h3>8. What's the best way to toggle mobile navigation visibility?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">JavaScript to toggle a CSS class</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">CSS :hover pseudo-class</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">HTML5 details/summary elements</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">CSS animations only</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="visual-example" id="visual8">
+        <p>Mobile navigation toggle implementation:</p>
+        <div class="code">
+          // JavaScript<br>
+          document.querySelector('.hamburger').addEventListener('click', () => {<br>
+          &nbsp;&nbsp;document.querySelector('.nav-menu').classList.toggle('active');<br>
+          });<br><br>
+          
+          /* CSS */<br>
+          .nav-menu {<br>
+          &nbsp;&nbsp;display: none;<br>
+          &nbsp;&nbsp;/* other styles */<br>
+          }<br>
+          .nav-menu.active {<br>
+          &nbsp;&nbsp;display: block;<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9: Navigation Accessibility -->
+    <div class="question">
+      <h3>9. What's an important accessibility consideration for navigation menus?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">Keyboard navigability and ARIA labels</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">Using only icons without text</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">Auto-playing navigation instructions</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">High contrast only for dropdowns</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="visual-example" id="visual9">
+        <p>Accessible navigation includes:</p>
+        <ul>
+          <li>Keyboard focus styles</li>
+          <li>ARIA attributes (aria-expanded, aria-label)</li>
+          <li>Skip navigation links</li>
+          <li>Proper heading structure</li>
+        </ul>
+        <div class="code">
+          &lt;nav aria-label="Main navigation"&gt;<br>
+          &nbsp;&nbsp;&lt;ul&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button aria-expanded="false" aria-controls="submenu"&gt;Products&lt;/button&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul id="submenu" hidden&gt;...&lt;/ul&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br>
+          &nbsp;&nbsp;&lt;/ul&gt;<br>
+          &lt;/nav&gt;
+        </div>
+      </div>
+    </div>
+
+    <!-- Q10: Layout Pattern Selection -->
+    <div class="question">
+      <h3>10. When choosing between layout patterns, what's the most important factor?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">Content structure and user needs</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">Latest CSS trend popularity</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">Browser support for IE11</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">Developer preference</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="visual-example" id="visual10">
+        <p>Choosing layout patterns should consider:</p>
+        <ul>
+          <li><strong>Content type:</strong> Is it hierarchical? Linear? Modular?</li>
+          <li><strong>User goals:</strong> What are users trying to accomplish?</li>
+          <li><strong>Device variety:</strong> How will it work across screen sizes?</li>
+          <li><strong>Performance:</strong> How complex is the layout?</li>
+        </ul>
+        <p>Pattern 01 (Grid) for equal importance items<br>
+        Pattern 02 (Sidebar) for hierarchical content<br>
+        Pattern 03 (Masonry) for variable height content</p>
+      </div>
+    </div>
   </div>
+
+  <script>
+    const correctAnswers = {
+      1: 'a',
+      2: 'a',
+      3: 'a',
+      4: 'a',
+      5: 'a',
+      6: 'a',
+      7: 'a',
+      8: 'a',
+      9: 'a',
+      10: 'a'
+    };
+
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const visual = document.getElementById(`visual${questionNum}`);
+
+      document.querySelectorAll('.visual-example').forEach(el => el.style.display = 'none');
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        visual.style.display = 'block';
+      } else {
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
+      }
+    }
+  </script>
 </body>
 </html>

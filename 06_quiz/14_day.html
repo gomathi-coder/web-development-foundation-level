@@ -1,64 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript Basics Quiz</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       max-width: 800px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
     }
     .quiz-container {
       background: white;
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     h1 {
-      color: #007BFF;
       text-align: center;
+      color: #3D52A0;
     }
     .question {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
     }
     .options {
-      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
     }
     .option {
-      background: #e2e6ea;
-      margin: 5px 0;
-      padding: 10px 15px;
-      border-radius: 5px;
+      background: #e1f5fe;
+      padding: 12px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
     }
     .option:hover {
-      background: #d0d4d8;
+      background: #b3e5fc;
+    }
+    .visual-example {
+      display: none;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #3D52A0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .code {
+      font-family: 'Courier New', monospace;
+      background: #263238;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
     }
     .result {
+      display: none;
       margin-top: 10px;
       padding: 10px;
-      display: none;
       border-radius: 5px;
     }
     .correct {
-      background: #d4edda;
-      color: #155724;
+      background: #e8f5e9;
+      color: #2e7d32;
       display: block !important;
     }
     .incorrect {
-      background: #f8d7da;
-      color: #721c24;
+      background: #ffebee;
+      color: #c62828;
       display: block !important;
     }
-    code {
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
+    .layout-demo {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      position: relative;
+      border: 1px dashed #999;
+    }
+    .demo-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #3D52A0;
+      color: white;
+      padding: 10px;
+    }
+    .demo-hamburger {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .demo-hamburger span {
+      height: 3px;
+      background: white;
+    }
+    .demo-pattern {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-2 div {
+      background: #3D52A0;
+      height: 50px;
+    }
+    .demo-pattern-3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+    }
+    .demo-pattern-3 div {
+      background: #3D52A0;
+      height: 50px;
+      flex: 1 1 200px;
     }
   </style>
 </head>
@@ -66,85 +142,311 @@
   <div class="quiz-container">
     <h1>JavaScript Basics Quiz</h1>
 
-    <!-- Question 1 -->
+    <!-- Q1: JS Introduction -->
     <div class="question">
-      <h3>1. What is the correct way to declare a variable in JavaScript?</h3>
+      <h3>1. Where is the correct place to insert JavaScript in an HTML document?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(1, 'a')">int x = 10;</div>
-        <div class="option" onclick="checkAnswer(1, 'b')">let x = 10;</div>
-        <div class="option" onclick="checkAnswer(1, 'c')">variable x = 10;</div>
-        <div class="option" onclick="checkAnswer(1, 'd')">declare x = 10;</div>
+        <div class="option" onclick="checkAnswer(1, 'd')">Both in the &lt;head&gt; and &lt;body&gt; are acceptable</div>
+        <div class="option" onclick="checkAnswer(1, 'a')">In the &lt;head&gt; section</div>
+        <div class="option" onclick="checkAnswer(1, 'b')">In the &lt;body&gt; section</div>
+        <div class="option" onclick="checkAnswer(1, 'c')">In an external .css file</div>
       </div>
       <div id="result1" class="result"></div>
+      <div class="explanation" id="explanation1">
+        <p>JavaScript can be placed:</p>
+        <ul>
+          <li>In the <code>&lt;head&gt;</code> (executes before page renders)</li>
+          <li>In the <code>&lt;body&gt;</code> (executes as it's encountered)</li>
+          <li>In external .js files (recommended for larger projects)</li>
+        </ul>
+        <div class="code">
+          &lt;!-- In head --&gt;
+          &lt;head&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+          &lt;/head&gt;
+          
+          &lt;!-- Before closing body --&gt;
+          &lt;body&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+          &lt;/body&gt;
+        </div>
+      </div>
     </div>
 
-    <!-- Question 2 -->
+    <!-- Q2: JS Output -->
     <div class="question">
-      <h3>2. What is the result of <code>5 + "5"</code> in JavaScript?</h3>
+      <h3>2. Which of these is NOT a way to display output in JavaScript?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(2, 'a')">10</div>
-        <div class="option" onclick="checkAnswer(2, 'b')">"10"</div>
-        <div class="option" onclick="checkAnswer(2, 'c')">"55"</div>
-        <div class="option" onclick="checkAnswer(2, 'd')">Error</div>
+        <div class="option" onclick="checkAnswer(2, 'a')">console.print()</div>
+        <div class="option" onclick="checkAnswer(2, 'b')">document.write()</div>
+        <div class="option" onclick="checkAnswer(2, 'c')">alert()</div>
+        <div class="option" onclick="checkAnswer(2, 'd')">console.log()</div>
       </div>
       <div id="result2" class="result"></div>
+      <div class="explanation" id="explanation2">
+        <p>Correct output methods:</p>
+        <ul>
+          <li><code>console.log()</code> - Outputs to browser console</li>
+          <li><code>document.write()</code> - Writes directly to HTML (rarely used)</li>
+          <li><code>alert()</code> - Shows popup dialog</li>
+          <li><code>innerHTML/textContent</code> - Modifies HTML elements</li>
+        </ul>
+        <p><code>console.print()</code> doesn't exist in standard JavaScript.</p>
+      </div>
     </div>
 
-    <!-- Question 3 -->
+    <!-- Q3: Variables -->
     <div class="question">
-      <h3>3. Which of these is a correct comparison operator in JavaScript?</h3>
+      <h3>3. What is the correct way to declare a variable in modern JavaScript?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(3, 'a')">==</div>
-        <div class="option" onclick="checkAnswer(3, 'b')">=</div>
-        <div class="option" onclick="checkAnswer(3, 'c')">!=</div>
-        <div class="option" onclick="checkAnswer(3, 'd')">All of the above</div>
+        <div class="option" onclick="checkAnswer(3, 'a')">let x = 5;</div>
+        <div class="option" onclick="checkAnswer(3, 'b')">variable x = 5;</div>
+        <div class="option" onclick="checkAnswer(3, 'c')">v x = 5;</div>
+        <div class="option" onclick="checkAnswer(3, 'd')">x = 5;</div>
       </div>
       <div id="result3" class="result"></div>
+      <div class="explanation" id="explanation3">
+        <p>Modern JavaScript has three ways to declare variables:</p>
+        <div class="code">
+          // Block-scoped variable (can be reassigned)
+          let x = 5;
+          
+          // Block-scoped constant (cannot be reassigned)
+          const y = 10;
+          
+          // Function-scoped or global variable (avoid in modern JS)
+          var z = 15;
+        </div>
+        <p><code>let</code> and <code>const</code> are preferred over <code>var</code> in modern JavaScript.</p>
+      </div>
     </div>
 
-    <!-- Question 4 -->
+    <!-- Q4: Data Types -->
     <div class="question">
-      <h3>4. What does the DOM stand for?</h3>
+      <h3>4. Which of these is NOT a JavaScript primitive data type?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(4, 'a')">Data Object Model</div>
-        <div class="option" onclick="checkAnswer(4, 'b')">Document Oriented Method</div>
-        <div class="option" onclick="checkAnswer(4, 'c')">Document Object Model</div>
-        <div class="option" onclick="checkAnswer(4, 'd')">Dynamic Output Model</div>
+        <div class="option" onclick="checkAnswer(4, 'a')">array</div>
+        <div class="option" onclick="checkAnswer(4, 'b')">string</div>
+        <div class="option" onclick="checkAnswer(4, 'c')">boolean</div>
+        <div class="option" onclick="checkAnswer(4, 'd')">number</div>
       </div>
       <div id="result4" class="result"></div>
+      <div class="explanation" id="explanation4">
+        <p>JavaScript primitive data types:</p>
+        <ul>
+          <li>string (e.g. "hello")</li>
+          <li>number (e.g. 42, 3.14)</li>
+          <li>boolean (true/false)</li>
+          <li>null</li>
+          <li>undefined</li>
+          <li>symbol (ES6+)</li>
+          <li>bigint (ES2020+)</li>
+        </ul>
+        <p>Array is an object type, not a primitive.</p>
+      </div>
     </div>
 
-    <!-- Question 5 -->
+    <!-- Q5: Type Conversion -->
     <div class="question">
-      <h3>5. What does this line do: <code>document.getElementById("demo").innerText = "Hello"</code>?</h3>
+      <h3>5. What will <code>typeof null</code> return in JavaScript?</h3>
       <div class="options">
-        <div class="option" onclick="checkAnswer(5, 'a')">Creates a new HTML element</div>
-        <div class="option" onclick="checkAnswer(5, 'b')">Changes the text inside an element with id "demo"</div>
-        <div class="option" onclick="checkAnswer(5, 'c')">Deletes the element</div>
-        <div class="option" onclick="checkAnswer(5, 'd')">Saves data to a file</div>
+        <div class="option" onclick="checkAnswer(5, 'a')">"object"</div>
+        <div class="option" onclick="checkAnswer(5, 'b')">"null"</div>
+        <div class="option" onclick="checkAnswer(5, 'c')">"undefined"</div>
+        <div class="option" onclick="checkAnswer(5, 'd')">"number"</div>
       </div>
       <div id="result5" class="result"></div>
+      <div class="explanation" id="explanation5">
+        <p>This is a well-known quirk in JavaScript:</p>
+        <div class="code">
+          typeof null; // Returns "object" (historical bug)
+          typeof undefined; // Returns "undefined"
+        </div>
+        <p>This behavior is from early JavaScript and can't be fixed without breaking existing code.</p>
+      </div>
     </div>
 
+    <!-- Q6: Function Declaration -->
+    <div class="question">
+      <h3>6. What is the correct syntax for a JavaScript function declaration?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(6, 'a')">function myFunc() { }</div>
+        <div class="option" onclick="checkAnswer(6, 'b')">func myFunc() { }</div>
+        <div class="option" onclick="checkAnswer(6, 'c')">myFunc = function() { }</div>
+        <div class="option" onclick="checkAnswer(6, 'd')">def myFunc() { }</div>
+      </div>
+      <div id="result6" class="result"></div>
+      <div class="explanation" id="explanation6">
+        <p>JavaScript has several ways to define functions:</p>
+        <div class="code">
+          // Function declaration (hoisted)
+          function myFunc() { }
+          
+          // Function expression
+          const myFunc = function() { };
+          
+          // Arrow function (ES6+)
+          const myFunc = () => { };
+        </div>
+        <p>The declaration syntax starts with the <code>function</code> keyword.</p>
+      </div>
+    </div>
+
+    <!-- Q7: Function Parameters -->
+    <div class="question">
+      <h3>7. How can you access all arguments passed to a function, regardless of parameters?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(7, 'a')">Using the arguments object</div>
+        <div class="option" onclick="checkAnswer(7, 'b')">Using the params array</div>
+        <div class="option" onclick="checkAnswer(7, 'c')">Using the ...rest parameter</div>
+        <div class="option" onclick="checkAnswer(7, 'd')">Both a and c</div>
+      </div>
+      <div id="result7" class="result"></div>
+      <div class="explanation" id="explanation7">
+        <p>Two ways to handle variable arguments:</p>
+        <div class="code">
+          // Traditional arguments object (array-like)
+          function sum() {
+            let total = 0;
+            for (let i = 0; i < arguments.length; i++) {
+              total += arguments[i];
+            }
+            return total;
+          }
+          
+          // Modern rest parameters (ES6+)
+          function sum(...numbers) {
+            return numbers.reduce((a, b) => a + b, 0);
+          }
+        </div>
+        <p>The rest parameter syntax is preferred in modern JavaScript.</p>
+      </div>
+    </div>
+
+    <!-- Q8: Arrow Functions -->
+    <div class="question">
+      <h3>8. What is a key difference between arrow functions and regular functions?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(8, 'a')">Arrow functions don't have their own 'this'</div>
+        <div class="option" onclick="checkAnswer(8, 'b')">Arrow functions can't return values</div>
+        <div class="option" onclick="checkAnswer(8, 'c')">Arrow functions must have parameters</div>
+        <div class="option" onclick="checkAnswer(8, 'd')">Arrow functions can't be assigned to variables</div>
+      </div>
+      <div id="result8" class="result"></div>
+      <div class="explanation" id="explanation8">
+        <p>Arrow functions (ES6+) differ from regular functions in several ways:</p>
+        <ul>
+          <li>No own <code>this</code> (inherits from surrounding scope)</li>
+          <li>No <code>arguments</code> object (use rest parameters instead)</li>
+          <li>Can't be used as constructors (no <code>new</code>)</li>
+          <li>Shorter syntax (often one-line)</li>
+        </ul>
+        <div class="code">
+          // Regular function
+          const obj = {
+            value: 42,
+            print: function() {
+              console.log(this.value); // 42
+            }
+          };
+          
+          // Arrow function (inherits 'this')
+          const obj = {
+            value: 42,
+            print: () => {
+              console.log(this.value); // undefined
+            }
+          };
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9: Scope -->
+    <div class="question">
+      <h3>9. What will this code output?<br><code>let x = 10;<br>function test() {<br>&nbsp;&nbsp;console.log(x);<br>&nbsp;&nbsp;let x = 20;<br>}<br>test();</code></h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(9, 'a')">ReferenceError</div>
+        <div class="option" onclick="checkAnswer(9, 'b')">10</div>
+        <div class="option" onclick="checkAnswer(9, 'c')">20</div>
+        <div class="option" onclick="checkAnswer(9, 'd')">undefined</div>
+      </div>
+      <div id="result9" class="result"></div>
+      <div class="explanation" id="explanation9">
+        <p>This demonstrates the "temporal dead zone" with <code>let</code> and <code>const</code>:</p>
+        <div class="code">
+          let x = 10;
+          function test() {
+            // TDZ for x starts here
+            console.log(x); // ReferenceError
+            let x = 20; // TDZ ends here
+          }
+          test();
+        </div>
+        <p>Unlike <code>var</code>, <code>let</code> declarations aren't hoisted to the top of their scope.</p>
+      </div>
+    </div>
+
+    <!-- Q10: Hoisting -->
+    <div class="question">
+      <h3>10. What is hoisting in JavaScript?</h3>
+      <div class="options">
+        <div class="option" onclick="checkAnswer(10, 'a')">The process of moving declarations to the top of their scope</div>
+        <div class="option" onclick="checkAnswer(10, 'b')">A way to optimize code execution</div>
+        <div class="option" onclick="checkAnswer(10, 'c')">A method for importing modules</div>
+        <div class="option" onclick="checkAnswer(10, 'd')">A technique for handling asynchronous code</div>
+      </div>
+      <div id="result10" class="result"></div>
+      <div class="explanation" id="explanation10">
+        <p>Hoisting is JavaScript's behavior of moving declarations to the top of their scope before execution:</p>
+        <div class="code">
+          // This works due to hoisting
+          console.log(x); // undefined
+          var x = 5;
+          
+          // Function declarations are also hoisted
+          foo(); // "Hello"
+          function foo() {
+            console.log("Hello");
+          }
+        </div>
+        <p>Note: Only declarations are hoisted, not initializations. <code>let</code> and <code>const</code> declarations are hoisted but not initialized.</p>
+      </div>
+    </div>
   </div>
 
   <script>
-    function checkAnswer(question, answer) {
-      const correctAnswers = {
-        1: 'b',
-        2: 'c',
-        3: 'd',
-        4: 'c',
-        5: 'b'
-      };
+    const correctAnswers = {
+      1: 'd',
+      2: 'a',
+      3: 'a',
+      4: 'a',
+      5: 'a',
+      6: 'a',
+      7: 'd',
+      8: 'a',
+      9: 'a',
+      10: 'a'
+    };
 
-      const resultDiv = document.getElementById(`result${question}`);
-      if (answer === correctAnswers[question]) {
-        resultDiv.innerText = '✅ Correct!';
-        resultDiv.className = 'result correct';
+    function checkAnswer(questionNum, selectedOption) {
+      const result = document.getElementById(`result${questionNum}`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+
+      // Hide all explanations first
+      document.querySelectorAll('.explanation').forEach(el => {
+        el.style.display = 'none';
+      });
+
+      // Show result
+      result.style.display = 'block';
+
+      if (selectedOption === correctAnswers[questionNum]) {
+        result.textContent = '✅ Correct!';
+        result.className = 'result correct';
+        if (explanation) explanation.style.display = 'block';
       } else {
-        resultDiv.innerText = '❌ Incorrect. Try again!';
-        resultDiv.className = 'result incorrect';
+        result.textContent = '❌ Incorrect. Try again!';
+        result.className = 'result incorrect';
       }
     }
   </script>
