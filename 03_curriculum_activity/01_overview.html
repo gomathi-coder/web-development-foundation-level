@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otomatiks Web Development Course Structure</title>
+    <title>Otomatiks Web Development Course Overview</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -60,10 +60,30 @@
             </tr>
         </thead>
         <tbody>
+            <!-- MAIN FOUNDATION COURSE ROW -->
             <tr>
-                
-                <td class="course-title">Web Development Foundation</td>
-                <td>25</td>
+                <td class="course-title">
+                    Web Development Foundation
+                    <br>
+                    <button id="toggleDetailsBtn" style="
+                        margin-top: 6px; 
+                        padding: 5px 16px; 
+                        font-size: 1em; 
+                        background: #ffeaea; 
+                        color: #c62828; 
+                        border: 1.5px solid #e57373; 
+                        border-radius: 4px; 
+                        cursor: pointer; 
+                        font-weight: 600;
+                        transition: background 0.2s, color 0.2s;
+                    " 
+                    onmouseover="this.style.background='#e57373';this.style.color='#fff';"
+                    onmouseout="this.style.background='#ffeaea';this.style.color='#c62828';"
+                    >
+                        More Details
+                    </button>
+                </td>
+                <td>30</td>
                 <td>Online/Offline</td>
                 <td>
                     <ul style="margin: 0; padding-left: 20px;">
@@ -76,18 +96,73 @@
                 <td>Weekdays/Weekend</td>
                 <td>Computer Basics</td>
             </tr>
+            <!-- EXPANDABLE DETAILS ROW -->
+            <tr id="detailsRow" style="display: none;">
+                <td colspan="6" style="background: #f4faff; border-top: none; border-bottom: 2px solid #bee0fc; padding: 20px;">
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        <h3 style="margin-top: 0;">Website Development Course Overview</h3>
+                        <strong>Imagine your child building their own website — from scratch — with the confidence and creativity of a young web designer!</strong><br>
+                        That’s exactly what this course is designed to achieve.<br><br>
+                        In this Website Development Course, kids will learn <b>step-by-step</b> how modern websites are built. They’ll start with the basics and move towards creating complete, fully functional, and beautiful websites — all by themselves!
+                        <hr>
+                        <h3 style="margin-bottom: 8px;">What Will the Kids Learn?</h3>
+                        <ul style="margin-top: 0;">
+                            <li><b>HTML</b> — the backbone of any website. Kids will master how to structure content like headings, paragraphs, images, videos, and links.</li>
+                            <li><b>CSS</b> — the magic behind making websites look colorful, stylish, and well-organized. They’ll work with layouts (flexbox, grid), colors, backgrounds, and responsive designs.</li>
+                            <!-- <li><b>JavaScript</b> — where interactivity begins! They'll learn to make websites come alive with popups, buttons that react, and dynamic content.</li> -->
+                            <li><b>Responsive Design</b> — making websites adjust beautifully on mobiles, tablets, and desktops.</li>
+                            <li><b>Website Structures</b> — building common layouts like navigation menus, hero banners, galleries, testimonials, and footers.</li>
+                            <li><b>Bootstrap</b> — a professional framework that helps them create modern, mobile-friendly websites faster and easier.</li>
+                            <li><b>Form Creation and Handling</b> — building real-world forms (like a registration form) with validations to collect user data securely and stylishly.</li>
+                            <li><b>GitHub</b> — understanding the basics of version control, online storage for their projects, and even how to publish their own websites online through GitHub Pages.</li>
+                        </ul>
+                        <hr>
+                        <h3 style="margin-bottom: 8px;">What Will They Build?</h3>
+                        <b>Projects:</b>
+                        <ul>
+                            <li>School Website</li>
+                            <li>Restaurant Website</li>
+                            <li>E-commerce Website</li>
+                            <li>Registration Forms</li>
+                        </ul>
+                        <!-- <b>Final Project:</b>
+                        <ul>
+                            <li><b>Restaurant Website</b>: A complete, professional-looking, fully functional restaurant website with multiple sections!</li>
+                        </ul> -->
+                        <hr>
+                        <h3 style="margin-bottom: 8px;">Learning Outcome</h3>
+                        <ul>
+                            <li>By the end of this course, <b>kids will be able to build and publish their own fully responsive, multi-page website independently</b>.</li>
+                            <li>They will understand real-world web design workflows, making them confident to explore advanced topics if they wish.</li>
+                            <li>They will also have their own <b>GitHub portfolio</b> — an online showcase of the websites they create during the course.</li>
+                        </ul>
+                        <hr>
+                        <h3 style="margin-bottom: 8px;">What's Next After the Course?</h3>
+                        <ul>
+                            <li>Create their own personal websites, blogs, or mini-business sites.</li>
+                            <li>Participate in school tech exhibitions and coding competitions.</li>
+                            <li>Progress towards <b>Advanced Web Development</b> (Dynamic Websites, Web Apps, Backend Development).</li>
+                            <li>Learn further skills like UI/UX design or mobile app development.</li>
+                        </ul>
+                        <hr>
+                        <strong>In short: Your child will not just learn how websites work — they will <i>build</i> real ones and <i>publish</i> them online!</strong>
+                    </div>
+                </td>
+            </tr>
+    <!-- ADVANCED COURSE ROW -->
             <tr>
                
                 <td class="course-title">Web Development Advanced</td>
-                <td>25</td>
+                <td>30</td>
                 <td>Online/Offline</td>
                 <td>
-                    <ul style="margin: 0; padding-left: 20px;">
+                    <!-- <ul style="margin: 0; padding-left: 20px;">
                         <li>School website</li>
                         <li>Restaurant website</li>
                         <li>E Commerce Website</li>
                         <li>Registration Form</li>
-                    </ul>
+                    </ul> -->
+                    TBD
                 </td>
                 <td>Weekdays/Weekend</td>
                 <td>HTML/CSS Basics</td>
@@ -101,5 +176,18 @@
             </tr>
         </tfoot>
     </table>
+
+    <script>
+        document.getElementById('toggleDetailsBtn').addEventListener('click', function() {
+            var row = document.getElementById('detailsRow');
+            if (row.style.display === "none" || row.style.display === "") {
+                row.style.display = "table-row";
+                this.textContent = "Hide Details";
+            } else {
+                row.style.display = "none";
+                this.textContent = "More Details";
+            }
+        });
+    </script>
 </body>
 </html>
