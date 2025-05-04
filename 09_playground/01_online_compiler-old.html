@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Otomatiks Otomatiks Online Editor</title>
+  <title>Otomatiks Editor Playground</title>
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Monaco Editor -->
@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
   <style>
     body { background: #f9fafb; }
-    .main-row { height: calc(100vh - 82px); }
+    .main-row { height: calc(100vh - 56px); }
     .editor-column { min-width: 400px; background:white; border-radius:12px 0 0 12px; }
     .output-column { background:#f6f8fa; border-radius:0 12px 12px 0; border-left:1px solid #eee;}
     #editor { min-height: 60vh; height: 100%; border-radius:0 0 0 12px;}
@@ -22,79 +22,53 @@
     .close-btn:hover, .rename-btn:hover { color: #e53935;}
     .tab-title { margin-right: -7px;}
     .small-btn {font-size: 0.8rem; padding:2px 10px;}
-    .welcome-panel {
-      background: #e6f0fa;
-      color: #13355b;
-      border-radius: 12px;
-      margin-bottom: 10px;
-      padding: 18px 24px;
-      font-size: 1.2rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border: 1px solid #bdd8f6;
-    }
-    .hello-btn {
-      background: #2196f3;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 5px 18px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: background .2s;
-    }
-    .hello-btn:hover {
-      background: #1769aa;
-    }
-    .toolbar-spacer { flex:1; }
   </style>
 </head>
 <body>
-  <!-- Boilerplate Welcome/Info Panel + "Say Hello" Button -->
-  <!-- <div class="container mt-3 mb-0 px-4">
-    <div class="welcome-panel shadow-sm">
-      <span>
-        This is <strong>Otomatiks Online Compiler</strong> and practice your <strong>Web Development Course</strong> here.
-      </span>
-      <button type="button" class="hello-btn" id="helloBtn">Say Hello</button>
-    </div>
-  </div> -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <!-- Header -->
-  <nav class="navbar navbar-dark bg-dark" style="border-radius:0 0 0 0;">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Otomatiks Online Editor</span>
+      <span class="navbar-brand mb-0 h1">Otomatiks Web Compiler</span>
     </div>
   </nav>
-  
   <!-- Main Layout -->
   <div class="container-fluid px-0 pt-2">
     <div class="row main-row flex-nowrap gx-2">
       <!-- Editor Column -->
       <div class="col-5 d-flex flex-column editor-column shadow p-0">
         <!-- Tabs -->
-        <ul class="nav nav-pills align-items-center px-3 pt-2" id="tabs"></ul>
+        <ul class="nav nav-pills align-items-center px-3 pt-2" id="tabs">
+        </ul>
         <!-- Add Tab Buttons -->
-        <!-- <div class="d-flex gap-2 px-3 pb-2 pt-1">
+        <div class="d-flex gap-2 px-3 pb-2 pt-1">
           <button class="btn btn-outline-secondary btn-sm small-btn" id="addCssTab">+ CSS Tab</button>
           <button class="btn btn-outline-secondary btn-sm small-btn" id="addJsTab">+ JS Tab</button>
-        </div> -->
+        </div>
         <!-- Monaco Editor Pane -->
         <div class="flex-fill position-relative" style="min-height:400px;">
           <div id="editor" style="width:100%;height:100%;"></div>
         </div>
       </div>
       <!-- Output Column -->
-      
       <div class="col-7 d-flex flex-column output-column shadow p-0">
         <!-- Toolbar -->
         <div class="d-flex justify-content-end align-items-center p-3 border-bottom" style="min-height:48px;">
           <button class="btn btn-success me-2" id="runBtn">Run</button>
-          <button class="btn btn-primary me-2" id="downloadBtn">Download Code</button>
-          <button class="btn btn-outline-secondary" id="openInNewTabBtn">Open Output in New Tab</button>
+          <button class="btn btn-primary" id="downloadBtn">Download Code</button>
         </div>
         <!-- Output -->
         <div class="flex-fill">
@@ -107,54 +81,16 @@
   <!-- Monaco Loader -->
   <script src="https://unpkg.com/monaco-editor@0.34.1/min/vs/loader.js"></script>
   <script>
-    // INITIAL BOILERPLATE STARTER CODES
-    const boilerHtml = `
-<!-- This is Otomatiks Online Compiler and practice your Web Development Course here. -->
-<h1>Welcome to Otomatiks Online Compiler!</h1>
-<button id="helloBtn">Say Hello</button>
-`;
-
-    const boilerCss = `/*
-This is Otomatiks Online Compiler and practice your Web Development Course here.
-*/
-body {
-  background: #f9fafb;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-button {
-  padding: 8px 16px;
-  font-size: 1rem;
-  background: #0277bd;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-button:hover {
-  background: #01579b;
-}
-`;
-
-    const boilerJs = `// This is Otomatiks Online Compiler and practice your Web Development Course here.
-
-document.getElementById('helloBtn').onclick = function() {
-  alert("Hi, How are you doing");
-};
-`;
-
     // Core state
     let modelCounter = 1;
     let tabs = [
-      { id:'tab0', name: "index.html", type: "html", content: boilerHtml, model: null },
-      { id:'tab1', name: "style.css", type: "css", content: boilerCss, model: null },
-      { id:'tab2', name: "script.js", type: "js", content: boilerJs, model: null },
+      { id:'tab0', name: "index.html", type: "html", content: "<!-- Start writing HTML here -->", model: null },
+      { id:'tab1', name: "style.css", type: "css", content: "/* CSS goes here */", model: null },
+      { id:'tab2', name: "script.js", type: "js", content: "// JS goes here", model: null },
     ];
     let currentTabId = 'tab0';
     let monacoEditor = null;
     let monacoLoaded = false;
-    let lastFullHtml = ""; // capture the latest iframe srcdoc
 
     function extToLanguage(ext) {
       return ext === "html" ? "html" : ext === "css" ? "css" : "javascript";
@@ -251,42 +187,45 @@ document.getElementById('helloBtn').onclick = function() {
         automaticLayout: true,
       });
       renderTabs();
-      // AUTO-RUN "Run" BUTTON ON PAGE LOAD
-      document.getElementById('runBtn').click();
     });
 
     // Add CSS Tab
-    // document.getElementById('addCssTab').onclick = function() {
-    //   let baseName = 'style'+(++modelCounter)+'.css';
-    //   while (tabs.find(tab => tab.name === baseName)) {
-    //     baseName = 'style'+(++modelCounter)+'.css';
-    //   }
-    //   let tabid = 'tab'+Date.now();
-    //   const model = monaco.editor.createModel("", "css");
-    //   const tab = { id: tabid, name: baseName, type: "css", content: "", model };
-    //   tabs.push(tab);
-    //   switchTab(tabid);
-    // };
+    document.getElementById('addCssTab').onclick = function() {
+      let baseName = 'style'+(++modelCounter)+'.css';
+      while (tabs.find(tab => tab.name === baseName)) {
+        baseName = 'style'+(++modelCounter)+'.css';
+      }
+      let tabid = 'tab'+Date.now();
+      const model = monaco.editor.createModel("", "css");
+      const tab = { id: tabid, name: baseName, type: "css", content: "", model };
+      tabs.push(tab);
+      switchTab(tabid);
+    };
 
     // Add JS Tab
-    // document.getElementById('addJsTab').onclick = function() {
-    //   let baseName = 'script'+(++modelCounter)+'.js';
-    //   while (tabs.find(tab => tab.name === baseName)) {
-    //     baseName = 'script'+(++modelCounter)+'.js';
-    //   }
-    //   let tabid = 'tab'+Date.now();
-    //   const model = monaco.editor.createModel("", "javascript");
-    //   const tab = { id: tabid, name: baseName, type: "js", content: "", model };
-    //   tabs.push(tab);
-    //   switchTab(tabid);
-    // };
+    document.getElementById('addJsTab').onclick = function() {
+      let baseName = 'script'+(++modelCounter)+'.js';
+      while (tabs.find(tab => tab.name === baseName)) {
+        baseName = 'script'+(++modelCounter)+'.js';
+      }
+      let tabid = 'tab'+Date.now();
+      const model = monaco.editor.createModel("", "javascript");
+      const tab = { id: tabid, name: baseName, type: "js", content: "", model };
+      tabs.push(tab);
+      switchTab(tabid);
+    };
 
     // Run
-    function getFullHtml() {
+    document.getElementById('runBtn').onclick = function() {
+      if (!monacoLoaded) return;
+      // Save current
+      let curr = tabs.find(t=>t.id === currentTabId);
+      curr.content = monacoEditor.getValue();
+      // Combine
       let html = tabs.find(t=>t.type==="html")?.model.getValue() || "";
       let css = tabs.filter(t=>t.type==="css").map(t=>t.model.getValue()).join("\n");
       let js = tabs.filter(t=>t.type==="js").map(t=>t.model.getValue()).join("\n");
-      return `
+      const fullHtml = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -299,15 +238,7 @@ document.getElementById('helloBtn').onclick = function() {
         </body>
         </html>
       `;
-    }
-    document.getElementById('runBtn').onclick = function() {
-      if (!monacoLoaded) return;
-      // Save current
-      let curr = tabs.find(t=>t.id === currentTabId);
-      curr.content = monacoEditor.getValue();
-      // Combine
-      lastFullHtml = getFullHtml();
-      document.getElementById('outputFrame').srcdoc = lastFullHtml;
+      document.getElementById('outputFrame').srcdoc = fullHtml;
     };
 
     // Download as ZIP
@@ -327,24 +258,6 @@ document.getElementById('helloBtn').onclick = function() {
         a.click();
       });
     };
-
-    // HELLO ALERT BUTTON in top welcome panel on parent UI
-    // document.getElementById('helloBtn').onclick = function() {
-    //   alert('Hi, How are you doing');
-    // };
-
-    // OPEN OUTPUT IN NEW TAB BUTTON
-    document.getElementById('openInNewTabBtn').onclick = function() {
-      if (!lastFullHtml) {
-        lastFullHtml = getFullHtml();
-      }
-      const blob = new Blob([lastFullHtml], {type: 'text/html'});
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-    };
-
-    // document.getElementById('runBtn').click();
-
   </script>
 </body>
 </html>
