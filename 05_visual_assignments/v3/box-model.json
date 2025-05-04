@@ -1,0 +1,20 @@
+{
+    "assessment_topic":"Box Model",
+    "assessment_description":"...",
+    "assessment_level":"Easy",
+    "assessment_questions":
+    [
+      {
+        "title": "Box Model Practical Assessment 1",
+        "description": "Style the announcement box with a border, padding, and centered text.",
+        "source_html_file":"box-model/src-01.html",
+        "target_html_file":"box-model/target-01.html"
+      },
+      {
+        "title": "Box Model Practical Assessment 2",
+        "description": "Style the announcement box with a border, padding, and centered text.",
+        "source_html_file":"box-model/src-02.html",
+        "target_html_file":"box-model/target-02.html"
+      }
+]
+}

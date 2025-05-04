@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Box Model Example</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box-container {
+      text-align: center;
+    }
+
+    .box {
+      width: 250px;
+      padding: 30px;
+      border: 5px solid #4a90e2;
+      margin: 20px auto;
+      background-color: #ffffff;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #4a90e2;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box-container">
+    <h2>CSS Box Model</h2>
+    <div class="box">
+      This is a beautifully styled box 2.<br>
+      It demonstrates content, padding, border, and margin.
+    </div>
+    <p>Inspect this box using browser dev tools to explore the box model!</p>
+  </div>
+
+</body>
+</html>

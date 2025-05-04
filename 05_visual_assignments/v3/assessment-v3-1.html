@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive HTML/CSS Assessment</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.39.0/min/vs/loader.js"></script>
+</head>
+<body class="bg-slate-50 h-screen w-screen overflow-hidden">
+  <div id="app"></div>
+  
+  <!-- Popup modal for code viewing/copy/downloading -->
+  <div id="modal-bg" class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden"></div>
+  <div id="modal" class="fixed top-1/2 left-1/2 hidden z-50 w-full max-w-lg p-6 bg-white shadow-xl rounded-lg -translate-x-1/2 -translate-y-1/2 space-y-4">
+    <div class="flex justify-between items-center">
+      <span class="font-bold">Code Viewer</span>
+      <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+    </div>
+    <div class="flex gap-2">
+      <button id="modal-copy" class="bg-blue-600 text-white px-2 py-1 rounded text-xs hover:bg-blue-700">Copy</button>
+      <button id="modal-download" class="bg-green-600 text-white px-2 py-1 rounded text-xs hover:bg-green-700">Download</button>
+    </div>
+    <pre id="modal-content" class="bg-slate-100 p-2 rounded overflow-auto text-xs max-h-96"></pre>
+  </div>
+  
+  <script>
+    // Script starts
+    // Utility: grab topic from ?topic= URL
+    function getTopicFromURL() {
+      const u = new URL(window.location);
+      return u.searchParams.get('topic') || '';
+    }
+    // Utility: fetch assessment JSON
+    async function loadAssessment(topic) {
+      const resp = await fetch(topic + '.json');
+      if (!resp.ok) throw "Not found";
+      return resp.json();
+    }
+    // Utility: fetch HTML file as string
+    async function getHtmlFile(path) {
+      const resp = await fetch(path);
+      if (!resp.ok) throw "Cannot fetch html file: " + path;
+      return resp.text();
+    }
+    // Parsing a .html file text to {body, style}
+    function parseHtmlAndCss(html) {
+      let b = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      let s = html.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+      return { body: b ? b[1].trim() : '', css: s ? s[1].trim() : '' };
+    }
+    // Monaco loader helper
+    function mountMonaco(parentDiv, value, language, isEditable) {
+      if (parentDiv.__editor) { parentDiv.__editor.dispose(); }
+      require(['vs/editor/editor.main'], function() {
+        parentDiv.__editor = monaco.editor.create(parentDiv, {
+          value,
+          language,
+          theme: 'vs-dark',
+          readOnly: !isEditable,
+          fontSize: 14,
+          minimap: { enabled: false },
+          wordWrap: "on",
+          automaticLayout: true
+        });
+      });
+    }
+    // Helper for modal
+    function showModal(title, code, filename='code.html') {
+      document.getElementById('modal-content').textContent = code;
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal-bg').classList.remove('hidden');
+      document.getElementById('modal').dataset.filename = filename;
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.getElementById('modal-bg').classList.add('hidden');
+    }
+    function copyToClipboard(str) {
+      navigator.clipboard.writeText(str);
+    }
+    function downloadTextFile(str, filename) {
+      const blob = new Blob([str], {type:"text/plain"});
+      const a = document.createElement('a');
+      a.download = filename;
+      a.href = URL.createObjectURL(blob);
+      document.body.append(a);
+      a.click();
+      a.remove();
+    }
+    // Simple collapse
+    function toggleCollapse(id) {
+      let el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+    // Properly escapes code for modal
+    function escapeHtml(s) {
+      return s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+    }
+    // MAIN LOGIC
+    async function init() {
+      const topic = getTopicFromURL();
+      if (!topic) return document.getElementById('app').textContent = "Error: Pass a topic as ?topic=XYZ";
+
+      let assessment;
+      try { assessment = await loadAssessment(topic); }
+      catch { document.getElementById('app').textContent = "Not found: " + topic + ".json"; return; }
+      let questions = assessment.assessment_questions;
+      let current = 0;
+
+      // State per question:
+      let srcBody = '', srcCss = '', tgtBody = '', tgtCss = '';
+      let userHtml = '', userCss = '';
+
+      // ---------- RENDER ----------
+      async function render() {
+        let q = questions[current];
+        // Load html & css for source/target
+        let srcHtmlStr = await getHtmlFile(q.source_html_file);
+        let tgtHtmlStr = await getHtmlFile(q.target_html_file);
+        let src = parseHtmlAndCss(srcHtmlStr);
+        let tgt = parseHtmlAndCss(tgtHtmlStr);
+        srcBody = src.body; srcCss = src.css;
+        tgtBody = tgt.body; tgtCss = tgt.css;
+        userHtml = srcBody; userCss = srcCss;
+
+        let app = document.getElementById('app');
+        app.innerHTML = `
+<div class="flex flex-col h-screen w-screen">
+  <header class="bg-blue-700 shadow text-white p-3 font-bold text-lg flex items-center">
+    <span>${assessment.assessment_topic} <span class="font-normal text-slate-200 text-base mx-3">—</span> <span class="text-sm bg-blue-900 px-2 rounded">${assessment.assessment_level||''}</span></span>
+  </header>
+  <div class="flex flex-1 min-h-0 min-w-0">
+    <!-- Left: Navigation panel -->
+    <aside class="w-56 bg-blue-50 border-r min-h-0 flex flex-col">
+      <div class="flex justify-between p-2 border-b items-center">
+        <div class="font-bold">Questions</div>
+      </div>
+      <div class="overflow-y-auto flex-1 py-2">
+        ${questions.map((q,i)=>`
+            <button data-idx="${i}" class="block w-full text-left px-3 py-2 hover:bg-blue-100 font-mono text-xs rounded transition
+            ${current==i?'bg-blue-200 font-bold text-blue-700 ring-1 ring-blue-300':''}">
+            ${i+1}. ${escapeHtml(q.title)}
+            </button>
+        `).join('')}
+      </div>
+    </aside>
+    <!-- Right: Main Content pane -->
+    <main class="flex-1 flex flex-col min-h-0 min-w-0 p-4 gap-4 overflow-y-auto">
+      <section class="">
+        <div class="font-bold text-lg mb-1">${escapeHtml(q.title)}</div>
+        <div class="text-gray-700 text-xs mb-2">${escapeHtml(q.description)}</div>
+      </section>
+      <!-- Section 1: Read-only source code -->
+      <section>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Source HTML</span>
+            </div>
+            <div id="src-html-view" class=" rounded border bg-black h-36"></div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Source CSS</span>
+            </div>
+            <div id="src-css-view" class="rounded border bg-black h-36"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 2: Collapsible output iframes -->
+      <section class="flex gap-5">
+        <!-- Source output -->
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-gray-400">Source Output</span>
+            <div class="flex gap-2 items-center">
+              <button id="src-iframe-toggle" type="button" class="hover:underline text-xs text-blue-600">Collapse</button>
+              <button id="src-iframe-open" type="button" class="hover:underline text-xs text-blue-600">Open</button>
+              <button id="src-iframe-code" type="button" class="hover:underline text-xs text-green-600">Code</button>
+            </div>
+          </div>
+          <div id="src-iframe-box" class="mt-2 border rounded overflow-hidden transition-all h-52">
+            <iframe id="src-iframe" class="w-full h-full" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+        </div>
+        <!-- Target Output -->
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-gray-400">Target Output</span>
+            <div class="flex gap-2 items-center">
+              <button id="tgt-iframe-toggle" type="button" class="hover:underline text-xs text-blue-600">Collapse</button>
+              <button id="tgt-iframe-open" type="button" class="hover:underline text-xs text-blue-600">Open</button>
+              <button id="tgt-iframe-code" type="button" class="hover:underline text-xs text-green-600">Code</button>
+            </div>
+          </div>
+          <div id="tgt-iframe-box" class="mt-2 border rounded overflow-hidden transition-all h-52">
+            <iframe id="tgt-iframe" class="w-full h-full" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- Section 3: Editable code -->
+      <section>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Edit HTML</span>
+            </div>
+            <div id="user-html-edit" class=" rounded border bg-black h-36"></div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Edit CSS</span>
+            </div>
+            <div id="user-css-edit" class=" rounded border bg-black h-36"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 4: User's visual output -->
+      <section>
+        <div class="flex items-center gap-4 mb-1">
+          <button id="run-user-code" class="bg-blue-700 text-white px-3 py-1 rounded hover:bg-blue-800 text-xs">Run</button>
+          <span class="text-xs text-gray-500">Your Output</span>
+        </div>
+        <div class="border rounded overflow-hidden h-52">
+          <iframe id="user-iframe" class="w-full h-full" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+    `;
+        // Monaco mounts
+        mountMonaco(document.getElementById('src-html-view'), srcBody, 'html', false);
+        mountMonaco(document.getElementById('src-css-view'), srcCss, 'css', false);
+        mountMonaco(document.getElementById('user-html-edit'), userHtml, 'html', true);
+        mountMonaco(document.getElementById('user-css-edit'), userCss, 'css', true);
+        // Fill iframes
+        document.getElementById('src-iframe').srcdoc = `<html><head><style>${srcCss}</style></head><body>${srcBody}</body></html>`;
+        document.getElementById('tgt-iframe').srcdoc = `<html><head><style>${tgtCss}</style></head><body>${tgtBody}</body></html>`;
+        document.getElementById('user-iframe').srcdoc = `<html><head><style>${userCss}</style></head><body>${userHtml}</body></html>`;
+
+        // -- events --
+        // Navigation: switch questions
+        document.querySelectorAll('[data-idx]').forEach(btn=>{
+          btn.onclick = async()=>{
+            current = parseInt(btn.dataset.idx);
+            await render();
+          }
+        });
+
+        // Collapsibles
+        document.getElementById('src-iframe-toggle').onclick = ()=>toggleCollapse('src-iframe-box');
+        document.getElementById('tgt-iframe-toggle').onclick = ()=>toggleCollapse('tgt-iframe-box');
+
+        // Open iframe as new window
+        document.getElementById('src-iframe-open').onclick = ()=>{
+          window.open('data:text/html;charset=utf-8,'
+            +encodeURIComponent(`<html><head><style>${srcCss}</style></head><body>${srcBody}</body></html>`),'_blank');
+        };
+        document.getElementById('tgt-iframe-open').onclick = ()=>{
+          window.open('data:text/html;charset=utf-8,'
+            +encodeURIComponent(`<html><head><style>${tgtCss}</style></head><body>${tgtBody}</body></html>`),'_blank');
+        };
+
+        // Show code popup for source/target
+        document.getElementById('src-iframe-code').onclick = ()=>{
+          showModal("Source Code",
+            `<!-- HTML -->\n${srcBody}\n\n/* CSS */\n${srcCss}`,
+            "source.html"
+          );
+        };
+        document.getElementById('tgt-iframe-code').onclick = ()=>{
+          showModal("Target Code",
+            `<!-- HTML -->\n${tgtBody}\n\n/* CSS */\n${tgtCss}`,
+            "target.html"
+          );
+        };
+
+        // Modal events
+        document.getElementById('modal-close').onclick = closeModal;
+        document.getElementById('modal-bg').onclick = closeModal;
+        document.getElementById('modal-copy').onclick = ()=>{
+          copyToClipboard(document.getElementById('modal-content').textContent);
+        }
+        document.getElementById('modal-download').onclick = ()=>{
+          let code = document.getElementById('modal-content').textContent;
+          let fn = document.getElementById('modal').dataset.filename || "code.html";
+          downloadTextFile(code, fn);
+        }
+
+        // User code run
+        document.getElementById('run-user-code').onclick = ()=>{
+          let html = document.getElementById('user-html-edit').__editor.getValue();
+          let css  = document.getElementById('user-css-edit').__editor.getValue();
+          document.getElementById('user-iframe').srcdoc = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+        }
+      }
+      // Initial render
+      await render();
+    }
+    // Monaco loader bootstrap
+    window.require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.39.0/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+      // Now load app logic
+      init();
+    });
+  </script>
+</body>
+</html>
