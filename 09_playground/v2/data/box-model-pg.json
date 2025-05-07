@@ -1,0 +1,80 @@
+{
+    "pg_title": "Box Model Playground",
+    "pg_desc": "...",
+    "pg_level": "",
+    "pg_example_group": [
+        {
+            "concept_name": "Concepts",
+            "concept_id": "concepts"
+        },
+        {
+            "concept_name": "Application",
+            "concept_id": "application"
+        }
+    ],
+    "pg_examples": [
+        {
+            "ex_name": "Content",
+            "ex_id": "box-content",
+            "ex_desc": "...",
+            "concept_id": "concepts",
+            "ex_html_file": "data/box/box-content-area.html"
+        },
+		{
+            "ex_name": "Padding",
+            "ex_id": "box-padding",
+            "ex_desc": "...",
+            "concept_id": "concepts",
+            "ex_html_file": "data/box/box-padding-style.html"
+        },
+        {
+            "ex_name": "Margin",
+            "ex_id": "box-margin",
+            "ex_desc": "...",
+            "concept_id": "concepts",
+            "ex_html_file": "data/box/box-margin-style.html"
+        },
+        {
+            "ex_name": "Border",
+            "ex_id": "box-border",
+            "ex_desc": "...",
+            "concept_id": "concepts",
+            "ex_html_file": "data/box/box-border.html"
+        },
+        {
+            "ex_name": "Content Overflow",
+            "ex_id": "box-overflow",
+            "ex_desc": "...",
+            "concept_id": "concepts",
+            "ex_html_file": "data/box/box-content-overflow.html"
+        },
+        {
+            "ex_name": "Box Display",
+            "ex_id": "box-display",
+            "ex_desc": "...",
+            "concept_id": "concepts",
+            "ex_html_file": "data/box/box-display.html"
+        },
+        {
+            "ex_name": "Box Card",
+            "ex_id": "box-card-layout",
+            "ex_desc": "...",
+            "concept_id": "application",
+            "ex_html_file": "data/box/box-card-layout.html"
+        },
+        {
+            "ex_name": "Box Stacked",
+            "ex_id": "box-stacked-example",
+            "ex_desc": "...",
+            "concept_id": "application",
+            "ex_html_file": "data/box/box-stacked-example.html"
+        },
+        {
+            "ex_name": "Box Centering",
+            "ex_id": "box-centering-example",
+            "ex_desc": "...",
+            "concept_id": "application",
+            "ex_html_file": "data/box/box-centering-example.html"
+        }
+    ]
+}

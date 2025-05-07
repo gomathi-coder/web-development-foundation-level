@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>margin: auto vs margin: 0 auto Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      padding: 40px 0;
+    }
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+    .mt-50 {
+      margin-top: 50px;
+    }
+    .comment-highlight-1 {
+      font-weight: 700;
+      font-size: 16px;
+      background-color: crimson;
+      color: white;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .container-demo {
+      width: 600px;
+      height: 300px;
+      background: #ddd;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    .example {
+      width: 300px;
+      padding: 20px;
+      color: #fff;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      border: 2px solid #bbbbbb;
+    }
+    .auto-both {
+      background: #3777fc;
+      margin: auto; /* All sides auto */
+    }
+    .auto-horizontal {
+      background: #fca437;
+      margin: 20px auto; /* Top/bottom 20px, left/right auto */
+    }
+    /* Remove bottom margin for last .example in a container, for neatness */
+    .container-demo .example:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Margin: auto vs margin: 0 auto Demo</h2>
+  
+  <div class="comment">// Centering a box with <code>margin: auto;</code></div>
+  <div class="container-demo">
+    <div class="example auto-both">
+      This box uses <code>margin: auto;</code>
+      <br><small>(All four margins: auto, full centering)</small>
+    </div>
+  </div>
+  
+  <div class="comment mt-50">// Multiple centered boxes with vertical spacing using <code>margin: 20px auto;</code></div>
+  <div class="container-demo">
+    <div class="example auto-horizontal">
+      This box uses <code>margin: 20px auto;</code>
+      <br><small>(Top/bottom 20px, left/right auto)</small>
+    </div>
+    <div class="example auto-horizontal">
+      This box uses <code>margin: 20px auto;</code>
+      <br><small>(Top/bottom 20px, left/right auto)</small>
+    </div>
+  </div>
+  
+  <div class="comment mt-50">
+    <span class="comment-highlight-1">Style definition for margin auto centering</span>
+    <pre>
+.auto-both {
+  background: #3777fc;
+  margin: auto; /* All sides auto */
+}
+.auto-horizontal {
+  background: #fca437;
+  margin: 20px auto; /* Top/bottom 20px, left/right auto */
+}
+    </pre>
+  </div>
+</body>
+</html>
+<!--
+[CONCEPT-START]
+
+### Explanation of `margin: auto` vs `margin: 0 auto` (or `margin: X auto`):
+
+**1. `margin: auto`:**
+- Sets all four sides (top, right, bottom, left) to `auto`.
+- When used on a block element with a fixed width, it *perfectly centers* the element in both directions (**vertically and horizontally**), if the parent allows it to (by height and flex properties).
+- Most commonly, only horizontal centering is visible unless the parent has extra vertical space.
+
+**2. `margin: 0 auto` or `margin: X auto`:**
+- Applies a fixed top/bottom margin (`0` or any amount, like `20px`), and automatically centers the element *horizontally* by setting left/right margins to `auto`.
+- This is the classic way to center a fixed-width block horizontally while controlling vertical spacing between elements.
+
+**In summary:**  
+*Use `margin: auto` to center in all directions when possible.  
+Use `margin: 0 auto` or `margin: 20px auto` to center horizontally and manage vertical spacing.*
+
+[CONCEPT-END]
+-->

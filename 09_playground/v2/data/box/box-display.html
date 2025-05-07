@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Display Property Demo: block, inline, inline-block</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8f9fa;
+    }
+    h2 {
+      margin-bottom: 18px;
+    }
+    .comment {
+      font-family: monospace;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .demo-section {
+      margin-bottom: 38px;
+    }
+    .box {
+      background: #e3f2fd;
+      border: 2px solid #2196f3;
+      color: #333;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    /* For inline display box, make smaller for clarity */
+    .inline-box {
+      display: inline;
+      background: #ffee58;
+      border: 2px solid #fbc02d;
+      padding: 6px 10px;
+      /* height/width ignored by inline! */
+      margin-bottom: 6px;
+    }
+    .inline-block-box {
+      display: inline-block;
+      background: #c8e6c9;
+      border: 2px solid #388e3c;
+      padding: 10px 12px;
+      width: 100px;
+      height: 50px;
+      margin-bottom: 6px;
+      /* for visual clarity */
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Display Property: block, inline, and inline-block</h2>
+
+  <div class="demo-section">
+    <div class="comment">/* display: block (default for div, takes full width, new line) */</div>
+    <div class="box">Block Box 1</div>
+    <div class="box">Block Box 2</div>
+    <div class="box">Block Box 3</div>
+  </div>
+
+  <div class="demo-section">
+    <div class="comment">/* display: inline (sits with text, no width/height, lines up horizontally) */</div>
+    <span class="inline-box">Inline A</span>
+    <span class="inline-box">Inline B</span>
+    <span class="inline-box">Inline C</span>
+    <span class="inline-box">Inline D</span>
+    <p>This is <span class="inline-box">Inline E</span> inside a paragraph of text.</p>
+  </div>
+
+  <div class="demo-section">
+    <div class="comment">/* display: inline-block (sits horizontally, width/height/padding works) */</div>
+    <div class="inline-block-box">Box 1</div>
+    <div class="inline-block-box">Box 2</div>
+    <div class="inline-block-box">Box 3</div>
+    <div class="inline-block-box">Box 4</div>
+  </div>
+
+</body>
+</html>

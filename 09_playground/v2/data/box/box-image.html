@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Placement Techniques</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .box {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 30px;
+      border: 2px solid #333;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Regular Image */
+    .image-box img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Image with object-fit */
+    .object-fit-box {
+      width: 100%;
+      height: 100%;
+    }
+
+    .object-fit-box img {
+      object-fit: cover; /* or 'contain', 'fill', etc. */
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Image as background */
+    .background-image-box {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://placehold.co/800x400');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Image with border-radius */
+    .rounded-image-box img {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+    }
+
+    /* Image with box-shadow */
+    .shadow-image-box img {
+      width: 100%;
+      height: 100%;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Image with inset border */
+    .inset-border-box {
+      width: 100%;
+      height: 100%;
+      border: 5px inset #333;
+      padding: 10px;
+    }
+
+    /* Centered Image */
+    .centered-image-box img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Various Image Placement Techniques</h2>
+
+  <!-- Regular Image (Standard Sizing) -->
+  <div class="comment">/* Regular Image - Simple Image inside the box */</div>
+  <div class="box image-box">
+    <img src="https://placehold.co/800x400" alt="Placeholder Image">
+  </div>
+
+  <!-- Object Fit Image -->
+  <div class="comment">/* object-fit: cover; (image fills the box without distortion) */</div>
+  <div class="box object-fit-box">
+    <img src="https://placehold.co/800x400" alt="Placeholder Image">
+  </div>
+
+  <!-- Image as Background -->
+  <div class="comment">/* background-image: cover; (image as background inside box) */</div>
+  <div class="box background-image-box">
+    <!-- No content needed, the background image will fill this box -->
+  </div>
+
+  <!-- Image with Border Radius -->
+  <div class="comment">/* Image with border-radius (rounded corners) */</div>
+  <div class="box rounded-image-box">
+    <img src="https://placehold.co/800x400" alt="Rounded Image">
+  </div>
+
+  <!-- Image with Box Shadow -->
+  <div class="comment">/* Image with box-shadow (adds shadow effect) */</div>
+  <div class="box shadow-image-box">
+    <img src="https://placehold.co/800x400" alt="Image with Shadow">
+  </div>
+
+  <!-- Image with Inset Border -->
+  <div class="comment">/* Image with inset border (image inside a box with inset border) */</div>
+  <div class="box inset-border-box">
+    <img src="https://placehold.co/800x400" alt="Image with Inset Border">
+  </div>
+
+  <!-- Centered Image -->
+  <div class="comment">/* Centered Image (image is centered inside the box) */</div>
+  <div class="box centered-image-box">
+    <img src="https://placehold.co/800x400" alt="Centered Image">
+  </div>
+
+</body>
+</html>

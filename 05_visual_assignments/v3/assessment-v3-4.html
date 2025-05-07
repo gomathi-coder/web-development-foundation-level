@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Lab</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.39.0/min/vs/loader.js"></script>
+</head>
+<body class="bg-slate-50 h-screen w-screen overflow-hidden">
+<div id="app"></div>
+
+<!-- Modal for code viewing/copy/download -->
+<div id="modal-bg"
+     class="fixed inset-0 bg-black bg-opacity-30 z-40 hidden"></div>
+<div id="modal"
+     class="fixed top-1/2 left-1/2 hidden z-50 w-full max-w-2xl p-6 bg-white shadow-xl rounded-lg -translate-x-1/2 -translate-y-1/2 space-y-4">
+  <div class="flex justify-between items-center">
+    <span class="font-bold">Code Viewer</span>
+    <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+  </div>
+  <div class="flex gap-2">
+    <button id="modal-copy"
+            class="bg-blue-600 text-white px-2 py-1 rounded text-xs hover:bg-blue-700">Copy</button>
+    <button id="modal-download"
+            class="bg-green-600 text-white px-2 py-1 rounded text-xs hover:bg-green-700">Download</button>
+  </div>
+  <pre id="modal-content"
+       class="bg-slate-100 p-2 rounded overflow-auto text-xs max-h-96"></pre>
+</div>
+
+<script>
+  // Utility: grab topic from ?topic= URL
+  function getTopicFromURL() {
+    const u = new URL(window.location);
+    return u.searchParams.get('topic') || '';
+  }
+  // Utility: fetch assessment JSON
+  async function loadAssessment(topic) {
+    const resp = await fetch(topic + '.json');
+    if (!resp.ok) throw "Not found";
+    return resp.json();
+  }
+  // Utility: fetch HTML file as string
+  async function getHtmlFile(path) {
+    const resp = await fetch(path);
+    if (!resp.ok) throw "Cannot fetch html file: " + path;
+    return resp.text();
+  }
+  // Parsing .html file text to {body, style}
+  function parseHtmlAndCss(html) {
+    let b = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    let s = html.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+    return { body: b ? b[1].trim() : '', css: s ? s[1].trim() : '' };
+  }
+  // Monaco loader helper
+  function mountMonaco(parentDiv, value, language, isEditable) {
+    if (parentDiv.__editor) { parentDiv.__editor.dispose(); }
+    require(['vs/editor/editor.main'], function() {
+      parentDiv.__editor = monaco.editor.create(parentDiv, {
+        value,
+        language,
+        theme: 'vs-dark',
+        readOnly: !isEditable,
+        fontSize: 14,
+        minimap: { enabled: false },
+        wordWrap: "on",
+        automaticLayout: true
+      });
+    });
+  }
+  // Helper for modal
+  function showModal(docStr, filename='code.html') {
+    document.getElementById('modal-content').textContent = docStr;
+    document.getElementById('modal').classList.remove('hidden');
+    document.getElementById('modal-bg').classList.remove('hidden');
+    document.getElementById('modal').dataset.filename = filename;
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+    document.getElementById('modal-bg').classList.add('hidden');
+  }
+  function copyToClipboard(str) {
+    navigator.clipboard.writeText(str);
+  }
+  function downloadTextFile(str, filename) {
+    const blob = new Blob([str], {type:"text/plain"});
+    const a = document.createElement('a');
+    a.download = filename;
+    a.href = URL.createObjectURL(blob);
+    document.body.append(a);
+    a.click();
+    a.remove();
+  }
+
+  // Helper for safe HTML display
+  function escapeHtml(s) {
+    if (!s) return '';
+    return s.replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  }
+
+  // -------- Main async app logic --------
+  async function init() {
+    const topic = getTopicFromURL();
+    if (!topic) return document.getElementById('app').textContent = "Error: Pass a topic as ?topic=XYZ";
+
+    let assessment;
+    try { assessment = await loadAssessment(topic); }
+    catch { document.getElementById('app').textContent = "Not found: " + topic + ".json"; return; }
+    let questions = assessment.assessment_questions;
+    let current = 0;
+
+    // State:
+    let srcBody = '', srcCss = '', tgtBody = '', tgtCss = '';
+    let userHtml = '', userCss = '';
+    let leftCollapsed = false;
+    let srcCollapsed = false;
+    let tgtCollapsed = false;
+
+    // ---------- RENDER ----------
+    async function render() {
+      let q = questions[current];
+      let srcHtmlStr = await getHtmlFile(q.source_html_file);
+      let tgtHtmlStr = await getHtmlFile(q.target_html_file);
+      let src = parseHtmlAndCss(srcHtmlStr);
+      let tgt = parseHtmlAndCss(tgtHtmlStr);
+      srcBody = src.body; srcCss = src.css;
+      tgtBody = tgt.body; tgtCss = tgt.css;
+      userHtml = srcBody; userCss = srcCss;
+
+      let app = document.getElementById('app');
+      app.innerHTML = `
+<div class="flex flex-col h-screen w-screen">
+  <header class="bg-blue-700 shadow text-white p-3 font-bold text-lg flex items-center">
+    <button id="collapse-toggle" class="mr-4 px-2 py-1 rounded bg-blue-900 hover:bg-blue-800 text-2xl shadow focus:outline-none focus:ring-2 focus:ring-white flex items-center" title="Toggle Menu">&#9776;</button>
+    <span>${assessment.assessment_topic} <span class="font-normal text-slate-200 text-base mx-3">—</span> <span class="text-sm bg-blue-900 px-2 rounded">${assessment.assessment_level||''}</span></span>
+  </header>
+  <div class="flex flex-1 min-h-0 min-w-0">
+    <!-- Left: Navigation panel -->
+    <aside id="left-pane" class="transition-all duration-150 ${leftCollapsed ? 'w-0 min-w-0 overflow-hidden' : 'w-56 min-w-[10rem]'}
+                 bg-blue-50 border-r min-h-0 flex flex-col">
+      <div class="flex justify-between p-2 border-b items-center">
+        <div class="font-bold">Questions</div>
+      </div>
+      <div class="overflow-y-auto flex-1 py-2">
+        ${questions.map((q,i)=>`
+            <button data-idx="${i}" class="block w-full text-left px-3 py-2 hover:bg-blue-100 font-mono text-xs rounded transition
+            ${current==i?'bg-blue-200 font-bold text-blue-700 ring-1 ring-blue-300':''}">
+            ${i+1}. ${escapeHtml(q.title)}
+            </button>
+        `).join('')}
+      </div>
+    </aside>
+    <!-- Right: Main Content pane -->
+    <main class="flex-1 flex flex-col min-h-0 min-w-0 p-4 gap-4 overflow-y-auto">
+      <section>
+        <div class="font-bold text-2xl mb-2 text-gray-900">${escapeHtml(q.title)}</div>
+        ${q.heading ? `<div class="text-lg mb-4 text-gray-800 font-semibold">${escapeHtml(q.heading)}</div>` : ""}
+        <div class="text-base mb-4 text-gray-700">${escapeHtml(q.description)}</div>
+      </section>
+      <!-- Section 1: Read-only source code -->
+      <section>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Source HTML</span>
+            </div>
+            <div id="src-html-view" class="rounded border bg-black h-36"></div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Source CSS</span>
+            </div>
+            <div id="src-css-view" class="rounded border bg-black h-36"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 2: Stacked vertical output iframes -->
+      <section class="flex flex-col gap-5">
+        <!-- Source output -->
+        <div>
+          <div class="flex items-center justify-between"> 
+            <span class="font-bold text-xl text-gray-900">Source Output</span>
+            <div class="flex gap-2 items-center">
+              <button id="src-iframe-toggle" type="button" class="hover:underline text-xs text-blue-600">Collapse</button>  <span class="text-xs font-mono text-gray-400">|</span> 
+              <button id="src-iframe-open" type="button" class="hover:underline text-xs text-blue-600">Open in New Window</button>
+              <span class="text-xs font-mono text-gray-400">|</span>
+              <button id="src-iframe-code" type="button" class="hover:underline text-xs text-green-600">Code</button>
+            </div>
+          </div>
+          <div id="src-iframe-box" class="mt-2 border rounded overflow-hidden transition-all h-80">
+            <iframe id="src-iframe" class="w-full h-full" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+        </div>
+        <!-- Target Output -->
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-xl text-gray-900">Target Output</span>
+            <div class="flex gap-2 items-center">
+              <button id="tgt-iframe-toggle" type="button" class="hover:underline text-xs text-blue-600">Collapse</button>   <span class="text-xs font-mono text-gray-400">|</span> 
+              <button id="tgt-iframe-open" type="button" class="hover:underline text-xs text-blue-600">Open in New Window</button>
+              <span class="text-xs font-mono text-gray-400">|</span>
+              <button id="tgt-iframe-code" type="button" class="hover:underline text-xs text-green-600">Code</button>
+            </div>
+          </div>
+          <div id="tgt-iframe-box" class="mt-2 border rounded overflow-hidden transition-all h-80">
+            <iframe id="tgt-iframe" class="w-full h-full" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- Section 3: Editable code -->
+      <section>
+        <div class="font-bold text-xl mb-2 text-gray-900">Your Code</div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Edit HTML</span>
+            </div>
+            <div id="user-html-edit" class="rounded border bg-black h-36"></div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold mb-1">
+              <span>Edit CSS</span>
+            </div>
+            <div id="user-css-edit" class="rounded border bg-black h-36"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 4: User's visual output -->
+      <section>
+        <div class="flex items-center gap-4 mb-1">
+          <span class="text-base font-bold text-gray-900">Your Output</span>
+          <button id="run-user-code" class="bg-blue-700 text-white px-3 py-1 rounded hover:bg-blue-800 text-xs">Run</button>
+          <button id="download-user-code" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 text-xs">Download HTML</button>
+          <button id="open-user-output" class="bg-indigo-700 text-white px-3 py-1 rounded hover:bg-indigo-800 text-xs">Open in New Window</button>
+        </div>
+        <div class="border rounded overflow-hidden h-80">
+          <iframe id="user-iframe" class="w-full h-full" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+      `;
+
+      // Monaco mounts
+      mountMonaco(document.getElementById('src-html-view'), srcBody, 'html', false);
+      mountMonaco(document.getElementById('src-css-view'), srcCss, 'css', false);
+      mountMonaco(document.getElementById('user-html-edit'), userHtml, 'html', true);
+      mountMonaco(document.getElementById('user-css-edit'), userCss, 'css', true);
+
+      // Fill iframes
+      document.getElementById('src-iframe').srcdoc =
+        `<html><head><style>${srcCss}</style></head><body>${srcBody}</body></html>`;
+      document.getElementById('tgt-iframe').srcdoc =
+        `<html><head><style>${tgtCss}</style></head><body>${tgtBody}</body></html>`;
+      document.getElementById('user-iframe').srcdoc =
+        `<html><head><style>${userCss}</style></head><body>${userHtml}</body></html>`;
+
+      // -- events --
+      // Navigation: switch questions
+      document.querySelectorAll('[data-idx]').forEach(btn=>{
+        btn.onclick = async()=>{
+          current = parseInt(btn.dataset.idx);
+          await render();
+        }
+      });
+
+      // Collapsibles for source/target boxes
+      document.getElementById('src-iframe-toggle').onclick = ()=>{
+        srcCollapsed = !srcCollapsed;
+        document.getElementById('src-iframe-box').classList.toggle('hidden', srcCollapsed);
+        document.getElementById('src-iframe-toggle').textContent = srcCollapsed ? 'Expand' : 'Collapse';
+      };
+      document.getElementById('tgt-iframe-toggle').onclick = ()=>{
+        tgtCollapsed = !tgtCollapsed;
+        document.getElementById('tgt-iframe-box').classList.toggle('hidden', tgtCollapsed);
+        document.getElementById('tgt-iframe-toggle').textContent = tgtCollapsed ? 'Expand' : 'Collapse';
+      };
+      // Set initial button text according to state
+      document.getElementById('src-iframe-box').classList.toggle('hidden', srcCollapsed);
+      document.getElementById('tgt-iframe-box').classList.toggle('hidden', tgtCollapsed);
+      document.getElementById('src-iframe-toggle').textContent = srcCollapsed ? 'Expand' : 'Collapse';
+      document.getElementById('tgt-iframe-toggle').textContent = tgtCollapsed ? 'Expand' : 'Collapse';
+
+      // "Open" as new tab/window
+      document.getElementById('src-iframe-open').onclick = ()=>{
+        let docStr = `<html>\n<head>\n<style>\n${srcCss}\n</style>\n</head>\n<body>\n${srcBody}\n</body>\n</html>`;
+        let newWin = window.open();
+        newWin.document.open();
+        newWin.document.write(docStr);
+        newWin.document.close();
+      };
+      document.getElementById('tgt-iframe-open').onclick = ()=>{
+        let docStr = `<html>\n<head>\n<style>\n${tgtCss}\n</style>\n</head>\n<body>\n${tgtBody}\n</body>\n</html>`;
+        let newWin = window.open();
+        newWin.document.open();
+        newWin.document.write(docStr);
+        newWin.document.close();
+      };
+
+      // Show code popup for source/target, now in <html> format
+      document.getElementById('src-iframe-code').onclick = ()=>{
+        let docStr = `<html>\n<head>\n<style>\n${srcCss}\n</style>\n</head>\n<body>\n${srcBody}\n</body>\n</html>`;
+        showModal(docStr, "source.html");
+      };
+      document.getElementById('tgt-iframe-code').onclick = ()=>{
+        let docStr = `<html>\n<head>\n<style>\n${tgtCss}\n</style>\n</head>\n<body>\n${tgtBody}\n</body>\n</html>`;
+        showModal(docStr, "target.html");
+      };
+
+      // Modal events
+      document.getElementById('modal-close').onclick = closeModal;
+      document.getElementById('modal-bg').onclick = closeModal;
+      document.getElementById('modal-copy').onclick = ()=>{
+        copyToClipboard(document.getElementById('modal-content').textContent);
+      }
+      document.getElementById('modal-download').onclick = ()=>{
+        let code = document.getElementById('modal-content').textContent;
+        let fn = document.getElementById('modal').dataset.filename || "code.html";
+        downloadTextFile(code, fn);
+      }
+
+      // User code run
+      document.getElementById('run-user-code').onclick = ()=>{
+        let html = document.getElementById('user-html-edit').__editor.getValue();
+        let css  = document.getElementById('user-css-edit').__editor.getValue();
+        document.getElementById('user-iframe').srcdoc =
+          `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+      }
+      // User code download
+      document.getElementById('download-user-code').onclick = ()=>{
+        let html = document.getElementById('user-html-edit').__editor.getValue();
+        let css = document.getElementById('user-css-edit').__editor.getValue();
+        let docStr = `<html>\n<head>\n<style>\n${css}\n</style>\n</head>\n<body>\n${html}\n</body>\n</html>`;
+        downloadTextFile(docStr, "your_code.html");
+      }
+      // User code open in new window
+      document.getElementById('open-user-output').onclick = ()=>{
+        let html = document.getElementById('user-html-edit').__editor.getValue();
+        let css  = document.getElementById('user-css-edit').__editor.getValue();
+        let docStr = `<html><head><style>${css}</style></head><body>${html}</body></html>`;
+        let win = window.open();
+        win.document.open();
+        win.document.write(docStr);
+        win.document.close();
+      };
+
+      // Collapsible (hide/show left pane, always burger)
+      document.getElementById('collapse-toggle').onclick = ()=>{
+        leftCollapsed = !leftCollapsed;
+        render();
+      }
+    }
+    await render();
+  }
+
+  // Monaco loader bootstrap
+  window.require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.39.0/min/vs' }});
+  require(['vs/editor/editor.main'], function() {
+    init();
+  });
+</script>
+</body>
+</html>

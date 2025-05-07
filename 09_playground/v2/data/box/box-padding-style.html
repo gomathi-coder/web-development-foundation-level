@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Padding Examples with Class-Based Styling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #333;
+      background-color: #f0f0f0;
+      margin-bottom: 30px;
+    }
+
+    .padding-top {
+      padding-top: 20px;
+    }
+
+    .padding-left {
+      padding-left: 20px;
+    }
+
+    .padding-1 {
+      padding: 20px;
+    }
+
+    .padding-2 {
+      padding: 10px 30px;
+    }
+
+    .padding-3 {
+      padding: 5px 15px 10px;
+    }
+
+    .padding-4 {
+      padding: 5px 10px 15px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Padding Demo</h2>
+
+  <div class="comment">/* No padding applied */</div>
+  <div class="box">Content</div>
+
+  <div class="comment">/* padding-top: 20px; */</div>
+  <div class="box padding-top">Content</div>
+
+  <div class="comment">/* padding-left: 20px; */</div>
+  <div class="box padding-left">Content</div>
+
+  <div class="comment">/* padding: 20px; → all sides = 20px */</div>
+  <div class="box padding-1">Content</div>
+
+  <div class="comment">/* padding: 10px 30px; → top/bottom = 10px, left/right = 30px */</div>
+  <div class="box padding-2">Content</div>
+
+  <div class="comment">/* padding: 5px 15px 10px; → top = 5px, right/left = 15px, bottom = 10px */</div>
+  <div class="box padding-3">Content</div>
+
+  <div class="comment">/* padding: 5px 10px 15px 20px; → top, right, bottom, left */</div>
+  <div class="box padding-4">Content</div>
+
+</body>
+</html>
+
+
+<!--
+[CONCEPT-START]
+
+### Explanation of Techniques:
+
+1. **No Padding**:
+   * The basic `.box` has no padding applied, so the content sits flush against the box's edges.
+
+2. **padding-top**:
+   * The `.padding-top` class adds `20px` padding **only to the top** of the box, pushing the content downward inside its container.
+
+3. **padding-left**:
+   * The `.padding-left` class sets `20px` padding **only to the left** side, moving the content rightward inside the box.
+
+4. **Uniform Padding (All Sides)**:
+   * The `.padding-1` class applies `padding: 20px;`, giving **all four sides (top, right, bottom, left)** an equal `20px` of space inside the box.
+
+5. **Vertical & Horizontal Padding**:
+   * The `.padding-2` class uses `padding: 10px 30px;`, setting **top and bottom** to `10px` and **left and right** to `30px`.
+
+6. **Three-Value Padding Shorthand**:
+   * The `.padding-3` class (`padding: 5px 15px 10px;`) uses the three-value shorthand:
+     - Top: `5px`
+     - Right/Left: `15px`
+     - Bottom: `10px`
+
+7. **Four-Value Padding Shorthand**:
+   * The `.padding-4` class (`padding: 5px 10px 15px 20px;`) applies a distinct value for each side: 
+     - Top: `5px`
+     - Right: `10px`
+     - Bottom: `15px`
+     - Left: `20px`
+
+---
+
+### Key Concepts:
+
+* **padding-top, padding-left**: Allow you to add spacing individually to either the top or left sides.
+* **padding** (shorthand):  
+  - *One value*: All sides get the same padding.
+  - *Two values*: First is top/bottom, second is left/right.
+  - *Three values*: Top, right/left, bottom.
+  - *Four values*: Top, right, bottom, left (clockwise order).
+* **Padding increases the space between the box’s border and its content**, making layouts less cramped and improving readability.
+
+[CONCEPT-END]
+-->

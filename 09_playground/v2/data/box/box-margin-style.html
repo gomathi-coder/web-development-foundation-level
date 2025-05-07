@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Margin Demo Without Padding</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .outer-box {
+      width: 250px;
+      height: 250px;
+      background-color: #e0f7fa;
+      border: 1px dashed #999;
+      margin-bottom: 40px;
+      /* No padding! */
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #f0f0f0;
+      border: 2px solid #333;
+    }
+
+    .margin-top {
+      margin-top: 20px;
+    }
+
+    .margin-left {
+      margin-left: 20px;
+    }
+
+    .margin-1 {
+      margin: 20px;
+    }
+
+    .margin-2 {
+      margin: 10px 30px;
+    }
+
+    .margin-3 {
+      margin: 5px 15px 10px;
+    }
+
+    .margin-4 {
+      margin: 5px 10px 15px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Margin Demo</h2>
+
+  <div class="comment">/* No margin applied */</div>
+  <div class="outer-box">
+    <div class="box">Content</div>
+  </div>
+
+  <div class="comment">/* margin-top: 20px; */</div>
+  <div class="outer-box">
+    <div class="box margin-top">Content</div>
+  </div>
+
+  <div class="comment">/* margin-left: 20px; */</div>
+  <div class="outer-box">
+    <div class="box margin-left">Content</div>
+  </div>
+
+  <div class="comment">/* margin: 20px; (all sides) */</div>
+  <div class="outer-box">
+    <div class="box margin-1">Content</div>
+  </div>
+
+  <div class="comment">/* margin: 10px 30px; (top/bottom = 10px, left/right = 30px) */</div>
+  <div class="outer-box">
+    <div class="box margin-2">Content</div>
+  </div>
+
+  <div class="comment">/* margin: 5px 15px 10px; (top, sides, bottom) */</div>
+  <div class="outer-box">
+    <div class="box margin-3">Content</div>
+  </div>
+
+  <div class="comment">/* margin: 5px 10px 15px 20px; (top, right, bottom, left) */</div>
+  <div class="outer-box">
+    <div class="box margin-4">Content</div>
+  </div>
+
+</body>
+</html>
+<!--
+[CONCEPT-START]
+
+### Explanation of Techniques:
+
+1. **No Margin Applied**:
+   * The `.box` element is placed inside `.outer-box` with **no margin**. The box is tightly aligned with the edges (except for any default browser spacing). No space is provided outside the box.
+
+2. **Top Margin (`margin-top: 20px;`)**:
+   * Only the **top margin** is applied to `.box` (`margin-top: 20px;`). This pushes the box **down by 20px** inside the containing `.outer-box`, creating space above the box.
+
+3. **Left Margin (`margin-left: 20px;`)**:
+   * Only the **left margin** is applied (`margin-left: 20px;`). This moves the box **20px to the right** within `.outer-box`, creating space on the left.
+
+4. **All Sides (`margin: 20px;`)**:
+   * The shorthand **`margin: 20px;`** sets a **20px margin on all four sides** (top, right, bottom, and left). The box is spaced evenly away from the edges of `.outer-box`.
+
+5. **Vertical & Horizontal Margins (`margin: 10px 30px;`)**:
+   * The shorthand **`margin: 10px 30px;`** sets **10px on top and bottom** and **30px on left and right**. The box is further away from left and right compared to top and bottom inside `.outer-box`.
+
+6. **Three Value Margin (`margin: 5px 15px 10px;`)**:
+   * The shorthand **`margin: 5px 15px 10px;`** means:
+      - **5px (top)**
+      - **15px (right & left)**
+      - **10px (bottom)**
+   * The box will be 5px from the top, 10px from the bottom, and 15px from both left and right sides.
+
+7. **Four Value Margin (`margin: 5px 10px 15px 20px;`)**:
+   * The shorthand **`margin: 5px 10px 15px 20px;`** sets:
+      - **5px (top)**
+      - **10px (right)**
+      - **15px (bottom)**
+      - **20px (left)**
+   * Each side has an individually defined margin.
+
+---
+
+### Key Concepts:
+
+* **margin**: The CSS property to create space outside elements, pushing them away from neighboring elements or their container’s edge.
+* **margin-top, margin-left, margin-right, margin-bottom**: Properties to set margin on individual sides.
+* **Margin Shorthand Property**:
+   - **One value:** All sides (top, right, bottom, left)
+   - **Two values:** 1st = top & bottom, 2nd = right & left
+   - **Three values:** 1st = top, 2nd = right & left, 3rd = bottom
+   - **Four values:** top, right, bottom, left (clockwise)
+* **No padding applied**: In these examples, the container `.outer-box` does not have any internal spacing (padding), so all visible spacing is due to the `.box` margins.
+
+---
+
+[CONCEPT-END]
+-->

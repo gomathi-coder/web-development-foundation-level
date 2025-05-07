@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Card/Grid Layout Using Box Model</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f8f9fa;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+	.mt-50 {
+	  margin-top:50px;
+	}
+	.comment-highlight-1 {
+	    font-weight: 700;
+		font-size: 16px;
+		background-color: crimson;
+		color: white;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+    /* The basic card box */
+    .card {
+      display: inline-block;    /* Makes cards appear in a row, wrapping as needed */
+      width: 180px;
+      height: 140px;
+      background: #ffffff;
+      border: 2px solid #e0e0e0;
+      padding: 15px;
+      margin: 10px 16px 24px 0; /* Top, right, bottom, left */
+      vertical-align: top;
+    }
+
+    /* Card title styling */
+    .card-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .card-content {
+      font-size: 0.97em;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Simple Card/Grid Layout (Box Model)</h2>
+  <div class="comment">
+    /* Cards use <b>inline-block</b> to create a grid.<br>
+    <b>Margin</b> spaces cards apart. <b>Padding</b> adds space inside. <br>
+    Use <b>width</b> and <b>height</b> for consistent sizing. */
+  </div>
+
+<!-- Code Starts Here -->
+
+  <div class="card">
+    <div class="card-title">Card One</div>
+    <div class="card-content">
+      This card uses padding for inner space and margin for spacing outside.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Card Two</div>
+    <div class="card-content">
+      Cards are displayed in a row, wrapping as needed.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Card Three</div>
+    <div class="card-content">
+      Adjust margin to change the gap between cards.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Card Four</div>
+    <div class="card-content">
+      Experiment with width/height and box-sizing for layout control.
+    </div>
+  </div>
+<!-- Code Ends Here -->
+  
+  <!-- Comments for the Code -->
+  <div class="comment mt-50">
+	<span class="comment-highlight-1" >Style definition for Cards</span>
+  <pre>
+/* The basic card box */
+.card {
+  display: inline-block;    /* Makes cards appear in a row, wrapping as needed */
+  width: 180px;
+  height: 140px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  padding: 15px;
+  margin: 10px 16px 24px 0; /* Top, right, bottom, left */
+  vertical-align: top;
+}
+  </pre>	
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Content Overflow Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .box {
+      width: 250px;
+      height: 150px;
+      background-color: #f0f0f0;
+      border: 2px solid #333;
+      padding: 10px;
+      margin-bottom: 40px;
+    }
+
+    /* Overflow Styles */
+    .overflow-visible {
+      overflow: visible;
+      max-height: 120px;  /* Max height to ensure content overflows */
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+      max-height: 150px;  /* Max height to ensure content overflows */
+    }
+
+    .overflow-scroll {
+      overflow: scroll;
+      max-height: 150px;  /* Max height to ensure content overflows */
+    }
+
+    .overflow-auto {
+      overflow: auto;
+      max-height: 150px;  /* Max height to ensure content overflows */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Content Overflow Demonstration</h2>
+
+  <!-- Overflow Visible -->
+  <div class="comment">/* overflow: visible; (content will overflow outside the box) */</div>
+  <div class="box overflow-visible">
+    This is some content that exceeds the box size. This content is too long to fit in the box, and should overflow beyond the box boundaries. This is some content that exceeds the box size. This content is too long to fit in the box, and should overflow beyond the box boundaries.
+  </div>
+
+  <!-- Overflow Hidden -->
+  <div class="comment">/* overflow: hidden; (content will be clipped and not visible outside the box) */</div>
+  <div class="box overflow-hidden">
+    This is some content that exceeds the box size. The overflow content will be clipped, and anything beyond the box will not be visible.This is some content that exceeds the box size. The overflow content will be clipped, and anything beyond the box will not be visible.This is some content that exceeds the box size. The overflow content will be clipped, and anything beyond the box will not be visible.
+  </div>
+
+  <!-- Overflow Scroll -->
+  <div class="comment">/* overflow: scroll; (adds scrollbars to the box) */</div>
+  <div class="box overflow-scroll">
+    This is some content that exceeds the box size. Scrollbars will be added, and you will be able to scroll through the overflow content.
+    <br>This is extra content to make sure the box overflows and shows scrollbars.
+  </div>
+
+  <!-- Overflow Auto -->
+  <div class="comment">/* overflow: auto; (adds scrollbars only if necessary) */</div>
+  <div class="box overflow-auto">
+    This is some content that exceeds the box size. Scrollbars will appear only if the content is large enough to overflow.
+    <br>Extra content to trigger the overflow and make the scrollbar appear only if needed.
+  </div>
+
+</body>
+</html>
+<!--
+[CONCEPT-START]
+### Explanation:
+
+1. **Overflow Visible:**
+
+   * The content that exceeds the container's size will spill **outside** the box, making it visible. We use a `max-height` of `150px` to ensure the content is larger than the box height.
+2. **Overflow Hidden:**
+
+   * The content that exceeds the container is **clipped**, and anything beyond the container’s boundaries won’t be visible.
+3. **Overflow Scroll:**
+
+   * Scrollbars are added to the container regardless of whether the content actually overflows, allowing you to scroll within the box to see the hidden content.
+4. **Overflow Auto:**
+
+   * Scrollbars are added **only if necessary**. If the content exceeds the size of the box, scrollbars will appear. Otherwise, the content remains visible within the box.
+[CONCEPT-END]
+-->

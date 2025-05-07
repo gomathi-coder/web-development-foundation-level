@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Border Techniques</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .box {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    /* Solid Border */
+    .solid-border {
+      border: 5px solid #3498db;
+    }
+
+    /* Dashed Border */
+    .dashed-border {
+      border: 5px dashed #e74c3c;
+    }
+
+    /* Dotted Border */
+    .dotted-border {
+      border: 5px dotted #2ecc71;
+    }
+
+    /* Double Border */
+    .double-border {
+      border: 5px double #f39c12;
+    }
+
+    /* Inset Border */
+    .inset-border {
+      border: 5px inset #9b59b6;
+    }
+
+    /* Outset Border */
+    .outset-border {
+      border: 5px outset #1abc9c;
+    }
+
+    /* Rounded Border */
+    .rounded-border {
+      border: 5px solid #f1c40f;
+      border-radius: 20px;
+    }
+
+    /* Border with different colors on each side */
+    .multi-side-border {
+      border-top: 5px solid #e74c3c;
+      border-right: 5px solid #3498db;
+      border-bottom: 5px solid #2ecc71;
+      border-left: 5px solid #f39c12;
+    }
+
+    /* Border with Border Image */
+    .border-image {
+      border: 15px solid transparent;
+      border-image: url('https://via.placeholder.com/150x20') 30 round;
+    }
+
+    /* Hover Effect Border */
+    .hover-border {
+      border: 5px solid transparent;
+      border-radius: 10px;
+      transition: border 0.3s ease;
+    }
+
+    .hover-border:hover {
+      border-color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Border Demo</h2>
+
+  <!-- Solid Border -->
+  <div class="comment">/* Solid Border (simple solid border) */</div>
+  <div class="box solid-border">Solid Border</div>
+
+  <!-- Dashed Border -->
+  <div class="comment">/* Dashed Border (dashed border style) */</div>
+  <div class="box dashed-border">Dashed Border</div>
+
+  <!-- Dotted Border -->
+  <div class="comment">/* Dotted Border (dotted border style) */</div>
+  <div class="box dotted-border">Dotted Border</div>
+
+  <!-- Double Border -->
+  <div class="comment">/* Double Border (two solid borders) */</div>
+  <div class="box double-border">Double Border</div>
+
+  <!-- Inset Border -->
+  <div class="comment">/* Inset Border (inset effect) */</div>
+  <div class="box inset-border">Inset Border</div>
+
+  <!-- Outset Border -->
+  <div class="comment">/* Outset Border (outset effect) */</div>
+  <div class="box outset-border">Outset Border</div>
+
+  <!-- Rounded Border -->
+  <div class="comment">/* Rounded Border (rounded corners) */</div>
+  <div class="box rounded-border">Rounded Border</div>
+
+  <!-- Border with Different Colors on Each Side -->
+  <div class="comment">/* Border with Different Colors on Each Side */</div>
+  <div class="box multi-side-border">Multi-side Border</div>
+
+  <!-- Border with Image -->
+  <div class="comment">/* Border with Image (border-image property) */</div>
+  <div class="box border-image">Border Image</div>
+
+  <!-- Hover Effect Border -->
+  <div class="comment">/* Hover Effect Border (border color changes on hover) */</div>
+  <div class="box hover-border">Hover Border</div>
+
+</body>
+</html>
+<!--
+[CONCEPT-START]
+
+### Explanation of Techniques:
+
+1. **Solid Border**:
+
+   * A simple **solid** border with a specified color (`#3498db` in this case) and a thickness of 5px.
+
+2. **Dashed Border**:
+
+   * The **dashed** border style is used here with a red color (`#e74c3c`), and the border is composed of dashes.
+
+3. **Dotted Border**:
+
+   * The **dotted** border style creates a border with round dots, using a green color (`#2ecc71`).
+
+4. **Double Border**:
+
+   * The **double** border style shows two solid borders, one inside the other. The outer one is 5px wide, and the inner border is 2px wide. The color used here is `#f39c12` (yellow).
+
+5. **Inset Border**:
+
+   * The **inset** border gives the effect of the element being "pressed" into the page, using a purple color (`#9b59b6`).
+
+6. **Outset Border**:
+
+   * The **outset** border gives the effect of the element "popping out" of the page, using a teal color (`#1abc9c`).
+
+7. **Rounded Border**:
+
+   * This border has rounded corners using the `border-radius` property. The corners are rounded by 20px, and the border is solid yellow (`#f1c40f`).
+
+8. **Border with Different Colors on Each Side**:
+
+   * The border has different colors on each side, defined separately using `border-top`, `border-right`, `border-bottom`, and `border-left`.
+
+9. **Border with Image**:
+
+   * The **border-image** property uses an image as the border. The image is sliced and repeated around the element. Here, we use a placeholder image to demonstrate this effect.
+
+10. **Hover Effect Border**:
+
+* The **hover effect** changes the border color to red (`#e74c3c`) when the user hovers over the box. The transition effect is used to smoothly animate the change.
+
+---
+
+### Key Concepts:
+
+* **border**: The shorthand property for defining all four borders' width, style, and color.
+* **border-radius**: Rounds the corners of an element.
+* **border-image**: Allows an image to be used as the border of an element.
+* **transition**: Used to animate border properties like color changes.
+* **inset** and **outset**: Borders that create "pressed" and "raised" effects, respectively.
+
+---
+
+[CONCEPT-END]
+-->

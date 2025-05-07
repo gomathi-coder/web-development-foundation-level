@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Content Area Demo - Width, Height, Text Alignment, Line Height</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .outer-box {
+      width: 250px;
+      height: 250px;
+      background-color: #e0f7fa;
+      border: 1px dashed #999;
+      margin-bottom: 40px;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: #f0f0f0;
+      border: 2px solid #333;
+      margin-bottom: 20px;
+    }
+
+    /* Width and Height */
+    .width-200 {
+      width: 200px;
+    }
+
+    .height-150 {
+      height: 150px;
+    }
+
+    /* Text Alignment */
+    .text-align-center {
+      text-align: center;
+    }
+
+    .text-align-left {
+      text-align: left;
+    }
+
+    .text-align-right {
+      text-align: right;
+    }
+
+    /* Line Height */
+    .line-height-1 {
+      line-height: 1.2;
+    }
+
+    .line-height-2 {
+      line-height: 2;
+    }
+
+    .line-height-3 {
+      line-height: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Content Area Demo - Width, Height, Text Alignment, Line Height</h2>
+
+  <!-- Width and Height Demonstration -->
+  <div class="comment">/* Width: 200px; (box content width) */</div>
+  <div class="outer-box">
+    <div class="box width-200">Content</div>
+  </div>
+
+  <div class="comment">/* Height: 150px; (box content height) */</div>
+  <div class="outer-box">
+    <div class="box height-150">Content</div>
+  </div>
+
+  <div class="comment">/* Width: 200px; Height: 150px; (box content width and height) */</div>
+  <div class="outer-box">
+    <div class="box width-200 height-150">Content</div>
+  </div>
+
+  <!-- Text Alignment Demonstration -->
+  <div class="comment">/* text-align: center; (centers text horizontally) */</div>
+  <div class="outer-box">
+    <div class="box text-align-center">Centered Content</div>
+  </div>
+
+  <div class="comment">/* text-align: left; (aligns text to the left) */</div>
+  <div class="outer-box">
+    <div class="box text-align-left">Left-aligned Content</div>
+  </div>
+
+  <div class="comment">/* text-align: right; (aligns text to the right) */</div>
+  <div class="outer-box">
+    <div class="box text-align-right">Right-aligned Content</div>
+  </div>
+
+  <!-- Line Height Demonstration -->
+  <div class="comment">/* line-height: 1.2; (sets the space between lines) */</div>
+  <div class="outer-box">
+    <div class="box line-height-1">
+      This is a test<br>with line height set to 1.2
+    </div>
+  </div>
+
+  <div class="comment">/* line-height: 2; (increases space between lines) */</div>
+  <div class="outer-box">
+    <div class="box line-height-2">
+      This is a test<br>with line height set to 2
+    </div>
+  </div>
+
+  <div class="comment">/* line-height: 3; (even more space between lines) */</div>
+  <div class="outer-box">
+    <div class="box line-height-3">
+      This is a test<br>with line height set to 3
+    </div>
+  </div>
+
+</body>
+</html>
+<!--
+[CONCEPT-START]
+### Key Concepts Taught:
+
+1. **Width and Height:**
+
+   * Demonstrate how setting the `width` and `height` affects the content area size of the box.
+   * Examples with **200px width** and **150px height** and combined styles.
+
+2. **Text Alignment:**
+
+   * Show how `text-align` works for aligning text horizontally within the content area:
+
+     * **center**, **left**, and **right** alignment examples.
+
+3. **Line Height:**
+
+   * Teach how `line-height` affects the space between lines of text.
+   * Examples of different line heights (1.2, 2, and 3) to show the effect visually.
+[CONCEPT-END]
+-->

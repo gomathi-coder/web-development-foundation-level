@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>When Should I Use content-box or border-box?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f9fbe7;
+    }
+    h2 {
+      margin-bottom: 12px;
+    }
+    .comment {
+      font-family: monospace;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    .sample-row {
+      margin-bottom: 36px;
+    }
+    .container {
+      background: #fffde7;
+      border: 1.5px dashed #ffee58;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      display: inline-block;
+      width: 96%;
+      max-width: 600px;
+    }
+    .demo-box {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 30px;
+      background: #e3f2fd;
+      border: 5px solid #1976d2;
+      padding: 20px;
+      width: 200px;
+      height: 60px;
+      box-sizing: content-box; /* Default for first use case */
+      font-weight: bold;
+      color: #0d47a1;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .border-box {
+      box-sizing: border-box;
+      border: 5px solid #43a047;
+      background: #c8e6c9;
+      color: #1b5e20;
+    }
+    .bar-demo {
+      display: block;
+      height: 36px;
+      width: 100%;
+      background: #fffde7;
+      border: 2.5px solid #ffc107;
+      margin-top: 5px;
+      margin-bottom: 8px;
+      box-sizing: content-box; /* for illustration */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>When to Use <code>content-box</code> or <code>border-box</code>?</h2>
+
+  <div class="sample-row">
+    <div class="container">
+      <div class="comment">
+        /* <b>Layout/UI Elements:</b> Use <b>border-box</b> for cards, sidebar, or grids.<br>
+        Layout stays the same size no matter the padding or border. */
+      </div>
+      <div class="demo-box border-box">
+        Card (border-box)<br>
+        Always 200px wide
+      </div>
+      <div class="demo-box border-box" style="padding:35px;">
+        Card<br>More padding,<br>still 200px wide!
+      </div>
+      <div style="display:inline-block;vertical-align:top">
+        &larr; <i>With <b>border-box</b>, boxes line up neatly, no unexpected resizing!</i>
+      </div>
+    </div>
+  </div>
+
+  <div class="sample-row">
+    <div class="container">
+      <div class="comment">
+        /* <b>Bars, Icons, Progress, or Strict Content:</b> Use <b>content-box</b> if you want
+        the <u>inside</u> area to remain exactly your set width/height.<br>
+        (Padding/border will make total box bigger, but content zone stays true size.) */
+      </div>
+      <div style="margin-bottom: 6px; font-weight:bold;">Progress Bar Example:</div>
+      <div class="bar-demo"></div>
+      <div class="bar-demo" style="padding:8px;">With Padding</div>
+      <div style="font-size:0.96em; color:#444; margin:4px 0 0 5px;">&larr; <b>Content-box</b>: Yellow bar is always 100% wide (padding pushes border outward)</div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Media Content Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+
+    .media-box {
+      width: 80%;
+      margin-bottom: 40px;
+      background-color: #f0f0f0;
+      border: 2px solid #333;
+      padding: 10px;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .audio-box {
+      width: 100%;
+    }
+
+    .video-box {
+      width: 100%;
+      height: auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+    }
+
+    /* Style for responsiveness */
+    @media (max-width: 600px) {
+      .media-box {
+        width: 100%;
+      }
+
+      iframe {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Media Content Examples</h2>
+
+  <!-- Image Example -->
+  <div class="comment">/* Example: Image Media (responsive, adjusts to container width) */</div>
+  <div class="media-box image-box">
+    <img src="https://via.placeholder.com/800x400" alt="Placeholder Image">
+  </div>
+
+  <!-- Audio Example -->
+  <div class="comment">/* Example: Audio Media (plays audio within the box) */</div>
+  <div class="media-box audio-box">
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- Video Example -->
+  <div class="comment">/* Example: Video Media (plays video within the box) */</div>
+  <div class="media-box video-box">
+    <video controls>
+      <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+      Your browser does not support the video element.
+    </video>
+  </div>
+
+  <!-- Embedded YouTube Video (iframe) -->
+  <div class="comment">/* Example: Embedded Media (iframe, like YouTube embed) */</div>
+  <div class="media-box">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+  </div>
+
+  <!-- Content with Overflow (example with images) -->
+  <div class="comment">/* Example: Content Overflow (image in box with overflow) */</div>
+  <div class="media-box" style="max-height: 150px; overflow: auto;">
+    <img src="https://via.placeholder.com/1000x800" alt="Overflow Image">
+  </div>
+
+  <!-- Audio with Background -->
+  <div class="comment">/* Example: Audio with Background and Centered Controls */</div>
+  <div class="media-box" style="background-color: #e0f7fa; text-align: center;">
+    <audio controls style="margin-top: 20px;">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+</body>
+</html>

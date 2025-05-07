@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stacked Boxes and Margins Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .comment {
+      font-family: monospace;
+      color: gray;
+      margin-bottom: 5px;
+    }
+	.mt-50 {
+	  margin-top:50px;
+	}
+	.comment-highlight-1 {
+	    font-weight: 700;
+		font-size: 16px;
+		background-color: crimson;
+		color: white;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+    .stack-box {
+      width: 200px;
+      height: 60px;
+      border: 2px solid #233;
+      background-color: #e6f7ff;
+      margin-bottom: 16px; /* margin creates vertical separation */
+      padding: 10px;
+    }
+    .stack-vertical .stack-box:last-child {
+      margin-bottom: 0;
+    }
+   
+  </style>
+</head>
+<body>
+
+  <h2>Stacked Boxes Demo</h2>
+
+  <div class="comment">// Vertically Stacked (default) – using margin-bottom</div>
+  <div class="stack-vertical">
+    <div class="stack-box">Box 1</div>
+    <div class="stack-box">Box 2</div>
+    <div class="stack-box">Box 3</div>
+  </div>
+  <div class="comment mt-50">
+<span class="comment-highlight-1" >Style definition for stack box</span>
+  <pre>
+.stack-box {
+  width: 200px;
+  height: 60px;
+  border: 2px solid #233;
+  background-color: #e6f7ff;
+  margin-bottom: 16px; /* margin creates vertical separation */
+  padding: 10px;
+}
+  </pre>	
+  </div>
+
+</body>
+</html>
+
+<!--
+[CONCEPT-START]
+
+### Explanation of Stacked Boxes and Margin:
+
+**1. Vertically Stacked:**
+- Each `.stack-box` acts like a "section" or "card" in a vertical list.
+- `margin-bottom` on the boxes creates space between them, so they're not touching.
+
+**2. Why use margins?**
+- Margins create visual breathing room **between** stacked elements (not inside them).
+- This improves clarity, grouping, and comfort for the viewer.
+
+**Key concept:**  
+*Stacking with margins is a classic pattern for building clear, organized UI layouts.*
+
+[CONCEPT-END]
+-->

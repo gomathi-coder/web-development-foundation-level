@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Playground Loader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <!-- Marked.js for Markdown Parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Monaco Editor Loader -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs/loader.js"></script>
+  
+  <style>
+    .collapsible {
+      transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    .popup-bg {
+      background: rgba(0,0,0,0.5);
+      z-index: 50;
+    }
+    .popup-content {
+      min-width: 300px; max-width: 650px;
+    }
+    .concept-markdown {
+      background: linear-gradient(135deg, #e3fafa 70%, #f8fdfe 100%);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 24px 0 #c3dae799;
+      padding: 2rem 1.5rem;
+    }
+    .monaco-editor, .editor-wrapper {
+      height: 350px !important;
+      min-height: 260px !important;
+    }
+    .editor-title {
+      background: #fbfbfd;
+      border-radius: 0.5rem 0.5rem 0 0;
+      border-bottom: 1px solid #e5eaf1;
+      font-weight: 500;
+      font-size: 0.975rem;
+      padding: 0.35rem 1.25rem;
+      color: #444;
+      letter-spacing: 0.01em;
+    }
+    /* Custom scroll for panels */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #eaf1fd;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #bfd7ebc0;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+<div id="root" class="w-full max-w-7xl mx-auto px-2 sm:px-6 py-4"></div>
+
+<!-- POPUP for Code Viewing -->
+<div id="show-code-popup" class="fixed top-0 left-0 w-full h-full hidden popup-bg flex items-center justify-center">
+  <div class="popup-content bg-white rounded-lg shadow-lg overflow-hidden relative">
+    <button onclick="hideShowCode()" class="absolute top-2 right-2 text-lg text-slate-500 hover:text-red-500"><i class="fa-solid fa-circle-xmark"></i></button>
+    <div class="flex flex-row justify-between items-center px-6 py-4 border-b">
+      <span class="font-bold uppercase tracking-wider text-sm">HTML & CSS Source</span>
+      <div class="space-x-4">
+        <button title="Copy" onclick="copyPopupCode()" class="text-base px-2 py-1 hover:text-green-700"><i class="fa-solid fa-copy"></i></button>
+        <button title="Download" onclick="downloadPopupCode()" class="text-base px-2 py-1 hover:text-blue-700"><i class="fa-solid fa-download"></i></button>
+      </div>
+    </div>
+    <pre id="popup-code" class="bg-gray-900 text-xs text-white scroll px-5 py-4 rounded-b-lg max-h-[60vh] overflow-auto"></pre>
+  </div>
+</div>
+
+<script>
+/* ---- Helper Functions ---- */
+
+// URL QUERY PARAMS reading/updating
+function getQueryParam(name) {
+  let params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+function setQueryParam(name, val) {
+  let params = new URLSearchParams(window.location.search);
+  if (val)
+    params.set(name, val);
+  else
+    params.delete(name);
+  window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+}
+
+// Group examples for dropdown optgroups
+function groupExamplesByConcept(pg_examples, group_map) {
+  let groups = {};
+  for (const g of Object.values(group_map)) groups[g] = [];
+  for (const ex of pg_examples) (groups[ex.concept_id] || (groups[ex.concept_id] = [])).push(ex);
+  return groups;
+}
+
+// Collapsible section handling
+function toggleCollapsible(btn) {
+  let section = btn.closest('.collapsible-section');
+  let content = section.querySelector('.collapsible-content');
+  let rotate = section.querySelector('.collapse-arrow');
+  if (content.classList.contains('max-h-0')) {
+    content.classList.remove('max-h-0', 'p-0');
+    content.classList.add('max-h-[2000px]', 'p-4');
+    rotate.classList.add('rotate-90');
+  } else {
+    content.classList.remove('max-h-[2000px]', 'p-4');
+    content.classList.add('max-h-0', 'p-0');
+    rotate.classList.remove('rotate-90');
+  }
+}
+
+/* ---- POPUP handlers ---- */
+function showShowCode(code) {
+  document.getElementById('popup-code').textContent = code;
+  document.getElementById('show-code-popup').classList.remove('hidden');
+}
+function hideShowCode() {
+  document.getElementById('show-code-popup').classList.add('hidden');
+}
+function copyPopupCode() {
+  let code = document.getElementById('popup-code').textContent;
+  navigator.clipboard.writeText(code);
+}
+function downloadPopupCode() {
+  let code = document.getElementById('popup-code').textContent;
+  let blob = new Blob([code], {type: "text/plain"});
+  let link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = "example.html";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+/* ---- MAIN LOGIC ---- */
+
+let pgMeta = null, currentExample = null, exMap = {};
+let cssEditor, htmlEditor;
+let styleContent = '', htmlContent = '', conceptContent = '';
+let loadedExampleHtml = ''; // For "Show Code" and "Open in New Window"
+
+async function main() {
+  // 1. Read pg-id from URL
+  const pgId = getQueryParam('pg-id');
+  if (!pgId) {
+    document.getElementById('root').innerHTML = `<div class="text-red-600 text-xl p-8">No pg-id given in URL.</div>`;
+    return;
+  }
+
+  // 2. Load JSON meta file
+  let json;
+  /*
+  try {
+    json = await fetch(`./${pgId}.json`).then(r => r.json());
+  } catch (e) {
+    document.getElementById('root').innerHTML = `<div class="text-red-600 text-xl p-8">Could not load JSON file: ${pgId}.json</div>`;
+    return;
+  }*/
+    let response = await fetch(`./${pgId}.json`);
+	console.log('Fetch response:', response);
+	let text = await response.text();
+	console.log('Raw fetched text:', text);
+	try {
+	  json = JSON.parse(text);
+	} catch(e) {
+	  console.error('Error parsing JSON:', e);
+	  throw e;
+	}
+  pgMeta = json;
+
+  // 3. Map concept groups (for dropdown)
+  let group_map = {};
+  for (const g of pgMeta.pg_example_group) group_map[g.concept_id] = g.concept_name;
+
+  // 4. Map ex_id-to-example for easy access
+  for (const ex of pgMeta.pg_examples) exMap[ex.ex_id] = ex;
+
+  // 5. Select example
+  let ex_id = getQueryParam('ex-id');
+  if (!ex_id || !exMap[ex_id]) ex_id = pgMeta.pg_examples[0].ex_id;
+
+  // 6. Load Example and Render All
+  await loadAndRenderExample(pgMeta, ex_id, group_map);
+
+  // 6.5. Set up dropdown change handler
+  document.getElementById('example-selector').addEventListener('change', async function() {
+    let exid = this.value;
+    setQueryParam('ex-id', exid);
+    await loadAndRenderExample(pgMeta, exid, group_map);
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // 7. Set up COLLAPSIBLES
+  for (let btn of document.querySelectorAll('.collapsible-toggle')) {
+    btn.addEventListener('click', () => toggleCollapsible(btn));
+  }
+
+  // 8. Set up Output Toolbar
+  setupOutputToolbar();
+}
+main();
+
+async function loadAndRenderExample(pgMeta, ex_id, group_map) {
+  currentExample = exMap[ex_id];
+  setQueryParam('ex-id', ex_id);
+
+  // -- Load HTML file
+  let htmlText;
+  try {
+    htmlText = await fetch(currentExample.ex_html_file).then(r => r.text());
+    loadedExampleHtml = htmlText;
+  } catch (e) {
+    htmlText = "<!-- failed to load example HTML -->";
+    loadedExampleHtml = '';
+  }
+
+  // -- Extract <style> and <body>
+  styleContent = (htmlText.match(/<style[^>]*>([\s\S]*?)<\/style>/im)||['',''])[1].trim();
+  htmlContent = (htmlText.match(/<body[^>]*>([\s\S]*?)<\/body>/im)||['',''])[1].trim();
+
+  // -- Extract concept markdown
+  conceptContent = '';
+  let conceptMatch = htmlText.match(/\[CONCEPT-START\]([\s\S]*?)\[CONCEPT-END\]/im);
+  if (conceptMatch) conceptContent = conceptMatch[1].trim();
+
+  // -- Render Page
+  renderFullPage(pgMeta, group_map, currentExample);
+
+  // -- Monaco: initialize or update
+  await setupMonacoEditors(styleContent, htmlContent);
+
+  // -- Iframes: load output with editors' CSS/HTML
+  runIframe();
+}
+
+function renderFullPage(meta, group_map, ex) {
+  // 1. Compose dropdown (grouped)
+  let groups = groupExamplesByConcept(meta.pg_examples, group_map);
+  let exDropdown = Object.entries(group_map).map(
+    ([cid, cname]) => `<optgroup label="${cname}">${(groups[cid]||[]).map(e => `<option value="${e.ex_id}" ${e.ex_id===ex.ex_id?'selected':''}>${e.ex_name}</option>`).join('')}</optgroup>`
+  ).join('');
+
+  // 2. HTML Section
+  document.getElementById('root').innerHTML = `
+    <!-- Header Section -->
+    <section class="flex flex-row w-full mb-7 bg-white rounded-lg shadow-md p-7">
+      <div class="w-1/2 pr-6">
+        <span class="text-2xl font-bold block mb-1 text-blue-800">
+          ${meta.pg_title}
+          <span class="ml-2 font-semibold text-sm text-blue-500">${meta.pg_level?('('+meta.pg_level+')'):""}</span>
+        </span>
+        <div class="mt-1 text-base text-slate-700 mb-2">${meta.pg_desc}</div>
+      </div>
+      <div class="w-1/2 flex flex-col items-end justify-center">
+        <label for="example-selector" class="text-[15px] block font-semibold text-slate-500 mb-2">Select Example:</label>
+        <select id="example-selector" class="w-72 px-4 py-2 rounded-lg border font-medium text-base bg-white shadow-sm focus:ring-2 focus:ring-blue-300 transition-all">
+          ${exDropdown}
+        </select>
+        <div class="mt-2 text-right text-sm italic text-slate-400">
+          ${ex.ex_name}
+        </div>
+      </div>
+    </section>
+
+    <!-- HTML & CSS Editors -->
+    <section class="collapsible-section mb-6">
+      <button type="button" class="collapsible-toggle flex w-full items-center gap-2 text-xl text-blue-900 font-bold pb-2 group">
+        <span class="inline-block collapse-arrow transition-transform"><i class="fa-solid fa-chevron-right"></i></span>
+        HTML & CSS
+      </button>
+      <div class="collapsible-content transition-all max-h-[2000px] p-4 bg-slate-50 rounded-lg flex flex-row gap-6 mt-1">
+        <!-- CSS -->
+        <div class="w-1/2 shadow-md rounded-lg border bg-white h-[390px] flex flex-col overflow-hidden">
+          <div class="editor-title flex-shrink-0"><i class="fa-brands fa-css3-alt text-blue-700 mr-2"></i> CSS</div>
+          <div id="css-editor" class="editor-wrapper flex-1 border-0"></div>
+        </div>
+        <!-- HTML -->
+        <div class="w-1/2 shadow-md rounded-lg border bg-white h-[390px] flex flex-col overflow-hidden">
+          <div class="editor-title flex-shrink-0"><i class="fa-brands fa-html5 text-orange-500 mr-2"></i> HTML</div>
+          <div id="html-editor" class="editor-wrapper flex-1 border-0"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Output Section -->
+    <section class="collapsible-section mb-6">
+      <button type="button" class="collapsible-toggle flex w-full items-center gap-2 text-xl text-blue-900 font-bold pb-2 group">
+        <span class="inline-block collapse-arrow transition-transform"><i class="fa-solid fa-chevron-right"></i></span>
+        Output
+      </button>
+      <div class="collapsible-content transition-all max-h-[2000px] p-4 bg-slate-50 rounded-lg">
+        <!-- Toolbar -->
+        <div class="w-full pb-3 flex justify-between items-center">
+          <div>
+            <button title="Run" class="output-action run-btn px-4 py-2 rounded-md font-bold bg-blue-500 text-white hover:bg-blue-600 transition-all shadow mr-2">
+              <i class="fa-solid fa-play mr-1"></i> Run
+            </button>
+            <button title="Show Code" class="output-action showcode-btn px-3 py-2 rounded-md font-bold bg-gray-600 text-white hover:bg-gray-800 transition-all mr-2">
+              <i class="fa-solid fa-code mr-1"></i> Show Code
+            </button>
+          </div>
+          <button title="Open in Window" class="output-action openwin-btn px-2 py-2 rounded-full bg-slate-300 hover:bg-slate-400 text-slate-700">
+            <i class="fa-solid fa-up-right-from-square"></i>
+          </button>
+        </div>
+        <!-- Output Frame -->
+        <div class="w-full min-h-[320px] border rounded-lg bg-white shadow-md flex items-center justify-center">
+          <iframe id="output-iframe" class="w-full h-[320px] rounded-lg border-0" sandbox="allow-scripts allow-modals allow-forms"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept Markdown Section -->
+    <section class="collapsible-section mb-0">
+      <button type="button" class="collapsible-toggle flex w-full items-center gap-2 text-xl text-blue-900 font-bold pb-2 group">
+        <span class="inline-block collapse-arrow transition-transform"><i class="fa-solid fa-chevron-right"></i></span>
+        How it Works
+      </button>
+      <div class="collapsible-content transition-all max-h-[2000px] p-4">
+        <div class="concept-markdown prose prose-sky max-w-none text-lg leading-relaxed" id="concept-markdown">${marked.parse(conceptContent||'')}</div>
+      </div>
+    </section>
+  `;
+  // Init collapsibles to "open" state except first time
+  for (let section of document.querySelectorAll('.collapsible-section')) {
+    let content = section.querySelector('.collapsible-content');
+    let arrow = section.querySelector('.collapse-arrow');
+    content.classList.add('max-h-[2000px]', 'p-4');
+    arrow.classList.add('rotate-90');
+  }
+}
+
+async function setupMonacoEditors(newCSS, newHTML) {
+  return new Promise(resolve => {
+    require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs' } });
+    require(['vs/editor/editor.main'], function () {
+      if (!cssEditor) {
+        cssEditor = monaco.editor.create(document.getElementById('css-editor'), {
+          value: newCSS,
+          language: 'css',
+          minimap: {enabled: false},
+          fontSize: 16,
+          theme: 'vs',
+        });
+        htmlEditor = monaco.editor.create(document.getElementById('html-editor'), {
+          value: newHTML,
+          language: 'html',
+          minimap: {enabled: false},
+          fontSize: 15.5,
+          theme: 'vs',
+        });
+      } else {
+        cssEditor.setValue(newCSS);
+        htmlEditor.setValue(newHTML);
+      }
+      // Save on change for fast "Run"
+      cssEditor.getModel().onDidChangeContent(runIframe);
+      htmlEditor.getModel().onDidChangeContent(runIframe);
+      resolve();
+    });
+  });
+}
+
+function runIframe() {
+  let css = cssEditor ? cssEditor.getValue() : styleContent;
+  let html = htmlEditor ? htmlEditor.getValue() : htmlContent;
+  let outDoc = `
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="UTF-8"><style>${css}</style></head>
+    <body>${html}</body>
+    </html>
+  `;
+  let iframe = document.getElementById('output-iframe');
+  if (iframe) iframe.srcdoc = outDoc;
+  return outDoc;
+}
+function setupOutputToolbar() {
+  document.querySelector('.run-btn')?.addEventListener('click', runIframe);
+  document.querySelector('.showcode-btn')?.addEventListener('click', function(){
+    let src = runIframe();
+    showShowCode(src);
+  });
+  document.querySelector('.openwin-btn')?.addEventListener('click', function(){
+    let src = runIframe();
+    let win = window.open();
+    win.document.open();
+    win.document.write(src);
+    win.document.close();
+  });
+}
+
+// Hide popup with click on bg
+document.getElementById('show-code-popup').addEventListener('mousedown', (e) => {
+  if (e.target.id === 'show-code-popup') hideShowCode();
+});
+</script>
+</body>
+</html>
