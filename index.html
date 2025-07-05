@@ -119,17 +119,18 @@
     </section>
 
     <script>
-      function checkPassword() {
-        const encoded = ["YXJ1bg==", "YXNob2s=", "aGFyaQ=="]; 
-        const input = prompt("Enter password:");
-        const encodedInput = btoa(input); 
-        if (encoded.includes(encodedInput)) {
-          window.location.href = "./03_curriculum_activity/01_web_development_foundation.html";
-        } else {
-          alert("Access Denied");
-        }
-      }
-    </script>
+  function checkPassword() {
+    const encoded = ["cWJlZWFjYWRlbXk="]; 
+    const input = prompt("Enter password:");
+    const encodedInput = btoa(input); 
+    if (encoded.includes(encodedInput)) {
+      window.location.href = "./03_curriculum_activity/01_web_development_foundation.html";
+    } else {
+      alert("Access Denied");
+    }
+  }
+</script>
+
     
   </body>
 </html>
